@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Jetpack Compatibility File
  *
  * @link https://jetpack.com/
  *
- * @package s_plus_plus
+ * @package s_plus
  */
 
 /**
@@ -26,7 +27,7 @@ function s_plus_jetpack_setup() {
 	);
 
 	// Add theme support for Responsive Videos.
-	add_theme_support( 'jetpack-responsive-videos' );
+	add_theme_support('jetpack-responsive-videos');
 
 	// Add theme support for Content Options.
 	add_theme_support(
@@ -48,18 +49,18 @@ function s_plus_jetpack_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 's_plus_jetpack_setup' );
+add_action('after_setup_theme', 's_plus_jetpack_setup');
 
 /**
  * Custom render function for Infinite Scroll.
  */
 function s_plus_infinite_scroll_render() {
-	while ( have_posts() ) {
+	while (have_posts()) {
 		the_post();
-		if ( is_search() ) :
-			get_template_part( 'template-parts/content', 'search' );
+		if (is_search()) :
+			get_template_part('template-parts/content', 'search');
 		else :
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part('template-parts/content', get_post_type());
 		endif;
 	}
 }
