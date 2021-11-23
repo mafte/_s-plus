@@ -16,9 +16,8 @@
 
 		<?php if ('post' === get_post_type()) : ?>
 			<div class="entry-meta">
-				<?php
-				s_plus_posted_on();
-				s_plus_posted_by();
+				<? php;
+
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
