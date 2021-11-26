@@ -4,6 +4,33 @@ if (!defined('_S_VERSION')) {
     define('_S_VERSION', '1.0.0');
 }
 
+if (!defined('_SP_THEME_D')) {
+    define('_SP_THEME_D', get_template_directory());
+}
+if (!defined('_SP_THEME_U')) {
+    define('_SP_THEME_U', get_template_directory_uri());
+}
+if (!defined('_SP_STYLE_D')) {
+    define('_SP_STYLE_D', get_template_directory() . '/assets/dist/css/');
+}
+if (!defined('_SP_STYLE_U')) {
+    define('_SP_STYLE_U', get_template_directory_uri() . '/assets/dist/css/');
+}
+if (!defined('_SP_SCRIPTS_D')) {
+    define('_SP_SCRIPTS_D', get_template_directory() . '/assets/dist/js/');
+}
+if (!defined('_SP_SCRIPTS_U')) {
+    define('_SP_SCRIPTS_U', get_template_directory_uri() . '/assets/dist/js/');
+}
+if (!defined('_SP_IMG_D')) {
+    define('_SP_IMG_D', get_template_directory() . '/assets/dist/img/');
+}
+if (!defined('_SP_IMG_U')) {
+    define('_SP_IMG_U', get_template_directory_uri() . '/assets/dist/img/');
+}
+
+
+
 if (!function_exists('s_plus_setup')) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
