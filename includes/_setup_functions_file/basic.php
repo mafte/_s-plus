@@ -10,6 +10,8 @@ if (!defined('_SP_THEME_D')) {
 if (!defined('_SP_THEME_U')) {
     define('_SP_THEME_U', get_template_directory_uri());
 }
+
+// DIST Directory
 if (!defined('_SP_STYLE_D')) {
     define('_SP_STYLE_D', get_template_directory() . '/assets/dist/css/');
 }
@@ -29,6 +31,19 @@ if (!defined('_SP_IMG_U')) {
     define('_SP_IMG_U', get_template_directory_uri() . '/assets/dist/img/');
 }
 
+// SOURCE Directory
+if (!defined('_SP_STYLE_SO_D')) {
+    define('_SP_STYLE_SO_D', get_template_directory() . '/assets/source/css/');
+}
+if (!defined('_SP_STYLE_SO_U')) {
+    define('_SP_STYLE_SO_U', get_template_directory_uri() . '/assets/source/css/');
+}
+if (!defined('_SP_SCRIPTS_SO_D')) {
+    define('_SP_SCRIPTS_SO_D', get_template_directory() . '/assets/source/js/');
+}
+if (!defined('_SP_SCRIPTS_SO_U')) {
+    define('_SP_SCRIPTS_SO_U', get_template_directory_uri() . '/assets/source/js/');
+}
 
 
 if (!function_exists('s_plus_setup')) :
