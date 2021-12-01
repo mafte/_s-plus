@@ -120,9 +120,39 @@ if (!function_exists('s_plus_setup')) :
                 'flex-height' => true,
             )
         );
+
+        /*	|> Images sizes
+        \*------------------------------------------------------*/
+        include_once('img_sizes.php');
     }
 endif;
 add_action('after_setup_theme', 's_plus_setup');
+
+
+/*	|> SETTINGS FOR IMAGES
+\*------------------------------------------------------*/
+
+/**
+ * Increases the threshold for scaling big images to value.
+ *
+ * @param $threshold
+ * @return int
+ */
+function dg_big_image_size_threshold($threshold) {
+    return 2000; // new threshold
+}
+
+//add_filter('big_image_size_threshold', 'dg_big_image_size_threshold', 100, 1);
+add_filter('big_image_size_threshold', '__return_false');
+
+/**
+ * Automatically scales images uploaded to Media Library to the maximum allowed value.
+ */
+
+function check_image_size($imagesize, $file, $attachment_id) {
+    return 2000;
+}
+add_filter('big_image_size_threshold', 'check_image_size', 10, 3);
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
