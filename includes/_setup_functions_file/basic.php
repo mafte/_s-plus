@@ -129,7 +129,8 @@ endif;
 add_action('after_setup_theme', 's_plus_setup');
 
 
-/*	|> SETTINGS FOR IMAGES
+/*------------------------------------------------------*\
+    || SETTINGS FOR IMAGES
 \*------------------------------------------------------*/
 
 /**
@@ -141,18 +142,22 @@ add_action('after_setup_theme', 's_plus_setup');
 function dg_big_image_size_threshold($threshold) {
     return 2000; // new threshold
 }
-
-//add_filter('big_image_size_threshold', 'dg_big_image_size_threshold', 100, 1);
+// completely disable image size threshold
 add_filter('big_image_size_threshold', '__return_false');
 
-/**
- * Automatically scales images uploaded to Media Library to the maximum allowed value.
- */
+/*	|> Autoscaled images by Imsanity plugin
+\*------------------------------------------------------*/
 
-function check_image_size($imagesize, $file, $attachment_id) {
-    return 2000;
+//If Imsanity plugin is not actived
+if (!defined('IMSANITY_VERSION')) {
+    include(_SP_THEME_D . '/includes/improvements_and_others/imsanity-images.php');
+
+    // Add filter to hook into uploads.
+    add_filter('wp_handle_upload', 'sp_imsanity_handle_upload');
 }
-add_filter('big_image_size_threshold', 'check_image_size', 10, 3);
+
+/*------------------------------------------------------*/
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
