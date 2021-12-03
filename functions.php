@@ -23,6 +23,13 @@ include_once('includes/_setup_functions_file/widgets.php');
 \*------------------------------------------------------*/
 include_once('includes/_setup_functions_file/scripts_and_styles.php');
 
+
 /*	|> Helpers loop functions
 \*------------------------------------------------------*/
 include_once('includes/improvements_and_others/helpers_loop.php');
+
+
+/*------------------------------------------------------*\
+	|| ACF: load/save custom path
+\*------------------------------------------------------*/
+include_once('includes/improvements_and_others/acf.php');
