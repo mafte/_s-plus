@@ -45,3 +45,11 @@ add_action('admin_enqueue_scripts', 'load_admin_styles');
 function load_admin_styles() {
 	wp_enqueue_style('acf-styles', _SP_STYLE_SO_U . 'acf-styles.css', false, filemtime(_SP_STYLE_SO_D . 'acf-styles.css'));
 }
+
+/*	|> Filter HTML anchor before save into DB
+\*------------------------------------------------------*/
+
+function filter_slug_id($field) {
+	return acf_slugify($field);
+}
+add_filter('acf/update_value/name=html_anchor', 'filter_slug_id', 10, 1);
