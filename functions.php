@@ -30,6 +30,18 @@ include_once('includes/improvements_and_others/helpers_loop.php');
 
 
 /*------------------------------------------------------*\
-	|| ACF: load/save custom path
+	|| ACF
+\*------------------------------------------------------*/
+
+/*	|> load/save custom path
 \*------------------------------------------------------*/
 include_once('includes/improvements_and_others/acf.php');
+
+
+/*	|> Styles admin
+\*------------------------------------------------------*/
+
+add_action('admin_enqueue_scripts', 'load_admin_styles');
+function load_admin_styles() {
+	wp_enqueue_style('acf-styles', _SP_STYLE_SO_U . 'acf-styles.css', false, filemtime(_SP_STYLE_SO_D . 'acf-styles.css'));
+}
