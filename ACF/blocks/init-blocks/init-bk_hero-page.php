@@ -12,8 +12,8 @@ acf_register_block(array(
     'category'              => 'formatting',
     'icon'                  => array(
         'background' => '#fff',
-        'foreground' => '#08A0FD',
-        'src'        => 'superhero-alt',
+        'foreground' => '#108898',
+        'src'        => 'layout',
     ),
     'keywords'            => array('blocks', 'content'),
     'mode' => 'edit',
