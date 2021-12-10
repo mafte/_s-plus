@@ -37,7 +37,7 @@ if (!function_exists('sp_get_img__alt')) {
      * @param  int    $image_id Image ID. Optional. By default it is the image id of the current post.
      * @return string Alt text of the image.
      */
-    function getImg__alt($image_id = 0) {
+    function sp_get_img__alt($image_id = 0) {
 
         if ($image_id == 0) {
             $image_id = get_post_thumbnail_id();
