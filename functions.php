@@ -53,3 +53,25 @@ function filter_slug_id($field) {
 	return acf_slugify($field);
 }
 add_filter('acf/update_value/name=html_anchor', 'filter_slug_id', 10, 1);
+
+/*	|> Register blocks for ACF
+\*------------------------------------------------------*/
+
+function my_acf_block_render_callback($block) {
+
+	// convert name ("acf/nameblock") into path friendly slug ("nameblock")
+	$slug = str_replace('acf/', '', $block['name']);
+
+	// include a template part from within the "ACF/blocks/template-blocks" folder
+	if (file_exists(get_theme_file_path("/ACF/blocks/template-blocks/bk_{$slug}.php"))) {
+		include(get_theme_file_path("/ACF/blocks/template-blocks/bk_{$slug}.php"));
+	}
+}
+
+add_action('acf/init', 'my_acf_blocks_init');
+function my_acf_blocks_init() {
+
+	foreach (glob(get_theme_file_path("ACF/blocks/init-blocks/*.php")) as $filename) {
+		include $filename;
+	}
+}
