@@ -23,6 +23,93 @@
     display: none;
 }
 
+.column-group-acf > .acf-input > .acf-fields {
+    border: none!important;
+}
+
+.column-group-acf > .acf-input > .acf-fields  > .acf-field:first-child{
+    padding: 0!important;
+}
+
+/* ●●● General styles
+❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+
+.acf-field .acf-label {
+    font-size: 1rem!important;
+    color: #165892!important;
+}
+
+.acf-fields>.acf-field {
+    padding: 40px 32px!important;
+}
+
+.acf-field input[type="text"],
+.acf-field input[type="password"],
+.acf-field input[type="date"],
+.acf-field input[type="datetime"],
+.acf-field input[type="datetime-local"],
+.acf-field input[type="email"],
+.acf-field input[type="month"],
+.acf-field input[type="number"],
+.acf-field input[type="search"],
+.acf-field input[type="tel"],
+.acf-field input[type="time"],
+.acf-field input[type="url"],
+.acf-field input[type="week"],
+.acf-field textarea,
+.acf-field select {
+    border-radius: 0!important;
+    border-color: #58b4ff!important;
+    padding: 10px 17px!important;
+}
+
+.select2-container.-acf .select2-selection{
+    border-color: #58b4ff!important;
+    padding: 10px 0 10px 17px!important;
+    height: auto!important;
+    border-radius: 0!important;
+}
+
+.acf-url i{
+    transform: translateY(-50%)!important;
+    top: 50%!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height:1.4!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 50%!important;
+    transform: translateY(-50%)!important;
+}
+
+/* Selection Multiple */
+
+.select2-container--default .select2-selection--multiple{
+    padding: 0!important;
+}
+
+/* Tab Group general */
+
+.acf-tab-group{
+    background:ghostwhite;
+}
+
+.acf-tab-group > li a{
+    border-bottom: 1px solid white;
+    
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
+
+    border-radius: 5px 5px 0 0;
+    background: white;
+}
+
+/* ●●● Flexible Content
+❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
 .acf-flexible-content .values .layout .acf-fc-layout-handle {
     color: #0a5992!important;
     text-transform: uppercase;
@@ -50,78 +137,6 @@
     background: #eaf4fb;
 }
 
-.acf-flexible-content .values .acf-field .acf-label {
-    font-size: 1rem;
-    color: #165892;
-}
-
-.acf-flexible-content .acf-fields>.acf-field {
-    padding: 40px 32px;
-}
-
-.acf-flexible-content .acf-field input[type="text"],
-.acf-flexible-content .acf-field input[type="password"],
-.acf-flexible-content .acf-field input[type="date"],
-.acf-flexible-content .acf-field input[type="datetime"],
-.acf-flexible-content .acf-field input[type="datetime-local"],
-.acf-flexible-content .acf-field input[type="email"],
-.acf-flexible-content .acf-field input[type="month"],
-.acf-flexible-content .acf-field input[type="number"],
-.acf-flexible-content .acf-field input[type="search"],
-.acf-flexible-content .acf-field input[type="tel"],
-.acf-flexible-content .acf-field input[type="time"],
-.acf-flexible-content .acf-field input[type="url"],
-.acf-flexible-content .acf-field input[type="week"],
-.acf-flexible-content .acf-field textarea,
-.acf-flexible-content .acf-field select {
-    border-radius: 0!important;
-    border-color: #58b4ff;
-    padding: 10px 17px;
-}
-
-.acf-flexible-content .select2-container.-acf .select2-selection{
-    border-color: #58b4ff;
-    padding: 10px 0 10px 17px;
-    height: auto;
-    border-radius: 0!important;
-}
-
-.acf-flexible-content .acf-url i{
-    transform: translateY(-50%);
-    top: 50%;
-}
-
-.acf-flexible-content .select2-container--default .select2-selection--single .select2-selection__rendered{
-    line-height:1.4!important;
-}
-
-.acf-flexible-content .select2-container--default .select2-selection--single .select2-selection__arrow{
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Selection Multiple */
-
-
-.acf-flexible-content .select2-container--default .select2-selection--multiple{
-    padding: 0!important;
-}
-
-/* Tab Group general */
-
-.acf-tab-group{
-    background:ghostwhite;
-}
-
-.acf-tab-group > li a{
-    border-bottom: 1px solid white;
-    
-    padding-right: 2rem!important;
-    padding-left: 2rem!important;
-
-    border-radius: 5px 5px 0 0;
-    background: white;
-}
 
 /* Tab group main */
 .acf-flexible-content > .values > .layout:nth-child(odd)  > .acf-fields > .acf-tab-wrap > .acf-tab-group{
@@ -152,10 +167,4 @@
     transform: scale(1.3) translate(0px, 2px);
 }
 
-.column-group-acf > .acf-input > .acf-fields {
-    border: none!important;
-}
-
-.column-group-acf > .acf-input > .acf-fields  > .acf-field:first-child{
-    padding: 0!important;
-}
+/* <- ___________________________________________ ->  */
