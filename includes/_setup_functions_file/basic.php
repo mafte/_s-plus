@@ -145,6 +145,14 @@ function dg_big_image_size_threshold($threshold) {
 // completely disable image size threshold
 add_filter('big_image_size_threshold', '__return_false');
 
+/*	|> Disable intermediate images
+\*------------------------------------------------------*/
+add_filter('intermediate_image_sizes', function ($sizes) {
+    return array_diff($sizes, ['medium_large', '1536x1536', '2048x2048']);
+});
+
+
+
 /*	|> Autoscaled images by Imsanity plugin
 \*------------------------------------------------------*/
 
