@@ -22,7 +22,9 @@ get_header();
 	while (have_posts()) :
 		the_post();
 
-		get_template_part('template-parts/content', 'page');
+		//get_template_part('template-parts/content', 'page');
+
+		the_content();
 
 		// If comments are open or we have at least one comment, load up the comment template.
 		if (comments_open() || get_comments_number()) :
@@ -31,6 +33,12 @@ get_header();
 
 	endwhile; // End of the loop.
 	?>
+
+	<?php include(get_template_directory() . '/ACF/acf-generate-layout.php'); ?>
+
+	<?php include(get_template_directory() . '/template-parts/searchform.php'); ?>
+
+
 
 </main><!-- #main -->
 
