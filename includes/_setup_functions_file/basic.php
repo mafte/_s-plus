@@ -169,13 +169,16 @@ if (!defined('IMSANITY_VERSION')) {
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
- *
+ * 
+ * The value must be greater than or equal to the defined value of the image size "large". 
+ * It is necessary for the proper functioning of responsive images.
+ * 
  * Priority 0 to make it available to lower priority callbacks.
  *
  * @global int $content_width
  */
 function s_plus_content_width() {
-    $GLOBALS['content_width'] = apply_filters('s_plus_content_width', 640);
+    $GLOBALS['content_width'] = apply_filters('s_plus_content_width', 1200);
 }
 add_action('after_setup_theme', 's_plus_content_width', 0);
 
