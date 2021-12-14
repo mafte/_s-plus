@@ -27,10 +27,10 @@ const svgToMiniDataURI = require("mini-svg-data-uri");
 \*------------------------------------------------------*/
 
 var config = {
-	urlBrowserSync: "pruebas.local",
-	vAutoprofixer: "last 5 versions",
-	pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
-	pathExportIconsSheet: "assets/source/scss/",
+    urlBrowserSync: "pruebas.local",
+    vAutoprofixer: "last 5 versions",
+    pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
+    pathExportIconsSheet: "assets/source/scss/",
 };
 
 /*------------------------------------------------------*\
@@ -38,8 +38,8 @@ var config = {
 \*------------------------------------------------------*/
 
 function reload(done) {
-	browserSync.reload();
-	done();
+    browserSync.reload();
+    done();
 }
 
 /*------------------------------------------------------*\
@@ -47,125 +47,124 @@ function reload(done) {
 \*------------------------------------------------------*/
 
 function css() {
-	return gulp
-		.src("assets/source/scss/style.scss")
+    return gulp
+        .src("assets/source/scss/style.scss")
 
-		.pipe(sourcemaps.init())
+        .pipe(sourcemaps.init())
 
-		.pipe(plumber())
-		.pipe(sass().on("error", sass.logError))
+        .pipe(plumber())
+        .pipe(sass().on("error", sass.logError))
 
-		.pipe(
-			clean({
-				level: 2,
-			})
-		)
-		.pipe(autoPrefixer(config.vAutoprofixer))
+        .pipe(
+            clean({
+                level: 2,
+            })
+        )
+        .pipe(autoPrefixer(config.vAutoprofixer))
 
-		.pipe(sourcemaps.write("."))
-		.pipe(gulp.dest("."))
-		.pipe(browserSync.stream());
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest("."))
+        .pipe(browserSync.stream());
 }
 
 /*	|> SCSS - auto import 
 \*------------------------------------------------------*/
 
 let concatFilenamesOptions = {
-	root: "./assets/source/scss/",
-	prepend: "@import '",
-	append: "';",
+    root: "./assets/source/scss/",
+    prepend: "@import '",
+    append: "';",
 };
 
 /** For site styles */
 
 function scssSite() {
-	return gulp
-		.src("assets/source/scss/Site/*.*")
-		.pipe(concatFilenames("_site.scss", concatFilenamesOptions))
-		.pipe(gulp.dest("./assets/source/scss"));
+    return gulp
+        .src("assets/source/scss/Site/*.*")
+        .pipe(concatFilenames("_site.scss", concatFilenamesOptions))
+        .pipe(gulp.dest("./assets/source/scss"));
 }
 
 /** For Gutenberg Blocks with ACF */
 
 function scssBlocks() {
-	return gulp
-		.src("assets/source/scss/Blocks/*.*")
-		.pipe(concatFilenames("_blocks.scss", concatFilenamesOptions))
-		.pipe(gulp.dest("./assets/source/scss"));
+    return gulp
+        .src("assets/source/scss/Blocks/*.*")
+        .pipe(concatFilenames("_blocks.scss", concatFilenamesOptions))
+        .pipe(gulp.dest("./assets/source/scss"));
 }
 
 /** For Flexible content with ACF */
 
 function scssComponents() {
-	return gulp
-		.src("assets/source/scss/Components/*.*")
-		.pipe(concatFilenames("_components.scss", concatFilenamesOptions))
-		.pipe(gulp.dest("./assets/source/scss"));
+    return gulp
+        .src("assets/source/scss/Components/*.*")
+        .pipe(concatFilenames("_components.scss", concatFilenamesOptions))
+        .pipe(gulp.dest("./assets/source/scss"));
 }
 
 /*	|> Icons
 \*------------------------------------------------------*/
 
 var filesNamesOriginal = [],
-	filesNamesFilter = [],
-	filesNamesWithoutExtension = [],
-	filesContents = [];
+    filesNamesFilter = [],
+    filesNamesWithoutExtension = [],
+    filesContents = [];
 
 function codeSvgs() {
-	filesNamesOriginal = fs.readdirSync(config.pathIconsOrigin);
+    filesNamesOriginal = fs.readdirSync(config.pathIconsOrigin);
 
-	//Filter only .svg files
-	filesNamesFilter = [];
-	filesNamesFilter.length = 0;
-	for (let index = 0; index < filesNamesOriginal.length; index++) {
-		const element = filesNamesOriginal[index];
+    //Filter only .svg files
+    filesNamesFilter = [];
+    filesNamesFilter.length = 0;
+    for (let index = 0; index < filesNamesOriginal.length; index++) {
+        const element = filesNamesOriginal[index];
 
-		if (element.search(".svg") >= 0) {
-			filesNamesFilter.push(element);
-		}
-	}
+        if (element.search(".svg") >= 0) {
+            filesNamesFilter.push(element);
+        }
+    }
 
-	for (let index = 0; index < filesNamesFilter.length; index++) {
-		const element = filesNamesFilter[index];
+    for (let index = 0; index < filesNamesFilter.length; index++) {
+        const element = filesNamesFilter[index];
 
-		//Remove file extension
-		filesNamesWithoutExtension[index] = element.replace(".svg", "");
+        //Remove file extension
+        filesNamesWithoutExtension[index] = element.replace(".svg", "");
 
-		//Read file content
-		filesContents[index] = fs.readFileSync(
-			config.pathIconsOrigin + "/" + element,
-			{
-				encoding: "utf-8",
-			}
-		);
+        //Read file content
+        filesContents[index] = fs.readFileSync(
+            config.pathIconsOrigin + "/" + element, {
+                encoding: "utf-8",
+            }
+        );
 
-		//Code to use it correctly in css
-		/* Automatically changes the icons from white to black. That serves to later use a class with filters, in case it is necessary to change the color */
-		filesContents[index] = svgToMiniDataURI(filesContents[index]).replace(
-			"fill='white'",
-			"fill='black'"
-		);
-	}
+        //Code to use it correctly in css
+        /* Automatically changes the icons from white to black. That serves to later use a class with filters, in case it is necessary to change the color */
+        filesContents[index] = svgToMiniDataURI(filesContents[index]).replace(
+            "fill='white'",
+            "fill='black'"
+        );
+    }
 }
 
 function createIconSheet() {
-	//Open :root
-	let content = `:root {\n`;
+    //Open :root
+    let content = `:root {\n`;
 
-	//Generate variables CSS
-	for (let index = 0; index < filesNamesWithoutExtension.length; index++) {
-		const element = filesNamesWithoutExtension[index];
-		const contentSVG = filesContents[index];
-		content = content + `\t--${element}: url("${contentSVG}");\n`;
-	}
+    //Generate variables CSS
+    for (let index = 0; index < filesNamesWithoutExtension.length; index++) {
+        const element = filesNamesWithoutExtension[index];
+        const contentSVG = filesContents[index];
+        content = content + `\t--${element}: url("${contentSVG}");\n`;
+    }
 
-	//Close :root
-	content = content + "}";
+    //Close :root
+    content = content + "}";
 
-	//Base style for icon
-	content =
-		content +
-		`
+    //Base style for icon
+    content =
+        content +
+        `
 .icon {
     background-repeat: no-repeat;
     background-size: contain;
@@ -176,64 +175,74 @@ function createIconSheet() {
     transition: .3s all;
 }\n`;
 
-	//Generate icons class
-	for (let index = 0; index < filesNamesWithoutExtension.length; index++) {
-		const element = filesNamesWithoutExtension[index];
+    //Generate icons class
+    for (let index = 0; index < filesNamesWithoutExtension.length; index++) {
+        const element = filesNamesWithoutExtension[index];
 
-		content =
-			content + `.${element}{ background-image: var(--${element}) };\n`;
-	}
+        content =
+            content + `.${element}{ background-image: var(--${element}) };\n`;
+    }
 
-	fs.writeFileSync(
-		config.pathExportIconsSheet + "_icons-sheet.scss",
-		content
-	);
-	// console.log(content);
+    fs.writeFileSync(
+        config.pathExportIconsSheet + "_icons-sheet.scss",
+        content
+    );
+    // console.log(content);
 }
 
 async function iconSh() {
-	codeSvgs();
-	createIconSheet();
+    codeSvgs();
+    createIconSheet();
 
-	return true;
+    return true;
+}
+
+function initFunction() {
+    gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh)
+    gulp.task(css)
+
+    return true;
 }
 
 /*------------------------------------------------------*\
 	|| MAIN TASK
 \*------------------------------------------------------*/
 
-exports.default = function () {
-	let path_scss = "assets/source/scss/";
-	browserSync.init({
-		//logLevel: "info",
-		//browser: ["Chrome"],
-		open: "external",
-		host: config.urlBrowserSync,
-		proxy: config.urlBrowserSync,
-		watchEvents: ["change", "add", "unlink", "addDir", "unlinkDir"],
-	});
-	gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh);
-	gulp.task(css);
+exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh), css, initAll);
 
-	gulp.watch(["assets/**/Site/*.scss"], gulp.series(scssSite));
-	gulp.watch(["assets/**/Blocks/*.scss"], gulp.series(scssBlocks));
-	gulp.watch(
-		["assets/**/Components/*.scss"],
-		gulp.series(scssComponents)
-	);
+
+function initAll() {
+
+    let path_scss = "assets/source/scss/";
+    initFunction();
+
+    browserSync.init({
+        //logLevel: "info",
+        //browser: ["Chrome"],
+        open: "external",
+        host: config.urlBrowserSync,
+        proxy: config.urlBrowserSync,
+        watchEvents: ["change", "add", "unlink", "addDir", "unlinkDir"],
+    });
+
+    gulp.watch(["assets/**/Site/*.scss"], scssSite);
+    gulp.watch(["assets/**/Blocks/*.scss"], scssBlocks);
+    gulp.watch(["assets/**/Components/*.scss"], scssComponents);
+
+    gulp.watch(["assets/source/icons/*.svg"], iconSh);
 
     gulp.watch(
-		[
-			path_scss + "**/*.scss",
-			"!" + path_scss + "**/_site.scss",
-			"!" + path_scss + "**/_components.scss",
-			"!" + path_scss + "**/_blocks.scss",
-		],
-		css
-	);
+        [
+            path_scss + "**/*.scss",
+            "!" + path_scss + "**/_site.scss",
+            "!" + path_scss + "**/_components.scss",
+            "!" + path_scss + "**/_blocks.scss",
+        ],
+        css
+    );
 
-	gulp.watch(["assets/source/icons/*.svg"], gulp.series(iconSh, css));
-	gulp.watch("*.php", reload);
+    gulp.watch("*.php", reload);
 
-	//gulp.watch('assets/js/*.js', js)
+    //gulp.watch('assets/js/*.js', js)
+
 };
