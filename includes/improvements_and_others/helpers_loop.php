@@ -99,8 +99,8 @@ if (!function_exists('sp_get_img__resp')) {
             return 'src"' . $placeholder_img . '"';
         }
 
-        /* Agregar todos los tamaños de imagen permitidos en la generación automatica. */
-        $sizes_img_names  = array('medium', 'large', 'full', 'example-size');
+        /* Add all the image sizes allowed in the automatic generation. */
+        $sizes_img_names  = array('medium', 'large', 'full', 'custom-size');
         $sizes_img_widths = wp_get_registered_image_subsizes();
         $sizes_img_filter = array();
 
@@ -109,7 +109,7 @@ if (!function_exists('sp_get_img__resp')) {
 
         $html_output = '';
 
-        /* Obtener datos de la imagen solicitada para los atributos width y height */
+        /* Get requested image data for width and height attributes */
         if ($image_id === 0) {
             if (get_post_thumbnail_id()) {
                 $image_id = get_post_thumbnail_id();
@@ -118,29 +118,15 @@ if (!function_exists('sp_get_img__resp')) {
 
         $img_object = wp_get_attachment_image_src($image_id, $size);
 
-        //var_dump($img_object);
-
         $html_output .= ' width="' . $img_object[1] . '" ';
         $html_output .= ' height="' . $img_object[2] . '"';
 
-        // /* Filtrar los tamaños adecuados */
-
-        // $indexKey = array_search($size, $sizes_img_names);
-
-        // if ($indexKey !== count($sizes_img_names)) {
-
-        //     //Cortara el array despues del tamaño deseado y lo asignara de nuevo a la variable ya filtrado
-
-        //     $sizes_img_names = array_slice($sizes_img_names, 0, $indexKey + 1);
-
-        // }
-
-        /* FILTRAR TAMAÑOS DE IMAGEN *******************************/
+        /* FILTER IMAGE SIZES *******************************/
         $i = 0;
 
         foreach ($sizes_img_names as $value) {
 
-            /* Si es la imagen original, entonces asignamos los atributos necesarios. Por defecto no forma parte de los tamaños predeterminados.  */
+            /* If it is the original image, then we assign the necessary attributes. By default it is not considered as an image size. */
             if ($value == 'full') {
                 $sizes_img_filter[$i]['name']  = $value;
                 $sizes_img_filter[$i]['width'] = wp_get_attachment_image_src($image_id, 'full')[1];
@@ -151,7 +137,7 @@ if (!function_exists('sp_get_img__resp')) {
             $i++;
         }
 
-        /* Ordenar los tamaños de menor a mayor con el valor 'width' */
+        /* Sort the sizes from smallest to largest with the value 'width' */
 
         foreach ($sizes_img_filter as $key => $row) {
             $aux[$key] = $row['width'];
@@ -160,9 +146,9 @@ if (!function_exists('sp_get_img__resp')) {
         array_multisort($aux, SORT_ASC, $sizes_img_filter);
 
 
-        /* CONSTRUCCION DE URLS *******************************/
+        /* URL GENERATION *******************************/
 
-        //Si el tamaño de imagen solicitado es igual al primer tamaño del array ordenado, entonces omitimos la imagen responsive.
+        /* If the requested image size is equal to the first size of the ordered array, then we skip the responsive image. */
         if ($size != $sizes_img_filter[0]['name']) {
 
             $i         = 1;
@@ -172,19 +158,20 @@ if (!function_exists('sp_get_img__resp')) {
 
                 $size_img_width_current = $size_name_current['width'];
 
-                /* GENERACION DE SRCSET */
+                /* GENERATION OF SRCSET */
                 $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
 
-                /*Si el nombre de imagen actual es igual al tamaño de imagen solicitado, entonces salimos del foreach porque no deseamos el resto,
-            de tamaños de imagen. Ademas de eso, agregamos el ultimo size*/
+                /** If the current image name is equal to the requested image size, 
+                 * then we exit the foreach because we don't want the rest of the image sizes. We add the last size
+                 */
                 if ($size_name_current['name'] == $size) {
                     $html_sizes[] = '100vw';
                     break;
                 }
 
-                /* GENERACION DE SIZES */
+                /* GENERATION PF SIZES */
 
-                /* Si la condicion no se cumple, es el ultimo elemento, lo que no es necesario el max-width */
+                /* If the condition is not fulfilled, it is the last element, which is not necessary the max-width*/
                 if ($items_all != $i) {
                     $html_sizes[] = '(max-width:' . ($size_img_width_current + 48) . 'px) ' . $size_img_width_current . 'px';
                 } else {
@@ -194,24 +181,23 @@ if (!function_exists('sp_get_img__resp')) {
                 $i++;
             }
         }
-        /* PREPARAR SALIDA *******************************/
+        /* PREPARE OUTPUT *******************************/
 
         $html_output .= 'src="' . sp_get_img__url($size, $image_id) . '" ';
 
-        //Si el tamaño de imagen solicitado es igual al primer tamaño del array ordenado, entonces omitimos la imagen responsive.
+        /* If the requested image size is equal to the first size of the ordered array, then we skip the responsive image */
         if ($size != $sizes_img_filter[0]['name']) {
             $html_output .= 'srcset="' . implode(', ', array_filter($html_srcset)) . '" ';
             $html_output .= 'sizes="' . implode(', ', array_filter($html_sizes)) . '" ';
         }
 
-
+        // Add lazyload attribute
         if ($lazyload === true) {
             $html_output .= ' loading="lazy" ';
         }
 
+        /* Add alt text */
         $html_output .= ' alt="' . sp_get_img__alt($image_id) . '" ';
-
-        //Alt text
 
         return $html_output;
     }
