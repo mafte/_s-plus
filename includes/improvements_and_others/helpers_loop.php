@@ -87,10 +87,11 @@ if (!function_exists('sp_get_img__resp')) {
      *
      * @param  string  $size       Keyword for image size.
      * @param  int     $image_id   Image ID. Optional. By default it is the image id of the current post.
+     * @param  string  $class_css  Class CSS. Optional.
      * @param  boolean $lazyload   Native attribute for lazyload. By default it is TRUE.
-     * @return string  Url and responsive image attributes.
+     * @return string  Image responsive with attributes.
      */
-    function sp_get_img__resp($size = 'large', $image_id = 0, $lazyload = true) {
+    function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
         /* If the image ID is incorrect or non-existent then return the image placeholder. */
         if (!wp_get_attachment_image_url($image_id, $size)) {
@@ -117,6 +118,9 @@ if (!function_exists('sp_get_img__resp')) {
         }
 
         $img_object = wp_get_attachment_image_src($image_id, $size);
+
+        // Start tag img and class CSS
+        $html_output .= '<img class="' . $class_css . '" ';
 
         $html_output .= ' width="' . $img_object[1] . '" ';
         $html_output .= ' height="' . $img_object[2] . '"';
@@ -196,8 +200,8 @@ if (!function_exists('sp_get_img__resp')) {
             $html_output .= ' loading="lazy" ';
         }
 
-        /* Add alt text */
-        $html_output .= ' alt="' . sp_get_img__alt($image_id) . '" ';
+        /* Add alt text and tag end img*/
+        $html_output .= ' alt="' . sp_get_img__alt($image_id) . '">';
 
         return $html_output;
     }
