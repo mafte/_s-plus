@@ -75,3 +75,10 @@ function my_acf_blocks_init() {
 		include $filename;
 	}
 }
+
+
+/*------------------------------------------------------*\
+	|| CUSTOMIZER
+\*------------------------------------------------------*/
+
+//include_once('includes/improvements_and_others/settings_customizer.php');
