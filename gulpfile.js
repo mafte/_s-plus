@@ -188,18 +188,17 @@ function createIconSheet() {
         content
     );
     // console.log(content);
+
+    /** Clear all variables */
+    filesNamesOriginal = [],
+    filesNamesFilter = [],
+    filesNamesWithoutExtension = [],
+    filesContents = [];
 }
 
 async function iconSh() {
     codeSvgs();
     createIconSheet();
-
-    return true;
-}
-
-function initFunction() {
-    gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh)
-    gulp.task(css)
 
     return true;
 }
@@ -214,7 +213,6 @@ exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents
 function initAll() {
 
     let path_scss = "assets/source/scss/";
-    initFunction();
 
     browserSync.init({
         //logLevel: "info",
