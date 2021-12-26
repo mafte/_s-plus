@@ -1,83 +1,110 @@
-<div class="container">
-    <div class="row cols-24">
-        <div class="col">
-            <div class="box-green">
+<?php
 
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package s_plus
+ */
+
+get_header();
+?>
+
+<main id="primary" class="site-main">
+
+
+    <div class="container">
+        <div class="row cols-24">
+            <div class="col">
+                <div class="box-green">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-green">
+
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="box-green">
+        <div class="row cols-24">
+            <div class="col">
+                <div class="box-blue">
 
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-blue">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-blue">
+
+                </div>
             </div>
         </div>
+
+        <div class="row cols-24">
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row cols-24 cols-w-400">
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-green">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-blue">
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="box-red">
+
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="row cols-24">
-        <div class="col">
-            <div class="box-blue">
 
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-blue">
+</main><!-- #main -->
 
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-blue">
+<?php
 
-            </div>
-        </div>
-    </div>
-
-    <div class="row cols-24">
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row cols-24 cols-w-400">
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-green">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-blue">
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="box-red">
-
-            </div>
-        </div>
-    </div>
-
-</div>
+get_footer();
