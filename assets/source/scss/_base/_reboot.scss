@@ -336,7 +336,8 @@ img,
 svg {
 	vertical-align: middle;
 	max-width: 100%; // Improve CSS Reset
-	display: block; // Improve CSS Reset
+	// display: block; // Improve CSS Reset
+	height: auto; // Improve CSS Reset
 }
 
 
