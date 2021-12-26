@@ -2,7 +2,7 @@
 // Get fields with $bk array or sub_field() function
 // var_dump($bk);
 
-$bk      = (object) get_fields();
+$bk            = (object) get_fields();
 $text_class    = 'row row_no_image';
 $wrapper_class = 'container container_no_image';
 $image_class   = 'hero_no_image';
@@ -15,7 +15,7 @@ endif;
 ?>
 
 <section id="<?php echo $block['id'] ?>" class="bk-hero-page mb-120 <?php echo $block['className']; ?>">
-    <div class="container-fluid">
+    <div class="container">
         <div class="<?php echo $wrapper_class; ?>">
             <div class="<?php echo $text_class; ?>">
                 <div class="bk-hero-page--content">
