@@ -82,3 +82,9 @@ function my_acf_blocks_init() {
 \*------------------------------------------------------*/
 
 //include_once('includes/improvements_and_others/settings_customizer.php');
+
+/*------------------------------------------------------*\
+	|| IMPROVE: WP MENU NAV
+\*------------------------------------------------------*/
+
+include_once('includes/improvements_and_others/improve_wp_nav.php');
