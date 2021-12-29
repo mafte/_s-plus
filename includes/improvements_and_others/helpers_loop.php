@@ -10,7 +10,7 @@ if (!function_exists('sp_get_img__url')) {
      */
     function sp_get_img__url($size, $image_id = 0) {
 
-        $pathPlaceholder = get_template_directory_uri() . '/assets/img/placeholder-image.jpg';
+        $pathPlaceholder = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
 
         if ($image_id === 0) {
 
@@ -75,6 +75,7 @@ if (!function_exists('sp_the_excerpt')) {
     /**
      * @param $length Maximum number of words
      */
+
     function sp_the_excerpt($length = 120) {
         echo wp_trim_words(get_the_excerpt(), $length);
     }
@@ -88,22 +89,28 @@ if (!function_exists('sp_get_img__resp')) {
      * @param  string  $size       Keyword for image size.
      * @param  int     $image_id   Image ID. Optional. By default it is the image id of the current post.
      * @param  string  $class_css  Class CSS. Optional.
-     * @param  boolean $lazyload   Native attribute for lazyload. By default it is TRUE.
+     * @param  boolean $lazyload   Native attribute for lazyload. Optional. By default it is TRUE.
      * @return string  Image responsive with attributes.
      */
     function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
         /* If the image ID is incorrect or non-existent then return the image placeholder. */
         if (!wp_get_attachment_image_url($image_id, $size)) {
-            $placeholder_img = get_template_directory_uri() . '/assets/img/placeholder-image.jpg';
+            $placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
 
-            return 'src"' . $placeholder_img . '"';
+            if (!($placeholder_width = wp_get_registered_image_subsizes()[$size]['width'])) {
+                $placeholder_width = wp_get_registered_image_subsizes()['large']['width'];
+            }
+
+            return '<img class="' . $class_css . '" src="' . $placeholder_img . '" alt="" width="' . $placeholder_width . '" />';
         }
 
         /* Add all the image sizes allowed in the automatic generation. */
         $sizes_img_names  = array('medium', 'large', 'full', 'custom-size');
         $sizes_img_widths = wp_get_registered_image_subsizes();
         $sizes_img_filter = array();
+
+        $url_img_full = sp_get_img__url($size, $image_id);
 
         $html_srcset = array();
         $html_sizes  = array();
@@ -162,8 +169,13 @@ if (!function_exists('sp_get_img__resp')) {
 
                 $size_img_width_current = $size_name_current['width'];
 
-                /* GENERATION OF SRCSET */
-                $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
+                $url_img_current = sp_get_img__url($size_name_current['name'], $image_id);
+
+                /* If it is not true, then we avoid creating this unnecessary data */
+                if ($url_img_current !== $url_img_full) {
+                    /* GENERATION OF SRCSET */
+                    $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
+                }
 
                 /** If the current image name is equal to the requested image size, 
                  * then we exit the foreach because we don't want the rest of the image sizes. We add the last size
@@ -177,10 +189,15 @@ if (!function_exists('sp_get_img__resp')) {
 
                 /* If the condition is not fulfilled, it is the last element, which is not necessary the max-width*/
                 if ($items_all != $i) {
-                    $html_sizes[] = '(max-width:' . ($size_img_width_current + 48) . 'px) ' . $size_img_width_current . 'px';
+                    /*If it is not true, then we avoid creating this unnecessary data */
+                    if ($url_img_current !== $url_img_full) {
+                        $html_sizes[] = '(max-width:' . ($size_img_width_current + 48) . 'px) ' . $size_img_width_current . 'px';
+                    }
                 } else {
                     $html_sizes[] = '100vw';
                 }
+
+
 
                 $i++;
             }
