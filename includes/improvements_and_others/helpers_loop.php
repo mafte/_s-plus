@@ -94,12 +94,14 @@ if (!function_exists('sp_get_img__resp')) {
      */
     function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
+        $sizes_img_widths = wp_get_registered_image_subsizes();
+
         /* If the image ID is incorrect or non-existent then return the image placeholder. */
         if (!wp_get_attachment_image_url($image_id, $size)) {
             $placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
 
-            if (!($placeholder_width = wp_get_registered_image_subsizes()[$size]['width'])) {
-                $placeholder_width = wp_get_registered_image_subsizes()['large']['width'];
+            if (!($placeholder_width = $sizes_img_widths[$size]['width'])) {
+                $placeholder_width = $sizes_img_widths['large']['width'];
             }
 
             return '<img class="' . $class_css . '" src="' . $placeholder_img . '" alt="" width="' . $placeholder_width . '" />';
@@ -107,7 +109,6 @@ if (!function_exists('sp_get_img__resp')) {
 
         /* Add all the image sizes allowed in the automatic generation. */
         $sizes_img_names  = array('medium', 'large', 'full', 'custom-size');
-        $sizes_img_widths = wp_get_registered_image_subsizes();
         $sizes_img_filter = array();
 
         $url_img_full = sp_get_img__url($size, $image_id);
