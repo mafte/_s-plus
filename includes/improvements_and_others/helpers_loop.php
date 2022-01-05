@@ -86,37 +86,73 @@ if (!function_exists('sp_get_img__resp')) {
     /**
      * Get responsive images with height and width attributes.
      *
-     * @param  string  $size       Keyword for image size.
-     * @param  int     $image_id   Image ID. Optional. By default it is the image id of the current post.
-     * @param  string  $class_css  Class CSS. Optional.
-     * @param  boolean $lazyload   Native attribute for lazyload. Optional. By default it is TRUE.
+     * @param  string  $size      Keyword for image size.
+     * @param  int     $image_id  Image ID. Optional. By default it is the image id of the current post.
+     * @param  string  $class_css Class CSS. Optional.
+     * @param  boolean $lazyload  Native attribute for lazyload. Optional. By default it is TRUE.
      * @return string  Image responsive with attributes.
      */
     function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
+        /* Add all the image sizes allowed in the automatic generation. */
+        $sizes_img_names = array('medium', 'large', 'full', 'custom-size');
+
+        /* Maximum container width*/
+        $size_default = 1440;
+        /* Value for parent container margin */
+        $margin_sizes_attribute = '48px';
+
+        if (!in_array($size, $sizes_img_names)) {
+            $size = 'large';
+        }
+
         $sizes_img_widths = wp_get_registered_image_subsizes();
+
+        /**
+         * Add full size
+         */
+        $sizes_img_widths['full'] = array(
+            'width'  => wp_get_attachment_image_src($image_id, 'full')[1],
+            'height' => 99999
+        );
+        $width_img_requested = $sizes_img_widths[$size]['width'];
+
+        /**
+         * PLACEHOLDER IMAGE
+         * ***************************************************
+         */
 
         /* If the image ID is incorrect or non-existent then return the image placeholder. */
         if (!wp_get_attachment_image_url($image_id, $size)) {
             $placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
 
-            if (!($placeholder_width = $sizes_img_widths[$size]['width'])) {
+            if (!($placeholder_width = $width_img_requested)) {
                 $placeholder_width = $sizes_img_widths['large']['width'];
             }
 
             return '<img class="' . $class_css . '" src="' . $placeholder_img . '" alt="" width="' . $placeholder_width . '" />';
         }
 
-        /* Add all the image sizes allowed in the automatic generation. */
-        $sizes_img_names  = array('medium', 'large', 'full', 'custom-size');
-        $sizes_img_filter = array();
+        /**
+         * DECLARATION OF VARIABLES
+         * ***************************************************
+         */
 
-        $url_img_full = sp_get_img__url($size, $image_id);
+        $sizes_img_filter = array();
+        $url_img_full     = sp_get_img__url('full', $image_id);
 
         $html_srcset = array();
         $html_sizes  = array();
 
         $html_output = '';
+
+        // Start tag img and class CSS
+        $html_output .= '<img class="' . $class_css . '" ';
+
+        /**
+         * EXTRACT ATTRIBUTES
+         * ***************************************************
+         */
 
         /* Get requested image data for width and height attributes */
         if ($image_id === 0) {
@@ -127,13 +163,14 @@ if (!function_exists('sp_get_img__resp')) {
 
         $img_object = wp_get_attachment_image_src($image_id, $size);
 
-        // Start tag img and class CSS
-        $html_output .= '<img class="' . $class_css . '" ';
-
         $html_output .= ' width="' . $img_object[1] . '" ';
         $html_output .= ' height="' . $img_object[2] . '"';
 
-        /* FILTER IMAGE SIZES *******************************/
+        /**
+         * GET WIDTH OF IMAGES
+         * ***************************************************
+         */
+
         $i = 0;
 
         foreach ($sizes_img_names as $value) {
@@ -146,6 +183,7 @@ if (!function_exists('sp_get_img__resp')) {
                 $sizes_img_filter[$i]['name']  = $value;
                 $sizes_img_filter[$i]['width'] = $sizes_img_widths[$value]['width'];
             }
+
             $i++;
         }
 
@@ -157,53 +195,42 @@ if (!function_exists('sp_get_img__resp')) {
 
         array_multisort($aux, SORT_ASC, $sizes_img_filter);
 
-
-        /* URL GENERATION *******************************/
+        /**
+         * URLs GENERACION
+         * ***************************************************
+         */
 
         /* If the requested image size is equal to the first size of the ordered array, then we skip the responsive image. */
         if ($size != $sizes_img_filter[0]['name']) {
 
-            $i         = 1;
-            $items_all = count($sizes_img_filter);
-
             foreach ($sizes_img_filter as $size_name_current) {
 
                 $size_img_width_current = $size_name_current['width'];
+                $url_img_current        = sp_get_img__url($size_name_current['name'], $image_id);
 
-                $url_img_current = sp_get_img__url($size_name_current['name'], $image_id);
+                /* GENERATION OF SRCSET *****************/
 
                 /* If it is not true, then we avoid creating this unnecessary data */
                 if ($url_img_current !== $url_img_full) {
-                    /* GENERATION OF SRCSET */
                     $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
                 }
+            }
 
-                /** If the current image name is equal to the requested image size, 
-                 * then we exit the foreach because we don't want the rest of the image sizes. We add the last size
-                 */
-                if ($size_name_current['name'] == $size) {
-                    $html_sizes[] = '100vw';
-                    break;
-                }
-
-                /* GENERATION PF SIZES */
-
-                /* If the condition is not fulfilled, it is the last element, which is not necessary the max-width*/
-                if ($items_all != $i) {
-                    /*If it is not true, then we avoid creating this unnecessary data */
-                    if ($url_img_current !== $url_img_full) {
-                        $html_sizes[] = '(max-width:' . ($size_img_width_current + 48) . 'px) ' . $size_img_width_current . 'px';
-                    }
-                } else {
-                    $html_sizes[] = '100vw';
-                }
+            /* ADD SIZES ATRRIBUTES *****************/
 
 
-
-                $i++;
+            if ($size === 'full') {
+                $html_srcset[] = sp_get_img__url('full', $image_id) . ' ' . $sizes_img_widths[$size]['width'] . 'w';
+                $html_sizes[]  = '(max-width: ' . $size_default . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $size_default . 'px';
+            } else {
+                $html_sizes[] = '(max-width: ' . $sizes_img_widths[$size]['width'] . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $sizes_img_widths[$size]['width'] . 'px';
             }
         }
-        /* PREPARE OUTPUT *******************************/
+
+        /**
+         * PREPARE OUTPUT
+         * ***************************************************
+         */
 
         $html_output .= 'src="' . sp_get_img__url($size, $image_id) . '" ';
 
@@ -224,7 +251,6 @@ if (!function_exists('sp_get_img__resp')) {
         return $html_output;
     }
 }
-
 
 if (!function_exists('asset_url')) :
 
