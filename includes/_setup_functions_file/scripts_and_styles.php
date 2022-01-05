@@ -10,7 +10,9 @@ function s_plus_scripts() {
     /*	|> SCRIPTS
     \*------------------------------------------------------*/
     wp_enqueue_script('s-plus-navigation', _SP_SCRIPTS_SO_U . 'navigation.js', array(), '1.' . filemtime(_SP_SCRIPTS_SO_D . 'navigation.js'), true);
+    wp_enqueue_script('lazyload', _SP_SCRIPTS_SO_U . 'lazyload.min.js', array(), '1.' . filemtime(_SP_SCRIPTS_SO_D . 'lazyload.min.js'), true);
     wp_enqueue_script('s-plus-main', _SP_SCRIPTS_SO_U . 'main.js', array(), '1.' . filemtime(_SP_SCRIPTS_SO_D . 'main.js'), true);
+
 
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {

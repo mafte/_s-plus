@@ -88,10 +88,15 @@ Array.prototype.forEach.call(elements, function (el, i) {
 
 		slideToggle(parentN.nextElementSibling);
 
-        if (el.getAttribute("aria-expanded") === "true") {
-            el.setAttribute("aria-expanded", "false");
-        } else {
-            el.setAttribute("aria-expanded", "true");
-        }
+		if (el.getAttribute("aria-expanded") === "true") {
+			el.setAttribute("aria-expanded", "false");
+		} else {
+			el.setAttribute("aria-expanded", "true");
+		}
 	});
+});
+
+
+var lazyLoadInstance = new LazyLoad({
+	// Your custom settings go here
 });

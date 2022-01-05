@@ -94,6 +94,20 @@ if (!function_exists('sp_get_img__resp')) {
      */
     function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
+
+        /** If you are using the lazyload script then it will work differently. */
+        $is_script_lazyload = wp_script_is('lazyload');
+
+        /** LAZYLOAD: if $lazyload is 'false', we deactivate lazyload */
+        if ($lazyload == false) {
+            $is_script_lazyload = false;
+        }
+
+        /** LAZYLOAD: Add 'lazy' class */
+        if ($is_script_lazyload) {
+            $class_css .= ' lazy';
+        }
+
         /* Add all the image sizes allowed in the automatic generation. */
         $sizes_img_names = array('medium', 'large', 'full', 'custom-size');
 
@@ -110,7 +124,7 @@ if (!function_exists('sp_get_img__resp')) {
         $sizes_img_widths = wp_get_registered_image_subsizes();
 
         /**
-         * Add full size
+         * Add 'full' image width to array
          */
         $sizes_img_widths['full'] = array(
             'width'  => wp_get_attachment_image_src($image_id, 'full')[1],
@@ -124,13 +138,14 @@ if (!function_exists('sp_get_img__resp')) {
          */
 
         /* If the image ID is incorrect or non-existent then return the image placeholder. */
+        $placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
+
         if (!wp_get_attachment_image_url($image_id, $size)) {
-            $placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
 
             if (!($placeholder_width = $width_img_requested)) {
                 $placeholder_width = $sizes_img_widths['large']['width'];
             }
-
+            echo 'Entro al placeholder';
             return '<img class="' . $class_css . '" src="' . $placeholder_img . '" alt="" width="' . $placeholder_width . '" />';
         }
 
@@ -201,30 +216,24 @@ if (!function_exists('sp_get_img__resp')) {
          * ***************************************************
          */
 
-        /* If the requested image size is equal to the first size of the ordered array, then we skip the responsive image. */
-        if ($size != $sizes_img_filter[0]['name']) {
+        foreach ($sizes_img_filter as $size_name_current) {
 
-            foreach ($sizes_img_filter as $size_name_current) {
+            $size_img_width_current = $size_name_current['width'];
+            $url_img_current        = sp_get_img__url($size_name_current['name'], $image_id);
 
-                $size_img_width_current = $size_name_current['width'];
-                $url_img_current        = sp_get_img__url($size_name_current['name'], $image_id);
+            /* GENERATION OF SRCSET *****************/
+            /* If it is not true, then we avoid creating this unnecessary data */
 
-                /* GENERATION OF SRCSET *****************/
-
-                /* If it is not true, then we avoid creating this unnecessary data */
-                if ($url_img_current !== $url_img_full || $size_name_current['name'] == 'full') {
-                    $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
-                }
+            if ($url_img_current !== $url_img_full || $size_name_current['name'] == 'full') {
+                $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
             }
+        }
 
-            /* ADD SIZES ATRRIBUTES *****************/
-
-
-            if ($size === 'full') {
-                $html_sizes[]  = '(max-width: ' . $size_default . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $size_default . 'px';
-            } else {
-                $html_sizes[] = '(max-width: ' . $sizes_img_widths[$size]['width'] . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $sizes_img_widths[$size]['width'] . 'px';
-            }
+        /* ADD SIZES ATRRIBUTES *****************/
+        if ($size === 'full') {
+            $html_sizes[]  = '(max-width: ' . $size_default . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $size_default . 'px';
+        } else {
+            $html_sizes[] = '(max-width: ' . $sizes_img_widths[$size]['width'] . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $sizes_img_widths[$size]['width'] . 'px';
         }
 
         /**
@@ -232,16 +241,22 @@ if (!function_exists('sp_get_img__resp')) {
          * ***************************************************
          */
 
-        $html_output .= 'src="' . sp_get_img__url($size, $image_id) . '" ';
+        /** LAZYLOAD: We rename the attributes and add an image placeholder while the actual image is loading.*/
+        if ($is_script_lazyload) {
 
-        /* If the requested image size is equal to the first size of the ordered array, then we skip the responsive image */
-        if ($size != $sizes_img_filter[0]['name']) {
+            $html_output .= 'src="' . $placeholder_img . '" ';
+
+            $html_output .= 'data-srcset="' . implode(', ', array_filter($html_srcset)) . '" ';
+            $html_output .= 'data-sizes="' . implode(', ', array_filter($html_sizes)) . '" ';
+        } else {
+            $html_output .= 'src="' . sp_get_img__url($size, $image_id) . '" ';
+
             $html_output .= 'srcset="' . implode(', ', array_filter($html_srcset)) . '" ';
             $html_output .= 'sizes="' . implode(', ', array_filter($html_sizes)) . '" ';
         }
 
         // Add lazyload attribute
-        if ($lazyload === true) {
+        if ($lazyload === true && !$is_script_lazyload) {
             $html_output .= ' loading="lazy" ';
         }
 
