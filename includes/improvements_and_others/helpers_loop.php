@@ -102,6 +102,7 @@ if (!function_exists('sp_get_img__resp')) {
         /* Value for parent container margin */
         $margin_sizes_attribute = '48px';
 
+        /** If the image size does not exist, get the following by default */
         if (!in_array($size, $sizes_img_names)) {
             $size = 'large';
         }
@@ -211,7 +212,7 @@ if (!function_exists('sp_get_img__resp')) {
                 /* GENERATION OF SRCSET *****************/
 
                 /* If it is not true, then we avoid creating this unnecessary data */
-                if ($url_img_current !== $url_img_full) {
+                if ($url_img_current !== $url_img_full || $size_name_current['name'] == 'full') {
                     $html_srcset[] = sp_get_img__url($size_name_current['name'], $image_id) . ' ' . $size_img_width_current . 'w';
                 }
             }
@@ -220,7 +221,6 @@ if (!function_exists('sp_get_img__resp')) {
 
 
             if ($size === 'full') {
-                $html_srcset[] = sp_get_img__url('full', $image_id) . ' ' . $sizes_img_widths[$size]['width'] . 'w';
                 $html_sizes[]  = '(max-width: ' . $size_default . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $size_default . 'px';
             } else {
                 $html_sizes[] = '(max-width: ' . $sizes_img_widths[$size]['width'] . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $sizes_img_widths[$size]['width'] . 'px';
