@@ -7,3 +7,33 @@
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 @import "_base/grid-layout";
+
+
+/* ●●● UTILITIES
+❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+.position-relative {
+    position: relative !important;
+}
+
+.position-static {
+    position: static !important;
+}
+
+/* ->  ALIGN ELEMENTS WITH FLEX */
+
+.cent-xy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cent-x {
+    display: flex;
+    justify-content: center;
+}
+
+.cent-y {
+    display: flex;
+    align-items: center;
+}
