@@ -223,9 +223,9 @@ function initAll() {
         watchEvents: ["change", "add", "unlink", "addDir", "unlinkDir"],
     });
 
-    gulp.watch(["assets/**/Site/*.scss"], scssSite);
-    gulp.watch(["assets/**/Blocks/*.scss"], scssBlocks);
-    gulp.watch(["assets/**/Components/*.scss"], scssComponents);
+    gulp.watch(["assets/**/site/*.scss"], scssSite);
+    gulp.watch(["assets/**/blocks/*.scss"], scssBlocks);
+    gulp.watch(["assets/**/components/*.scss"], scssComponents);
 
     gulp.watch(["assets/source/icons/*.svg"], iconSh);
 
@@ -239,7 +239,7 @@ function initAll() {
         css
     );
 
-    gulp.watch("*.php", reload);
+    gulp.watch(["*.php", "template-parts/**/*.php"], reload);
 
     //gulp.watch('assets/js/*.js', js)
 
