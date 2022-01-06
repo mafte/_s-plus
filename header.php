@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 ?>
@@ -56,7 +56,6 @@
 
 
 							<nav id="site-navigation" class="main-navigation">
-								<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="icon icon-menu"><span class="visually-hidden"><?php esc_html_e('Menu', 's-plus'); ?></span></span></button>
 								<button class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', 's-plus'); ?></span></span></button>
 
 								<?php

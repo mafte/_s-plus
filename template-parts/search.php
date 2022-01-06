@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 get_header();

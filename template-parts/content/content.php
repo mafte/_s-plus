@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 ?>

@@ -10,7 +10,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 get_header();
@@ -20,6 +20,19 @@ get_header();
 
 
     <div class="container">
+        <div class="row">
+            <div class="col">
+                <?php
+
+                echo sp_get_img__resp('large', 83, 'Optional');
+
+
+
+                ?>
+
+
+            </div>
+        </div>
         <div class="row cols-24">
             <div class="col">
                 <div class="box-green">
@@ -102,7 +115,6 @@ get_header();
         </div>
 
     </div>
-
 </main><!-- #main -->
 
 <?php

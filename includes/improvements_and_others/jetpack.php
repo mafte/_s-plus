@@ -5,7 +5,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 /**

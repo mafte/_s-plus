@@ -3,7 +3,7 @@
 /**
  * _s_plus Theme Customizer
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 /**

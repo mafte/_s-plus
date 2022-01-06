@@ -3,7 +3,7 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 /**

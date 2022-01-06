@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package s_plus
+ * @package _s_plus
  */
 
 /*------------------------------------------------------*\
