@@ -53,7 +53,7 @@
 					<div class="col position-static">
 						<div class="site-header__menu">
 
-
+							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="icon icon-menu"><span class="visually-hidden"><?php esc_html_e('Menu', '_s_plus'); ?></span></span></button>
 
 							<nav id="site-navigation" class="main-navigation">
 								<button class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', '_s_plus'); ?></span></span></button>
