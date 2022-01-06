@@ -27,7 +27,7 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 's-plus'); ?></a>
+		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', '_s_plus'); ?></a>
 		<header id="masthead" class="site-header">
 
 			<div class="container py-16">
@@ -56,7 +56,7 @@
 
 
 							<nav id="site-navigation" class="main-navigation">
-								<button class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', 's-plus'); ?></span></span></button>
+								<button class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', '_s_plus'); ?></span></span></button>
 
 								<?php
 								wp_nav_menu(

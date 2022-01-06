@@ -23,13 +23,13 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php s_plus_post_thumbnail(); ?>
+	<?php _s_plus_post_thumbnail(); ?>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php s_plus_entry_footer(); ?>
+		<?php _s_plus_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

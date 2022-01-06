@@ -2,6 +2,6 @@
 
 register_nav_menus(
     array(
-        'menu-1' => esc_html__('Primary', 's-plus'),
+        'menu-1' => esc_html__('Primary', '_s_plus'),
     )
 );

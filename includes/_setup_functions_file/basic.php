@@ -46,7 +46,7 @@ if (!defined('_SP_SCRIPTS_SO_U')) {
 }
 
 
-if (!function_exists('s_plus_setup')) :
+if (!function_exists('_s_plus_setup')) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
      *
@@ -54,14 +54,14 @@ if (!function_exists('s_plus_setup')) :
      * runs before the init hook. The init hook is too late for some features, such
      * as indicating support for post thumbnails.
      */
-    function s_plus_setup() {
+    function _s_plus_setup() {
         /*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on _s_plus, use a find and replace
-		 * to change 's-plus' to the name of your theme in all the template files.
+		 * to change '_s_plus' to the name of your theme in all the template files.
 		 */
-        load_theme_textdomain('s-plus', get_template_directory() . '/languages');
+        load_theme_textdomain('_s_plus', get_template_directory() . '/languages');
 
         // Add default posts and comments RSS feed links to head.
         // add_theme_support('automatic-feed-links');
@@ -126,7 +126,7 @@ if (!function_exists('s_plus_setup')) :
         include_once('img_sizes.php');
     }
 endif;
-add_action('after_setup_theme', 's_plus_setup');
+add_action('after_setup_theme', '_s_plus_setup');
 
 
 /*------------------------------------------------------*\
@@ -177,10 +177,10 @@ if (!defined('IMSANITY_VERSION')) {
  *
  * @global int $content_width
  */
-function s_plus_content_width() {
-    $GLOBALS['content_width'] = apply_filters('s_plus_content_width', 1200);
+function _s_plus_content_width() {
+    $GLOBALS['content_width'] = apply_filters('_s_plus_content_width', 1200);
 }
-add_action('after_setup_theme', 's_plus_content_width', 0);
+add_action('after_setup_theme', '_s_plus_content_width', 0);
 
 
 /**

@@ -43,7 +43,7 @@ function my_register_additional_customizer_settings($wp_customize) {
         $wp_customize,
         'logo_version_two',
         array(
-            'label' => __('Logo version 2', 's-plus'),
+            'label' => __('Logo version 2', '_s_plus'),
             'section' => 'title_tagline',
             'mime_type' => 'image',
             'settings'   => 'logo_version_two',

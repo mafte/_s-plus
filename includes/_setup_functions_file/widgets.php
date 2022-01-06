@@ -1,15 +1,16 @@
-<?php 
+<?php
+
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function s_plus_widgets_init() {
+function _s_plus_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 's-plus'),
+			'name'          => esc_html__('Sidebar', '_s_plus'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 's-plus'),
+			'description'   => esc_html__('Add widgets here.', '_s_plus'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -17,4 +18,4 @@ function s_plus_widgets_init() {
 		)
 	);
 }
-add_action('widgets_init', 's_plus_widgets_init');
+add_action('widgets_init', '_s_plus_widgets_init');
