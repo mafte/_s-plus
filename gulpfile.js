@@ -166,11 +166,12 @@ function createIconSheet() {
         content +
         `
 .icon {
+    --size: 22px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    width: 22px;
-    height: 22px;
+    width: var(--size);
+    height: var(--size);
     display: inline-block;
     transition: .3s all;
 }\n`;
