@@ -1,3 +1,6 @@
+/* ● ANIMATIONS ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+
 let slideUp = (target, duration = 500) => {
 	target.style.transitionProperty = "height, margin, padding";
 	target.style.transitionDuration = duration + "ms";
@@ -23,7 +26,6 @@ let slideUp = (target, duration = 500) => {
 		//alert("!");
 	}, duration);
 };
-
 let slideDown = (target, duration = 500) => {
 	target.style.removeProperty("display");
 	let display = window.getComputedStyle(target).display;
@@ -62,6 +64,8 @@ let slideToggle = (target, duration = 500) => {
 	}
 };
 
+/* ● MENU MOBILE ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
 let button_menu = document.getElementsByClassName("menu-toggle")[0];
 let button_close = document.getElementsByClassName("menu-toggle__close")[0];
 let main_nav = document.getElementById("site-navigation");
@@ -96,7 +100,23 @@ Array.prototype.forEach.call(elements, function (el, i) {
 	});
 });
 
+/* ● LAZYLOAD ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 var lazyLoadInstance = new LazyLoad({
 	// Your custom settings go here
 });
+
+/* ● TINY-SLIDER ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+if(document.querySelector(".my-slider")){
+	var slider = tns({
+		container: '.my-slider',
+		items: 1,
+		slideBy: 'page',
+		autoplay: true
+	});
+}
+
+/* ● SMOOTH SCROLL ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+/* Fires whenever --scroll-behavior: smooth; is declared in the html element */

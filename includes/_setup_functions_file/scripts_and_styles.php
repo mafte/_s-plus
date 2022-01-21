@@ -5,13 +5,20 @@ function _s_plus_scripts() {
     \*------------------------------------------------------*/
     wp_enqueue_style('_s_plus-style', get_stylesheet_uri(), array(), '1.' . filemtime(_SP_THEME_D . '/style.css'));
     wp_enqueue_style('fluid-spacing', _SP_STYLE_SO_U . 'spacing-fluid-min.css', array(), '1.' . filemtime(_SP_STYLE_SO_D . 'spacing-fluid-min.css'));
+    wp_enqueue_style('tiny-slider-styles', _SP_STYLE_SO_U . 'tiny-slider.css', array(), '1');
     wp_style_add_data('_s_plus-style', 'rtl', 'replace');
 
     /*	|> SCRIPTS
     \*------------------------------------------------------*/
     wp_enqueue_script('_s_plus-navigation', _SP_SCRIPTS_SO_U . 'navigation.js', array(), '1.' . filemtime(_SP_SCRIPTS_SO_D . 'navigation.js'), true);
-    wp_enqueue_script('lazyload', _SP_SCRIPTS_SO_U . 'lazyload.min.js', array(), '1.' . filemtime(_SP_SCRIPTS_SO_D . 'lazyload.min.js'), true);
+    wp_enqueue_script('lazyload', _SP_SCRIPTS_SO_U . 'lazyload.min.js', array(), '1', true);
+    wp_enqueue_script('tiny-slider', _SP_SCRIPTS_SO_U . 'tiny-slider.min.js', array(), '1', true);
+    wp_enqueue_script('smooth-scroll-polyfill', _SP_SCRIPTS_SO_U . 'smoothscroll.min.js', array(), '1', true);
+    wp_enqueue_script('smooth-scroll-anchor-polyfill', _SP_SCRIPTS_SO_U . 'smoothscroll-anchor-polyfill.min.js', array(), '1', true);
+
     wp_enqueue_script('_s_plus-main', _SP_SCRIPTS_SO_U . 'main.js', array(), '1.' . filemtime(_SP_SCRIPTS_SO_D . 'main.js'), true);
+
+
 
 
 
