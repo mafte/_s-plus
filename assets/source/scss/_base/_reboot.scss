@@ -34,7 +34,6 @@ $kbd-bg: white;
 	--sp-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--sp-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--sp-body-font-size: 1rem;
-	--sp-body-font-family: 1rem;
 	--sp-body-line-height: calc(1em + 0.5rem); // Improve CSS reset
 	--sp-body-color: black;
 	--sp-body-bg: white;
@@ -59,7 +58,7 @@ $kbd-bg: white;
 // scss-docs-start reboot-body-rules
 body {
 	margin: 0; // 1
-	font-family: var(--sp-body-font-family);
+	font-family: var(--sp-font-sans-serif);
 	font-weight: 400;
 	line-height: var(--sp-body-line-height);
 	color: var(--sp-body-color);

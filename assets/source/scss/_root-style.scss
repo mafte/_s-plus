@@ -8,6 +8,9 @@
 
 @import "_base/grid-layout";
 
+/* ●●● GENERAL STYLES
+❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
 html {
     /* CSS custom property for the polyfill */
     --scroll-behavior: smooth;
@@ -15,6 +18,42 @@ html {
     /* Normal CSS property for browsers with native support */
     scroll-behavior: smooth;
 }
+
+/* ->  BREAKPOINTS BOOSTRAP  */
+
+$boo-sm: 576px;
+$boo-md: 768px;
+$boo-lg: 992px;
+$boo-xl: 1200px;
+
+@media screen and (max-width: $boo-sm) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+
+/* ->  LAZYLOAD SCRIPT  */
+
+img.lazy {
+    opacity: 0;
+}
+
+img:not(.initial) {
+    transition: opacity 1s;
+}
+
+img.initial,
+img.loaded,
+img.error {
+    opacity: 1;
+}
+
+img:not([src]) {
+    visibility: hidden;
+}
+
 
 /* ●●● UTILITIES
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
@@ -43,4 +82,96 @@ html {
 .cent-y {
     display: flex;
     align-items: center;
+}
+
+/* ->  ACCESIBILITY UTILITIES */
+
+// *:focus,
+// *:focus-visible {
+//     outline: none;
+// }
+
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+.js-focus-visible .focus-visible {
+    outline: 2px solid #E15C59 !important;
+}
+
+.js-focus-visible .focus-visible.btn-link {
+    display: inline;
+}
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.stretched-link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.skip-link {
+    background: gray;
+    padding: 0.8rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: black;
+    font-size: 1.3rem;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    &:focus-within,
+    &:focus {
+        color: white;
+        background: gray;
+    }
+}
+
+.sr-tooltip-text {
+
+    &:not(:focus-visible):not(:focus):not(:hover) {
+        .sr-tooltip-text--item {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+    }
+
+    .sr-tooltip-text--item {
+        position: absolute;
+        width: max-content;
+        transform: translateX(-50%);
+        font-size: 14px;
+        text-align: left;
+        background: black;
+        padding: 0.4rem;
+        border-radius: 5px;
+        bottom: -1.5rem;
+        left: 50%;
+    }
+
 }
