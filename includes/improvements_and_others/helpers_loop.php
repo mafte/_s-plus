@@ -244,7 +244,7 @@ if (!function_exists('sp_get_img__resp')) {
         /** LAZYLOAD: We rename the attributes and add an image placeholder while the actual image is loading.*/
         if ($is_script_lazyload) {
 
-            $html_output .= 'src="' . $placeholder_img . '" ';
+            $html_output .= 'data-src="' . sp_get_img__url($size, $image_id) . '" ';
 
             $html_output .= 'data-srcset="' . implode(', ', array_filter($html_srcset)) . '" ';
             $html_output .= 'data-sizes="' . implode(', ', array_filter($html_sizes)) . '" ';
