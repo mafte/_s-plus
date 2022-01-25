@@ -70,19 +70,23 @@ let button_menu = document.getElementsByClassName("menu-toggle")[0];
 let button_close = document.getElementsByClassName("menu-toggle__close")[0];
 let main_nav = document.getElementById("site-navigation");
 
-button_menu.addEventListener("click", function () {
-	main_nav.classList.toggle("show--fade");
-});
+if(button_menu){
+	button_menu.addEventListener("click", function () {
+		main_nav.classList.toggle("show--fade");
+	});
+}
 
-button_close.addEventListener("click", function () {
-	main_nav.classList.toggle("show--fade");
-
-	if (button_menu.getAttribute("aria-expanded") === "true") {
-		button_menu.setAttribute("aria-expanded", "false");
-	} else {
-		button_menu.setAttribute("aria-expanded", "true");
-	}
-});
+if(button_close){
+	button_close.addEventListener("click", function () {
+		main_nav.classList.toggle("show--fade");
+	
+		if (button_menu.getAttribute("aria-expanded") === "true") {
+			button_menu.setAttribute("aria-expanded", "false");
+		} else {
+			button_menu.setAttribute("aria-expanded", "true");
+		}
+	});
+}
 
 var elements = document.querySelectorAll(".ancestor-wrapper .sub-menu-toggle");
 Array.prototype.forEach.call(elements, function (el, i) {
