@@ -30,7 +30,7 @@ var config = {
     urlBrowserSync: "pruebas.local",
     vAutoprofixer: "last 5 versions",
     pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
-    pathExportIconsSheet: "assets/source/scss/",
+    pathExportIconsSheet: "assets/source/scss/_base/",
 };
 
 /*------------------------------------------------------*\
@@ -70,7 +70,7 @@ function css() {
 /*	|> SCSS - auto import 
 \*------------------------------------------------------*/
 
-let concatFilenamesOptions = {
+let concatOptions = {
     root: "./assets/source/scss/",
     prepend: "@import '",
     append: "';",
@@ -81,7 +81,7 @@ let concatFilenamesOptions = {
 function scssSite() {
     return gulp
         .src("assets/source/scss/Site/*.*")
-        .pipe(concatFilenames("_site.scss", concatFilenamesOptions))
+        .pipe(concatFilenames("_site.scss", concatOptions))
         .pipe(gulp.dest("./assets/source/scss"));
 }
 
@@ -89,8 +89,8 @@ function scssSite() {
 
 function scssBlocks() {
     return gulp
-        .src("assets/source/scss/Blocks/*.*")
-        .pipe(concatFilenames("_blocks.scss", concatFilenamesOptions))
+        .src("assets/source/scss/acf/blocks/*.*")
+        .pipe(concatFilenames("_blocks.scss", concatOptions))
         .pipe(gulp.dest("./assets/source/scss"));
 }
 
@@ -98,8 +98,8 @@ function scssBlocks() {
 
 function scssComponents() {
     return gulp
-        .src("assets/source/scss/Components/*.*")
-        .pipe(concatFilenames("_components.scss", concatFilenamesOptions))
+        .src("assets/source/scss/acf/components/*.*")
+        .pipe(concatFilenames("_components.scss", concatOptions))
         .pipe(gulp.dest("./assets/source/scss"));
 }
 

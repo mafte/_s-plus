@@ -1,60 +1,3 @@
-/* ●●● CSS RESET
-❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
-
-@import "_base/reboot";
-
-/* ●●● BASIC GRID - Inspired in Bootstrap
-❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
-
-@import "_base/grid-layout";
-
-/* ●●● GENERAL STYLES
-❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
-
-html {
-    /* CSS custom property for the polyfill */
-    --scroll-behavior: smooth;
-
-    /* Normal CSS property for browsers with native support */
-    scroll-behavior: smooth;
-}
-
-/* ->  BREAKPOINTS BOOSTRAP  */
-
-$boo-sm: 576px;
-$boo-md: 768px;
-$boo-lg: 992px;
-$boo-xl: 1200px;
-
-@media screen and (max-width: $boo-sm) {
-    .container {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
-
-/* ->  LAZYLOAD SCRIPT  */
-
-img.lazy {
-    opacity: 0;
-}
-
-img:not(.initial) {
-    transition: opacity 1s;
-}
-
-img.initial,
-img.loaded,
-img.error {
-    opacity: 1;
-}
-
-img:not([src]) {
-    visibility: hidden;
-}
-
-
 /* ●●● UTILITIES
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
@@ -66,7 +9,7 @@ img:not([src]) {
     position: static !important;
 }
 
-/* ->  ALIGN ELEMENTS WITH FLEX */
+/* ● ALIGN ELEMENTS WITH FLEX ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 .cent-xy {
     display: flex;
@@ -84,7 +27,7 @@ img:not([src]) {
     align-items: center;
 }
 
-/* ->  ACCESIBILITY UTILITIES */
+/* ● ACCESIBILITY ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 // *:focus,
 // *:focus-visible {
@@ -174,4 +117,30 @@ img:not([src]) {
         left: 50%;
     }
 
+}
+
+  // Based on :
+  // - sanitize.css v12.0.1 | CC0 1.0 Universal | github.com/csstools/sanitize.css
+  // ––––––––––––––––––––
+
+  // 1. Remove animations when motion is reduced (opinionated)
+  // 2. Remove fixed background attachments when motion is reduced (opinionated)
+  // 3. Remove timed scrolling behaviors when motion is reduced (opinionated)
+  // 4. Remove transitions when motion is reduced (opinionated)
+  @media (prefers-reduced-motion: reduce) {
+    *:not([aria-busy="true"]),
+    :not([aria-busy="true"])::before,
+    :not([aria-busy="true"])::after {
+      background-attachment: initial !important; // 2
+      animation-duration: 1ms !important; // 1
+      animation-delay: -1ms !important; // 1
+      animation-iteration-count: 1 !important; // 1
+      scroll-behavior: auto !important; // 3
+      transition-delay: 0s !important; // 4
+      transition-duration: 0s !important; // 4
+    }
+  }
+
+.scroll-margin{
+    scroll-margin-top: 5rem;
 }
