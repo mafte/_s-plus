@@ -43,7 +43,7 @@ include_once('includes/improvements_and_others/acf.php');
 
 add_action('admin_enqueue_scripts', 'load_admin_styles');
 function load_admin_styles() {
-	wp_enqueue_style('acf-styles', _SP_STYLE_SO_U . 'acf-styles.css', false, filemtime(_SP_STYLE_SO_D . 'acf-styles.css'));
+	wp_enqueue_style('acf-styles', get_template_directory() . '/assets/source/css/' . 'acf-styles.css', false, filemtime(get_template_directory_uri() . '/assets/source/css/' . 'acf-styles.css'));
 }
 
 /*	|> Filter HTML anchor before save into DB
