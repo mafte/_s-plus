@@ -108,7 +108,7 @@ var lazyLoadInstance = new LazyLoad({
 
 /* ● TINY-SLIDER ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-if(document.querySelector(".my-slider")){
+if (document.querySelector(".my-slider")) {
 	var slider = tns({
 		container: '.my-slider',
 		items: 1,
@@ -119,4 +119,42 @@ if(document.querySelector(".my-slider")){
 
 /* ● SMOOTH SCROLL ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-/* Fires whenever --scroll-behavior: smooth; is declared in the html element */
+const navLinks = document.querySelectorAll(
+	'a[href^="#"]'
+);
+
+Array.from(navLinks).forEach(navLink => {
+	const href = navLink.getAttribute('href');
+	if (href !== '#') {
+		if (document.querySelector(href)) {
+			const section = document.querySelector(href);
+			const offset = 80; // nav and offset
+
+			navLink.onclick = e => {
+				// get body position
+				const bodyRect = document.body.getBoundingClientRect().top;
+				// get section position relative
+				const sectionRect = section.getBoundingClientRect().top;
+				// subtract the section from body
+				const sectionPosition = sectionRect - bodyRect;
+				// subtract offset
+				const offsetPosition = sectionPosition - offset;
+
+				e.preventDefault();
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: 'smooth'
+				});
+
+				if (history.pushState) {
+					history.pushState(null, null, href);
+				} else {
+					window.location.hash = href;
+				}
+
+			}
+
+		}
+	}
+
+})
