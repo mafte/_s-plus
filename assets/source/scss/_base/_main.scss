@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+a, p, h1, h2, h3, h4, h5, h6 {
+    line-height: calc(1em + .5rem);
+}
+
 @media screen and (max-width: $boo-sm) {
     .container {
         padding-left: 2rem;
