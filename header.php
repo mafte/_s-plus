@@ -55,7 +55,7 @@
 
 							<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="icon icon-menu"><span class="visually-hidden"><?php esc_html_e('Menu', '_s_plus'); ?></span></span></button>
 
-							<nav id="site-navigation" class="main-navigation">
+							<nav id="site-navigation" class="main-navigation effect--fadeIn">
 								<button class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', '_s_plus'); ?></span></span></button>
 
 								<?php
