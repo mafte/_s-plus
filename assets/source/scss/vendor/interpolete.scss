@@ -2,111 +2,87 @@
 
 $rem_base_px: 16;
 
-@function divide($dividend, $divisor, $precision: 10) {
-    $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
-    $dividend: abs($dividend);
-    $divisor: abs($divisor);
+@function trim_unit($value) {
+    @return $value / ($value * 0 + 1);
+}
 
-    @if $dividend==0 {
-        @return 0;
-    }
-
-    @if $divisor==0 {
-        @error "Cannot divide by 0";
-    }
-
-    $remainder: $dividend;
-    $result: 0;
-    $factor: 10;
-
-    @while ($remainder > 0 and $precision >=0) {
-        $quotient: 0;
-
-        @while ($remainder >=$divisor) {
-            $remainder: $remainder - $divisor;
-            $quotient: $quotient + 1;
-        }
-
-        $result: $result * 10+$quotient;
-        $factor: $factor * .1;
-        $remainder: $remainder * 10;
-        $precision: $precision - 1;
-
-        @if ($precision < 0 and $remainder >=$divisor * 5) {
-            $result: $result + 1;
-        }
-    }
-
-    $result: $result * $factor * $sign;
-    $dividend-unit: unit($dividend);
-    $divisor-unit: unit($divisor);
-    $unit-map: ("px": 1px,
-        "rem": 1rem,
-        "em": 1em,
-        "%": 1%);
-
-    @if ($dividend-unit !=$divisor-unit and map-has-key($unit-map, $dividend-unit)) {
-        $result: $result * map-get($unit-map, $dividend-unit);
-    }
-
-    @return $result;
+@function from_base_px($value) {
+    @return trim_unit($value) / $rem_base_px;
 }
 
 @mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
 
-    @if unit($min-screen) != unit($max-screen) {
+    $min-screen_unit: unit($min-screen);
+    $max-screen_unit: unit($max-screen);
+    $min-value_unit: unit($min-value);
+    $max-value_unit: unit($max-value);
+
+    /* ● Comprobacion de unidades ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+    @if $min-screen_unit !=$max-screen_unit {
         @error "Los unidades para $min-screen y $max-screen son diferentes. Puede utilizar 'em', 'px' o 'rem', pero no combinadas.";
     }
 
-    @if unit($min-value) != unit($max-value) {
+    @if $min-value_unit !=$max-value_unit {
         @error "Los unidades para $min-value y $max-value son diferentes. Puede utilizar 'em', 'px' o 'rem', pero no combinadas.";
     }
-    
 
-    /* ● SCREEN SIZES ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+    /* ● Convertir los tamaños de pantalla para media querys a 'em' ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+    /** @see https://zellwk.com/blog/media-query-units/ */
 
     $max-screen-em: $max-screen;
     $min-screen-em: $min-screen;
 
     /** Si usamos 'rem', las convertimos en 'em' */
-    @if unit($min-screen) == rem and unit($max-screen) == rem {
-        $max-screen-em: divide($max-screen, $max-screen * 0 + 1) * 1em;
-        $min-screen-em: divide($min-screen, $min-screen * 0 + 1) * 1em;
+    @if $min-screen_unit==rem and $max-screen_unit==rem {
+        $max-screen-em: trim_unit($max-screen-em) * 1em;
+        $min-screen-em: trim_unit($min-screen-em) * 1em;
     }
+
     /** Si usamos 'px', las convertimos en 'em' */
-    @if unit($min-screen) == px and unit($max-screen) == px {
-        $max-screen-em: divide($max-screen, $max-screen * 0 + 1) / $rem_base_px * 1em;
-        $min-screen-em: divide($min-screen, $min-screen * 0 + 1) / $rem_base_px * 1em;
+    @if $min-screen_unit==px and $max-screen_unit==px {
+        $max-screen-em: from_base_px($max-screen) * 1em;
+        $min-screen-em: from_base_px($min-screen) * 1em;
     }
-    
-    /* ● VALUE SIZES ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+    /* ● Ta ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
     /** Si usamos 'rem', convertimos los tamaños de pantalla a 'rem' */
-    @if unit($min-value) == rem and unit($max-value) == rem {
+    @if $min-value_unit==rem and $max-value_unit==rem {
 
-        @if unit($min-screen) == em and unit($max-screen) == em {
-            $max-screen: divide($max-screen, $max-screen * 0 + 1) * 1rem;
-            $min-screen: divide($min-screen, $min-screen * 0 + 1) * 1rem;
-        }@else if unit($min-screen) == px and unit($max-screen) == px{
-            $max-screen: divide($max-screen, $max-screen * 0 + 1) / $rem_base_px * 1rem;
-            $min-screen: divide($min-screen, $min-screen * 0 + 1) / $rem_base_px * 1rem;
+        @if $min-screen_unit==em and $max-screen_unit==em {
+            $max-screen: trim_unit($max-screen-em) * 1rem;
+            $min-screen: trim_unit($min-screen-em) * 1rem;
         }
-    /** Si usamos 'px', convertimos los tamaños de pantalla a 'px' */
-    }@else if unit($min-value) == px and unit($max-value) == px{
 
-        @if unit($min-screen) == em and unit($max-screen) == em or unit($min-screen) == rem and unit($max-screen) == rem{
-            $max-screen: divide($max-screen, $max-screen * 0 + 1) * $rem_base_px * 1px;
-            $min-screen: divide($min-screen, $min-screen * 0 + 1) * $rem_base_px * 1px;
+        @else if $min-screen_unit==px and $max-screen_unit==px {
+            $max-screen: from_base_px($max-screen) * 1rem;
+            $min-screen: from_base_px($min-screen) * 1rem;
         }
+
+        /** Si usamos 'px', convertimos los tamaños de pantalla a 'px' */
+    }
+
+    @else if $min-value_unit==px and $max-value_unit==px {
+
+        @if $min-screen_unit==em and $max-screen_unit==em or $min-screen_unit==rem and $max-screen_unit==rem {
+            $max-screen: trim_unit($max-screen-em) * $rem_base_px * 1px;
+            $min-screen: trim_unit($min-screen-em) * $rem_base_px * 1px;
+        }
+
         /** Si usamos 'em', convertimos los tamaños de pantalla a 'em' */
-    }@else if unit($min-value) == em and unit($max-value) == em{
-        @if unit($min-screen) == rem and unit($max-screen) == rem {
-            $max-screen: divide($max-screen, $max-screen * 0 + 1) * 1em;
-            $min-screen: divide($min-screen, $min-screen * 0 + 1) * 1em;
+    }
 
-        }@else if unit($min-screen) == px and unit($max-screen) == px{
-            $max-screen: divide($max-screen, $max-screen * 0 + 1) / $rem_base_px * 1em;
-            $min-screen: divide($min-screen, $min-screen * 0 + 1) / $rem_base_px * 1em;
+    @else if $min-value_unit==em and $max-value_unit==em {
+        @if $min-screen_unit==rem and $max-screen_unit==rem {
+            $max-screen: trim_unit($max-screen-em) * 1em;
+            $min-screen: trim_unit($min-screen-em) * 1em;
+
+        }
+
+        @else if $min-screen_unit==px and $max-screen_unit==px {
+            $max-screen: from_base_px($max-screen) * 1em;
+            $min-screen: from_base_px($min-screen) * 1em;
         }
     }
 
@@ -149,14 +125,14 @@ $rem_base_px: 16;
 //     @include interpolate('font-size', 20rem, 90rem, $min-value, $max-value);
 // }
 
-.fs-rem{
+.fs-rem {
     @include interpolate('font-size', 20rem, 90rem, 2rem, 5rem);
 }
 
-.fs-em{
+.fs-em {
     @include interpolate('font-size', 20rem, 90rem, 2em, 5em);
 }
 
-.fs-px{
-    @include interpolate('font-size', 20rem, 90rem, 32px, 80px);
+.fs-px {
+    @include interpolate('margin-bottom', 20rem, 90rem, 32px, 80px);
 }
