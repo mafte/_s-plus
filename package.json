@@ -10,10 +10,12 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.14",
+    "clean-css": "^5.2.3",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-concat-filenames": "^1.2.0",
     "gulp-jshint": "^2.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.1.0",
@@ -21,10 +23,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "jshint": "^2.12.0",
-    "gulp-concat-filenames": "^1.2.0",
-    "mini-svg-data-uri": "^1.4.3"
-  },
-  "dependencies": {
-
+    "mini-svg-data-uri": "^1.4.3",
+    "vinyl-map": "^1.0.2"
   }
 }

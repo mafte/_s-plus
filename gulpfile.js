@@ -2,6 +2,9 @@ const gulp = require("gulp");
 const sass = require("gulp-sass");
 /* Limpia y optimiza CSS */
 const clean = require("gulp-clean-css");
+var CleanCSS = require('clean-css');
+/* Permite utilizar cleanCSS en gulp */
+var map = require('vinyl-map');
 /* Comprime JavaScript */
 const uglify = require("gulp-uglify");
 /* Concatena archivos */
@@ -20,6 +23,9 @@ const browserSync = require("browser-sync");
 const concatFilenames = require("gulp-concat-filenames");
 // For generate icons sheets
 const fs = require("fs");
+
+
+
 const svgToMiniDataURI = require("mini-svg-data-uri");
 
 /*------------------------------------------------------*\
@@ -46,7 +52,23 @@ function reload(done) {
 	|| STYLES
 \*------------------------------------------------------*/
 
+// this snippet basically replaces `gulp-minify-css`
+var minify = map(function (buff, filename) {
+    return new CleanCSS({
+        // specify your clean-css options here
+        level: {
+            1: {
+                all: true,
+                replaceZeroUnits: false
+            },
+            2: {}
+        }
+
+    }).minify(buff.toString()).styles;
+});
+
 function css() {
+
     return gulp
         .src("assets/source/scss/style.scss")
 
@@ -55,11 +77,14 @@ function css() {
         .pipe(plumber())
         .pipe(sass().on("error", sass.logError))
 
-        .pipe(
-            clean({
-                level: 2,
-            })
-        )
+        .pipe(minify)
+
+        // .pipe(
+        //     clean({
+        //         level: 2
+        //     })
+        // )
+
         .pipe(autoPrefixer(config.vAutoprofixer))
 
         .pipe(sourcemaps.write("."))
@@ -192,9 +217,9 @@ function createIconSheet() {
 
     /** Clear all variables */
     filesNamesOriginal = [],
-    filesNamesFilter = [],
-    filesNamesWithoutExtension = [],
-    filesContents = [];
+        filesNamesFilter = [],
+        filesNamesWithoutExtension = [],
+        filesContents = [];
 }
 
 async function iconSh() {
