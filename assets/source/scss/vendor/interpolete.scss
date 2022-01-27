@@ -1,6 +1,7 @@
 /** Based in: https://codepen.io/MadeByMike/pen/vNrvdZ?editors=0110 */
 
 $rem_base_px: 16;
+$fix_safari: true !default;
 
 @function trim_unit($value) {
     @return $value / ($value * 0 + 1);
@@ -10,7 +11,7 @@ $rem_base_px: 16;
     @return trim_unit($value) / $rem_base_px;
 }
 
-@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value, $is_important: null) {
 
     $min-screen_unit: unit($min-screen);
     $max-screen_unit: unit($max-screen);
@@ -27,11 +28,11 @@ $rem_base_px: 16;
         @error "Los unidades para $min-value y $max-value son diferentes. Puede utilizar 'em', 'px' o 'rem', pero no combinadas.";
     }
 
-    /* ● Convertir los tamaños de pantalla para media querys a 'em' ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
-    /** @see https://zellwk.com/blog/media-query-units/ */
-
     $max-screen-em: $max-screen;
     $min-screen-em: $min-screen;
+
+    /* ● Convertir los tamaños de pantalla para media querys a 'em' ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+    /** @see https://zellwk.com/blog/media-query-units/ */
 
     /** Si usamos 'rem', las convertimos en 'em' */
     @if $min-screen_unit==rem and $max-screen_unit==rem {
@@ -45,14 +46,47 @@ $rem_base_px: 16;
         $min-screen-em: from_base_px($min-screen) * 1em;
     }
 
-    /* ● Ta ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+    & {
+        @each $property in $properties {
+            #{$property}: $min-value $is_important;
+
+
+        // Include safari iframe resize fix if needed
+        min-width: if($fix_safari, (0 * 1vw), null);
+        }
+
+        @media screen and (min-width: $min-screen-em) {
+            @each $property in $properties {
+                #{$property}: calc-interpolation($min-screen, $max-screen, $min-value, $max-value) $is_important;
+            }
+        }
+
+        @media screen and (min-width: $max-screen-em) {
+            @each $property in $properties {
+                #{$property}: $max-value $is_important;
+            }
+        }
+    }
+}
+
+// Requires the calc-interpolation function which can also be used independently
+
+@function calc-interpolation($min-screen, $max-screen, $min-value, $max-value) {
+
+    $min-screen_unit: unit($min-screen);
+    $max-screen_unit: unit($max-screen);
+    $min-value_unit: unit($min-value);
+    $max-value_unit: unit($max-value);
+
+    /* ● Tamaños de pantalla ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
     /** Si usamos 'rem', convertimos los tamaños de pantalla a 'rem' */
     @if $min-value_unit==rem and $max-value_unit==rem {
 
         @if $min-screen_unit==em and $max-screen_unit==em {
-            $max-screen: trim_unit($max-screen-em) * 1rem;
-            $min-screen: trim_unit($min-screen-em) * 1rem;
+            $max-screen: trim_unit($max-screen) * 1rem;
+            $min-screen: trim_unit($min-screen) * 1rem;
         }
 
         @else if $min-screen_unit==px and $max-screen_unit==px {
@@ -66,8 +100,8 @@ $rem_base_px: 16;
     @else if $min-value_unit==px and $max-value_unit==px {
 
         @if $min-screen_unit==em and $max-screen_unit==em or $min-screen_unit==rem and $max-screen_unit==rem {
-            $max-screen: trim_unit($max-screen-em) * $rem_base_px * 1px;
-            $min-screen: trim_unit($min-screen-em) * $rem_base_px * 1px;
+            $max-screen: trim_unit($max-screen) * $rem_base_px * 1px;
+            $min-screen: trim_unit($min-screen) * $rem_base_px * 1px;
         }
 
         /** Si usamos 'em', convertimos los tamaños de pantalla a 'em' */
@@ -75,8 +109,8 @@ $rem_base_px: 16;
 
     @else if $min-value_unit==em and $max-value_unit==em {
         @if $min-screen_unit==rem and $max-screen_unit==rem {
-            $max-screen: trim_unit($max-screen-em) * 1em;
-            $min-screen: trim_unit($min-screen-em) * 1em;
+            $max-screen: trim_unit($max-screen) * 1em;
+            $min-screen: trim_unit($min-screen) * 1em;
 
         }
 
@@ -86,28 +120,6 @@ $rem_base_px: 16;
         }
     }
 
-    & {
-        @each $property in $properties {
-            #{$property}: $min-value;
-        }
-
-        @media screen and (min-width: $min-screen-em) {
-            @each $property in $properties {
-                #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
-            }
-        }
-
-        @media screen and (min-width: $max-screen-em) {
-            @each $property in $properties {
-                #{$property}: $max-value;
-            }
-        }
-    }
-}
-
-// Requires the calc-interpolation function which can also be used independently
-
-@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
     $a: ($max-value - $min-value) / ($max-screen - $min-screen);
     $b: $min-value - $a * $min-screen;
 
@@ -134,5 +146,7 @@ $rem_base_px: 16;
 }
 
 .fs-px {
-    @include interpolate('margin-bottom', 20rem, 90rem, 32px, 80px);
+    @include interpolate('font-size', 20rem, 90rem, 32px, 80px, !important);
+    @include interpolate('--margin-top', 20rem, 90rem, 20px, 80px, !important);
+    
 }
