@@ -13,15 +13,11 @@ if (!function_exists('sp_get_img__url')) {
         $pathPlaceholder = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
 
         if ($image_id === 0) {
-
             if (get_post_thumbnail_id()) {
-
                 return esc_url(wp_get_attachment_image_url(get_post_thumbnail_id(), $size));
             }
         } else {
-
             if (wp_get_attachment_image_url($image_id, $size)) {
-
                 return esc_url(wp_get_attachment_image_url($image_id, $size));
             }
         }
@@ -94,6 +90,10 @@ if (!function_exists('sp_get_img__resp')) {
      */
     function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
+        /* If the $image_id is equal to 0, then we get the id of the current post */
+        if ($image_id === 0) {
+            $image_id = get_post_thumbnail_id();
+        }
 
         /** If you are using the lazyload script then it will work differently. */
         $is_script_lazyload = wp_script_is('lazyload');
@@ -131,7 +131,6 @@ if (!function_exists('sp_get_img__resp')) {
             'height' => 99999
         );
         $width_img_requested = $sizes_img_widths[$size]['width'];
-
         /**
          * PLACEHOLDER IMAGE
          * ***************************************************
@@ -142,11 +141,10 @@ if (!function_exists('sp_get_img__resp')) {
 
         if (!wp_get_attachment_image_url($image_id, $size)) {
 
-            if (!($placeholder_width = $width_img_requested)) {
-                $placeholder_width = $sizes_img_widths['large']['width'];
-            }
-            echo 'Entro al placeholder';
-            return '<img class="' . $class_css . '" src="' . $placeholder_img . '" alt="" width="' . $placeholder_width . '" />';
+            /* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size. 
+            This allows the correct presentation in the browser of the placeholder without sudden jumps. */
+            return "<img class=\"{$class_css}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$width_img_requested}\" height=\"" . round($width_img_requested / 1.77777777778)
+                . "\"/>";
         }
 
         /**
