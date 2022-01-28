@@ -32,7 +32,7 @@ if ($id_section != '') {
 
         </div>
 
-        <div <?php echo $id_columns[0]; ?> class="col-6 col-layout-2">
+        <div <?php echo $id_columns[1]; ?> class="col-6 col-layout-2">
 
             <?php
             if (have_rows('column_2')) : ?>
