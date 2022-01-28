@@ -1,9 +1,5 @@
 <?php
 
-define('SP_IMSANITY_DEFAULT_MAX_WIDTH', 2000);
-define('SP_IMSANITY_DEFAULT_MAX_HEIGHT', 0);
-define('SP_IMSANITY_DEFAULT_QUALITY', 90);
-
 /**
  * Handler after a file has been uploaded.  If the file is an image, check the size
  * to see if it is too big and, if so, resize and overwrite the original.
