@@ -16,7 +16,7 @@ include_once('includes/_setup_functions_file/basic.php');
 
 /*	|> Widgets
 \*------------------------------------------------------*/
-include_once('includes/_setup_functions_file/widgets.php');
+// include_once('includes/_setup_functions_file/widgets.php');
 
 
 /*	|> Enqueue scripts and styles.
