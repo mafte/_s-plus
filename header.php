@@ -39,6 +39,7 @@
 								<h1 class="site-title">
 									<a href="<?php echo esc_url(home_url('/')); ?>" rel="home" aria-label="<?php echo get_bloginfo('name'); ?>">
 										<?php echo sp_get_img__resp('medium', get_theme_mod('custom_logo'), 'site-header__logo'); ?>
+										<span class="visually-hidden"><?php echo get_bloginfo('name'); ?></span>
 									</a>
 								</h1>
 							<?php else : ?>
