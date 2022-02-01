@@ -53,9 +53,9 @@ $fix_safari: true !default;
         
         // Include safari iframe resize fix if needed
 
-        /* clean-css ignore:start */
+        /*-clean-css ignore:start */
         min-width: if($fix_safari, 0vw, null);
-        /* clean-css ignore:end */
+        /*-clean-css ignore:end */
 
         }
 
@@ -134,4 +134,57 @@ $fix_safari: true !default;
     }
 
     @return calc(#{$a*100}vw #{$sign} #{$b});
+}
+
+/* ● SHORTHANDS MIXINS HELPERS ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+$min_scren_size: 320px;
+$max_scren_size: 1440px;
+
+@mixin rfs($propiety, $min_s, $max_s, $is_import: null){
+    @include interpolate($propiety, $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin font-size($min_s, $max_s, $is_import: null){
+    @include interpolate('font-size', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin margin($min_s, $max_s, $is_import: null){
+    @include interpolate('margin', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin margin-top($min_s, $max_s, $is_import: null){
+    @include interpolate('margin-top', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin margin-left($min_s, $max_s, $is_import: null){
+    @include interpolate('margin-left', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin margin-right($min_s, $max_s, $is_import: null){
+    @include interpolate('margin-right', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin margin-bottom($min_s, $max_s, $is_import: null){
+    @include interpolate('margin-bottom', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin padding($min_s, $max_s, $is_import: null){
+    @include interpolate('padding', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin padding-top($min_s, $max_s, $is_import: null){
+    @include interpolate('padding-top', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin padding-right($min_s, $max_s, $is_import: null){
+    @include interpolate('padding-right', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin padding-left($min_s, $max_s, $is_import: null){
+    @include interpolate('padding-left', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
+}
+
+@mixin padding-bottom($min_s, $max_s, $is_import: null){
+    @include interpolate('padding-bottom', $min_scren_size, $max_scren_size, $min_s, $max_s, $is_import);
 }
