@@ -50,10 +50,13 @@ $fix_safari: true !default;
     & {
         @each $property in $properties {
             #{$property}: $min-value $is_important;
-
-
+        
         // Include safari iframe resize fix if needed
-        min-width: if($fix_safari, (0 * 1vw), null);
+
+        /* clean-css ignore:start */
+        min-width: if($fix_safari, 0vw, null);
+        /* clean-css ignore:end */
+
         }
 
         @media screen and (min-width: $min-screen-em) {
@@ -131,22 +134,4 @@ $fix_safari: true !default;
     }
 
     @return calc(#{$a*100}vw #{$sign} #{$b});
-}
-
-// @mixin fz($min-value, $max-value) {
-//     @include interpolate('font-size', 20rem, 90rem, $min-value, $max-value);
-// }
-
-.fs-rem {
-    @include interpolate('font-size', 20rem, 90rem, 2rem, 5rem);
-}
-
-.fs-em {
-    @include interpolate('font-size', 20rem, 90rem, 2em, 5em);
-}
-
-.fs-px {
-    @include interpolate('font-size', 20rem, 90rem, 32px, 80px, !important);
-    @include interpolate('--margin-top', 20rem, 90rem, 20px, 80px, !important);
-    
 }
