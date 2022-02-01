@@ -52,22 +52,21 @@ function reload(done) {
 	|| STYLES
 \*------------------------------------------------------*/
 
-// this snippet basically replaces `gulp-minify-css`
-var minify = map(function (buff, filename) {
-    return new CleanCSS({
-        // specify your clean-css options here
-        level: {
-            1: {
-                all: true,
-                replaceZeroUnits: false
-            },
-            2: {}
-        }
-
-    }).minify(buff.toString()).styles;
-});
-
 function css() {
+
+    // this snippet basically replaces `gulp-minify-css`
+    var minify = map(function (buff, filename) {
+        return new CleanCSS({
+            // specify your clean-css options here
+            level: 2,
+            compatibility: {
+                properties: {
+                    zeroUnits: false
+                }
+            }
+
+        }).minify(buff.toString()).styles;
+    });
 
     return gulp
         .src("assets/source/scss/style.scss")
@@ -78,12 +77,6 @@ function css() {
         .pipe(sass().on("error", sass.logError))
 
         .pipe(minify)
-
-        // .pipe(
-        //     clean({
-        //         level: 2
-        //     })
-        // )
 
         .pipe(autoPrefixer(config.vAutoprofixer))
 
