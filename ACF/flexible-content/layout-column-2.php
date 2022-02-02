@@ -2,10 +2,13 @@
 $class_css  = get_sub_field('class_css');
 $id_section = get_sub_field('html_anchor');
 $id_columns = array();
+$id_columns[0] = '';
+$id_columns[1] = '';
+$id_section = '';
 
 if ($id_section != '') {
-    $id_columns[] = 'id="' . $id_section . '--col-1"';
-    $id_columns[] = 'id="' . $id_section . '--col-2"';
+    $id_columns[0] = 'id="' . $id_section . '--col-1"';
+    $id_columns[1] = 'id="' . $id_section . '--col-2"';
 }
 ?>
 
