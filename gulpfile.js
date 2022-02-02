@@ -1,10 +1,7 @@
 const gulp = require("gulp");
-const sass = require("gulp-sass");
-/* Limpia y optimiza CSS */
-const clean = require("gulp-clean-css");
+const sass = require('gulp-sass')(require('sass'));
+/* Optimize and clean CSS */
 var CleanCSS = require('clean-css');
-/* Permite utilizar cleanCSS en gulp */
-var map = require('vinyl-map');
 /* Comprime JavaScript */
 const uglify = require("gulp-uglify");
 /* Concatena archivos */
@@ -24,8 +21,6 @@ const concatFilenames = require("gulp-concat-filenames");
 // For generate icons sheets
 const fs = require("fs");
 
-
-
 const svgToMiniDataURI = require("mini-svg-data-uri");
 
 /*------------------------------------------------------*\
@@ -34,9 +29,10 @@ const svgToMiniDataURI = require("mini-svg-data-uri");
 
 var config = {
     urlBrowserSync: "pruebas.local",
-    vAutoprofixer: "last 5 versions",
+    vAutoprofixer: "last 1 versions",
     pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
     pathExportIconsSheet: "assets/source/scss/_base/",
+    clean_css: true
 };
 
 /*------------------------------------------------------*\
@@ -53,20 +49,14 @@ function reload(done) {
 \*------------------------------------------------------*/
 
 function css() {
-
-    // this snippet basically replaces `gulp-minify-css`
-    var minify = map(function (buff, filename) {
-        return new CleanCSS({
-            // specify your clean-css options here
-            level: 2,
-            compatibility: {
-                properties: {
-                    zeroUnits: false
-                }
+    const options = {
+        compatibility: {
+            properties: {
+                zeroUnits: false
             }
-
-        }).minify(buff.toString()).styles;
-    });
+        },
+        level: 2
+    };
 
     return gulp
         .src("assets/source/scss/style.scss")
@@ -76,9 +66,13 @@ function css() {
         .pipe(plumber())
         .pipe(sass().on("error", sass.logError))
 
-        .pipe(minify)
-
-        .pipe(autoPrefixer(config.vAutoprofixer))
+        .pipe(autoPrefixer(config.vAutoprofixer)).on('data', function(file) {
+            if(config.clean_css){
+                const buferFile = new CleanCSS(options).minify(file.contents)
+                return file.contents = Buffer.from(buferFile.styles)
+            }
+            return file;
+        })
 
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest("."))
