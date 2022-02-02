@@ -103,11 +103,6 @@ if (!function_exists('sp_get_img__resp')) {
             $is_script_lazyload = false;
         }
 
-        /** LAZYLOAD: Add 'lazy' class */
-        if ($is_script_lazyload) {
-            $class_css .= ' lazy';
-        }
-
         /* Add all the image sizes allowed in the automatic generation. */
         $sizes_img_names = array('medium', 'large', 'full', 'custom-size');
 
@@ -151,6 +146,11 @@ if (!function_exists('sp_get_img__resp')) {
          * DECLARATION OF VARIABLES
          * ***************************************************
          */
+
+        /** LAZYLOAD: Add 'lazy' class */
+        if ($is_script_lazyload) {
+            $class_css .= ' lazy';
+        }
 
         $sizes_img_filter = array();
         $url_img_full     = sp_get_img__url('full', $image_id);
@@ -273,7 +273,7 @@ if (!function_exists('asset_url')) :
     function asset_url($asset) {
         $template_uri = get_template_directory_uri();
 
-        return esc_url("{$template_uri}/assets/dist/img/{$asset}");
+        return esc_url("{$template_uri}/assets/source/img/{$asset}");
     }
 
 endif;
