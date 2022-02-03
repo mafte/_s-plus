@@ -78,6 +78,8 @@ $breakpoint_menu: 992px;
 			}
 
 			a {
+				font-weight: 700;
+				text-decoration: none;
 			}
 		}
 
@@ -86,6 +88,10 @@ $breakpoint_menu: 992px;
 			margin: 0;
 			list-style: none;
 		}
+	}
+
+	&__logo{
+		display: block;
 	}
 }
 
