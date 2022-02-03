@@ -1,14 +1,15 @@
 /** Based in: https://codepen.io/MadeByMike/pen/vNrvdZ?editors=0110 */
+@use 'sass:math';
 
 $rem_base_px: 16;
 $fix_safari: true !default;
 
 @function trim_unit($value) {
-    @return $value / ($value * 0 + 1);
+    @return math.div($value, $value * 0 + 1); 
 }
 
 @function from_base_px($value) {
-    @return trim_unit($value) / $rem_base_px;
+    @return math.div(trim_unit($value), $rem-base-px);
 }
 
 @mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value, $is_important: null) {
@@ -123,7 +124,7 @@ $fix_safari: true !default;
         }
     }
 
-    $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+    $a: math.div($max-value - $min-value, $max-screen - $min-screen);
     $b: $min-value - $a * $min-screen;
 
     $sign: "+";
