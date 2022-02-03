@@ -76,42 +76,25 @@
                             "endpoint": 0
                         },
                         {
-                            "key": "field_5f6d062ab21de",
-                            "label": "Class CSS",
-                            "name": "class_css",
-                            "type": "text",
-                            "instructions": "Puede utilizar clases espaciadoras predeterminadas. Se utiliza la nomenclatura de Boostrap con los siguientes valores de número: 8, 16, 24, 32, 40, 48, 64, 80, 100 y 120. Por ejemplo si se desea un espaciado inferior de 24 pixeles seria \"mb-24\".",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
-                            "key": "field_5f6cfbed5b70d",
-                            "label": "HTML anchor",
-                            "name": "html_anchor",
-                            "type": "text",
+                            "key": "field_61fc26d76871d",
+                            "label": "Settings",
+                            "name": "settings",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "clone": [
+                                "group_61fc05c247825"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -232,42 +215,25 @@
                             "endpoint": 0
                         },
                         {
-                            "key": "field_5f653759282cb",
-                            "label": "Class CSS",
-                            "name": "class_css",
-                            "type": "text",
-                            "instructions": "Puede utilizar clases espaciadoras predeterminadas. Se utiliza la nomenclatura de Boostrap con los siguientes valores de número: 8, 16, 24, 32, 40, 48, 64, 80, 100 y 120. Por ejemplo si se desea un espaciado inferior de 24 pixeles seria \"mb-24\".",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
-                            "key": "field_5f6cfc185b70e",
-                            "label": "HTML anchor",
-                            "name": "html_anchor",
-                            "type": "text",
+                            "key": "field_61fc26fd6871e",
+                            "label": "Settings",
+                            "name": "settings",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "clone": [
+                                "group_61fc05c247825"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -307,5 +273,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1638917455
+    "modified": 1643915022
 }
