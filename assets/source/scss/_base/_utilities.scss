@@ -1,3 +1,56 @@
+@use 'sass:math';
+
+/* ●●● MIXINGS
+❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+@mixin visually-hidden{
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+@function pow($value, $pow: 1) {
+    @return if($pow==0, 1, $value * pow($value, $pow - 1));
+}
+
+@function rounded($value, $precision: 1) {
+    $pow10: pow(10, $precision);
+    @return math.div(round($value * $pow10), $pow10);
+}
+
+@mixin col($col-num:12) {
+
+    @if ($col-num == 12) {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }@else{
+        flex: 0 0 rounded(math.div(100%, 12), 2) * $col-num;
+        max-width: rounded(math.div(100%, 12), 2) * $col-num;
+    }
+
+}
+
+@mixin select_style{
+    background: white;
+    border: 1px solid var(--c-primary);
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: .5rem 1rem;
+    appearance: none;
+    position: relative;
+    background-image: var(--icon-arrow-down);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center right 16px;
+}
+
+
 /* ●●● UTILITIES
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
@@ -48,15 +101,7 @@
 
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+    @include visually-hidden;
 }
 
 .stretched-link::after {
