@@ -236,9 +236,9 @@ function initAll() {
         watchEvents: ["change", "add", "unlink", "addDir", "unlinkDir"],
     });
 
-    gulp.watch(["assets/**/site/*.scss"], scssSite);
-    gulp.watch(["assets/**/acf/blocks/*.scss"], scssBlocks);
-    gulp.watch(["assets/**/acf/components/*.scss"], scssComponents);
+    gulp.watch(["assets/**/site/*.scss"], {events: ['add', 'unlink']}, scssSite);
+    gulp.watch(["assets/**/acf/blocks/*.scss"], {events: ['add', 'unlink']}, scssBlocks);
+    gulp.watch(["assets/**/acf/components/*.scss"],{events: ['add', 'unlink']}, scssComponents);
 
     gulp.watch(["assets/source/icons/*.svg"], iconSh);
 
