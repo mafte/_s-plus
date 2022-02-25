@@ -119,14 +119,6 @@ if (!function_exists('sp_get_img__resp')) {
         $sizes_img_widths = wp_get_registered_image_subsizes();
 
         /**
-         * Add 'full' image width to array
-         */
-        $sizes_img_widths['full'] = array(
-            'width'  => wp_get_attachment_image_src($image_id, 'full')[1],
-            'height' => 99999
-        );
-        $width_img_requested = $sizes_img_widths[$size]['width'];
-        /**
          * PLACEHOLDER IMAGE
          * ***************************************************
          */
@@ -138,9 +130,19 @@ if (!function_exists('sp_get_img__resp')) {
 
             /* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size. 
             This allows the correct presentation in the browser of the placeholder without sudden jumps. */
-            return "<img class=\"{$class_css}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$width_img_requested}\" height=\"" . round($width_img_requested / 1.77777777778)
+            return "<img class=\"{$class_css}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$sizes_img_widths[$size]['width']}\" height=\"" . round($sizes_img_widths[$size]['width'] / 1.77777777778)
                 . "\"/>";
         }
+
+        /**
+         * Add 'full' image width to array
+         */
+        $sizes_img_widths['full'] = array(
+            'width'  => wp_get_attachment_image_src($image_id, 'full')[1],
+            'height' => 99999
+        );
+        // $width_img_requested = $sizes_img_widths[$size]['width'];
+
 
         /**
          * DECLARATION OF VARIABLES
