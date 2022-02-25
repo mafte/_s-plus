@@ -1,35 +1,138 @@
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
-a, p, h1, h2, h3, h4, h5, h6 {
-    line-height: calc(1em + .5rem);
+.container,
+.container-fluid {
+	padding-left: 5rem;
+	padding-right: 5rem;
+
+	@media screen and (max-width: $boo-sm) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
 }
 
-@media screen and (max-width: $boo-sm) {
-    .container {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--ff-secondary);
+	font-weight: 700;
+	line-height: calc(1em + 0.5rem);
 }
 
+a,
+p {
+	line-height: calc(1em + 0.5rem);
+}
+
+/* ● FONT SIZES FLUID ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+:root {
+	@include rfs("--fs-1", 1rem, 1.125rem, !important); //18px
+	@include rfs("--fs-2", 1.125rem, 1.25rem); //20px
+	@include rfs("--fs-3", 1.25rem, 1.625rem); //26px
+	@include rfs("--fs-4", 1.625rem, 2rem); //32px
+	@include rfs("--fs-5", 1.625rem, 2.125rem); //34px
+	@include rfs("--fs-6", 2rem, 2.5rem); //40px
+	@include rfs("--fs-7", 2.5rem, 3.25rem); //52px
+}
+
+/* ● BASIC STYLES CONTENT STRUCTURE ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+h1 {
+	font-size: var(--fs-7);
+	color: var(--c-primary);
+}
+
+h2 {
+	font-size: var(--fs-6);
+	color: var(--c-primary);
+}
+
+h3 {
+	font-size: var(--fs-5);
+}
 
 /* ● LAZYLOAD SCRIPT ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 img.lazy {
-    opacity: 0;
+	opacity: 0;
 }
 
 img:not(.initial) {
-    transition: opacity 1s;
+	transition: opacity 1s;
 }
 
 img.initial,
 img.loaded,
 img.error {
-    opacity: 1;
+	opacity: 1;
 }
 
 img:not([src]) {
-    visibility: hidden;
+	visibility: hidden;
+}
+
+/* ● BUTTONS ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+.btn {
+	text-decoration: none;
+	font-weight: 700;
+	padding: 0.6rem 1.5rem;
+	border: 2px solid transparent;
+
+	&:hover,
+	&:focus {
+		color: initial;
+	}
+
+	&--primary {
+		background: var(--c-primary);
+		color: white;
+
+		&:hover,
+		&:focus {
+			background: var(--c-primary-dark);
+			color: white;
+		}
+	}
+
+	&--secondary {
+		background: var(--c-secondary);
+		color: white;
+
+		&:hover,
+		&:focus {
+			background: var(--c-secondary-dark);
+			color: white;
+		}
+	}
+
+	&--outline {
+		&.btn--primary {
+			border: 2px solid var(--c-primary);
+			background: transparent;
+			color: var(--c-primary);
+			&:hover,
+			&:focus {
+				background: var(--c-primary);
+				color: white;
+			}
+		}
+
+		&.btn--secondary {
+			border: 2px solid var(--c-secondary);
+			background: transparent;
+			color: var(--c-secondary);
+			&:hover,
+			&:focus {
+				background: var(--c-secondary);
+				color: white;
+			}
+		}
+	}
 }

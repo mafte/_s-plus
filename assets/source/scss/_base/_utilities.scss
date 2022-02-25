@@ -1,83 +1,89 @@
-@use 'sass:math';
+@use "sass:math";
+
+@function pow($value, $pow: 1) {
+	@return if($pow==0, 1, $value * pow($value, $pow - 1));
+}
+
+@function rounded($value, $precision: 1) {
+	$pow10: pow(10, $precision);
+	@return math.div(round($value * $pow10), $pow10);
+}
 
 /* ●●● MIXINGS
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-@mixin visually-hidden{
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+@mixin visually-hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
 }
 
-@function pow($value, $pow: 1) {
-    @return if($pow==0, 1, $value * pow($value, $pow - 1));
+@mixin col($col-num: "") {
+	@if ($col-num == 12) {
+		flex: 0 0 100%;
+		max-width: 100%;
+	} @else if ($col-num == "") {
+		flex-basis: 0;
+		flex-grow: 1;
+		min-width: 0;
+		max-width: 100%;
+	} @else if($col-num == "auto") {
+		flex: 0 0 auto;
+		width: auto;
+		max-width: 100%;
+	} @else {
+		flex: 0 0 rounded(math.div(100%, 12), 2) * $col-num;
+		max-width: rounded(math.div(100%, 12), 2) * $col-num;
+	}
 }
 
-@function rounded($value, $precision: 1) {
-    $pow10: pow(10, $precision);
-    @return math.div(round($value * $pow10), $pow10);
+@mixin select_style {
+	background: white;
+	border: 1px solid var(--c-primary);
+	box-sizing: border-box;
+	border-radius: 2px;
+	padding: 0.5rem 1rem;
+	appearance: none;
+	position: relative;
+	background-image: var(--icon-arrow-down);
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center right 16px;
 }
-
-@mixin col($col-num:12) {
-
-    @if ($col-num == 12) {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }@else{
-        flex: 0 0 rounded(math.div(100%, 12), 2) * $col-num;
-        max-width: rounded(math.div(100%, 12), 2) * $col-num;
-    }
-
-}
-
-@mixin select_style{
-    background: white;
-    border: 1px solid var(--c-primary);
-    box-sizing: border-box;
-    border-radius: 2px;
-    padding: .5rem 1rem;
-    appearance: none;
-    position: relative;
-    background-image: var(--icon-arrow-down);
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center right 16px;
-}
-
 
 /* ●●● UTILITIES
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 .position-relative {
-    position: relative !important;
+	position: relative !important;
 }
 
 .position-static {
-    position: static !important;
+	position: static !important;
 }
 
 /* ● ALIGN ELEMENTS WITH FLEX ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 .cent-xy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .cent-x {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .cent-y {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 /* ● ACCESIBILITY ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
@@ -88,79 +94,76 @@
 // }
 
 .js-focus-visible :focus:not(.focus-visible) {
-    outline: none;
+	outline: none;
 }
 
 .js-focus-visible .focus-visible {
-    outline: 2px solid #E15C59 !important;
+	outline: 2px solid #e15c59 !important;
 }
 
 .js-focus-visible .focus-visible.btn-link {
-    display: inline;
+	display: inline;
 }
 
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
-    @include visually-hidden;
+	@include visually-hidden;
 }
 
 .stretched-link::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
 }
 
 .skip-link {
-    background: gray;
-    padding: 0.8rem;
-    width: 100%;
-    display: block;
-    text-align: center;
-    color: black;
-    font-size: 1.3rem;
-    position: fixed;
-    top: 0;
-    z-index: 10;
+	background: gray;
+	padding: 0.8rem;
+	width: 100%;
+	display: block;
+	text-align: center;
+	color: black;
+	font-size: 1.3rem;
+	position: fixed;
+	top: 0;
+	z-index: 10;
 
-    &:focus-within,
-    &:focus {
-        color: white;
-        background: gray;
-    }
+	&:focus-within,
+	&:focus {
+		color: white;
+		background: gray;
+	}
 }
 
 .sr-tooltip-text {
+	&:not(:focus-visible):not(:focus):not(:hover) {
+		.sr-tooltip-text--item {
+			position: absolute !important;
+			width: 1px !important;
+			height: 1px !important;
+			padding: 0 !important;
+			margin: -1px !important;
+			overflow: hidden !important;
+			clip: rect(0, 0, 0, 0) !important;
+			white-space: nowrap !important;
+			border: 0 !important;
+		}
+	}
 
-    &:not(:focus-visible):not(:focus):not(:hover) {
-        .sr-tooltip-text--item {
-            position: absolute !important;
-            width: 1px !important;
-            height: 1px !important;
-            padding: 0 !important;
-            margin: -1px !important;
-            overflow: hidden !important;
-            clip: rect(0, 0, 0, 0) !important;
-            white-space: nowrap !important;
-            border: 0 !important;
-        }
-    }
-
-    .sr-tooltip-text--item {
-        position: absolute;
-        width: max-content;
-        transform: translateX(-50%);
-        font-size: 14px;
-        text-align: left;
-        background: black;
-        padding: 0.4rem;
-        border-radius: 5px;
-        bottom: -1.5rem;
-        left: 50%;
-    }
-
+	.sr-tooltip-text--item {
+		position: absolute;
+		width: max-content;
+		transform: translateX(-50%);
+		font-size: 14px;
+		text-align: left;
+		background: black;
+		padding: 0.4rem;
+		border-radius: 5px;
+		bottom: -1.5rem;
+		left: 50%;
+	}
 }
-
