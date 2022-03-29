@@ -3,7 +3,8 @@ const fs = require("fs"); /* Permite leer y escribir archivos en el SO. Ocupado 
 
 //CSS
 const sass = require('gulp-sass')(require('sass'));
-var CleanCSS = require('clean-css'); /* Optimize and clean CSS */
+var CleanCSSNEW = require('clean-css'); /* Optimize and clean CSS */
+const cleanCSS = require('gulp-clean-css');
 const autoPrefixer = require("gulp-autoprefixer"); /* Añade prefijos a propiedades css */
 
 //JS
@@ -66,21 +67,13 @@ function css() {
         .src("assets/source/scss/style.scss")
 
         .pipe(sourcemaps.init())
-
         .pipe(plumber())
         .pipe(sass().on("error", sass.logError))
-
-        .pipe(autoPrefixer(config.BrowserList)).on('data', function (file) {
-            if (config.clean_css) {
-                const buferFile = new CleanCSS(options).minify(file.contents)
-                return file.contents = Buffer.from(buferFile.styles)
-            }
-            return file;
-        })
-
+        .pipe(autoPrefixer(config.BrowserList))
+        .pipe(cleanCSS(options))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest("."))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
 }
 
 /*	|> SCSS - auto import 
