@@ -144,6 +144,13 @@ wp-content/resources/
 # Ignore plugins
 wp-content/plugins/hello.php
 
+# ONLY DEV
+all-in-one-wp-migration
+All-In-One-WP-Migration-With-Import-master
+ai1wm-backups
+local-by-flywheel-live-link-helper.php
+be-media-from-production
+
 # Ignore themes
 wp-content/themes/twenty*/
 
