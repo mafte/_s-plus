@@ -1,27 +1,29 @@
 const gulp = require("gulp");
-const sass = require('gulp-sass')(require('sass'));
-/* Optimize and clean CSS */
-var CleanCSS = require('clean-css');
-/* Comprime JavaScript */
-const uglify = require("gulp-uglify");
-/* Concatena archivos */
-const concat = require("gulp-concat");
-/* Fuente de mapas para SASS */
-const sourcemaps = require("gulp-sourcemaps");
-/* Permite el manejo de los errores */
-const plumber = require("gulp-plumber");
-/* Añade prefijos en css */
-const autoPrefixer = require("gulp-autoprefixer");
-/* Analiza la calidad de js */
-const jshint = require("gulp-jshint");
-/* Mantiene actualizado el navegador con los cambios */
-const browserSync = require("browser-sync");
-// import all files from folder
-const concatFilenames = require("gulp-concat-filenames");
-// For generate icons sheets
-const fs = require("fs");
+const fs = require("fs"); /* Permite leer y escribir archivos en el SO. Ocupado para generar stylesheets de iconos */
 
+//CSS
+const sass = require('gulp-sass')(require('sass'));
+var CleanCSS = require('clean-css'); /* Optimize and clean CSS */
+const autoPrefixer = require("gulp-autoprefixer"); /* Añade prefijos a propiedades css */
+
+//JS
+const uglify = require("gulp-uglify"); /* Comprime JavaScript */
+const jshint = require("gulp-jshint"); /* Analiza la calidad de js */
+const babel = require("gulp-babel"); /* Genera codigo JS compatible con ES5 */
+
+//Tools
+const browserSync = require("browser-sync"); /* Mantiene actualizado el navegador con los cambios */
+const concat = require("gulp-concat"); /* Concatena archivos */
+const sourcemaps = require("gulp-sourcemaps"); /* Fuente de mapas para SASS y JS */
+const plumber = require("gulp-plumber"); /* Permite el manejo de los errores */
+const concatFilenames = require("gulp-concat-filenames"); // import all files from folder
+const lineec = require('gulp-line-ending-corrector'); // Consistent Line Endings for non UNIX systems.
+
+//IMG
 const svgToMiniDataURI = require("mini-svg-data-uri");
+
+
+
 
 /*------------------------------------------------------*\
 	|| BASIC SETUP
@@ -29,10 +31,12 @@ const svgToMiniDataURI = require("mini-svg-data-uri");
 
 var config = {
     urlBrowserSync: "pruebas.local",
-    vAutoprofixer: "last 1 versions",
+    BrowserList: "last 1 versions",
     pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
     pathExportIconsSheet: "assets/source/scss/_base/",
-    clean_css: true
+    clean_css: true,
+    path_source_js: "assets/source/js",
+    path_dist_js: "assets/dist/js",
 };
 
 /*------------------------------------------------------*\
@@ -66,8 +70,8 @@ function css() {
         .pipe(plumber())
         .pipe(sass().on("error", sass.logError))
 
-        .pipe(autoPrefixer(config.vAutoprofixer)).on('data', function(file) {
-            if(config.clean_css){
+        .pipe(autoPrefixer(config.BrowserList)).on('data', function (file) {
+            if (config.clean_css) {
                 const buferFile = new CleanCSS(options).minify(file.contents)
                 return file.contents = Buffer.from(buferFile.styles)
             }
@@ -217,6 +221,47 @@ async function iconSh() {
 }
 
 /*------------------------------------------------------*\
+	|| JS TASK
+\*------------------------------------------------------*/
+
+function js() {
+
+    const vendors = [
+        // 'node_modules/jquery/dist/jquery.min.js',
+        // 'node_modules/lazyload/lazyload.min.js',
+    ]
+
+    let scripts = vendors.concat([
+        config.path_source_js + 'navigation.js',
+        config.path_source_js + 'smoothscroll.min.js',
+        config.path_source_js + 'tiny-slider.min.js',
+    ])
+    return gulp.src(scripts)
+        .pipe(sourcemaps.init())
+        .pipe(plumber())
+        .pipe(babel({
+            presets: [
+                [
+                    '@babel/preset-env', // Preset to compile your modern JS to ES5.
+                    {
+                        targets: {
+                            browsers: config.BrowserList
+                        } // Target browser list to support.
+                    }
+                ]
+            ]
+        }))
+        .pipe(concat("production.js"))
+        .pipe(lineec())
+        .pipe(gulp.dest(path_dist_js))
+        .pipe(uglify())
+        .pipe(lineec())
+        .pipe(concat("production.min.js"))
+        .pipe(sourcemaps.write(path_dist_js))
+        .pipe(gulp.dest(path_dist_js));
+}
+
+/*------------------------------------------------------*\
 	|| MAIN TASK
 \*------------------------------------------------------*/
 
@@ -236,9 +281,15 @@ function initAll() {
         watchEvents: ["change", "add", "unlink", "addDir", "unlinkDir"],
     });
 
-    gulp.watch(["assets/**/site/*.scss"], {events: ['add', 'unlink']}, scssSite);
-    gulp.watch(["assets/**/acf/blocks/*.scss"], {events: ['add', 'unlink']}, scssBlocks);
-    gulp.watch(["assets/**/acf/components/*.scss"],{events: ['add', 'unlink']}, scssComponents);
+    gulp.watch(["assets/**/site/*.scss"], {
+        events: ['add', 'unlink']
+    }, scssSite);
+    gulp.watch(["assets/**/acf/blocks/*.scss"], {
+        events: ['add', 'unlink']
+    }, scssBlocks);
+    gulp.watch(["assets/**/acf/components/*.scss"], {
+        events: ['add', 'unlink']
+    }, scssComponents);
 
     gulp.watch(["assets/source/icons/*.svg"], iconSh);
 
