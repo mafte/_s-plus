@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "browser-sync": "^2.27.7",
     "clean-css": "^5.2.4",
     "gulp": "^4.0.2",

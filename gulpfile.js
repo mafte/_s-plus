@@ -36,8 +36,8 @@ var config = {
     pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
     pathExportIconsSheet: "assets/source/scss/_base/",
     clean_css: true,
-    path_source_js: "assets/source/js",
-    path_dist_js: "assets/dist/js",
+    path_source_js: "assets/source/js/",
+    path_dist_js: "assets/dist/js/",
 };
 
 /*------------------------------------------------------*\
@@ -222,13 +222,17 @@ function js() {
     const vendors = [
         // 'node_modules/jquery/dist/jquery.min.js',
         // 'node_modules/lazyload/lazyload.min.js',
-    ]
-
-    let scripts = vendors.concat([
-        config.path_source_js + 'navigation.js',
         config.path_source_js + 'smoothscroll.min.js',
         config.path_source_js + 'tiny-slider.min.js',
-    ])
+    ]
+
+    const customs = [
+        config.path_source_js + 'navigation.js',
+        config.path_source_js + 'main.js',
+    ]
+
+    let scripts = vendors.concat(customs);
+
     return gulp.src(scripts)
         .pipe(sourcemaps.init())
         .pipe(plumber())
@@ -246,19 +250,19 @@ function js() {
         }))
         .pipe(concat("production.js"))
         .pipe(lineec())
-        .pipe(gulp.dest(path_dist_js))
+        .pipe(gulp.dest(config.path_dist_js))
         .pipe(uglify())
         .pipe(lineec())
         .pipe(concat("production.min.js"))
-        .pipe(sourcemaps.write(path_dist_js))
-        .pipe(gulp.dest(path_dist_js));
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest(config.path_dist_js));
 }
 
 /*------------------------------------------------------*\
 	|| MAIN TASK
 \*------------------------------------------------------*/
 
-exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh), css, initAll);
+exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh, js), css, initAll);
 
 
 function initAll() {
@@ -285,6 +289,9 @@ function initAll() {
     }, scssComponents);
 
     gulp.watch(["assets/source/icons/*.svg"], iconSh);
+
+    gulp.watch(["assets/source/js/*.js"], js);
+
 
     gulp.watch(
         [
