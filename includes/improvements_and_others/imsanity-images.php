@@ -37,8 +37,8 @@ function sp_imsanity_handle_upload($params) {
 		// figure out where the upload is coming from.
 		//$source = sp_imsanity_get_source();
 
-		$maxw             = SP_IMSANITY_DEFAULT_MAX_WIDTH;
-		$maxh             = SP_IMSANITY_DEFAULT_MAX_HEIGHT;
+		$maxw             = _S_PLUS_IMSANITY_DEFAULT_MAX_WIDTH;
+		$maxh             = _S_PLUS_IMSANITY_DEFAULT_MAX_HEIGHT;
 		//$max_width_height = sp_imsanity_get_max_width_height($source);
 
 		// if (is_array($max_width_height) && 2 === count($max_width_height)) {
@@ -48,7 +48,7 @@ function sp_imsanity_handle_upload($params) {
 		list($oldw, $oldh) = getimagesize($oldpath);
 
 		if (($oldw > $maxw + 1 && $maxw > 0) || ($oldh > $maxh + 1 && $maxh > 0)) {
-			$quality = SP_IMSANITY_DEFAULT_QUALITY;
+			$quality = _S_PLUS_IMSANITY_DEFAULT_QUALITY;
 
 			$ftype       = sp_imsanity_quick_mimetype($oldpath);
 			$orientation = sp_imsanity_get_orientation($oldpath, $ftype);

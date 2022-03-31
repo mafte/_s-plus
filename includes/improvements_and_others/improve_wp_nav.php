@@ -8,7 +8,7 @@
  * @param int      $depth Depth of menu item. Used for padding.
  * @return stdClass An object of wp_nav_menu() arguments.
  */
-function twentytwenty_add_sub_toggles_to_main_menu($args, $item, $depth) {
+function _s_plus_add_sub_toggles_to_main_menu($args, $item, $depth) {
 
     // Add sub menu toggles to the Expanded Menu with toggles.
     if (isset($args->show_toggles) && $args->show_toggles) {
@@ -42,4 +42,4 @@ function twentytwenty_add_sub_toggles_to_main_menu($args, $item, $depth) {
     return $args;
 }
 
-add_filter('nav_menu_item_args', 'twentytwenty_add_sub_toggles_to_main_menu', 10, 3);
+add_filter('nav_menu_item_args', '_s_plus_add_sub_toggles_to_main_menu', 10, 3);

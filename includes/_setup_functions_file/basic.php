@@ -1,7 +1,7 @@
 <?php
-if (!defined('_S_VERSION')) {
+if (!defined('_S_PLUS_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.0');
+    define('_S_PLUS_VERSION', '1.0.0');
 }
 
 if (!function_exists('_s_plus_setup')) :
@@ -117,9 +117,9 @@ add_filter('intermediate_image_sizes', function ($sizes) {
 //If Imsanity plugin is not actived
 if (!defined('IMSANITY_VERSION')) {
 
-    define('SP_IMSANITY_DEFAULT_MAX_WIDTH', 2000);
-    define('SP_IMSANITY_DEFAULT_MAX_HEIGHT', 0);
-    define('SP_IMSANITY_DEFAULT_QUALITY', 90);
+    define('_S_PLUS_IMSANITY_DEFAULT_MAX_WIDTH', 2000);
+    define('_S_PLUS_IMSANITY_DEFAULT_MAX_HEIGHT', 0);
+    define('_S_PLUS_IMSANITY_DEFAULT_QUALITY', 90);
 
     include(get_template_directory() . '/includes/improvements_and_others/imsanity-images.php');
 
