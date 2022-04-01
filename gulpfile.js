@@ -305,6 +305,4 @@ function initAll() {
 
     gulp.watch(["*.php", "template-parts/**/*.php", "ACF/**/*.php"], reload);
 
-    //gulp.watch('assets/js/*.js', js)
-
 };
