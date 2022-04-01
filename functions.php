@@ -11,22 +11,22 @@
 /*------------------------------------------------------*\
 	|| BASIC SETUP
 \*------------------------------------------------------*/
-include_once('includes/_setup_functions_file/basic.php');
+include_once('includes/_setup/basic.php');
 
 
 /*	|> Widgets
 \*------------------------------------------------------*/
-// include_once('includes/_setup_functions_file/widgets.php');
+// include_once('includes/_setup/widgets.php');
 
 
 /*	|> Enqueue scripts and styles.
 \*------------------------------------------------------*/
-include_once('includes/_setup_functions_file/scripts_and_styles.php');
+include_once('includes/_setup/scripts_and_styles.php');
 
 
 /*	|> Helpers loop functions
 \*------------------------------------------------------*/
-include_once('includes/improvements_and_others/helpers_loop.php');
+include_once('includes/others/helpers_loop.php');
 
 
 /*------------------------------------------------------*\
@@ -35,7 +35,7 @@ include_once('includes/improvements_and_others/helpers_loop.php');
 
 /*	|> load/save custom path
 \*------------------------------------------------------*/
-include_once('includes/improvements_and_others/acf.php');
+include_once('includes/others/acf.php');
 
 
 /*	|> Styles admin
@@ -109,10 +109,10 @@ function my_acf_blocks_init() {
 	|| CUSTOMIZER
 \*------------------------------------------------------*/
 
-//include_once('includes/improvements_and_others/settings_customizer.php');
+//include_once('includes/others/settings_customizer.php');
 
 /*------------------------------------------------------*\
 	|| IMPROVE: WP MENU NAV
 \*------------------------------------------------------*/
 
-include_once('includes/improvements_and_others/improve_wp_nav.php');
+include_once('includes/others/improve_wp_nav.php');

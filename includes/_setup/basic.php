@@ -121,7 +121,7 @@ if (!defined('IMSANITY_VERSION')) {
     define('_S_PLUS_IMSANITY_DEFAULT_MAX_HEIGHT', 0);
     define('_S_PLUS_IMSANITY_DEFAULT_QUALITY', 90);
 
-    include(get_template_directory() . '/includes/improvements_and_others/imsanity-images.php');
+    include(get_template_directory() . '/includes/others/imsanity-images.php');
 
     // Add filter to hook into uploads.
     add_filter('wp_handle_upload', 'sp_imsanity_handle_upload');
@@ -149,16 +149,16 @@ add_action('after_setup_theme', '_s_plus_content_width', 0);
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/includes/improvements_and_others/template-functions.php';
+require get_template_directory() . '/includes/others/template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/includes/improvements_and_others/customizer.php';
+require get_template_directory() . '/includes/others/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 if (defined('JETPACK__VERSION')) {
-    require get_template_directory() . '/includes/improvements_and_others/jetpack.php';
+    require get_template_directory() . '/includes/others/jetpack.php';
 }
