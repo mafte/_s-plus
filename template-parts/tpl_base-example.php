@@ -1,5 +1,5 @@
 <?php
 /*
-Template Name: Full-width layout
+Template Name: Full-Width (Example)
 Template Post Type: page
 */
