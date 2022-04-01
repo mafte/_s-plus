@@ -60,12 +60,12 @@ $ npm install
 
 `_s_plus` viene con un conjunto de tareas listas para que funcionen casi al instante.
 
-Solo edita el archivo `gulpfile.js` busca el apartado **BASIC SETUP** y establece en `urlBrowserSync` la url local de tu proyecto. Los demas campos son opcionales; sientete libre de editarlos a tus necesidades.
+Solo edita el archivo `gulpfile.js` busca el apartado **`BASIC SETUP`** y establece en el parametro `urlBrowserSync` la url local de tu proyecto. Los demas campos son opcionales; sientete libre de editarlos a tus necesidades.
 
 **De manera general estas son las tareas:**
 
 * SASS/CSS: compila, optimiza y minifica.
-* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar mas scripts para concatener abre `gulpfile.js` y busca el apartado **JS TASK**.
-* ICONS: Al agregar iconos .svg al directorio `/assets/source/icons` genera automaticamente una hoja de estilo para usarlos sencillo.
-* AUTO-RELOAD: Injectado de hojas de estilo automatica, recarga de paginas cuando cambia las plantillas .php.
-* AUTO-IMPORT: Se generan de manera automatica los `import` de los archivos `SASS` alojados en determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, `/assets/source/scss/acf/components` y `/assets/source/scss/site`
+* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar mas scripts para concatener abre `gulpfile.js` y busca el apartado **`JS TASK`**.
+* ICONS: Al agregar iconos .svg al directorio `/assets/source/icons` genera automaticamente una hoja de estilo para usarlos rapidamente.
+* AUTO-RELOAD: Injecta css automaticamente, recarga el navegador al guardar los archivos de plantillas `.php`.
+* AUTO-IMPORT: No te preocupes de estar pendiente de importar cada archivo `sass` agregado. Esta tarea genera de manera automatica los `import` de todos los archivos que estan dentro de determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, `/assets/source/scss/acf/components`y`/assets/source/scss/site`.
