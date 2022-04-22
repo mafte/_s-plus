@@ -1,71 +1,91 @@
 /* ● BASIC GRID - Inspired in Bootstrap ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-.container, .container-fluid {
+.container,
+.container-fluid {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
     margin-right: auto;
     margin-left: auto;
 }
-.container{
+
+.container {
     max-width: var(--max-width-container);
 }
 
 .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
 
-.col,
-.col-auto,
-.col-12,
-.col-6,
-.col-4,
-.col-3,
-.col-1 {
-    position: relative;
+.row>* {
+    box-sizing: border-box;
+    flex-shrink: 0;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-top: var(--bs-gutter-y);
 }
 
 .col {
-    flex-basis: 0;
-    flex-grow: 1;
-    min-width: 0;
-    max-width: 100%
+    flex: 1 0 0%;
 }
 
 .col-auto {
     flex: 0 0 auto;
     width: auto;
-    max-width: 100%
 }
 
 .col-3 {
-    flex: 0 0 25%;
-    max-width: 25%
+    flex: 0 0 auto;
+    width: 25%;
 }
 
 .col-4 {
-    flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+
+.col-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
 }
 
 .col-6 {
-    flex: 0 0 50%;
-    max-width: 50%
+    flex: 0 0 auto;
+    width: 50%;
 }
 
 .col-12 {
-    flex: 0 0 100%;
-    max-width: 100%
+    flex: 0 0 auto;
+    width: 100%;
 }
 
-.cols-24>* {
-    margin-bottom: 1.5rem;
+//GAP
+
+.g-0,
+.gx-0 {
+    --bs-gutter-x: 0;
+}
+
+.g-0,
+.gy-0 {
+    --bs-gutter-y: 0;
+}
+
+.g-32 {
+    --bs-gutter-y: 2rem;
+    --bs-gutter-x: 2rem;
+}
+
+.gy-24{
+    --bs-gutter-y: 1.5rem;
 }
 
 .cols-w-180>* {
@@ -108,7 +128,6 @@
 }
 
 
-/* Large */
 @media screen and (max-width: 992px) {
 
     .col-3,
@@ -118,7 +137,6 @@
     }
 }
 
-/* Small */
 
 @media screen and (max-width: 576px) {
 
