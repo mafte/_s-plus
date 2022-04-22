@@ -118,14 +118,15 @@ var lazyLoadInstance = new LazyLoad({
 
 /* ● TINY-SLIDER ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-if (document.querySelector(".my-slider")) {
-	var slider = tns({
-		container: '.my-slider',
-		items: 1,
-		slideBy: 'page',
-		autoplay: true
-	});
-}
+// if (document.querySelector(".my-slider")) {
+// 	var slider = tns({
+// 		container: '.my-slider',
+// 		items: 1,
+// 		slideBy: 'page',
+// 		autoplay: true
+// 	});
+// }
+
 
 /* ● SMOOTH SCROLL ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
