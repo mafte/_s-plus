@@ -3,7 +3,7 @@ const fs = require("fs"); /* Permite leer y escribir archivos en el SO. Ocupado 
 
 //CSS
 const sass = require('gulp-sass')(require('sass'));
-var CleanCSSNEW = require('clean-css'); /* Optimize and clean CSS */
+//var CleanCSSNEW = require('clean-css'); /* Optimize and clean CSS */
 const cleanCSS = require('gulp-clean-css');
 const autoPrefixer = require("gulp-autoprefixer"); /* Añade prefijos a propiedades css */
 
@@ -22,8 +22,7 @@ const lineec = require('gulp-line-ending-corrector'); // Consistent Line Endings
 
 //IMG
 const svgToMiniDataURI = require("mini-svg-data-uri");
-
-
+const { series } = require("gulp");
 
 
 /*------------------------------------------------------*\
@@ -217,23 +216,38 @@ async function iconSh() {
 	|| JS TASK
 \*------------------------------------------------------*/
 
-function js() {
+function js_vendors() {
 
     const vendors = [
         // 'node_modules/jquery/dist/jquery.min.js',
         // 'node_modules/lazyload/lazyload.min.js',
         config.path_source_js + 'smoothscroll.min.js',
-        config.path_source_js + 'tiny-slider.min.js',
+        // config.path_source_js + 'tiny-slider.min.js',
+        config.path_source_js + 'navigation.js',
     ]
 
     const customs = [
-        config.path_source_js + 'navigation.js',
-        config.path_source_js + 'main.js',
+        config.path_dist_js + 'production.min.js',
     ]
 
     let scripts = vendors.concat(customs);
 
     return gulp.src(scripts)
+        .pipe(sourcemaps.init())
+        .pipe(plumber())
+        .pipe(concat("production.min.js"))
+        .pipe(lineec())
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest(config.path_dist_js))
+}
+
+function js_custom() {
+
+    const customs = [
+        config.path_source_js + 'main.js',
+    ]
+
+    return gulp.src(customs)
         .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(babel({
@@ -251,18 +265,17 @@ function js() {
         .pipe(concat("production.js"))
         .pipe(lineec())
         .pipe(gulp.dest(config.path_dist_js))
+        .pipe(concat("production.min.js"))
         .pipe(uglify())
         .pipe(lineec())
-        .pipe(concat("production.min.js"))
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest(config.path_dist_js));
+        .pipe(gulp.dest(config.path_dist_js))
 }
 
 /*------------------------------------------------------*\
 	|| MAIN TASK
 \*------------------------------------------------------*/
 
-exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh, js), css, initAll);
+exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh, js_custom), js_vendors, css, initAll);
 
 
 function initAll() {
@@ -290,8 +303,7 @@ function initAll() {
 
     gulp.watch(["assets/source/icons/*.svg"], iconSh);
 
-    gulp.watch(["assets/source/js/*.js"], js);
-
+    gulp.watch(["assets/source/js/*.js"], series(js_custom, js_vendors));
 
     gulp.watch(
         [
