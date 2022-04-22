@@ -38,6 +38,9 @@ body {
 	color: var(--c-body-primary);
 	background-color: var(--c-body-bg); // 2
 	-webkit-text-size-adjust: 100%; // 3
+	-moz-text-size-adjust: 100%; // 3
+	text-size-adjust:100%; // 3
+
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
 
 	text-rendering: optimizeSpeed; // Improve CSS reset
