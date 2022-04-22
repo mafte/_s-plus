@@ -12,6 +12,36 @@
 /* ●●● MIXINGS
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
+@mixin m_query($width, $type: 'max'){
+    $width_value: trim_unit($width);
+	$width_unit: unit($width);
+	$width_pixels: 0;
+	$width_bp: 0;
+	$rem_value: 16;
+
+	//Detect unit
+	@if $width_unit == 'rem' or $width_unit == 'em'{
+		$width_pixels: $width_value * $rem_value;
+	}@else{
+		$width_pixels: $width_value;
+	}
+
+	@if $type == 'max'{
+
+		//@see https://getbootstrap.com/docs/5.1/layout/breakpoints/#max-width
+		$width_bp: math.div($width_pixels - .02, $rem_value) * 1em;
+		@media screen and (max-width: $width_bp){
+			@content;
+		}
+	}@else{
+		$width_bp: math.div($width_pixels, $rem_value) * 1em;
+		@media screen and (min-width: $width){
+			@content;
+		}
+	}
+	
+}
+
 @mixin visually-hidden {
 	position: absolute !important;
 	width: 1px !important;
@@ -38,8 +68,8 @@
 		width: auto;
 		max-width: 100%;
 	} @else {
-		flex: 0 0 rounded(math.div(100%, 12), 2) * $col-num;
-		max-width: rounded(math.div(100%, 12), 2) * $col-num;
+		flex: 0 0 8.33% * $col-num;
+		max-width: 8.33% * $col-num;
 	}
 }
 
@@ -63,6 +93,14 @@
 		@content;
 	}
 }
+
+// Lists
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+@mixin list-unstyled {
+	padding-left: 0;
+	list-style: none;
+  }
 
 /* ●●● UTILITIES
 ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
