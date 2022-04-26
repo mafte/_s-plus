@@ -329,24 +329,24 @@ function initAll() {
 
 async function replace_slug_theme() {
     if (config.slug_theme != "slug-theme") {
-        return gulp.src(['*.*', '*/**/*.*', '!node_modules/**/*.*'], {
+        return gulp.src(['*.*', '*/**/*.*', '!node_modules/**/*.*', '!gulpfile.js'], {
             base: "./"
         })
 
-        .pipe(gulp_replace("'slug-theme2'", "'" + config.slug_theme + "'")) //Replace text-domain in all files
+        .pipe(gulp_replace("'_s_plus'", "'" + config.slug_theme + "'")) //Replace text-domain in all files
 
-        .pipe(gulp_replace('slug_theme2_',
+        .pipe(gulp_replace('_s_plus_',
             (config.slug_theme.replace(/-/g, '_')).toLowerCase() + '_')) //Replace prefixed name functions
 
-        .pipe(gulp_replace("Text Domain: slug-theme2", "Text Domain: " + config.slug_theme)) //Replace Text Domain in style.css
+        .pipe(gulp_replace("Text Domain: _s_plus", "Text Domain: " + config.slug_theme)) //Replace Text Domain in style.css
 
-        .pipe(gulp_replace(' slug_theme2',
+        .pipe(gulp_replace(' _s_plus',
             (" " + config.slug_theme.replace(/-/g, '_')).toLowerCase())) //Replace DocBlocks name
 
-        .pipe(gulp_replace('slug-theme2-',
+        .pipe(gulp_replace('_s_plus-',
             config.slug_theme.toLowerCase() + '-')) //Replace prefixed handles
 
-        .pipe(gulp_replace('SLUG_THEME2_',
+        .pipe(gulp_replace('_S_PLUS_',
             (config.slug_theme.replace(/-/g, '_')).toUpperCase() + '_')) //Replace CONSTANS names
 
         .pipe(gulp.dest('./'));
