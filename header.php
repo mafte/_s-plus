@@ -39,7 +39,7 @@
 								<h1 class="site-title">
 									<a href="<?php echo esc_url(home_url('/')); ?>" rel="home" aria-label="<?php echo get_bloginfo('name'); ?>">
 										<?php if (!get_theme_mod('custom_logo')) : ?>
-											<img class="site-header__logo" src="<?php echo asset_url('placeholder-logo.svg') ?>" alt="">
+											<img class="site-header__logo" src="<?php echo sp_asset_url('placeholder-logo.svg') ?>" alt="">
 										<?php else : ?>
 											<?php echo sp_get_img__resp('medium', get_theme_mod('custom_logo'), 'site-header__logo'); ?>
 										<?php endif; ?>
@@ -50,7 +50,7 @@
 								<p class="site-title">
 									<a href="<?php echo esc_url(home_url('/')); ?>" rel="home" aria-label="<?php echo get_bloginfo('name'); ?>">
 										<?php if (!get_theme_mod('custom_logo')) : ?>
-											<img class="site-header__logo" src="<?php echo asset_url('placeholder-logo.svg') ?>" alt="">
+											<img class="site-header__logo" src="<?php echo sp_asset_url('placeholder-logo.svg') ?>" alt="">
 										<?php else : ?>
 											<?php echo sp_get_img__resp('medium', get_theme_mod('custom_logo'), 'site-header__logo'); ?>
 										<?php endif; ?>
