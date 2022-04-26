@@ -19,6 +19,8 @@ const sourcemaps = require("gulp-sourcemaps"); /* Fuente de mapas para SASS y JS
 const plumber = require("gulp-plumber"); /* Permite el manejo de los errores */
 const concatFilenames = require("gulp-concat-filenames"); // import all files from folder
 const lineec = require('gulp-line-ending-corrector'); // Consistent Line Endings for non UNIX systems.
+const gulp_replace = require('gulp-replace'); //Busca y reemplaza string en los archivos.
+
 
 //IMG
 const svgToMiniDataURI = require("mini-svg-data-uri");
@@ -31,6 +33,7 @@ const { series } = require("gulp");
 
 var config = {
     urlBrowserSync: "pruebas.local",
+    slug_theme: "slug-theme",
     BrowserList: "last 1 versions",
     pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
     pathExportIconsSheet: "assets/source/scss/_base/",
@@ -318,3 +321,42 @@ function initAll() {
     gulp.watch(["*.php", "template-parts/**/*.php", "ACF/**/*.php"], reload);
 
 };
+
+
+/*------------------------------------------------------*\
+	|| REPLACE SLUG THEME
+\*------------------------------------------------------*/
+
+async function replace_slug_theme() {
+    if (config.slug_theme != "slug-theme") {
+        return gulp.src(['*.*', '*/**/*.*', '!node_modules/**/*.*'], {
+            base: "./"
+        })
+
+        .pipe(gulp_replace("'slug-theme2'", "'" + config.slug_theme + "'")) //Replace text-domain in all files
+
+        .pipe(gulp_replace('slug_theme2_',
+            (config.slug_theme.replace(/-/g, '_')).toLowerCase() + '_')) //Replace prefixed name functions
+
+        .pipe(gulp_replace("Text Domain: slug-theme2", "Text Domain: " + config.slug_theme)) //Replace Text Domain in style.css
+
+        .pipe(gulp_replace(' slug_theme2',
+            (" " + config.slug_theme.replace(/-/g, '_')).toLowerCase())) //Replace DocBlocks name
+
+        .pipe(gulp_replace('slug-theme2-',
+            config.slug_theme.toLowerCase() + '-')) //Replace prefixed handles
+
+        .pipe(gulp_replace('SLUG_THEME2_',
+            (config.slug_theme.replace(/-/g, '_')).toUpperCase() + '_')) //Replace CONSTANS names
+
+        .pipe(gulp.dest('./'));
+    } else {
+        console.log("*------------------------------------------------- *");
+        console.log("* Please add your slug-theme into gulp file first  *");
+        console.log("*------------------------------------------------- *");
+        return true
+    }
+    
+};
+
+exports.replace_slug_theme = replace_slug_theme;
