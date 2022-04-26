@@ -39,10 +39,10 @@ Clone or download this repository, change its name to something else (like, say,
 1. Search for`'_s_plus'` (inside single quotations) to capture the text domain and replace with:`'theme-name'`.
 2. Search for`_s_plus_` to capture all the functions names and replace with:`theme_name_`.
 3. Search for`Text Domain: _s_plus` in`style.css` and replace with:`Text Domain: theme-name`.
-4. Search for`<code>`&nbsp;_s__plus `</code>` (with a space before it) to capture DocBlocks and replace with:`<code>`&nbsp;theme__name `</code>`
+4. Search for <code>&nbsp;_s_plus</code> (with a space before it) to capture DocBlocks and replace with:<code>&nbsp;theme_name</code>
 5. Search for`_s_plus-` to capture prefixed handles and replace with:`theme-name-`.
 6. Search for`_S_PLUS_` (in uppercase) to capture constants and replace with:`THEME_NAME_`.
-7. Opcionalmente, para el prefijo de las utilidades, reemplace`sp_` por`theme-name`.
+7. Opcionalmente, para el prefijo de las utilidades, reemplace`sp_` por`theme_name`.
 
 Then, update the stylesheet header in `style.css`, the links in `footer.php` with your own information and rename `_s.pot` from `languages` folder to use the theme's slug.
 
