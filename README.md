@@ -1,27 +1,27 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
+[](https://travis-ci.org/Automattic/_s)
 
 _s-plus
 =======
 
-¡Hola! soy un tema para Wordpress llamado `_s-plus`. Lo se, soy muy parecido a `_s` o tambien `underscore`, y esto es asi porque soy basado en `_s` pero con muchas funcionalidades avanzadas que una vez me examines podran ahorrarte algo de tiempo valioso.
+¡Hola! soy un tema para Wordpress llamado `_s-plus`. Lo se, soy muy parecido a `_s` o tambien `underscore`, y esto es asi porque estoy basado en `_s` pero, con muchas funcionalidades avanzadas que una vez examines podran ahorrarte algo de tiempo valioso.
 
-La idea detras de este tema es ser una base solida para creacion de temas personalizados en conjunto de ACF. No intenta dar un estilo prestablecido, ni ser unicamente dirigido a un tipo de proyecto. Cuando lo instales notaras que practicamente esta en blanco, bueno aunque sea en el aspecto visual.
+La idea detras de este tema es ser una base solida para creacion de temas personalizados en conjunto de ACF. No intenta dar un estilo prestablecido, ni ser unicamente dirigido a un tipo de proyecto. Cuando lo instales notaras que practicamente esta en blanco(bueno, aunque sea en el aspecto visual).
 
 Estas son las funcionalidades mas destacadas:
 
-* Flujo de trabajo automatizado con `gulp`, listo para usar.
+* Flujo de trabajo automatizado con`gulp`, listo para usar.
 * Estructura de archivos mejorada.
-* Compatibilidad de `smooth-scroll` para todos los navegadores(incluyendo Safari).
+* Compatibilidad de`smooth-scroll` para todos los navegadores(incluyendo Safari).
 * Mejoras en el manejo de imagenes.
 * Configuraciones generales facilmente cambiables.
-* Facil uso de implementacion personalizada del `customizer`
-* Funciones utilitarias para el `loop`.
-* Facil implementacion de **ACF** (Blocks y Flexible Content).
-* Integracion de grid basica
-* Construccion funcional de menu responsive.
+* Facil uso de implementacion personalizada del`customizer`
+* Funciones utilitarias para el`loop`.
+* Facil implementacion de**ACF** (Blocks y Flexible Content).
+* Integracion de grid básica
+* Construcción funcional de menu responsive.
 * Mejoras de accesibilidad
-* Ayudantes para `sass/css`.
-* Y casi todas las demas mejoras incluidas en `_s`.
+* Ayudantes para`sass/css`.
+* Y casi todas las demas mejoras incluidas en`_s`.
 
 Instalación
 ------------
@@ -36,15 +36,15 @@ Instalación
 
 Clone or download this repository, change its name to something else (like, say, `theme-name`), and then you'll need to do a six-step find and replace on the name in all the templates.
 
-1. Search for `'_s_plus'` (inside single quotations) to capture the text domain and replace with: `'theme-name'`.
-2. Search for `_s_plus_` to capture all the functions names and replace with: `theme_name_`.
-3. Search for `Text Domain: _s_plus` in `style.css` and replace with: `Text Domain: theme-name`.
-4. Search for <code>&nbsp;_s__plus</code> (with a space before it) to capture DocBlocks and replace with: <code>&nbsp;theme__name</code>
-5. Search for `_s_plus-` to capture prefixed handles and replace with: `theme-name-`.
-6. Search for `_S_PLUS_` (in uppercase) to capture constants and replace with: `THEME_NAME_`.
-7. Opcionalmente, para el prefijo de las utilidades, reemplace `sp_` por `theme-name`.
+1. Search for`'_s_plus'` (inside single quotations) to capture the text domain and replace with:`'theme-name'`.
+2. Search for`_s_plus_` to capture all the functions names and replace with:`theme_name_`.
+3. Search for`Text Domain: _s_plus` in`style.css` and replace with:`Text Domain: theme-name`.
+4. Search for`<code>`&nbsp;_s__plus `</code>` (with a space before it) to capture DocBlocks and replace with:`<code>`&nbsp;theme__name `</code>`
+5. Search for`_s_plus-` to capture prefixed handles and replace with:`theme-name-`.
+6. Search for`_S_PLUS_` (in uppercase) to capture constants and replace with:`THEME_NAME_`.
+7. Opcionalmente, para el prefijo de las utilidades, reemplace`sp_` por`theme-name`.
 
-Then, update the stylesheet header in `style.css`, the links in `footer.php` with your own information and rename `_s.pot` from `languages` folder to use the theme's slug. Next, update or delete this readme.
+Then, update the stylesheet header in `style.css`, the links in `footer.php` with your own information and rename `_s.pot` from `languages` folder to use the theme's slug.
 
 ### Setup
 
@@ -56,7 +56,7 @@ $ npm install
 
 ## Caracteristicas
 
-#### Tareas automatizadas con gulp
+### Tareas automatizadas con gulp
 
 `_s_plus` viene con un conjunto de tareas listas para que funcionen casi al instante.
 
@@ -65,7 +65,64 @@ Solo edita el archivo `gulpfile.js` busca el apartado **`BASIC SETUP`** y establ
 **De manera general estas son las tareas:**
 
 * SASS/CSS: compila, optimiza y minifica.
-* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar mas scripts para concatener abre `gulpfile.js` y busca el apartado **`JS TASK`**.
-* ICONS: Al agregar iconos .svg al directorio `/assets/source/icons` genera automaticamente una hoja de estilo para usarlos rapidamente.
-* AUTO-RELOAD: Injecta css automaticamente, recarga el navegador al guardar los archivos de plantillas `.php`.
-* AUTO-IMPORT: No te preocupes de estar pendiente de importar cada archivo `sass` agregado. Esta tarea genera de manera automatica los `import` de todos los archivos que estan dentro de determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, `/assets/source/scss/acf/components`y`/assets/source/scss/site`.
+* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar mas scripts para concatener abre`gulpfile.js` y busca el apartado**`JS TASK`**.
+* ICONS: Al agregar iconos`.svg` al directorio`/assets/source/icons` genera automaticamente una hoja de estilo para usarlos rapidamente.
+* AUTO-RELOAD: Injecta css automaticamente, recarga el navegador al guardar los archivos de plantillas`.php`.
+* AUTO-IMPORT: No te preocupes de estar pendiente de importar cada archivo`sass` agregado. Esta tarea genera de manera automatica los`import` de todos los archivos que estan dentro de determinados directorios. Los directorios son:`/assets/source/scss/acf/blocks`,`/assets/source/scss/acf/components`y`/assets/source/scss/site`.
+
+### Estructura de archivos mejorada
+
+Aunque este punto puede ser subjetivo, menos siempre es mejor. La organizacion de archivos tiene como fin encontrar todo en el lugar adecuado. A veces es abrumador tener lleno el directorio raiz del tema, es por eso que los archivos comunes de Wordpress(single.php, page.php, 404.php, etc) estan dentro de template-parts, y siguen funcionando como se debe porque el index.php raiz hace el trabajo. Si no te gusta esto. Sencillamente regresa los archivos al directorio raiz y listo. El funcionamiento de jerarquia de plantillas de Wordpress sigue igual.
+
+### Compatibilidad de `smooth-scroll`
+
+Al momento de escribir esto, la mayoria de los navegadores modernos tiene soporte nativo, pero para los que no, se ha agregado un polyfill para solucionarlo. Si deseas un offset para compensar el menu sticky(si lo usas), ubica main.js y cambia la variable offset para el numero de pixeles de offset.
+
+### Mejoras en el manejo de imagenes.
+
+Entre las mejoras estan:
+
+1. Uso de lazyload library para cargar imagenes segun sea necesaria. Actualmente la mayoria de los navegadores soportan lazyload atributo, pero lazyload library posee un mejor rendimiento.
+2. Se creo una funcion llamada sp_get_img__resp, la cual permite solicitar una imagen segun ID y tamaño con notacion responsive. Si lazyload esta activo en la cola de scripts de WP, entonces se adaptara para que funcione sin problemas. Cabe destacar que dicha funcion puede ser utilizada en el loop, sin no se pasa ID se tomara el actual
+3. En caso de errores con los ids de imagenes, o tamaños entonces se tomara una accion alternativa para evitar falta de imagenes. Por ejemplo si no existe la imagen solicitada entonces se generara una imagen placeholder en su lugar.
+4. Se ha añadido de forma campacta la funcionalidad de Insanity plugin, el cual redimensionara automaticamente cualquier imagen que sea mayor de 2000px de ancho. Si se detecta que insanity esta activo, entonces dicha funcionalidad se desactiva para utilices el plugin completo sin conflictos.
+5. Se han desactivado el escalado de imagenes predeterminado de Wordpress. Wordpress actualmente reescalara las imagenes mayores que 2000px, y a dicha imagen se le asignara el post-fijo scaled. Esta imagen ahora sera la imagen de tamaño full, pero la imagen original se conservara aunque no se ha utilizada. Sabras que todo esto es espacio desperdiciado.
+6. Se han desactivado los tamaños de imagen intermedios, los cuales es posible que no los utilices, ni sepas que se generan. Puedes volverlos a activar si deseas.
+
+### Facil configuración
+
+Las configuraciones comunes de Wordpress como Widgets, tamaños de imagenes, menus, estilos y scripts han sido ordenados para ser accesibles por su archivo y con facilidad. Ve a includes/_setup/ ahi comprueba tu mismo.
+
+Facil implementacion de customizer
+
+El tema trae una plantilla de configuracion para agregar campos al customizer. Ve a includes/others/settings_customizer.php. De forma predeterminada la inclusion de ese archivo esta deshabilitado; habilitalo en functions.php en el apartado *|> Widgets*.
+
+### Funciones utilitarias
+
+En el dia a dia hay tareas repetitivas que funcionan mejor con funciones para mejorar la legibilidad del codigo y el mantenimiento. Son poco pero que te ayudaran mucho.
+
+* **sp_get_img__url()** Obtiene la url de imagen dado un ID y tamaño de imagen. ID no es obligatorio, se tomara el ID del elemento actual dentro del loop.
+* **sp_get_img__alt()** Obtiene el texto alternativo de una imagen dado el ID. ID no es obligatorio, se tomara el ID del elemento actual dentro del loop
+* **sp_get_cat__name()** Obtiene el nombre de la primer categoria asignada al elemento actual dentro del loop.
+* **sp_get_cat__url()** Obtiene la url de la primer categoria asignada al elemento actual dentro del loop.
+* **sp_the_excerpt()** Obtiene el extracto de la publicacion actual dado un limite de palabras.
+* **sp_get_img__resp()** Genera un elemento html de imagen completo con notacion responsive dado el tamaño de imagen e ID. El ID no es obligatorio.
+* **sp_asset_url()** Obtiene la ruta del recurso especificado, ubicado en assets/source/img/.
+
+### Uso con Advanced Custom Fields(ACF)
+
+El tema esta listo para usar flexible content y acf blocks, juntos o separados. Ademas trae ejemplos de componentes y bloques para un rapido comienzo. Recuerda que es necesario tener ACF Pro y una vez instales el tema, sincroniza los archivos json para poder ver los grupos de campos personalizados en el panel de ACF.
+
+De forma predeterminado los dos metodos de construccion estan activados. Si solamente se desea utilizar un metodo, por orden y comodida puede eliminar el otro.
+
+* **Dejar solamente ACF Blocks**
+
+Elimina la carpeta `ACF/flexible-content/`, y los siguientes archivos: `ACF/acf-generate-layout.php` y `ACF/acf-generate-page.php`.
+
+* **Dejar solamente flexible content**
+
+Elimina la carpeta `ACF/blocks`. Ahora en el archivo `includes/others/acf.php` busca el apartado ***|> Register blocks for ACF*** y eliminalo.
+
+#### Notas sobre flexible content
+
+De forma predeterminada la estructura para flexible content es anidada; consta primero de columnas y luego componentes Add column > Add component. Dicha estructura es util para composiciones complejas. Si solo deseas utilizar el enfoque clasico donde se añaden componentes directamente entonces tendras que hacer unos pequeños cambios para adaptarlo.
