@@ -267,7 +267,7 @@ if (!function_exists('sp_get_img__resp')) {
     }
 }
 
-if (!function_exists('sp_asset_url')) :
+if (!function_exists('sp_asset_url')) {
 
     /**
      * Generate a URL for a asset
@@ -277,5 +277,4 @@ if (!function_exists('sp_asset_url')) :
 
         return esc_url("{$template_uri}/assets/source/img/{$asset}");
     }
-
-endif;
+}

@@ -22,11 +22,24 @@ h6 {
 	font-family: var(--ff-secondary);
 	font-weight: 700;
 	line-height: calc(1em + 0.5rem);
+	margin-bottom: 0;
 }
 
 a,
 p {
 	line-height: calc(1em + 0.5rem);
+}
+
+a img{
+	transition: .3s opacity;
+
+	@include hover{
+		opacity: .8;
+	}
+}
+
+.site{
+	overflow: hidden;
 }
 
 /* ● FONT SIZES FLUID ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */

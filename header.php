@@ -33,7 +33,7 @@
 			<div class="container py-16">
 				<div class="row cent-y">
 					<div class="col">
-						<div class="site-header__branding">
+						<div class="site-header__branding cent-y">
 
 							<?php if (is_front_page()) : ?>
 								<h1 class="site-title">
