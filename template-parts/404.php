@@ -14,46 +14,30 @@ get_header();
 <main id="primary" class="site-main">
 
 	<section class="error-404 not-found">
-		<header class="page-header">
-			<h1 class="page-title"><?php esc_html_e('Oops! That page can&rsquo;t be found.', '_s_plus'); ?></h1>
-		</header><!-- .page-header -->
-
-		<div class="page-content">
-			<p><?php esc_html_e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', '_s_plus'); ?></p>
-
-			<?php
-			get_search_form();
-
-			the_widget('WP_Widget_Recent_Posts');
-			?>
-
-			<div class="widget widget_categories">
-				<h2 class="widget-title"><?php esc_html_e('Most Used Categories', '_s_plus'); ?></h2>
-				<ul>
-					<?php
-					wp_list_categories(
-						array(
-							'orderby'    => 'count',
-							'order'      => 'DESC',
-							'show_count' => 1,
-							'title_li'   => '',
-							'number'     => 10,
-						)
-					);
-					?>
-				</ul>
-			</div><!-- .widget -->
-
-			<?php
-			/* translators: %1$s: smiley */
-			$s_plus_archive_content = '<p>' . sprintf(esc_html__('Try looking in the monthly archives. %1$s', '_s_plus'), convert_smilies(':)')) . '</p>';
-			the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$s_plus_archive_content");
-
-			the_widget('WP_Widget_Tag_Cloud');
-			?>
-
-		</div><!-- .page-content -->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="error-404__wrapper">
+						<div class="error-404__error-number">
+							<span class="number">404</span>
+							<span class="text"><?php _e('error', '_s_plus'); ?></span>
+						</div>
+						<div class="error-404__error-message">
+							<h1 class="title"><?php _e('Oops! That page cant be found', '_s_plus') ?></h1>
+							<p class="message">Don't worry, <a href="<?php echo esc_url(home_url('/')); ?>">go back to the page and continue browsing.</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section><!-- .error-404 -->
+	<div class="error-404__ornament-wrapper">
+		<div class="error-404__sun"></div>
+		<div class="error-404__ornament">
+			<?php echo file_get_contents(sp_asset_url('ornament-404.svg')); ?>
+			<div class="error-404__ornament-base"></div>
+		</div>
+	</div>
 
 </main><!-- #main -->
 
