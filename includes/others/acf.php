@@ -1,5 +1,8 @@
 <?php
 
+define('ACF_NESTED', true); //Allow flexible content nested
+
+
 /*	|> Custom save
 \*------------------------------------------------------*/
 add_filter('acf/settings/save_json', 'my_acf_json_save_point');
@@ -28,34 +31,6 @@ function my_acf_json_load_point($paths) {
     return $paths;
 }
 
-if (!function_exists('acf_slugify')) {
-    /**
-     * Returns a slug friendly string.
-     *
-     * @date    24/12/17
-     * @since   5.6.5
-     *
-     * @param   string $str The string to convert.
-     * @param   string $glue The glue between each slug piece.
-     * @return  string
-     */
-    function acf_slugify($str = '', $glue = '-') {
-        $raw  = $str;
-        $slug = str_replace(array('_', '-', '/', ' '), $glue, strtolower(remove_accents($raw)));
-        $slug = preg_replace("/[^A-Za-z0-9" . preg_quote($glue) . "]/", '', $slug);
-
-        /**
-         * Filters the slug created by acf_slugify().
-         *
-         * @since 5.11.4
-         *
-         * @param string $slug The newly created slug.
-         * @param string $raw  The original string.
-         * @param string $glue The separator used to join the string into a slug.
-         */
-        return apply_filters('acf/slugify', $slug, $raw, $glue);
-    }
-}
 
 /*	|> Styles admin
 \*------------------------------------------------------*/
@@ -97,11 +72,36 @@ add_action('admin_head', function () {
 \*------------------------------------------------------*/
 
 function filter_slug_id($field) {
-    if (function_exists('acf_slugify')) {
-        return acf_slugify($field);
-    }
+    return sp_acf_slugify($field);
 }
 add_filter('acf/update_value/name=html_anchor', 'filter_slug_id', 10, 1);
+
+/**
+ * Returns a slug friendly string.
+ *
+ * @date    24/12/17
+ * @since   5.6.5
+ *
+ * @param   string $str The string to convert.
+ * @param   string $glue The glue between each slug piece.
+ * @return  string
+ */
+function sp_acf_slugify($str = '', $glue = '-') {
+    $raw  = $str;
+    $slug = str_replace(array('_', '-', '/', ' '), $glue, strtolower(remove_accents($raw)));
+    $slug = preg_replace("/[^A-Za-z0-9" . preg_quote($glue) . "]/", '', $slug);
+
+    /**
+     * Filters the slug created by acf_slugify().
+     *
+     * @since 5.11.4
+     *
+     * @param string $slug The newly created slug.
+     * @param string $raw  The original string.
+     * @param string $glue The separator used to join the string into a slug.
+     */
+    return apply_filters('acf/slugify', $slug, $raw, $glue);
+}
 
 /*	|> Register blocks for ACF
 \*------------------------------------------------------*/
