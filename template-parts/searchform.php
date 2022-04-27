@@ -7,6 +7,7 @@
  *
  * @link https://developer.wordpress.org/reference/functions/wp_unique_id/
  *
+ * @package _s_plus
  */
 
 /*
