@@ -126,7 +126,7 @@ var lazyLoadInstance = new LazyLoad({// Your custom settings go here
 
 /* ● SMOOTH SCROLL ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-var navLinks = document.querySelectorAll('a[href^="#"]');
+var navLinks = document.querySelectorAll('a[href^="#"]:not(.skip-link)');
 Array.from(navLinks).forEach(function (navLink) {
   var href = navLink.getAttribute('href');
 

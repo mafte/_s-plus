@@ -130,8 +130,9 @@ var lazyLoadInstance = new LazyLoad({
 
 /* ● SMOOTH SCROLL ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
+
 const navLinks = document.querySelectorAll(
-	'a[href^="#"]'
+	'a[href^="#"]:not(.skip-link)'
 );
 
 Array.from(navLinks).forEach(navLink => {
