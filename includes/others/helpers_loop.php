@@ -77,7 +77,7 @@ if (!function_exists('sp_the_excerpt')) {
     }
 }
 
-if (!function_exists('sp_get_img__resp')) {
+if (!function_exists('sp_img_resp')) {
 
     /**
      * Get responsive images with height and width attributes.
@@ -88,7 +88,7 @@ if (!function_exists('sp_get_img__resp')) {
      * @param  boolean $lazyload  Native attribute for lazyload. Optional. By default it is TRUE.
      * @return string  Image responsive with attributes.
      */
-    function sp_get_img__resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
+    function sp_img_resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
         /* If the $image_id is equal to 0, then we get the id of the current post */
         if ($image_id === 0) {
@@ -267,12 +267,15 @@ if (!function_exists('sp_get_img__resp')) {
     }
 }
 
-if (!function_exists('sp_asset_url')) {
+if (!function_exists('sp_get_asset')) {
 
     /**
-     * Generate a URL for a asset
+     * Generate a URL for a assets folder
+     * 
+     * @param  string $asset  Asset name
+     * @return string  Url asset
      */
-    function sp_asset_url($asset) {
+    function sp_get_asset($asset) {
         $template_uri = get_template_directory_uri();
 
         return esc_url("{$template_uri}/assets/source/img/{$asset}");

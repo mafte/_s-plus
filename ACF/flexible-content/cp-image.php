@@ -17,7 +17,7 @@ if ($cp->html_anchor) {
         <div class="row">
             <div class="col">
 
-                <?php echo sp_get_img__resp('large', $imageID, 'cp-image__item img-fluid-fix'); ?>
+                <?php echo sp_img_resp('large', $imageID, 'cp-image__item img-fluid-fix'); ?>
 
             </div>
         </div>

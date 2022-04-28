@@ -34,7 +34,7 @@ get_header();
 	<div class="error-404__ornament-wrapper">
 		<div class="error-404__sun"></div>
 		<div class="error-404__ornament">
-			<?php echo file_get_contents(sp_asset_url('ornament-404.svg')); ?>
+			<?php echo file_get_contents(sp_get_asset('ornament-404.svg')); ?>
 			<div class="error-404__ornament-base"></div>
 		</div>
 	</div>

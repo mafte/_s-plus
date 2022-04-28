@@ -49,12 +49,12 @@ $ gulp replace_slug_theme
 
 Con eso bastara. El metodo estandar trata de hacerlo manual, ejecutamos los siguientes pasos asegurandote que la sensibilidad de mayusculas/minisculas este activada a la hora de buscar y reemplazar con tu editor de codigo favorito.
 
-1. Search for`'_s_plus'` (inside single quotations) to capture the text domain and replace with:`'theme-name'`.
-2. Search for`_s_plus_` to capture all the functions names and replace with:`theme_name_`.
-3. Search for`Text Domain: _s_plus` in`style.css` and replace with:`Text Domain: theme-name`.
+1. Search for `'_s_plus'` (inside single quotations) to capture the text domain and replace with:`'theme-name'`.
+2. Search for `_s_plus_` to capture all the functions names and replace with:`theme_name_`.
+3. Search for `Text Domain: _s_plus` in`style.css` and replace with:`Text Domain: theme-name`.
 4. Search for ` _s_plus` (with a space before it) to capture DocBlocks and replace with: ` theme_name`.
-5. Search for`_s_plus-` to capture prefixed handles and replace with:`theme-name-`.
-6. Search for`_S_PLUS_` (in uppercase) to capture constants and replace with:`THEME_NAME_`.
+5. Search for `_s_plus-` to capture prefixed handles and replace with:`theme-name-`.
+6. Search for `_S_PLUS_` (in uppercase) to capture constants and replace with:`THEME_NAME_`.
 
 Opcionalmente, para el prefijo de las utilidades, reemplace`sp_` por`theme_name_`.
 
@@ -87,7 +87,7 @@ Al momento de escribir esto, la mayoria de los navegadores modernos tiene soport
 Entre las mejoras estan:
 
 1. Uso de [vainilla-lazyload library](https://github.com/verlok/vanilla-lazyload) para la carga de imagenes. Actualmente la mayoria de los navegadores soportan lazyload atributo, pero vainilla-lazyload library demuestra un mejor rendimiento, con acceso de otras increibles opciones.
-2. Se creo una funcion llamada `sp_get_img__resp`, la cual permite solicitar una imagen dado ID y tamaño de imagen, con notacion responsive. Si vainilla-lazyload library esta activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas. Cabe destacar que dicha funcion puede ser utilizada en el `WP Loop`, por defecto tomara el ID del elemento actual del loop.
+2. Se creo una funcion llamada `sp_img_resp`, la cual permite solicitar una imagen dado ID y tamaño de imagen, con notacion responsive. Si vainilla-lazyload library esta activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas. Cabe destacar que dicha funcion puede ser utilizada en el `WP Loop`, por defecto tomara el ID del elemento actual del loop.
 3. En caso de errores, producidos por ID inexistentes o tamaños de imagen incorrectos, se tomaran decisiones alternativas automaticamente para evitar errores visuales. Por ejemplo si no existe la imagen solicitada entonces se generara una imagen placeholder en su lugar.
 4. Se ha añadido de forma campacta la funcionalidad de [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). En resumen, reescalara automaticamente imagenes mayores a 2000px de ancho. Si se detecta que Imsanity esta activo, entonces dicha funcionalidad se desactiva para utilices el plugin en su lugar, sin conflictos.
 5. Se han deshabilitado el escalado de imagenes predeterminado de Wordpress. Un poco de contexto: Wordpress actualmente reescalara las imagenes mayores que 2000px, y se le asignara el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen `full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original, aunque nunca mas sea utilizada. Un gran espacio desperdiciado.
@@ -110,8 +110,8 @@ En el dia a dia hay tareas repetitivas que se hacen mejor con funciones para mej
 * **sp_get_cat__name()** Obtiene el nombre de la primer categoria asignada al post actual dentro del loop.
 * **sp_get_cat__url()** Obtiene la url de la primer categoria asignada al post actual dentro del loop.
 * **sp_the_excerpt()** Obtiene el extracto de la publicacion actual dado un limite de palabras.
-* **sp_get_img__resp()** Genera un elemento html de imagen completo con notacion responsive, dado el tamaño de imagen e ID. El ID no es obligatorio.
-* **sp_asset_url()** Obtiene la ruta del recurso especificado, ubicado en `assets/source/img/`.
+* **sp_img_resp()** Genera un elemento html de imagen completo con notacion responsive, dado el tamaño de imagen e ID. El ID no es obligatorio.
+* **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en `assets/source/img/`.
 
 ### Uso con Advanced Custom Fields(ACF)
 
@@ -127,7 +127,7 @@ Elimina la carpeta `ACF/flexible-content/`, y los siguientes archivos: `ACF/acf-
 
 Elimina la carpeta `ACF/blocks`. Ahora en el archivo `includes/others/acf.php` busca el apartado ***`|> Register blocks for ACF`*** y eliminalo.
 
-##### Notas sobre flexible content
+#### Notas sobre flexible content
 
 De forma predeterminada la estructura para **`flexible content`** es anidada; consta primero de columnas y luego componentes (`Add column > Add component`). Dicha estructura es util para composiciones complejas. Si solo deseas utilizar el enfoque clasico donde se añaden componentes (`Add component`)directamente entonces tendras que hacer unos pequeños cambios para adaptarlo.
 
