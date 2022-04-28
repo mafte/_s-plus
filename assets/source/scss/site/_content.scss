@@ -1,15 +1,86 @@
-.box-green {
-    background: lightgreen;
-    height: 400px;
-}
+/* ●●● BASIC RICH TEXT STYLES
+❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
-.box-red {
-    background: lightcoral;
-    height: 400px;
+.basic-content-styles {
 
-}
+	*+* {
+		margin-top: 1rem;
+	}
 
-.box-blue {
-    height: 400px;
-    background: lightblue;
+	a {
+		transition: 0.3s all;
+
+		&:hover,
+		&:focus {
+			text-decoration-thickness: 4px;
+		}
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {}
+
+	h2 {}
+
+	h3 {}
+
+	h4 {}
+
+	h5 {}
+
+	h6 {
+		text-transform: uppercase;
+	}
+
+	/* IMAGES */
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	figure {
+		img {}
+
+		figcaption {
+			text-align: center;
+			padding: 5px 3rem;
+			font-size: 14px;
+		}
+	}
+
+	/* LISTS */
+
+	li::marker {
+		color: var(--c-primary);
+		font-weight: 500;
+	}
+
+	ul {
+		li {}
+	}
+
+	ol {
+		li {}
+	}
+
+	/* BLOCKQUOTE */
+
+	blockquote {
+		p:first-of-type {}
+	}
+
+	/* IFRAMES */
+
+	iframe {
+		width: 100%;
+	}
+
+	/* TABLES */
+
+	table,
+	tr,
+	td {}
 }
