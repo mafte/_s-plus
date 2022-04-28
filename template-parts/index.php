@@ -16,15 +16,24 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="main-content" class="site-main">
 
 
     <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="box-1"></div>
+            </div>
+            <div class="col">
+                <div class="box-2"></div>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <?php
 
-                // echo sp_get_img__resp('large', 83, 'Optional');
+                // echo sp_img_resp('large', 83, 'Optional');
 
                 ?>
 
@@ -116,13 +125,13 @@ get_header();
 
         <?php
         // Tamaño de imagen correcto, id de imagen correcto
-        // echo sp_get_img__resp('full', 83, 'Optional');
+        // echo sp_img_resp('full', 83, 'Optional');
         // // Tamaño de imagen incorrecto, id de imagen correcto
-        // echo sp_get_img__resp('esto-falso', 83, 'Optional');
+        // echo sp_img_resp('esto-falso', 83, 'Optional');
         // // Tamaño de imagen correcto, id de imagen incorrecto
-        // echo sp_get_img__resp('medium', 833, 'Optional');
+        // echo sp_img_resp('medium', 833, 'Optional');
         // // Tamaño de imagen incorrecto, id de imagen incorrecto
-        // echo sp_get_img__resp('esto-falso', 833, 'Optional');
+        // echo sp_img_resp('esto-falso', 833, 'Optional');
 
 
 
