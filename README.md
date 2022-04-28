@@ -15,7 +15,7 @@ Estas son las funcionalidades mas destacadas:
 * Mejoras en el manejo de imagenes.
 * Configuraciones generales accesibles.
 * Una base solida para agregar opciones al `customizer`
-* Funciones utilitarias para el`WP Loop`.
+* Funciones utilitarias para el `WP Loop`.
 * Facil implementacion de **ACF** (Gutenbergs Blocks y Flexible Content).
 * Integracion de grid básica
 * Construcción funcional de menu responsive.
@@ -51,12 +51,12 @@ Con eso bastara. El metodo estandar trata de hacerlo manual, ejecutamos los sigu
 
 1. Search for `'_s_plus'` (inside single quotations) to capture the text domain and replace with:`'theme-name'`.
 2. Search for `_s_plus_` to capture all the functions names and replace with:`theme_name_`.
-3. Search for `Text Domain: _s_plus` in`style.css` and replace with:`Text Domain: theme-name`.
-4. Search for ` _s_plus` (with a space before it) to capture DocBlocks and replace with: ` theme_name`.
+3. Search for `Text Domain: _s_plus` in `style.css` and replace with:`Text Domain: theme-name`.
+4. Search for ` _s_plus` (with a space before it) to capture DocBlocks and replace with:` theme_name`.
 5. Search for `_s_plus-` to capture prefixed handles and replace with:`theme-name-`.
 6. Search for `_S_PLUS_` (in uppercase) to capture constants and replace with:`THEME_NAME_`.
 
-Opcionalmente, para el prefijo de las utilidades, reemplace`sp_` por`theme_name_`.
+Opcionalmente, para el prefijo de las utilidades, reemplace `sp_` por `theme_name_`.
 
 ## Caracteristicas
 
@@ -69,10 +69,10 @@ Solo edita el archivo `gulpfile.js` busca el apartado **`BASIC SETUP`** y establ
 **De manera general estas son las tareas:**
 
 * SASS/CSS: compila, optimiza y minifica.
-* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar mas scripts para concatener abre`gulpfile.js` y busca el apartado**`JS TASK`**.
-* ICONS: Al agregar iconos`.svg` al directorio`assets/source/icons` se genera automaticamente una hoja de estilo para uso.
-* AUTO-RELOAD: Injecta CSS automaticamente, recarga el navegador al guardar los archivos de plantillas`.php`.
-* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada archivo`sass` nuevo. Esta tarea genera de manera automatica los`import` de todos los archivos que estan dentro de determinados directorios. Los directorios son:`/assets/source/scss/acf/blocks`,`/assets/source/scss/acf/components`y`/assets/source/scss/site`.
+* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar mas scripts para concatener abre `gulpfile.js` y busca el apartado **`JS TASK`**.
+* ICONS: Al agregar iconos `.svg` al directorio `assets/source/icons` se genera automaticamente una hoja de estilo para uso.
+* AUTO-RELOAD: Injecta CSS automaticamente, recarga el navegador al guardar los archivos de plantillas `.php`.
+* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada archivo `sass` nuevo. Esta tarea genera de manera automatica los`import` de todos los archivos que estan dentro de determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, `/assets/source/scss/acf/components` y `/assets/source/scss/site`.
 
 ### Estructura de archivos mejorada
 
@@ -86,11 +86,11 @@ Al momento de escribir esto, la mayoria de los navegadores modernos tiene soport
 
 Entre las mejoras estan:
 
-1. Uso de [vainilla-lazyload library](https://github.com/verlok/vanilla-lazyload) para la carga de imagenes. Actualmente la mayoria de los navegadores soportan lazyload atributo, pero vainilla-lazyload library demuestra un mejor rendimiento, con acceso de otras increibles opciones.
+1. Uso de[vainilla-lazyload library](https://github.com/verlok/vanilla-lazyload) para la carga de imagenes. Actualmente la mayoria de los navegadores soportan lazyload atributo, pero vainilla-lazyload library demuestra un mejor rendimiento, con acceso de otras increibles opciones.
 2. Se creo una funcion llamada `sp_img_resp`, la cual permite solicitar una imagen dado ID y tamaño de imagen, con notacion responsive. Si vainilla-lazyload library esta activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas. Cabe destacar que dicha funcion puede ser utilizada en el `WP Loop`, por defecto tomara el ID del elemento actual del loop.
 3. En caso de errores, producidos por ID inexistentes o tamaños de imagen incorrectos, se tomaran decisiones alternativas automaticamente para evitar errores visuales. Por ejemplo si no existe la imagen solicitada entonces se generara una imagen placeholder en su lugar.
-4. Se ha añadido de forma campacta la funcionalidad de [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). En resumen, reescalara automaticamente imagenes mayores a 2000px de ancho. Si se detecta que Imsanity esta activo, entonces dicha funcionalidad se desactiva para utilices el plugin en su lugar, sin conflictos.
-5. Se han deshabilitado el escalado de imagenes predeterminado de Wordpress. Un poco de contexto: Wordpress actualmente reescalara las imagenes mayores que 2000px, y se le asignara el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen `full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original, aunque nunca mas sea utilizada. Un gran espacio desperdiciado.
+4. Se ha añadido de forma campacta la funcionalidad de[Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). En resumen, reescalara automaticamente imagenes mayores a 2000px de ancho. Si se detecta que Imsanity esta activo, entonces dicha funcionalidad se desactiva para utilices el plugin en su lugar, sin conflictos.
+5. Se han deshabilitado el escalado de imagenes predeterminado de Wordpress. Un poco de contexto: Wordpress actualmente reescalara las imagenes mayores que 2000px, y se le asignara el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen`full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original, aunque nunca mas sea utilizada. Un gran espacio desperdiciado.
 6. Se han desactivado los tamaños de imagen intermedios, los cuales es posible que no los utilices, ni sepas que se generan. Puedes volverlos a activar si deseas.
 
 ### Facil configuración
@@ -111,7 +111,7 @@ En el dia a dia hay tareas repetitivas que se hacen mejor con funciones para mej
 * **sp_get_cat__url()** Obtiene la url de la primer categoria asignada al post actual dentro del loop.
 * **sp_the_excerpt()** Obtiene el extracto de la publicacion actual dado un limite de palabras.
 * **sp_img_resp()** Genera un elemento html de imagen completo con notacion responsive, dado el tamaño de imagen e ID. El ID no es obligatorio.
-* **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en `assets/source/img/`.
+* **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en`assets/source/img/`.
 
 ### Uso con Advanced Custom Fields(ACF)
 
@@ -135,3 +135,30 @@ De forma predeterminada la estructura para **`flexible content`** es anidada; co
 2. Entrar a `[BUILDER] PAGE`, activarlo y configurarlo para que se muestre en las paginas(o donde desees).
 3. En `includes/others/acf.php` establecer la constante **`ACF_NESTED`** en `false`.
 
+### Grid layout
+
+Trae integrada un sistema grid basado en Boostrap pero mucho mas compacto.
+
+### Menu responsive
+
+No necesitas invertir mucho tiempo en hacer el menu responsive. Solo agrega elementos al menu principal y en movil funcionara perfectamente. Viene preparado hasta tres niveles de profundidad. Si necesitas cambiar el breakpoint del menu ve a `assets/source/scss/site/header.scss` y cambia la variable **`$breakpoint_menu`**.
+
+### Mejoras de accesibilidad
+
+* Link Skip to Content
+* Sub menus del header accesibles desde el teclado
+* En menu responsive se añaden botones para la expansicion de sub-menus
+* Correcto etiquetado de elemento H1. En homepage el elemento h1 es el nombre del sitio, en el resto no.
+
+### Ayudantes de SASS
+
+_s_plus incluye una serie de mixins que una vez entiendas como utilizar el proceso sera mas facil. Estos son algunos de los mas relevantes:
+
+* **Propiedades responsives:** Con el mixin `interpolate` puedes utilizar propiedades responsives. Entre sus caracteristicas estan:
+  * Uso de diferentes unidades, puede ser rem, em o px.
+  * Implementar la propiedad `important` si es necesario
+  * Uso de unidades negativas. Util cuando necesitamos por ejemplo un margin de positivo a negativo o vicerversa por necesitades de diseño.
+  * Creacion de variables CSS.
+  * Se incluye la correccion para el funcionamiento en Safari
+  * Implementacion de media query en unidades em por buena practica.[Vea el motivo aqui.](https://zellwk.com/blog/media-query-units/)
+  * Incluye una serie de shorthands. Por ejemplo puedes utilizar los mixin font-size, margin(con todas su varientes), padding(con todas sus varientes) y rfs; esta ultima para cualquier otra propiedad.
