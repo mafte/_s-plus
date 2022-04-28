@@ -30,15 +30,19 @@ p {
 	line-height: calc(1em + 0.5rem);
 }
 
-a img{
-	transition: .3s opacity;
+a {
+	img {
+		transition: 0.3s opacity;
+	}
 
-	@include hover{
-		opacity: .8;
+	@include hover {
+		img {
+			opacity: 0.8;
+		}
 	}
 }
 
-.site{
+.site {
 	overflow: hidden;
 }
 
