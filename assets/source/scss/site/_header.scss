@@ -157,6 +157,10 @@ $breakpoint_menu: 992px;
 			padding: 2.4rem 2rem;
 		}
 
+		@include m_query($boo-sm) {
+			padding: 2rem;
+		}
+
 		/** Toggles buttons */
 		.ancestor-wrapper {
 			display: flex;
