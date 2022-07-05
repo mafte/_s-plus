@@ -153,24 +153,3 @@ img:not([src]) {
 		}
 	}
 }
-
-.box-1{
-	width: 100%;
-	height: 200px;
-	background-color: green;
-	@include col(6);
-
-	@include m_query($boo-lg, 'min'){
-		display: none;
-	}
-
-}
-
-.box-2{
-	width: 100%;
-	height: 200px;
-	background-color: blue;
-	@include m_query($boo-lg){
-		display: none;
-	}
-}
