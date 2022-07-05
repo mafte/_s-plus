@@ -128,7 +128,7 @@ if (!function_exists('sp_img_resp')) {
 
         if (!wp_get_attachment_image_url($image_id, $size)) {
 
-            /* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size. 
+            /* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size.
             This allows the correct presentation in the browser of the placeholder without sudden jumps. */
             return "<img class=\"{$class_css}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$sizes_img_widths[$size]['width']}\" height=\"" . round($sizes_img_widths[$size]['width'] / 1.77777777778)
                 . "\"/>";
@@ -212,7 +212,7 @@ if (!function_exists('sp_img_resp')) {
         array_multisort($aux, SORT_ASC, $sizes_img_filter);
 
         /**
-         * URLs GENERACION
+         * URLs GENERATION
          * ***************************************************
          */
 
@@ -271,7 +271,7 @@ if (!function_exists('sp_get_asset')) {
 
     /**
      * Generate a URL for a assets folder
-     * 
+     *
      * @param  string $asset  Asset name
      * @return string  Url asset
      */
@@ -279,5 +279,24 @@ if (!function_exists('sp_get_asset')) {
         $template_uri = get_template_directory_uri();
 
         return esc_url("{$template_uri}/assets/source/img/{$asset}");
+    }
+}
+
+if (!function_exists('sp_get_link_acf')) {
+    /**
+     * Generate hiperlink for acf link element.
+     *
+     * @param array $array_link
+     * @param string $class_css
+     *
+     * @return string HTML link element
+     */
+    function sp_get_link_acf($array_link, $class_css = "") {
+
+        if ($array_link) {
+            return "<a class=\"{$class_css}\" href=\"{$array_link['url']}\" target=\"{$array_link['target']}\">{$array_link['title']}</a>";
+        }
+
+        return null;
     }
 }
