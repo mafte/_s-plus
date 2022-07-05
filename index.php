@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Template used to redirect to the requested template. 
- * This is an additional step in order to take better advantage 
+ * Template used to redirect to the requested template.
+ * This is an additional step in order to take better advantage
  * of the order of the theme files.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/

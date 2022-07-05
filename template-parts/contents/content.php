@@ -12,8 +12,8 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php echo sp_get_img__resp('large', 0, 'optional-class'); ?>
-		<?php echo sp_get_img__resp('large', 83, 'optional-class'); ?>
+		<?php echo sp_img_resp('large', 0, 'optional-class'); ?>
+		<?php echo sp_img_resp('large', 83, 'optional-class'); ?>
 
 		<?php
 		if (is_singular()) :
