@@ -28,7 +28,7 @@ node_modules/
 /node_modules/
 jspm_packages/
 
-# Misc 
+# Misc
 nginx.conf
 local-phpinfo.php
 local-adminer-*
@@ -36,7 +36,7 @@ local-adminer-*
 # |> FILES
 ########################################
 
-# Packages 
+# Packages
 *.7z
 *.dmg
 *.gz
@@ -66,7 +66,7 @@ Thumbs.db
 # Compilers
 # ------------------------
 
-# SASS 
+# SASS
 **/.sass-cache
 **/.sass-cache/*
 **/.map
@@ -82,7 +82,7 @@ Thumbs.db
 # |> CODE EDITORS
 ########################################
 
-# Vim generated files 
+# Vim generated files
 *.un~
 
 # Codekit #
@@ -150,6 +150,11 @@ All-In-One-WP-Migration-With-Import-master
 ai1wm-backups
 local-by-flywheel-live-link-helper.php
 be-media-from-production
+wp-migrate-db-pro
+wp-migrate-db-pro-media-files
+wp-migrate-db-pro-theme-plugin-files
+wp-migrate-db-pro-compatibility.php
+wp-migrate-db
 
 # Ignore themes
 wp-content/themes/twenty*/
