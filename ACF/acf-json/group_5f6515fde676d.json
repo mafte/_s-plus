@@ -195,7 +195,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "page"
             }
         ]
     ],
@@ -208,5 +208,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643913405
+    "modified": 1657422303
 }
