@@ -282,21 +282,34 @@ if (!function_exists('sp_get_asset')) {
     }
 }
 
-if (!function_exists('sp_get_link_acf')) {
+if (!function_exists('sp_generate_link')) {
+
     /**
-     * Generate hiperlink for acf link element.
+     * Generate link from the information of the "[CP-INNER] Link"
      *
-     * @param array $array_link
-     * @param string $class_css
-     *
-     * @return string HTML link element
+     * @param  array  $arrayLink The input array from "[CP-INNER] Link".
+     * @param  string $classCSS  CSS classes. Optional.
+     * @return string Generated HTML link.
      */
-    function sp_get_link_acf($array_link, $class_css = "") {
+    function sp_generate_link($arrayLink, $classCSS = 'button') {
 
-        if ($array_link) {
-            return "<a class=\"{$class_css}\" href=\"{$array_link['url']}\" target=\"{$array_link['target']}\">{$array_link['title']}</a>";
+        if ($link = $arrayLink['link']) {
+
+            if ($link) {
+                $link_url    = $link['url'];
+                $link_title  = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+            }
+
+            $adaText = '';
+            $arrayLink = $arrayLink['ada'];
+            if ($arrayLink['add_ada_label']) {
+                $adaText = "aria-label=\"{$arrayLink['ada_label']}\"";
+            }
+
+            return "<a class=\"{$classCSS}\" href=\"{$link_url}\" {$adaText} target=\"{$link_target}\">{$link_title}</a>";
+        } else {
+            return NULL;
         }
-
-        return null;
     }
 }
