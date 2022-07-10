@@ -10,7 +10,17 @@ if (ACF_NESTED) {
             $page_builder = get_sub_field('page_builder');
 
             $file = ($flexibleContentPath . str_replace('_', '-', $layout)  . '.php');
-            if (file_exists($file)) {
+
+            if (file_exists($file) && get_sub_field('cp_hidden') != true) {
+                /* Attributes like ID and data-background */
+                $atts_globals = '';
+                if (get_sub_field('html_anchor')) {
+                    $atts_globals = 'id="' . get_sub_field('html_anchor') . '"';
+                }
+
+                if (get_sub_field('background') != 'c-none') {
+                    $atts_globals .= ' data-bg="' . get_sub_field('background') . '" ';
+                }
                 include($file);
             }
         endwhile;

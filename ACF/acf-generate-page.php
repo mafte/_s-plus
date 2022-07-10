@@ -15,7 +15,18 @@ if (have_rows('page_builder')) :
 
         $file = ($flexibleContentPath . str_replace('_', '-', $layoutPage)  . '.php');
 
-        if (file_exists($file)) {
+        if (file_exists($file) && $cp->cp_hidden != true) {
+
+            /* Attributes like ID and data-background */
+            $atts_globals = '';
+            if ($cp->html_anchor) {
+                $atts_globals = 'id="' . $cp->html_anchor . '"';
+            }
+
+            if ($cp->background != 'c-none') {
+                $atts_globals .= ' data-bg="' . $cp->background . '" ';
+            }
+
             include($file);
         }
     endwhile;

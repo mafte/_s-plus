@@ -1,15 +1,12 @@
 <?php
 //Get fields with $cp array or get_sub_field()
 // var_dump($cp);
-$html_anchor = '';
-if ($cp->html_anchor) {
-    $html_anchor = 'id="' . $cp->html_anchor . '"';
-}
+
 ?>
 
-<!-- ************************** CP-CONTENT  -->
+<!--  CP-CONTENT ************************** -->
 
-<section <?php echo $html_anchor; ?> class="cp-content <?php echo $cp->class_css; ?>">
+<section <?php echo $atts_globals; ?> class="cp-content <?php echo $cp->class_css; ?>">
 
     <div class="container">
         <div class="row">
@@ -21,4 +18,4 @@ if ($cp->html_anchor) {
 
 </section>
 
-<!--  CP-CONTENT ************************** -->
+<!-- ************************** CP-CONTENT  -->

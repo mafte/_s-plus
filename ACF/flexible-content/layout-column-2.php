@@ -14,7 +14,7 @@ if ($id_section != '') {
 ?>
 
 
-<div class="container <?php echo $class_css; ?>" <?php echo $id_section; ?>>
+<div <?php echo $atts_globals; ?> class="container <?php echo $class_css; ?>">
 
     <div class="row">
         <div <?php echo $id_columns[0]; ?> class="col-6 col-layout-1">
