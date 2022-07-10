@@ -27,16 +27,21 @@ $kbd-bg: white;
 	--body-line-height: 1.5;
 
 	//Colors
-	--c-primary: #10375C;
-	--c-secondary: #FF5722;
+	--c-primary: #011045;
+	--c-secondary: #871876;
+	--c-accent: #86BC25;
 
-	--c-primary-dark: #0D2C4A;
-	--c-secondary-dark: #B33D18;
+	--c-primary-dark: #020A29;
+	--c-secondary-dark: #610552;
+	--c-accent-dark: #406105;
 
-	--c-primary-light: #6A8AA8;
-	--c-secondary-light: #FFCBBA;
 
-	--c-body-primary: black;
+	--c-primary-light: #E0E5EB;
+	--c-secondary-light: #EBE0E9;
+	--c-accent-light: #E7EBE0;
+
+
+	--c-body-primary: var(--c-primary);
 	--c-body-secondary: #6A6A6A;
 
 	--c-body-bg: white;
