@@ -1,0 +1,186 @@
+.tns-outer {
+  padding: 0 !important
+}
+
+.tns-outer [hidden] {
+  display: none !important
+}
+
+.tns-outer [aria-controls],
+.tns-outer [data-action] {
+  cursor: pointer
+}
+
+.tns-slider {
+  transition: all var(--g-trans)
+}
+
+.tns-slider>.tns-item {
+  box-sizing: border-box
+}
+
+.tns-horizontal.tns-subpixel {
+  white-space: nowrap
+}
+
+.tns-horizontal.tns-subpixel>.tns-item {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal
+}
+
+.tns-horizontal.tns-no-subpixel:after {
+  content: '';
+  display: table;
+  clear: both
+}
+
+.tns-horizontal.tns-no-subpixel>.tns-item {
+  float: left
+}
+
+.tns-horizontal.tns-carousel.tns-no-subpixel>.tns-item {
+  margin-right: -100%
+}
+
+.tns-no-calc {
+  position: relative;
+  left: 0
+}
+
+.tns-gallery {
+  position: relative;
+  left: 0;
+  min-height: 1px
+}
+
+.tns-gallery>.tns-item {
+  position: absolute;
+  left: -100%;
+  transition: transform var(--g-trans), opacity var(--g-trans);
+}
+
+.tns-gallery>.tns-slide-active {
+  position: relative;
+  left: auto !important
+}
+
+.tns-gallery>.tns-moving {
+  transition: all 0.25s
+}
+
+.tns-autowidth {
+  display: inline-block
+}
+
+.tns-lazy-img {
+  transition: opacity 0.6s;
+  opacity: 0.6
+}
+
+.tns-lazy-img.tns-complete {
+  opacity: 1
+}
+
+.tns-ah {
+  transition: height 0s
+}
+
+.tns-ovh {
+  overflow: hidden
+}
+
+.tns-visually-hidden {
+  position: absolute;
+  left: -10000em
+}
+
+.tns-transparent {
+  opacity: 0;
+  visibility: hidden
+}
+
+.tns-fadeIn {
+  opacity: 1;
+  z-index: 0
+}
+
+.tns-normal,
+.tns-fadeOut {
+  opacity: 0;
+  z-index: -1
+}
+
+.tns-vpfix {
+  white-space: nowrap
+}
+
+.tns-vpfix>div,
+.tns-vpfix>li {
+  display: inline-block
+}
+
+.tns-t-subp2 {
+  margin: 0 auto;
+  width: 310px;
+  position: relative;
+  height: 10px;
+  overflow: hidden
+}
+
+.tns-t-ct {
+  width: calc(100% * 70 / 3);
+  position: absolute;
+  right: 0
+}
+
+.tns-t-ct:after {
+  content: '';
+  display: table;
+  clear: both
+}
+
+.tns-t-ct>div {
+  width: calc(100% / 70);
+  height: 10px;
+  float: left
+}
+
+
+/* ● Styles controls navigate ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+.tns-outer{
+  position: relative;
+}
+
+.tns-controls{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: calc(100% - 4rem);
+  display: flex;
+  justify-content: space-between;
+
+  button{
+    user-select: none;
+    color: transparent;
+    border: none;
+    filter: invert(1);
+    background-color: transparent;
+    --size: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: var(--size);
+    height: var(--size);
+    display: inline-block;
+    transition: var(--g-trans);
+    background-image: var(--icon-arrow);
+
+    &[data-controls="prev"]{
+      transform: scale(-1);
+    }
+  }
+}
