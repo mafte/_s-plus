@@ -46,7 +46,7 @@ $breakpoint_menu: 992px;
 
 					a{
 						padding: 0.2rem 1rem;
-						display: block;	
+						display: block;
 
 						@include hover{
 							background: #f9f9f9;
@@ -278,7 +278,7 @@ $breakpoint_menu: 992px;
 		&.effect--rightIn {
 			left: auto;
 			right: -100%;
-			transition: right 0.3s;
+			transition: right var(--g-trans);
 
 			&.show--fade {
 				opacity: 1;

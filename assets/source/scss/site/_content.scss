@@ -8,7 +8,7 @@
 	}
 
 	a {
-		transition: 0.3s all;
+		transition: var(--g-trans) all;
 
 		&:hover,
 		&:focus {

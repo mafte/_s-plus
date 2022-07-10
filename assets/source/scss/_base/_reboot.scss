@@ -222,7 +222,7 @@ sup {
 a {
 	color: var(--link-color);
 	text-decoration-color: var(--link-decoration);
-	transition: .3s color, .3s background, .3s text-decoration-color;
+	transition: var(--g-trans) color, var(--g-trans) background, var(--g-trans) text-decoration-color;
 
 	&:hover, &:focus {
 		color: var(--link-hover-color);

@@ -10,9 +10,7 @@
 }
 
 .container {
-	max-width: calc(
-		var(--max-width-container) + 10rem
-	); // Add the corresponding padding used to compensate for the width.
+	max-width: var(--max-width-container)
 }
 
 .row {
