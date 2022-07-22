@@ -106,7 +106,7 @@ add_filter('big_image_size_threshold', '__return_false');
 /*	|> Disable intermediate images
 \*------------------------------------------------------*/
 add_filter('intermediate_image_sizes', function ($sizes) {
-    return array_diff($sizes, ['medium_large', '1536x1536', '2048x2048']);
+    return array_diff($sizes, ['1536x1536', '2048x2048']);
 });
 
 
@@ -132,10 +132,10 @@ if (!defined('IMSANITY_VERSION')) {
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
- * 
- * The value must be greater than or equal to the defined value of the image size "large". 
+ *
+ * The value must be greater than or equal to the defined value of the image size "large".
  * It is necessary for the proper functioning of responsive images.
- * 
+ *
  * Priority 0 to make it available to lower priority callbacks.
  *
  * @global int $content_width

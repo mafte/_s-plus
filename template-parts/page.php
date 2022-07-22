@@ -36,8 +36,6 @@ get_header();
 
 	<?php include(get_template_directory() . '/ACF/acf-generate-layout.php'); ?>
 
-	<?php include(get_template_directory() . '/template-parts/searchform.php'); ?>
-
 
 
 </main><!-- #main -->

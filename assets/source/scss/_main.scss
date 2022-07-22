@@ -195,3 +195,15 @@ img:not([src]) {
 		}
 	}
 }
+
+/* ● BACKGROUND COMPONENTS ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+
+[data-bg="c-primary"]{
+	background-color: var(--c-primary);
+	color: white;
+}
+
+[data-bg="c-secondary"]{
+	background-color: var(--c-secondary);
+	color: white;
+}

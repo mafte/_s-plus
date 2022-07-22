@@ -12,7 +12,7 @@
 }
 
 .tns-slider {
-  transition: all var(--g-trans)
+  transition: all .3s
 }
 
 .tns-slider>.tns-item {
@@ -57,7 +57,7 @@
 .tns-gallery>.tns-item {
   position: absolute;
   left: -100%;
-  transition: transform var(--g-trans), opacity var(--g-trans);
+  transition: transform .3s, opacity .3s;
 }
 
 .tns-gallery>.tns-slide-active {
@@ -146,7 +146,6 @@
   float: left
 }
 
-
 /* ● Styles controls navigate ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
 
 .tns-outer{
@@ -163,6 +162,8 @@
   display: flex;
   justify-content: space-between;
 
+  pointer-events: none;
+
   button{
     user-select: none;
     color: transparent;
@@ -176,8 +177,10 @@
     width: var(--size);
     height: var(--size);
     display: inline-block;
-    transition: var(--g-trans);
+    transition: .3s;
     background-image: var(--icon-arrow);
+
+    pointer-events: auto;
 
     &[data-controls="prev"]{
       transform: scale(-1);
