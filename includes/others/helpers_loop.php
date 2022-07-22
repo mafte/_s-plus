@@ -104,7 +104,7 @@ if (!function_exists('sp_img_resp')) {
         }
 
         /* Add all the image sizes allowed in the automatic generation. */
-        $sizes_img_names = array('medium', 'large', 'full', 'custom-size');
+        $sizes_img_names = array('medium', 'medium_large', 'large', 'full');
 
         /* Maximum container width*/
         $size_default = 1440;
@@ -181,6 +181,14 @@ if (!function_exists('sp_img_resp')) {
 
         $html_output .= ' width="' . $img_object[1] . '" ';
         $html_output .= ' height="' . $img_object[2] . '"';
+
+        if (pathinfo(wp_get_attachment_image_url($image_id, 'full'), PATHINFO_EXTENSION) === 'svg') {
+            $alt_text = sp_get_img__alt($image_id);
+            $url = sp_get_img__url($size, $image_id);
+            return <<<HERE
+            <img class="{$class_css}" data-src="{$url}" alt="{$alt_text}" width="$img_object[1]" height="$img_object[2]">
+            HERE;
+        }
 
         /**
          * GET WIDTH OF IMAGES
@@ -311,5 +319,35 @@ if (!function_exists('sp_generate_link')) {
         } else {
             return NULL;
         }
+    }
+}
+
+
+if (!function_exists('sp_get_the_terms_ids')) {
+
+    /**
+     * Gets the IDs of taxonomies corresponding to the post.
+     *
+     * @param int|WP_Post $post — Post ID or object.
+     * @param string $taxonomy — Taxonomy name.
+     *
+     * @return array Terms IDs or 'null' if taxonomy name no exist.
+     */
+    function sp_get_the_terms_ids($post, $taxonomy) {
+        $terms_ids = array();
+
+        if (taxonomy_exists($taxonomy)) {
+            $terms_object = get_the_terms($post, $taxonomy);
+
+            if ($terms_object) {
+                foreach ($terms_object as $term_item) {
+                    $terms_ids[] = $term_item->term_id;
+                }
+            }
+
+            return $terms_ids;
+        }
+
+        return null;
     }
 }
