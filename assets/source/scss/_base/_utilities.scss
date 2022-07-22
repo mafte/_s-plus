@@ -28,18 +28,20 @@
 
 	@if $type == 'max'{
 
-		//@see https://getbootstrap.com/docs/5.1/layout/breakpoints/#max-width
-		$width_bp: math.div($width_pixels - .02, $rem_value) * 1em;
+		$width_bp: math.div($width_pixels, $rem_value) * 1em;
 		@media screen and (max-width: $width_bp){
 			@content;
 		}
+
 	}@else{
-		$width_bp: math.div($width_pixels, $rem_value) * 1em;
-		@media screen and (min-width: $width){
+
+		//@see https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+		$width_bp: math.div($width_pixels + .02, $rem_value) * 1em;
+		@media screen and (min-width: $width_bp){
 			@content;
 		}
 	}
-	
+
 }
 
 @mixin visually-hidden {
