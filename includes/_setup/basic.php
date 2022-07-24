@@ -40,8 +40,8 @@ if (!function_exists('_s_plus_setup')) :
         add_theme_support('post-thumbnails');
 
 
-        /* |> Menus
-        \*------------------------------------------------------*/
+        /*  Menus
+        ——————————————————————————————————————————————————————*/
         include_once('menus.php');
 
         /*
@@ -79,17 +79,16 @@ if (!function_exists('_s_plus_setup')) :
             )
         );
 
-        /*	|> Images sizes
-        \*------------------------------------------------------*/
+        /*  Images sizes
+        ——————————————————————————————————————————————————————*/
         include_once('img_sizes.php');
     }
 endif;
 add_action('after_setup_theme', '_s_plus_setup');
 
-
-/*------------------------------------------------------*\
-    || SETTINGS FOR IMAGES
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ SETTINGS FOR IMAGES
+\*————————————————————————————————————————————————————*/
 
 /**
  * Increases the threshold for scaling big images to value.
@@ -103,16 +102,15 @@ function dg_big_image_size_threshold($threshold) {
 // completely disable image size threshold
 add_filter('big_image_size_threshold', '__return_false');
 
-/*	|> Disable intermediate images
-\*------------------------------------------------------*/
+/*  Disable intermediate images
+——————————————————————————————————————————————————————*/
 add_filter('intermediate_image_sizes', function ($sizes) {
     return array_diff($sizes, ['1536x1536', '2048x2048']);
 });
 
 
-
-/*	|> Autoscaled images by Imsanity plugin
-\*------------------------------------------------------*/
+/*  Autoscaled images by Imsanity plugin
+——————————————————————————————————————————————————————*/
 
 //If Imsanity plugin is not actived
 if (!defined('IMSANITY_VERSION')) {
@@ -127,8 +125,9 @@ if (!defined('IMSANITY_VERSION')) {
     add_filter('wp_handle_upload', 'sp_imsanity_handle_upload');
 }
 
-/*------------------------------------------------------*/
-
+/*————————————————————————————————————————————————————*\
+    ●❱ OTHERS SETTINGS
+\*————————————————————————————————————————————————————*/
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.

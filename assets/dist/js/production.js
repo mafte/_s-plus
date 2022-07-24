@@ -1,12 +1,8 @@
 "use strict";
 
-/**
- * Main js
- *  
- * 
- */
-
-/* ● ANIMATIONS ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*————————————————————————————————————————————————————*\
+    ●❱ ANIMATIONS
+\*————————————————————————————————————————————————————*/
 var slideUp = function slideUp(target) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
   target.style.transitionProperty = "height, margin, padding";
@@ -72,7 +68,9 @@ var slideToggle = function slideToggle(target) {
     return slideUp(target, duration);
   }
 };
-/* ● MENU MOBILE ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*————————————————————————————————————————————————————*\
+    ●❱ MENU MOBILE
+\*————————————————————————————————————————————————————*/
 
 
 var button_menu = document.getElementsByClassName("menu-toggle")[0];
@@ -110,11 +108,17 @@ Array.prototype.forEach.call(elements, function (el, i) {
     }
   });
 });
-/* ● LAZYLOAD ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*————————————————————————————————————————————————————*\
+    ●❱ LIBRARIES SETTINGS
+\*————————————————————————————————————————————————————*/
+
+/*  |> LAZYLOAD
+——————————————————————————————————————————————————————*/
 
 var lazyLoadInstance = new LazyLoad({// Your custom settings go here
 });
-/* ● TINY-SLIDER ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*  |> TINY-SLIDER
+——————————————————————————————————————————————————————*/
 // if (document.querySelector(".my-slider")) {
 // 	var slider = tns({
 // 		container: '.my-slider',
@@ -124,7 +128,9 @@ var lazyLoadInstance = new LazyLoad({// Your custom settings go here
 // 	});
 // }
 
-/* ● SMOOTH SCROLL ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*————————————————————————————————————————————————————*\
+    ●❱ SMOOTH SCROLL
+\*————————————————————————————————————————————————————*/
 
 var navLinks = document.querySelectorAll('a[href^="#"]:not(.skip-link)');
 Array.from(navLinks).forEach(function (navLink) {

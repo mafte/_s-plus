@@ -1,93 +1,93 @@
 .error-404 {
-	&__wrapper {
-		max-width: 700px;
-		display: flex;
-		margin: 10rem auto 2rem auto;
-		align-items: center;
+    &__wrapper {
+        max-width: 700px;
+        display: flex;
+        margin: 10rem auto 2rem auto;
+        align-items: center;
 
-		@include m_query($boo-sm) {
-			flex-direction: column;
-			align-items: flex-start;
-			margin: 5rem auto 2rem auto;
-		}
-	}
+        @include m_query($boo-sm) {
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 5rem auto 2rem auto;
+        }
+    }
 
-	&__error-number {
-		font-weight: 700;
-		text-transform: uppercase;
-		margin-bottom: 1rem;
+    &__error-number {
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
 
-		.number {
-			@include font-size(3rem, 12rem);
-			letter-spacing: -0.07em;
-			display: block;
-			line-height: 0.8;
-		}
+        .number {
+            @include font-size(3rem, 12rem);
+            letter-spacing: -0.07em;
+            display: block;
+            line-height: 0.8;
+        }
 
-		.text {
-			display: block;
-			text-align: right;
-			font-size: 18px;
+        .text {
+            display: block;
+            text-align: right;
+            font-size: 18px;
 
-			@include m_query($boo-sm) {
-			}
-		}
-	}
+            @include m_query($boo-sm) {
+            }
+        }
+    }
 
-	&__error-message {
-		padding-left: 2.5rem;
+    &__error-message {
+        padding-left: 2.5rem;
 
-		@include m_query($boo-sm) {
-			padding-left: 0;
-		}
+        @include m_query($boo-sm) {
+            padding-left: 0;
+        }
 
-		.message {
-			font-size: 1rem;
-			margin-bottom: 0;
-		}
+        .message {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
 
-		.title {
-			margin: 0;
-			@include font-size(1.5rem, 2.25rem);
-			font-weight: 700;
-		}
-	}
+        .title {
+            margin: 0;
+            @include font-size(1.5rem, 2.25rem);
+            font-weight: 700;
+        }
+    }
 
-	&__ornament-wrapper {
-		position: relative;
-		overflow: hidden;
-		padding-top: 3rem;
-	}
+    &__ornament-wrapper {
+        position: relative;
+        overflow: hidden;
+        padding-top: 3rem;
+    }
 
-	&__ornament {
-		svg {
-			width: 100%;
-			height: auto;
-		}
-	}
+    &__ornament {
+        svg {
+            width: 100%;
+            height: auto;
+        }
+    }
 
-	&__sun {
-		--size: 500px;
-		width: var(--size);
-		height: var(--size);
-		background: #f2f2f2;
-		border-radius: 50%;
-		position: absolute;
-		z-index: -1;
-		left: 50%;
-		top: 30px;
-		transform: translate(-4%, 0);
+    &__sun {
+        --size: 500px;
+        width: var(--size);
+        height: var(--size);
+        background: #f2f2f2;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        top: 30px;
+        transform: translate(-4%, 0);
 
-		@include m_query($boo-sm) {
-			--size: 120px;
-		}
-	}
+        @include m_query($boo-sm) {
+            --size: 120px;
+        }
+    }
 
-	&__ornament-base {
-		width: 100%;
-		background: black;
-		height: 26vw;
-		margin-top: -2.9vw;
-		position: relative;
-	}
+    &__ornament-base {
+        width: 100%;
+        background: black;
+        height: 26vw;
+        margin-top: -2.9vw;
+        position: relative;
+    }
 }

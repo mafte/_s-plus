@@ -1,86 +1,86 @@
-/* ●●● BASIC RICH TEXT STYLES
-❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
-
+/*————————————————————————————————————————————————————*\
+    ●❱ BASIC RICH TEXT STYLES
+\*————————————————————————————————————————————————————*/
 .basic-content-styles {
 
-	*+* {
-		margin-top: 1rem;
-	}
+    *+* {
+        margin-top: 1rem;
+    }
 
-	a {
-		transition: var(--g-trans) all;
+    a {
+        transition: var(--g-trans) all;
 
-		&:hover,
-		&:focus {
-			text-decoration-thickness: 4px;
-		}
-	}
+        &:hover,
+        &:focus {
+            text-decoration-thickness: 4px;
+        }
+    }
 
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {}
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {}
 
-	h2 {}
+    h2 {}
 
-	h3 {}
+    h3 {}
 
-	h4 {}
+    h4 {}
 
-	h5 {}
+    h5 {}
 
-	h6 {
-		text-transform: uppercase;
-	}
+    h6 {
+        text-transform: uppercase;
+    }
 
-	/* IMAGES */
+    /* IMAGES */
 
-	img {
-		width: 100%;
-		height: auto;
-	}
+    img {
+        width: 100%;
+        height: auto;
+    }
 
-	figure {
-		img {}
+    figure {
+        img {}
 
-		figcaption {
-			text-align: center;
-			padding: 5px 3rem;
-			font-size: 14px;
-		}
-	}
+        figcaption {
+            text-align: center;
+            padding: 5px 3rem;
+            font-size: 14px;
+        }
+    }
 
-	/* LISTS */
+    /* LISTS */
 
-	li::marker {
-		color: var(--c-primary);
-		font-weight: 500;
-	}
+    li::marker {
+        color: var(--c-primary);
+        font-weight: 500;
+    }
 
-	ul {
-		li {}
-	}
+    ul {
+        li {}
+    }
 
-	ol {
-		li {}
-	}
+    ol {
+        li {}
+    }
 
-	/* BLOCKQUOTE */
+    /* BLOCKQUOTE */
 
-	blockquote {
-		p:first-of-type {}
-	}
+    blockquote {
+        p:first-of-type {}
+    }
 
-	/* IFRAMES */
+    /* IFRAMES */
 
-	iframe {
-		width: 100%;
-	}
+    iframe {
+        width: 100%;
+    }
 
-	/* TABLES */
+    /* TABLES */
 
-	table,
-	tr,
-	td {}
+    table,
+    tr,
+    td {}
 }

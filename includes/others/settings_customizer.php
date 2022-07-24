@@ -4,8 +4,8 @@
 
 function my_register_additional_customizer_settings($wp_customize) {
 
-    /*	|> Example for text field
-    \*------------------------------------------------------*/
+    /*  |> Example for text field
+    ——————————————————————————————————————————————————————*/
     $wp_customize->add_setting(
         'my_company_name',
         array(
@@ -28,8 +28,8 @@ function my_register_additional_customizer_settings($wp_customize) {
         )
     ));
 
-    /*	|> Example for image field
-    \*------------------------------------------------------*/
+    /*  |> Example for image field
+    ——————————————————————————————————————————————————————*/
     $wp_customize->add_setting(
         'logo_version_two',
         array(

@@ -4,8 +4,9 @@ define('ACF_NESTED', true); //Allow flexible content nested
 define('ACF_ONLY_CP', false); //Allow use only components ACF. Disable Blocks
 
 
-/*	|> Custom save
-\*------------------------------------------------------*/
+/*  |> Custom save
+——————————————————————————————————————————————————————*/
+
 add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 
 function my_acf_json_save_point($path) {
@@ -16,8 +17,8 @@ function my_acf_json_save_point($path) {
     return $path;
 }
 
-/*	|> Custom load
-\*------------------------------------------------------*/
+/*  |> Custom load
+——————————————————————————————————————————————————————*/
 
 add_filter('acf/settings/load_json', 'my_acf_json_load_point');
 
@@ -33,8 +34,8 @@ function my_acf_json_load_point($paths) {
 }
 
 
-/*	|> Styles admin
-\*------------------------------------------------------*/
+/*  |> Styles admin
+——————————————————————————————————————————————————————*/
 
 add_action('admin_enqueue_scripts', 'load_admin_styles');
 function load_admin_styles() {
@@ -89,8 +90,8 @@ add_action('admin_head', function () {
     echo $styles_injected;
 });
 
-/*	|> Filter HTML anchor before save into DB
-\*------------------------------------------------------*/
+/*  |> Filter HTML anchor before save into DB
+——————————————————————————————————————————————————————*/
 
 function filter_slug_id($field) {
     return sp_acf_slugify($field);
@@ -126,8 +127,8 @@ function sp_acf_slugify($str = '', $glue = '-') {
 
 if (!ACF_ONLY_CP) {
 
-    /*	|> Register blocks for ACF
-    \*------------------------------------------------------*/
+    /*  |> Register blocks for ACF
+    ——————————————————————————————————————————————————————*/
 
     function my_acf_block_render_callback($block) {
 
@@ -151,8 +152,8 @@ if (!ACF_ONLY_CP) {
 
 if (ACF_ONLY_CP) {
 
-    /*	|> Disabled all Blocks Gutenberg
-    \*------------------------------------------------------*/
+    /*  |> Disabled all Blocks Gutenberg
+    ——————————————————————————————————————————————————————*/
 
     function wpdocs_allowed_block_types($block_editor_context, $editor_context) {
         if (!empty($editor_context->post)) {

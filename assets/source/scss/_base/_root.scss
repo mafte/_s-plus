@@ -1,13 +1,13 @@
-/* ●●● BREAKPOINTS BOOSTRAP
-❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*  |> BREAKPOINTS BOOSTRAP
+——————————————————————————————————————————————————————*/
 
 $boo-sm: 36em;
 $boo-md: 48em;
 $boo-lg: 62em;
 $boo-xl: 75em;
 
-/* ●●● OTHERS
-❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*  |> OTHERS
+——————————————————————————————————————————————————————*/
 
 $enable-button-pointers: true !default;
 
@@ -17,48 +17,60 @@ $kbd-color: grey;
 $kbd-bg: white;
 
 :root {
-	--p-container: 10rem; //Padding Container
-	--max-width-container:  calc( 1440px + var(--p-container)); // Add the corresponding padding used to compensate for the width.
+    --p-container: 10rem; //Padding Container
+    --max-width-container:  calc( 1440px + var(--p-container)); // Add the corresponding padding used to compensate for the width.
 
-	//Transition duration time
-	--g-trans: .3s;
+    /*
+    ——— Transition duration time
+    */
+    --g-trans: .3s;
 
-	// Fonts
-	--ff-primary: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	--ff-secondary: "Lora", Garamond, serif;
-	--ff-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	--body-font-size: 1rem;
-	--body-line-height: 1.5;
+    /*
+    ——— Fonts
+    */
+    --ff-primary: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --ff-secondary: "Lora", Garamond, serif;
+    --ff-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --body-font-size: 1rem;
+    --body-line-height: 1.5;
 
-	//Colors
-	--c-primary: #011045;
-	--c-secondary: #871876;
-	--c-accent: #86BC25;
+    /*
+    ——— Colors
+    */
+    --c-primary: #011045;
+    --c-secondary: #871876;
+    --c-accent: #86BC25;
 
-	--c-primary-dark: #020A29;
-	--c-secondary-dark: #610552;
-	--c-accent-dark: #406105;
+    --c-primary-dark: #020A29;
+    --c-secondary-dark: #610552;
+    --c-accent-dark: #406105;
 
-	--c-primary-light: #E0E5EB;
-	--c-secondary-light: #EBE0E9;
-	--c-accent-light: #E7EBE0;
+    --c-primary-light: #E0E5EB;
+    --c-secondary-light: #EBE0E9;
+    --c-accent-light: #E7EBE0;
 
-	--c-body-primary: var(--c-primary);
-	--c-body-secondary: #6A6A6A;
+    --c-body-primary: var(--c-primary);
+    --c-body-secondary: #6A6A6A;
 
-	--c-body-bg: white;
+    --c-body-bg: white;
 
-	//HR
-	--hr-color: grey;
-	--hr-opacity: 1;
+    /*
+    ——— HR
+    */
+    --hr-color: grey;
+    --hr-opacity: 1;
 
-	//Mark
-	--mark-padding: .5rem;
-	--mark-bg: yellow;
+    /*
+    ——— Mark
+    */
+    --mark-padding: .5rem;
+    --mark-bg: yellow;
 
-	//Links
-	--link-color: var(--c-primary);
-	--link-decoration: var(--c-primary-dark);
-	--link-hover-color: var(--c-secondary);
-	--link-hover-decoration: var(--c-secondary-dark);
+    /*
+    ——— Links
+    */
+    --link-color: var(--c-primary);
+    --link-decoration: var(--c-primary-dark);
+    --link-hover-color: var(--c-secondary);
+    --link-hover-decoration: var(--c-secondary-dark);
 }

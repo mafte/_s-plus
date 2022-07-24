@@ -1,18 +1,24 @@
 const gulp = require("gulp");
 const fs = require("fs"); /* Permite leer y escribir archivos en el SO. Ocupado para generar stylesheets de iconos */
 
-//CSS
+/*
+——— CSS
+*/
 const sass = require('gulp-sass')(require('sass'));
-//var CleanCSSNEW = require('clean-css'); /* Optimize and clean CSS */
-const cleanCSS = require('gulp-clean-css');
+//var CleanCSSNEW = require('clean-css');
+const cleanCSS = require('gulp-clean-css'); /* Optimize and clean CSS */
 const autoPrefixer = require("gulp-autoprefixer"); /* Añade prefijos a propiedades css */
 
-//JS
+/*
+——— JS
+*/
 const uglify = require("gulp-uglify"); /* Comprime JavaScript */
 const jshint = require("gulp-jshint"); /* Analiza la calidad de js */
 const babel = require("gulp-babel"); /* Genera codigo JS compatible con ES5 */
 
-//Tools
+/*
+——— Tools
+*/
 const browserSync = require("browser-sync"); /* Mantiene actualizado el navegador con los cambios */
 const concat = require("gulp-concat"); /* Concatena archivos */
 const sourcemaps = require("gulp-sourcemaps"); /* Fuente de mapas para SASS y JS */
@@ -21,15 +27,16 @@ const concatFilenames = require("gulp-concat-filenames"); // import all files fr
 const lineec = require('gulp-line-ending-corrector'); // Consistent Line Endings for non UNIX systems.
 const gulp_replace = require('gulp-replace'); //Busca y reemplaza string en los archivos.
 
-
-//IMG
+/*
+——— Images
+*/
 const svgToMiniDataURI = require("mini-svg-data-uri");
 const { series } = require("gulp");
 
 
-/*------------------------------------------------------*\
-	|| BASIC SETUP
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ BASIC SETUP
+\*————————————————————————————————————————————————————*/
 
 var config = {
     urlBrowserSync: "pruebas.local",
@@ -42,18 +49,18 @@ var config = {
     path_dist_js: "assets/dist/js/",
 };
 
-/*------------------------------------------------------*\
-	|| BROWSER-SYNC
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ BROWSER-SYNC
+\*————————————————————————————————————————————————————*/
 
 function reload(done) {
     browserSync.reload();
     done();
 }
 
-/*------------------------------------------------------*\
-	|| STYLES
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ STYLES
+\*————————————————————————————————————————————————————*/
 
 function css() {
     const options = {
@@ -78,8 +85,8 @@ function css() {
         .pipe(browserSync.stream())
 }
 
-/*	|> SCSS - auto import 
-\*------------------------------------------------------*/
+/*  |> SCSS - auto import
+——————————————————————————————————————————————————————*/
 
 let concatOptions = {
     root: "./assets/source/scss/",
@@ -87,7 +94,9 @@ let concatOptions = {
     append: "';",
 };
 
-/** For site styles */
+/*
+——— For site styles
+*/
 
 function scssSite() {
     return gulp
@@ -96,7 +105,9 @@ function scssSite() {
         .pipe(gulp.dest("./assets/source/scss"));
 }
 
-/** For Gutenberg Blocks with ACF */
+/*
+——— For Gutenberg Blocks with ACF
+*/
 
 function scssBlocks() {
     return gulp
@@ -105,7 +116,9 @@ function scssBlocks() {
         .pipe(gulp.dest("./assets/source/scss"));
 }
 
-/** For Flexible content with ACF */
+/*
+——— For Flexible content with ACF
+*/
 
 function scssComponents() {
     return gulp
@@ -114,8 +127,8 @@ function scssComponents() {
         .pipe(gulp.dest("./assets/source/scss"));
 }
 
-/*	|> Icons
-\*------------------------------------------------------*/
+/*  |> Icons
+——————————————————————————————————————————————————————*/
 
 var filesNamesOriginal = [],
     filesNamesFilter = [],
@@ -215,9 +228,9 @@ async function iconSh() {
     return true;
 }
 
-/*------------------------------------------------------*\
-	|| JS TASK
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ JS TASK
+\*————————————————————————————————————————————————————*/
 
 function js_vendors() {
 
@@ -274,9 +287,9 @@ function js_custom() {
         .pipe(gulp.dest(config.path_dist_js))
 }
 
-/*------------------------------------------------------*\
-	|| MAIN TASK
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ MAIN TASK
+\*————————————————————————————————————————————————————*/
 
 exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh, js_custom), js_vendors, css, initAll);
 
@@ -323,9 +336,9 @@ function initAll() {
 };
 
 
-/*------------------------------------------------------*\
-	|| REPLACE SLUG THEME
-\*------------------------------------------------------*/
+/*————————————————————————————————————————————————————*\
+    ●❱ REPLACE SLUG THEME
+\*————————————————————————————————————————————————————*/
 
 async function replace_slug_theme() {
     if (config.slug_theme != "slug-theme") {
@@ -356,7 +369,7 @@ async function replace_slug_theme() {
         console.log("*------------------------------------------------- *");
         return true
     }
-    
+
 };
 
 exports.replace_slug_theme = replace_slug_theme;
