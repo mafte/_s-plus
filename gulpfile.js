@@ -239,7 +239,6 @@ function js_vendors() {
         // 'node_modules/lazyload/lazyload.min.js',
         config.path_source_js + 'smoothscroll.min.js',
         // config.path_source_js + 'tiny-slider.min.js',
-        config.path_source_js + 'navigation.js',
     ]
 
     const customs = [
@@ -249,11 +248,11 @@ function js_vendors() {
     let scripts = vendors.concat(customs);
 
     return gulp.src(scripts)
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(concat("production.min.js"))
         .pipe(lineec())
-        .pipe(sourcemaps.write("."))
+        // .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(config.path_dist_js))
 }
 
@@ -264,7 +263,7 @@ function js_custom() {
     ]
 
     return gulp.src(customs)
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(babel({
             presets: [
