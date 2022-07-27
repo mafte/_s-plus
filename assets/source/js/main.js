@@ -66,16 +66,118 @@ let slideToggle = (target, duration = 500) => {
 };
 
 /*————————————————————————————————————————————————————*\
+    ●❱ Navigation accesibility
+\*————————————————————————————————————————————————————*/
+
+/*
+——— Handles toggling the navigation menu for small screens and enables TAB key
+    navigation support for dropdown menus
+*/
+
+( function() {
+    const siteNavigation = document.getElementById( 'site-navigation' );
+
+    // Return early if the navigation don't exist.
+    if ( ! siteNavigation ) {
+        return;
+    }
+
+    // const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
+    const button = document.querySelector("#site-nav-btn-close");
+
+    // Return early if the button don't exist.
+    if ( 'undefined' === typeof button ) {
+        return;
+    }
+
+    const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
+
+    // Hide menu toggle button if menu is empty and return early.
+    if ( 'undefined' === typeof menu ) {
+        button.style.display = 'none';
+        return;
+    }
+
+    if ( ! menu.classList.contains( 'nav-menu' ) ) {
+        menu.classList.add( 'nav-menu' );
+    }
+
+    // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
+    button.addEventListener( 'click', function() {
+        siteNavigation.classList.toggle( 'toggled' );
+    } );
+
+    // Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
+    // document.addEventListener( 'click', function( event ) {
+    //     const isClickInside = siteNavigation.contains( event.target );
+
+    //     if ( ! isClickInside ) {
+    //         siteNavigation.classList.remove( 'toggled' );
+    //         button.setAttribute( 'aria-expanded', 'false' );
+    //     }
+    // } );
+
+    // Get all the link elements within the menu.
+    const links = menu.getElementsByTagName( 'a' );
+
+    // Get all the link elements with children within the menu.
+    const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > .ancestor-wrapper > a, .page_item_has_children > .ancestor-wrapper > a' );
+
+    // Toggle focus each time a menu link is focused or blurred.
+    for ( const link of links ) {
+        link.addEventListener( 'focus', toggleFocus, true );
+        link.addEventListener( 'blur', toggleFocus, true );
+    }
+
+    // Toggle focus each time a menu link with children receive a touch event.
+    for ( const link of linksWithChildren ) {
+        link.addEventListener( 'touchstart', toggleFocus, false );
+    }
+
+    /**
+     * Sets or removes .focus class on an element.
+     */
+    function toggleFocus() {
+        if ( event.type === 'focus' || event.type === 'blur' ) {
+            let self = this;
+            // Move up through the ancestors of the current link until we hit .nav-menu.
+            while ( ! self.classList.contains( 'nav-menu' ) ) {
+                // On li elements toggle the class .focus.
+                if ( 'li' === self.tagName.toLowerCase() ) {
+                    self.classList.toggle( 'focus' );
+                }
+                self = self.parentNode;
+            }
+        }
+
+        if ( event.type === 'touchstart' ) {
+            const menuItem = this.parentNode;
+            event.preventDefault();
+            for ( const link of menuItem.parentNode.children ) {
+                if ( menuItem !== link ) {
+                    link.classList.remove( 'focus' );
+                }
+            }
+            menuItem.classList.toggle( 'focus' );
+        }
+    }
+}() );
+
+/*————————————————————————————————————————————————————*\
     ●❱ MENU MOBILE
 \*————————————————————————————————————————————————————*/
 
-let button_menu = document.getElementsByClassName("menu-toggle")[0];
-let button_close = document.getElementsByClassName("menu-toggle__close")[0];
+let button_menu = document.querySelector("#site-nav-btn-menu");
+let button_close = document.querySelector("#site-nav-btn-close");
 let main_nav = document.getElementById("site-navigation");
 
 if (button_menu) {
     button_menu.addEventListener("click", function () {
         main_nav.classList.toggle("show--fade");
+
+        toggle_attr_expand(button_menu);
+        toggle_attr_expand(button_close);
+
     });
 }
 
@@ -83,11 +185,8 @@ if (button_close) {
     button_close.addEventListener("click", function () {
         main_nav.classList.toggle("show--fade");
 
-        if (button_menu.getAttribute("aria-expanded") === "true") {
-            button_menu.setAttribute("aria-expanded", "false");
-        } else {
-            button_menu.setAttribute("aria-expanded", "true");
-        }
+        toggle_attr_expand(button_menu);
+        toggle_attr_expand(button_close);
     });
 }
 
@@ -99,13 +198,19 @@ Array.prototype.forEach.call(elements, function (el, i) {
 
         slideToggle(parentN.nextElementSibling);
 
-        if (el.getAttribute("aria-expanded") === "true") {
-            el.setAttribute("aria-expanded", "false");
-        } else {
-            el.setAttribute("aria-expanded", "true");
-        }
+        toggle_attr_expand(el);
+
     });
 });
+
+function toggle_attr_expand(element){
+
+    if (element.getAttribute("aria-expanded") === "true") {
+        element.setAttribute("aria-expanded", "false");
+    } else {
+        element.setAttribute("aria-expanded", "true");
+    }
+}
 
 /*————————————————————————————————————————————————————*\
     ●❱ LIBRARIES SETTINGS

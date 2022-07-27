@@ -18,7 +18,9 @@ $breakpoint_menu: 992px;
             justify-content: flex-end;
         }
 
-        /* ->  STYLES MENU FOR DESKTOP  */
+        /*
+        ——— STYLES MENU FOR DESKTOP
+        */
         @media screen and (min-width: $breakpoint_menu) {
             .menu {
                 display: flex;
@@ -41,14 +43,13 @@ $breakpoint_menu: 992px;
                     left: -99999rem;
                     transition: opacity 0.15s linear, left 0.1s 0.15s;
 
-                    li {
-                    }
+                    li {}
 
-                    a{
+                    a {
                         padding: 0.2rem 1rem;
                         display: block;
 
-                        @include hover{
+                        @include hover {
                             background: #f9f9f9;
                         }
                     }
@@ -90,6 +91,10 @@ $breakpoint_menu: 992px;
                 text-decoration: none;
             }
         }
+
+        /*
+        —————————————————————————————————————————————————
+        */
 
         ul {
             padding: 0;
@@ -143,7 +148,9 @@ $breakpoint_menu: 992px;
     }
 }
 
-/* ->  STYLES MENU FOR MOBILE  */
+/*
+——— STYLES MENU FOR MOBILE
+*/
 @media screen and (max-width: $breakpoint_menu) {
     .main-navigation {
         position: fixed;
@@ -288,6 +295,10 @@ $breakpoint_menu: 992px;
         }
     }
 }
+
+/*
+—————————————————————————————————————————————————
+*/
 
 .show--fade {
     // >div {

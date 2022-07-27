@@ -63,21 +63,28 @@
                     <div class="col position-static">
                         <div class="site-header__menu">
 
-                            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="icon icon-menu"><span class="visually-hidden"><?php esc_html_e('Menu', '_s_plus'); ?></span></span></button>
+                            <button id="site-nav-btn-menu" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="icon icon-menu"><span class="visually-hidden"><?php esc_html_e('Menu', '_s_plus'); ?></span></span></button>
 
-                            <nav id="site-navigation" class="main-navigation effect--fadeIn">
-                                <button class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', '_s_plus'); ?></span></span></button>
+                            <?php
+                            /*
+                            ——— Wrapper menu mobile
+                            */
+                            ?>
+                            <div id="site-navigation" class="main-navigation effect--fadeIn">
+                                <button id="site-nav-btn-close" class="menu-toggle menu-toggle__close"><span class="icon icon-close"><span class="visually-hidden"><?php esc_html_e('Close Menu', '_s_plus'); ?></span></span></button>
 
-                                <?php
-                                wp_nav_menu(
-                                    array(
-                                        'theme_location' => 'menu-1',
-                                        'menu_id'        => 'primary-menu',
-                                        'show_toggles' => true,
-                                    )
-                                );
-                                ?>
-                            </nav><!-- #site-navigation -->
+                                <nav>
+                                    <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location' => 'menu-1',
+                                            'menu_id'        => 'primary-menu',
+                                            'show_toggles' => true,
+                                        )
+                                    );
+                                    ?>
+                                </nav>
+                            </div><!-- #site-navigation -->
                         </div>
                     </div>
                 </div>
