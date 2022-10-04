@@ -134,6 +134,10 @@
     transform: translate(-8px, -50%)!important;
 }
 
+.acf-field textarea{
+    transition: .6s border-color, .6s border-width, .6s outline!important;
+}
+
 /* Selection Multiple */
 
 .select2-container--default .select2-selection--multiple{
