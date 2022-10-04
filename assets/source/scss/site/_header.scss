@@ -27,38 +27,121 @@ $breakpoint_menu: 992px;
                 position: relative;
 
                 >li+li {
-                    margin-left: 1rem;
+                    margin-left: 2.5rem;
                 }
 
-                .sub-menu {
+                >li {
+                    position: relative;
+
+                    /*
+                    ——— This pseudo-element helps to improve the hover in the main menu
+                    */
+                    &::after {
+                        --size: 100%;
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: var(--size);
+                        height: 20px;
+                        transform: translateY(100%);
+                    }
+                }
+            }
+
+            .sub-menu {
+                position: absolute;
+                display: block;
+                bottom: 0;
+                transform: translate(-1.5rem, calc(100% + 1rem));
+                ;
+                opacity: 0;
+                left: -99999rem;
+                transition: opacity 0.15s linear, left 0.1s 0.15s;
+                min-width: 230px;
+                padding: 1rem 0.5rem;
+                background: #F5F5F5;
+                border-radius: 10px;
+                border-top: 4px solid #00069C;
+
+                .menu-item-has-children {
+                    &::before {
+                        right: 8px;
+                    }
+                }
+
+                &::before {
+                    --size: 16px;
+                    content: "";
                     position: absolute;
+                    top: -9px;
+                    left: 2.5rem;
+                    width: var(--size);
+                    height: var(--size);
+                    background-image: url("data:image/svg+xml,%3Csvg width='11' height='4' viewBox='0 0 11 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5107 4.00003C10.5039 3.59146 10.2778 3.18448 9.83252 2.87271L7.36523 1.14651C6.45996 0.513336 4.99268 0.513336 4.08789 1.14651L1.63867 2.85989C1.18848 3.17484 0.962402 3.58719 0.959961 4.00003H10.5107Z' fill='%2300069C'/%3E%3C/svg%3E%0A");
+                    background-size: contain;
+                }
+
+                li+li {
+                    margin-top: 0.2rem;
+                }
+
+                a {
+                    padding: 0.2rem 1rem;
                     display: block;
-                    bottom: 0;
-                    transform: translateY(100%);
-                    padding: 1rem 0;
-                    background: white;
-                    min-width: 150px;
-                    opacity: 0;
-                    border: 1px solid #ececec;
-                    left: -99999rem;
-                    transition: opacity 0.15s linear, left 0.1s 0.15s;
+                    font-weight: 400;
+                    border-radius: 5px;
 
-                    li {}
+                    @include hover {
+                        background: #ECECEC;
+                        color: #00069C;
+                    }
+                }
 
-                    a {
-                        padding: 0.2rem 1rem;
-                        display: block;
+                /*
+                ——— Third Level
+                */
 
-                        @include hover {
-                            background: #f9f9f9;
-                        }
+                .sub-menu {
+                    transform: translate(calc(100% - 8px), calc(75% - 20px));
+                    z-index: 10;
+                    border: none;
+                    border-left: 4px solid darkgray;
+
+                    &::before {
+                        display: none;
                     }
 
                     .sub-menu {
-                        transform: translate(calc(100% - 1px),
-                                calc(100% - 20px));
-                        background: aliceblue;
-                        z-index: 10;
+                        transform: translate(calc(95% - 1px),calc(75% - 20px));
+
+                    }
+                }
+            }
+
+            .menu-item-has-children {
+                position: relative;
+
+                &::before {
+
+                    --size: 14px;
+                    content: "";
+                    position: absolute;
+                    top: 54%;
+                    right: 0;
+                    width: var(--size);
+                    height: var(--size);
+                    transform: translateY(-50%);
+                    background-image: var(--icon-arrow-down);
+                    background-size: contain;
+                    background-position: center;
+                    pointer-events: none;
+
+                }
+
+                .ancestor-wrapper {
+                    >a {
+                        padding-right: 1.6rem;
                     }
                 }
             }
