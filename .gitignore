@@ -156,6 +156,8 @@ wp-migrate-db-pro-media-files
 wp-migrate-db-pro-theme-plugin-files
 wp-migrate-db-pro-compatibility.php
 wp-migrate-db
+wp-sync-db
+wp-sync-db-media-files
 
 # Ignore themes
 wp-content/themes/twenty*/
