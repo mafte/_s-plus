@@ -13,7 +13,7 @@ const autoPrefixer = require("gulp-autoprefixer"); /* Añade prefijos a propieda
 ——— JS
 */
 const uglify = require("gulp-uglify"); /* Comprime JavaScript */
-const jshint = require("gulp-jshint"); /* Analiza la calidad de js */
+// const jshint = require("gulp-jshint"); /* Analiza la calidad de js */
 const babel = require("gulp-babel"); /* Genera codigo JS compatible con ES5 */
 
 /*
@@ -237,7 +237,7 @@ function js_vendors() {
     const vendors = [
         // 'node_modules/jquery/dist/jquery.min.js',
         // 'node_modules/lazyload/lazyload.min.js',
-        config.path_source_js + 'smoothscroll.min.js',
+        // config.path_source_js + 'smoothscroll.min.js',
         // config.path_source_js + 'tiny-slider.min.js',
     ]
 

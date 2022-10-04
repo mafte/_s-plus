@@ -253,49 +253,62 @@ var lazyLoadInstance = new LazyLoad({// Your custom settings go here
 });
 /*  |> TINY-SLIDER
 ——————————————————————————————————————————————————————*/
-// if (document.querySelector(".my-slider")) {
-// 	var slider = tns({
-// 		container: '.my-slider',
-// 		items: 1,
-// 		slideBy: 'page',
-// 		autoplay: true
-// 	});
-// }
+// window.addEventListener("load", () => {
+// 	if (document.querySelector(".slider")) {
+// 		var slider_name = tns({
+// 			container: ".slider",
+// 			loop: true,
+// 			gutter: 30,
+// 			// autoplay: true,
+// 			mouseDrag: true,
+// 			nav: false,
+// 			autoplayButtonOutput: false,
+// 			responsive: {
+// 				998: {
+// 					items: 2,
+// 					autoHeight: false,
+// 				},
+// 				320: {
+// 					items: 1,
+// 					autoHeight: true,
+// 				},
+// 			},
+// 		});
+// 	}
+// });
 
 /*————————————————————————————————————————————————————*\
     ●❱ SMOOTH SCROLL
 \*————————————————————————————————————————————————————*/
-
-var navLinks = document.querySelectorAll('a[href^="#"]:not(.skip-link)');
-Array.from(navLinks).forEach(function (navLink) {
-  var href = navLink.getAttribute('href');
-
-  if (href !== '#') {
-    if (document.querySelector(href)) {
-      var section = document.querySelector(href);
-      var offset = 80; // nav and offset
-
-      navLink.onclick = function (e) {
-        // get body position
-        var bodyRect = document.body.getBoundingClientRect().top; // get section position relative
-
-        var sectionRect = section.getBoundingClientRect().top; // subtract the section from body
-
-        var sectionPosition = sectionRect - bodyRect; // subtract offset
-
-        var offsetPosition = sectionPosition - offset;
-        e.preventDefault();
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-
-        if (history.pushState) {
-          history.pushState(null, null, href);
-        } else {
-          window.location.hash = href;
-        }
-      };
-    }
-  }
-});
+// const navLinks = document.querySelectorAll(
+//     'a[href^="#"]:not(.skip-link)'
+// );
+// Array.from(navLinks).forEach(navLink => {
+//     const href = navLink.getAttribute('href');
+//     if (href !== '#') {
+//         if (document.querySelector(href)) {
+//             const section = document.querySelector(href);
+//             const offset = 80; // nav and offset
+//             navLink.onclick = e => {
+//                 // get body position
+//                 const bodyRect = document.body.getBoundingClientRect().top;
+//                 // get section position relative
+//                 const sectionRect = section.getBoundingClientRect().top;
+//                 // subtract the section from body
+//                 const sectionPosition = sectionRect - bodyRect;
+//                 // subtract offset
+//                 const offsetPosition = sectionPosition - offset;
+//                 e.preventDefault();
+//                 window.scrollTo({
+//                     top: offsetPosition,
+//                     behavior: 'smooth'
+//                 });
+//                 if (history.pushState) {
+//                     history.pushState(null, null, href);
+//                 } else {
+//                     window.location.hash = href;
+//                 }
+//             }
+//         }
+//     }
+// })
