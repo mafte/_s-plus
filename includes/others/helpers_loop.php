@@ -77,7 +77,7 @@ if (!function_exists('sp_the_excerpt')) {
     }
 }
 
-if (!function_exists('sp_img_resp')) {
+if (!function_exists('sp_img_resp_here')) {
 
     /**
      * Get responsive images with height and width attributes.
@@ -88,7 +88,7 @@ if (!function_exists('sp_img_resp')) {
      * @param  boolean $lazyload  Native attribute for lazyload. Optional. By default it is TRUE.
      * @return string  Image responsive with attributes.
      */
-    function sp_img_resp($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
+    function sp_img_resp_here($size = 'large', $image_id = 0, $class_css = '', $lazyload = true) {
 
         /* If the $image_id is equal to 0, then we get the id of the current post */
         if ($image_id === 0) {
@@ -349,5 +349,99 @@ if (!function_exists('sp_get_the_terms_ids')) {
         }
 
         return null;
+    }
+}
+
+if (!function_exists('sp_img_resp')) {
+
+    /**
+     * Get responsive images with height and width attributes.
+     *
+     * @param  string  $size  Keyword for image size.
+     * @param  int     $id    Image ID. Optional. By default it is the image ID of the current post.
+     * @param  string  $class Class CSS. Optional.
+     * @param  boolean $lazy  Native attribute for lazyload. Optional. By default it is TRUE.
+     * @return string  Image responsive with attributes.
+     */
+    function sp_img_resp($size = 'large', $id = 0, $class = '', $lazy = true) {
+
+        /* If the $id is equal to null, then we get the id of the current post */
+        if ($id === 0) {
+            $id = get_post_thumbnail_id();
+        }
+
+        if ($lazy) {
+            $lazy = 'lazy';
+        }
+
+        /**
+         * If you are using the lazyload script then it will work differently.
+         */
+        $has_lazyload = wp_script_is('lazyload');
+        if ($lazy === true && $has_lazyload === true) {
+            $class .= ' lazy';
+        }
+
+        $sizes_img_widths = wp_get_registered_image_subsizes();
+        $has_exists_size  = false;
+
+        /* If $size value is incorrect then set 'large' by default */
+        foreach ($sizes_img_widths as $key => $value) {
+            if ($key == $size) {
+                $has_exists_size = true;
+                break;
+            }
+        }
+
+        if ($has_exists_size == false && $size != 'full') {
+            $size = 'large';
+        }
+
+        $sizes_default      = '(max-width: 1440px) calc(100vw - 48px), 1440px';
+        $search_atrributes  = array('src="', 'srcset="', 'sizes="');
+        $changes_atrributes = array('data-src="', 'data-srcset="', 'data-sizes="');
+
+        /*
+        ——— If $size is 'full' then change the sizes
+        */
+        if ($size == 'full') {
+            $original_img_html = wp_get_attachment_image($id, $size, '', array(
+                'class'   => trim($class),
+                'sizes'   => $sizes_default,
+                'loading' => $lazy
+            ));
+        } else {
+            $original_img_html = wp_get_attachment_image($id, $size, '', array(
+                'class'   => trim($class),
+                'loading' => $lazy
+            ));
+        }
+
+        /* If the image ID is incorrect or non-existent then return the image placeholder. */
+        if ($original_img_html == '') {
+
+            if ($size == 'full') {
+                $size = 'large';
+            }
+
+            $placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
+
+            /* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size.
+            This allows the correct presentation in the browser of the placeholder without sudden jumps. */
+
+            if ($lazy && $has_lazyload) {
+                return "<img class=\"{$class}\" data-src=\"{$placeholder_img}\" alt=\"\" width=\"{$sizes_img_widths[$size]['width']}\" height=\"" . round($sizes_img_widths[$size]['width'] / 1.77777777778) . '"/>';
+            } elseif ($lazy) {
+                return "<img class=\"{$class}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$sizes_img_widths[$size]['width']}\" height=\"" . round($sizes_img_widths[$size]['width'] / 1.77777777778) . '" loading="lazy"/>';
+            } else {
+                return "<img class=\"{$class}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$sizes_img_widths[$size]['width']}\" height=\"" . round($sizes_img_widths[$size]['width'] / 1.77777777778) . '"/>';
+            }
+        }
+
+        if ($has_lazyload && $lazy) {
+            return str_replace($search_atrributes, $changes_atrributes, $original_img_html);
+        } else {
+            return $original_img_html;
+        }
     }
 }
