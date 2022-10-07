@@ -67,6 +67,7 @@ $breakpoint_menu: 992px;
                 .menu-item-has-children {
                     &::before {
                         right: 8px;
+                        transform: translateY(-8px) rotate(-90deg);
                     }
                 }
 
