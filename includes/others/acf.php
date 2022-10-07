@@ -69,24 +69,6 @@ add_action('admin_head', function () {
     </style>
     HERE;
 
-    if (ACF_ONLY_CP) {
-        $styles_injected = ' <style>
-        .components-panel__header ul li:last-child {
-            display:none;
-        }
-
-        .edit-post-header__toolbar{
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .edit-post-visual-editor{
-            flex: 0;
-        }
-        </style>
-        ';
-    }
-
     echo $styles_injected;
 });
 
@@ -165,3 +147,24 @@ if (ACF_ONLY_CP) {
 
     add_filter('allowed_block_types_all', 'wpdocs_allowed_block_types', 10, 2);
 }
+
+
+/*  |> OPTIONS PAGES
+——————————————————————————————————————————————————————*/
+
+// if (function_exists('acf_add_options_page')) {
+
+//     acf_add_options_page(array(
+//         'page_title' => __('Global Options'),
+//         'menu_title' => __('Global Options'),
+//         'menu_slug' => 'global-options',
+//         'icon_url' => 'dashicons-megaphone',
+//         'redirect' => true //Si esta en false crea tambien una subpagina con ese nombre
+//     ));
+
+//     acf_add_options_sub_page(array(
+//         'page_title' => __('Footer'),
+//         'menu_title' => __('Footer'),
+//         'parent_slug' => 'global-options',
+//     ));
+// }
