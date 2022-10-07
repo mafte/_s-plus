@@ -14,47 +14,48 @@ if ($id_section != '') {
 ?>
 
 
-<div <?php echo $atts_globals; ?> class="container <?php echo $class_css; ?>">
+<div <?php echo $atts_globals; ?> class="<?php echo $class_css; ?>">
 
-    <div class="row">
-        <div <?php echo $id_columns[0]; ?> class="col-6 col-layout-1">
+    <div class="container">
+        <div class="row">
+            <div <?php echo $id_columns[0]; ?> class="col-6 col-layout-1">
 
-            <?php
-            if (have_rows('column_1')) : ?>
                 <?php
-                while (have_rows('column_1')) :
-                    the_row(); ?>
-
+                if (have_rows('column_1')) : ?>
                     <?php
-                    //Get current row
-                    $page_builder = get_sub_field('page_builder'); ?>
+                    while (have_rows('column_1')) :
+                        the_row(); ?>
 
-                    <?php include(get_template_directory() . '/ACF/acf-generate-page.php'); ?>
+                        <?php
+                        //Get current row
+                        $page_builder = get_sub_field('page_builder'); ?>
 
-                <?php endwhile; ?>
-            <?php endif; ?>
+                        <?php include(get_template_directory() . '/ACF/acf-generate-page.php'); ?>
 
-        </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
 
-        <div <?php echo $id_columns[1]; ?> class="col-6 col-layout-2">
+            </div>
 
-            <?php
-            if (have_rows('column_2')) : ?>
+            <div <?php echo $id_columns[1]; ?> class="col-6 col-layout-2">
+
                 <?php
-                while (have_rows('column_2')) :
-                    the_row(); ?>
-
+                if (have_rows('column_2')) : ?>
                     <?php
-                    //Get current row
-                    $page_builder = get_sub_field('page_builder'); ?>
+                    while (have_rows('column_2')) :
+                        the_row(); ?>
 
-                    <?php include(get_template_directory() . '/ACF/acf-generate-page.php'); ?>
+                        <?php
+                        //Get current row
+                        $page_builder = get_sub_field('page_builder'); ?>
 
-                <?php endwhile; ?>
-            <?php endif; ?>
+                        <?php include(get_template_directory() . '/ACF/acf-generate-page.php'); ?>
 
+                    <?php endwhile; ?>
+                <?php endif; ?>
+
+            </div>
         </div>
     </div>
-
 
 </div>
