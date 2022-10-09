@@ -8,8 +8,7 @@ La idea detrás de este tema es ser una base sólida para creación de temas per
 Estas son las funcionalidades más destacadas:
 
 * Flujo de trabajo automatizado con `gulp`; listo para usar.
-* Estructura de archivos mejorada.
-* Compatibilidad de `smooth-scroll` para todos los navegadores(incluyendo Safari).
+* Estructura de archivos optimizada.
 * Mejoras en el manejo de imágenes.
 * Configuraciones generales accesibles.
 * Plantilla para agregar opciones al `customizer`.
@@ -39,13 +38,13 @@ $ npm install
 
 ### Inicio rápido
 
-Clone o descargue este repositorio, cambie su nombre por otro (como, digamos, `theme-name`), y luego deberá buscar y reemplazar el nombre en todas las plantillas. Puedes hacerlo de dos maneras: la rapida y la estandar. La rápida consiste en ir al `gulpfile.js` y establecer en el parámetro `slug_theme` el **Text Domain** del tema. Ahora en consola(recuerda antes instalar las dependencias), ejecuta:
+Clone o descargue este repositorio, cambie su nombre por otro (como, digamos, `theme-name`), y luego debes buscar y reemplazar el nombre en todas las plantillas. Puedes hacerlo de dos maneras: la semi-automatica y la manual. La semi-automatica consiste en ir al archivo `gulpfile.js` y establecer en el parámetro `slug_theme` el **Text Domain** del tema. Ahora, en la terminal(ya con todas las dependencias instaladas), ejecuta:
 
 ```sh
 $ gulp replace_slug_theme
 ```
 
-El método estándar consiste en que busques y reemplaces en seis pasos el nombre, asegurándote que la sensibilidad de mayúsculas/minúsculas esté activada.
+El método manual consiste en que busques y reemplaces en seis pasos el nombre, asegurándote que la sensibilidad de mayúsculas/minúsculas esté activada.
 
 1. Busque `'_s_plus'` (dentro de comillas simples) para capturar el dominio de texto y reemplácelo con `'theme-name'`.
 2. Busque `_s_plus_` para capturar todos los nombres de funciones y reemplácelos con: `theme_name_`.
@@ -74,22 +73,21 @@ Solo edita el archivo `gulpfile.js` busca el apartado **BASIC SETUP** y establec
 
 ### Estructura de archivos mejorada
 
-Aunque este punto puede ser subjetivo, ***menos siempre es más***. Se han reorganizado los archivos con fin de facilitar búsqueda de las opciones comunes. A veces es abrumador tener lleno el directorio raíz del tema, es por eso que los archivos generales de plantilla de jerarquía de Wordpress(single.php, page.php, 404.php, etc.) están dentro de la carpeta `/template-parts` ; todo sigue funcionando como se debe porque el archivo `index.php` en la raíz del tema redirige a la plantilla adecuada. Si no te gusta esto, solo regresa los archivos al directorio raíz y listo. El funcionamiento de jerarquía de plantillas de WordPress se comporta sin diferencias.
+Aunque este punto puede ser subjetivo, ***menos siempre es más***. Se han reorganizado los archivos con el fin de facilitar la búsqueda de las opciones comunes. A veces es abrumador tener lleno el directorio raíz del tema, es por eso que los archivos generales de plantilla de jerarquía de Wordpress(single.php, page.php, 404.php, etc.) están dentro de la carpeta `/template-parts` ; todo sigue funcionando como se debe porque el archivo `index.php` en la raíz del tema, redirige a la plantilla adecuada. Si no te gusta esto, solo regresa los archivos al directorio raíz y listo. El funcionamiento de jerarquía de plantillas de WordPress se comporta sin diferencias.
 
-### Compatibilidad de `smoothScroll`
+### Compatibilidad con `smoothScroll`
 
-Al momento de escribir esto, la mayoría de los navegadores modernos tiene soporte nativo para smooth-scroll (no confundir con smoothScrollBar), pero para los que no, se ha agregado un polyfill para solucionarlo. Si deseas un offset para compensar el uso de menú sticky(claro, si lo usas), en el archivo  `/assets/source/js/main.js` ubica la sección `● SMOOTH SCROLL` y cambia la variable **`offset`** con el número de píxeles necesarios.
+Al momento de escribir esto, la mayoría de los navegadores modernos tiene soporte nativo para smooth-scroll (no confundir con smoothScrollBar), pero para los que no, se ha agregado un polyfill para solucionarlo. Si deseas un offset para compensar el uso de menú sticky(claro, si lo usas), en el archivo  `/assets/source/js/main.js` ubica la sección `● SMOOTH SCROLL` y cambia la variable **`offset`** con el número de píxeles necesarios. Esto por defecto esta desactivado.
 
 ### Mejoras en el manejo de imágenes.
 
 Entre las mejoras están:
 
 1. Empleo de [vainilla-lazyload library](https://github.com/verlok/vanilla-lazyload) para la carga de imagenes. Actualmente, la mayoría de los navegadores soportan lazyload atributo, pero `vainilla-lazyload` library demuestra un mejor rendimiento.
-2. Utilización de imágenes responsiva por medio de la función `sp_img_resp`. Ahora algunas notas a consideración sobre esta función:
+2. Utilización de imágenes responsivas por medio de la función `sp_img_resp`. Ahora algunas notas a consideración sobre esta función:
    * Esta permite generar una [imagen con marcado responsive](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) dado ID y tamaño de imagen.
    * Si `vainilla-lazyload` library está activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas.
    * Puede ser utilizada en el `WP Loop` sin necesidad de especificar el ID de la imagen; por defecto, obtendrá la imagen destacada de la publicación actual dentro del WP loop.
-   * Solo generará marcado responsivo de los tamaños de imagen establecidos en la variable `$sizes_img_names`. Esto es útil cuando hay muchos tamaños de imagen disponibles (talvez debido a algunos plug-ins), y que no son útiles para esta tarea.
 3. Manejo de errores comunes. Al ingresar un ID o tamaño de imagen incorrecto se tomará algunas decisiones para evitar atrasos. Si el ID de imagen no existe, se generara una imagen placeholder; si el ID es correcto, pero el tamaño de imagen incorrecto, generara la imagen con un tamaño de imagen existente, por defecto `large`.
 4. Se han deshabilitado el escalado de imágenes predeterminado de WordPress. Un poco de contexto: Desde WordPress 5.3 las imágenes mayores a `2560px`, se reescalan automáticamente y se le asigna el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen `full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original, aunque nunca más sea usada, usando recursos valiosos.
 5. Se ha añadido de forma compacta la funcionalidad de [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). Su función básica es re-escalar automáticamente imágenes mayores a `2000px` de ancho. Si se detecta que el plug-in `Imsanity` está activo, se dará prioridad a dicho plug-in para evitar conflictos.
@@ -101,11 +99,11 @@ Se han dividido las configuraciones comunes de WordPress (widgets, tamaños de i
 
 ### Fácil implementación de customizer
 
-El tema trae una plantilla de configuración para agregar campos al customizer. Ve a `includes/others/settings_customizer.php`. De forma predeterminada, la inclusión de ese archivo está deshabilitado; habilítalo en `functions.php` en el apartado *|> Widgets*.
+El tema trae una plantilla de configuración para agregar campos al customizer. Ve a `includes/others/settings_customizer.php`. De forma predeterminada, la inclusión de ese archivo está deshabilitado; habilítalo en `functions.php` en el apartado *●❱ CUSTOMIZER*.
 
 ### Funciones utilitarias
 
-En el día a día hay tareas repetitivas que se hacen mejor con funciones para mejorar la legibilidad y el mantenimiento del código. Son pocas, pero te ayudarán mucho.
+En el día a día hay tareas repetitivas que se hacen mejor con funciones para mejorar la legibilidad y el mantenimiento del código. Son pocas, pero muy utiles.
 
 * **sp_get_img__url()** Obtiene la URL de imagen dado un ID y tamaño de imagen. ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop.
 * **sp_get_img__alt()** Obtiene el texto alternativo de una imagen dado el ID. ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop
@@ -165,7 +163,7 @@ No necesitas invertir mucho tiempo en hacer el menú responsivo. Únicamente agr
   * Conversión automática de unidades en mediaquerys a `em` [Vea el motivo aquí.](https://zellwk.com/blog/media-query-units/)
   * Uso de shorthands. Por ejemplo: font-size, margin(con todas sus variantes), padding(con todas sus variantes) y rfs; esta última para cualquier otra propiedad.
 * **m_query:** Permite crear mediaquerys de forma más rápida.
-  * Por defecto las mediaquerys son de tipo `max-witdh`.
+  * Por defecto las mediaquerys son de tipo `max-width`.
   * Acepta `rem, em o px`.
   * Convierte automáticamente el breakpoint a `em`. [Vea el motivo aquí.](https://zellwk.com/blog/media-query-units/)
   * Resta .02 pixel a las mediaquery por defecto, para evitar superposición de pantallas. [Vea más detalles aquí.](https://getbootstrap.com/docs/5.2/layout/breakpoints/#max-width)
