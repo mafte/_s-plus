@@ -363,22 +363,18 @@ if (!function_exists('sp_img_resp')) {
      * @param  boolean $lazy  Native attribute for lazyload. Optional. By default it is TRUE.
      * @return string  Image responsive with attributes.
      */
-    function sp_img_resp($size = 'large', $id = 0, $class = '', $lazy = true) {
+    function sp_img_resp($size = 'large', $id = 0, $class = '', $lazy = 'lazy') {
 
         /* If the $id is equal to null, then we get the id of the current post */
         if ($id === 0) {
             $id = get_post_thumbnail_id();
         }
 
-        if ($lazy) {
-            $lazy = 'lazy';
-        }
-
         /**
          * If you are using the lazyload script then it will work differently.
          */
         $has_lazyload = wp_script_is('lazyload');
-        if ($lazy === true && $has_lazyload === true) {
+        if ($lazy && $has_lazyload === true) {
             $class .= ' lazy';
         }
 
