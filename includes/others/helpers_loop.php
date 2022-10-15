@@ -394,8 +394,8 @@ if (!function_exists('sp_img_resp')) {
         }
 
         $sizes_default      = '(max-width: 1440px) calc(100vw - 48px), 1440px';
-        $search_atrributes  = array('src="', 'srcset="', 'sizes="');
-        $changes_atrributes = array('data-src="', 'data-srcset="', 'data-sizes="');
+        $search_atrributes  = array('src="', 'srcset="', 'sizes="', 'loading="lazy"');
+        $changes_atrributes = array('data-src="', 'data-srcset="', 'data-sizes="', '');
 
         /*
         ——— If $size is 'full' then change the sizes
@@ -434,6 +434,7 @@ if (!function_exists('sp_img_resp')) {
             }
         }
 
+        /* If lazyload is active and lazy option es true then delete attribute HTML 'loading="lazy"' */
         if ($has_lazyload && $lazy) {
             return str_replace($search_atrributes, $changes_atrributes, $original_img_html);
         } else {
