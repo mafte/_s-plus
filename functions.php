@@ -48,3 +48,15 @@ include_once('includes/others/acf.php');
 \*————————————————————————————————————————————————————*/
 
 include_once('includes/others/improve_wp_nav.php');
+
+function display_admin_notice() {
+?>
+    <?php if (!class_exists('ACF')) : ?>
+        <div class="notice notice-warning">
+            <p>The current theme <code><?php echo wp_get_theme()->get('Name'); ?></code> works with Advanced Custom Fields (ACF), please install it.</p>
+        </div>
+    <?php endif; ?>
+
+<?php
+}
+add_action('admin_notices', 'display_admin_notice');

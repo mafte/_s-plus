@@ -2,10 +2,8 @@
 
 function _s_plus_scripts() {
 
-    $dir_scripts = get_template_directory() . '/assets/source/js/';
-    $url_scripts = get_template_directory_uri() . '/assets/dist/js/';
-    $dir_styles = get_template_directory() . '/assets/source/css/';
-    $url_styles = get_template_directory_uri() . '/assets/source/css/';
+    $dir_assets = get_template_directory() . '/assets';
+    $url_assets = get_template_directory_uri() . '/assets';
 
     /*  STYLES
     ——————————————————————————————————————————————————————*/
@@ -15,8 +13,10 @@ function _s_plus_scripts() {
 
     /*  SCRIPTS
     ——————————————————————————————————————————————————————*/
-    wp_enqueue_script('lazyload', $url_scripts . 'lazyload.min.js', array(), '17.8.3', true);
-    wp_enqueue_script('_s_plus-main', get_template_directory_uri() . '/assets/dist/js/production.min.js', array(), '1.' . filemtime(get_template_directory() . '/assets/dist/js/production.min.js'), true);
+    wp_enqueue_script('lazyload', "{$url_assets}/dist/js/lazyload.min.js", array(), '17.8.3', true);
+    wp_enqueue_script('_s_plus-main', "{$url_assets}/dist/js/production.min.js", array(), '1.' . filemtime("{$dir_assets}/dist/js/production.min.js"), true);
+    // wp_enqueue_script('tinyslider', "{$url_assets}/dist/js/tiny-slider.min.js", array(), '2.9.3', true);
+
 
     // if (is_singular() && comments_open() && get_option('thread_comments')) {
     //     wp_enqueue_script('comment-reply');

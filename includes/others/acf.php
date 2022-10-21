@@ -158,7 +158,7 @@ if (ACF_ONLY_CP) {
 //         'page_title' => __('Global Options'),
 //         'menu_title' => __('Global Options'),
 //         'menu_slug' => 'global-options',
-//         'icon_url' => 'dashicons-megaphone',
+//         'icon_url' => 'dashicons-hammer',
 //         'redirect' => true //Si esta en false crea tambien una subpagina con ese nombre
 //     ));
 

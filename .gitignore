@@ -175,6 +175,9 @@ wp-content/uploads/**/*.jp2
 wp-content/uploads/**/*.webp
 wp-content/uploads/**/*.png
 
+wp-content/uploads/**/*.svg
+
+
 # PDF files
 wp-content/uploads/**/*.pdf
 

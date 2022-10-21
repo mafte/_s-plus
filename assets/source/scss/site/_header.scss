@@ -13,7 +13,7 @@ $breakpoint_menu: 992px;
     }
 
     &__menu {
-        @media screen and (max-width: $breakpoint_menu) {
+        @include m_query($breakpoint_menu) {
             display: flex;
             justify-content: flex-end;
         }
@@ -21,7 +21,7 @@ $breakpoint_menu: 992px;
         /*
         ——— STYLES MENU FOR DESKTOP
         */
-        @media screen and (min-width: $breakpoint_menu) {
+        @include m_query($breakpoint_menu, "min") {
             .menu {
                 display: flex;
                 position: relative;
@@ -34,11 +34,11 @@ $breakpoint_menu: 992px;
                     position: relative;
 
                     /*
-                    ——— This pseudo-element helps to improve the hover in the main menu
-                    */
+                ——— This pseudo-element helps to improve the hover in the main menu
+                */
                     &::after {
                         --size: 100%;
-                        content: '';
+                        content: "";
                         position: absolute;
                         bottom: 0;
                         left: 0;
@@ -54,15 +54,14 @@ $breakpoint_menu: 992px;
                 display: block;
                 bottom: 0;
                 transform: translate(-1.5rem, calc(100% + 1rem));
-                ;
                 opacity: 0;
                 left: -99999rem;
                 transition: opacity 0.15s linear, left 0.1s 0.15s;
                 min-width: 230px;
                 padding: 1rem 0.5rem;
-                background: #F5F5F5;
+                background: #f5f5f5;
                 border-radius: 10px;
-                border-top: 4px solid #00069C;
+                border-top: 4px solid var(--c-primary);
 
                 .menu-item-has-children {
                     &::before {
@@ -79,8 +78,13 @@ $breakpoint_menu: 992px;
                     left: 2.5rem;
                     width: var(--size);
                     height: var(--size);
-                    background-image: url("data:image/svg+xml,%3Csvg width='11' height='4' viewBox='0 0 11 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5107 4.00003C10.5039 3.59146 10.2778 3.18448 9.83252 2.87271L7.36523 1.14651C6.45996 0.513336 4.99268 0.513336 4.08789 1.14651L1.63867 2.85989C1.18848 3.17484 0.962402 3.58719 0.959961 4.00003H10.5107Z' fill='%2300069C'/%3E%3C/svg%3E%0A");
                     background-size: contain;
+                    background: linear-gradient(136deg,
+                            var(--c-primary) 0%,
+                            var(--c-primary) 47.9%,
+                            transparent 47.91%);
+                    transform: rotate(45deg);
+                    border-radius: 6px;
                 }
 
                 li+li {
@@ -94,14 +98,14 @@ $breakpoint_menu: 992px;
                     border-radius: 5px;
 
                     @include hover {
-                        background: #ECECEC;
-                        color: #00069C;
+                        background: #ececec;
+                        color: var(--c-secondary);
                     }
                 }
 
                 /*
-                ——— Third Level
-                */
+            ——— Third Level
+            */
 
                 .sub-menu {
                     transform: translate(calc(100% - 8px), calc(75% - 20px));
@@ -114,8 +118,7 @@ $breakpoint_menu: 992px;
                     }
 
                     .sub-menu {
-                        transform: translate(calc(95% - 1px),calc(75% - 20px));
-
+                        transform: translate(calc(95% - 1px), calc(75% - 20px));
                     }
                 }
             }
@@ -124,7 +127,6 @@ $breakpoint_menu: 992px;
                 position: relative;
 
                 &::before {
-
                     --size: 14px;
                     content: "";
                     position: absolute;
@@ -137,7 +139,6 @@ $breakpoint_menu: 992px;
                     background-size: contain;
                     background-position: center;
                     pointer-events: none;
-
                 }
 
                 .ancestor-wrapper {
@@ -219,13 +220,13 @@ $breakpoint_menu: 992px;
         }
     }
 
-    @media screen and (min-width: $breakpoint_menu) {
+    @include m_query($breakpoint_menu, 'min') {
         display: none;
     }
 }
 
 .main-navigation {
-    @media screen and (min-width: $breakpoint_menu) {
+    @include m_query($breakpoint_menu, 'min') {
         .sub-menu-toggle {
             display: none;
         }
@@ -235,7 +236,8 @@ $breakpoint_menu: 992px;
 /*
 ——— STYLES MENU FOR MOBILE
 */
-@media screen and (max-width: $breakpoint_menu) {
+
+@include m_query($breakpoint_menu) {
     .main-navigation {
         position: fixed;
         left: 0;
@@ -281,13 +283,12 @@ $breakpoint_menu: 992px;
                 }
 
                 &[aria-expanded="true"] {
-                    background: #EFEFEF;
+                    background: #efefef;
 
                     .icon {
                         transform: rotate(180deg);
                     }
                 }
-
             }
         }
 
@@ -400,7 +401,7 @@ $breakpoint_menu: 992px;
 
 .admin-bar {
     .main-navigation {
-        @media screen and (max-width: $breakpoint_menu) {
+        @include m_query($breakpoint_menu) {
             top: 32px;
             height: calc(100% - 32px);
         }
