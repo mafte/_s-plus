@@ -247,8 +247,8 @@ $breakpoint_menu: 992px;
         top: 0;
         padding: 3rem 5rem;
 
-        @include m_query($boo-sm) {
-            padding: 2.4rem 2rem;
+        @include m_query($boo-md) {
+            padding: 2.4rem 4rem;
         }
 
         @include m_query($boo-sm) {
