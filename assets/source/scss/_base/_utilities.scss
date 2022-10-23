@@ -179,7 +179,7 @@
     font-size: 1.3rem;
     position: fixed;
     top: 0;
-    z-index: 10;
+    z-index: 10000;
 
     &:focus-within,
     &:focus {
@@ -208,5 +208,154 @@
         border-radius: 5px;
         bottom: -1.5rem;
         left: 50%;
+    }
+}
+
+/*————————————————————————————————————————————————————*\
+    ●❱ SPACING UTILITIES
+\*————————————————————————————————————————————————————*/
+
+@if $enabled_spacing_utilities {
+    .my-40 {
+        margin-top: var(--sp-40) !important;
+        margin-bottom: var(--sp-40) !important;
+    }
+
+    .my-64 {
+        margin-top: var(--sp-64) !important;
+        margin-bottom: var(--sp-64) !important;
+    }
+
+    .my-80 {
+        margin-top: var(--sp-80) !important;
+        margin-bottom: var(--sp-80) !important;
+    }
+
+    .my-120 {
+        margin-top: var(--sp-120) !important;
+        margin-bottom: var(--sp-120) !important;
+    }
+
+    .my-160 {
+        margin-top: var(--sp-160) !important;
+        margin-bottom: var(--sp-160) !important;
+    }
+
+    .my-auto {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+    }
+
+    .mt-40 {
+        margin-top: var(--sp-40) !important;
+    }
+
+    .mt-64 {
+        margin-top: var(--sp-64) !important;
+    }
+
+    .mt-80 {
+        margin-top: var(--sp-80) !important;
+    }
+
+    .mt-120 {
+        margin-top: var(--sp-120) !important;
+    }
+
+    .mt-160 {
+        margin-top: var(--sp-160) !important;
+    }
+
+    .mt-auto {
+        margin-top: auto !important;
+    }
+
+    .mb-40 {
+        margin-bottom: var(--sp-40) !important;
+    }
+
+    .mb-64 {
+        margin-bottom: var(--sp-64) !important;
+    }
+
+    .mb-80 {
+        margin-bottom: var(--sp-80) !important;
+    }
+
+    .mb-120 {
+        margin-bottom: var(--sp-120) !important;
+    }
+
+    .mb-160 {
+        margin-bottom: var(--sp-160) !important;
+    }
+
+    .mb-auto {
+        margin-bottom: auto !important;
+    }
+
+    .py-40 {
+        padding-top: var(--sp-40) !important;
+        padding-bottom: var(--sp-40) !important;
+    }
+
+    .py-64 {
+        padding-top: var(--sp-64) !important;
+        padding-bottom: var(--sp-64) !important;
+    }
+
+    .py-80 {
+        padding-top: var(--sp-80) !important;
+        padding-bottom: var(--sp-80) !important;
+    }
+
+    .py-120 {
+        padding-top: var(--sp-120) !important;
+        padding-bottom: var(--sp-120) !important;
+    }
+
+    .py-160 {
+        padding-top: var(--sp-160) !important;
+        padding-bottom: var(--sp-160) !important;
+    }
+
+    .pt-40 {
+        padding-top: var(--sp-40) !important;
+    }
+
+    .pt-64 {
+        padding-top: var(--sp-64) !important;
+    }
+
+    .pt-80 {
+        padding-top: var(--sp-80) !important;
+    }
+
+    .pt-120 {
+        padding-top: var(--sp-120) !important;
+    }
+
+    .pt-160 {
+        padding-top: var(--sp-160) !important;
+    }
+
+    .pb-40 {
+        padding-bottom: var(--sp-40) !important;
+    }
+
+    .pb-64 {
+        padding-bottom: var(--sp-64) !important;
+    }
+
+    .pb-80 {
+        padding-bottom: var(--sp-80) !important;
+    }
+
+    .pb-120 {
+        padding-bottom: var(--sp-120) !important;
+    }
+
+    .pb-160 {
+        padding-bottom: var(--sp-160) !important;
     }
 }
