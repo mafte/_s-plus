@@ -125,7 +125,7 @@ img.error {
     opacity: 1;
 }
 
-img:not([src]) {
+img:not([src]):not([srcset]) {
     visibility: hidden;
 }
 
