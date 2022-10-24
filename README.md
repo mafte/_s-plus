@@ -66,10 +66,10 @@ Solo edita el archivo `gulpfile.js` busca el apartado **BASIC SETUP** y establec
 **De manera general estas son las tareas:**
 
 * SASS/CSS: compila, optimiza y minifica.
-* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar más scripts para concatenar abre `gulpfile.js` y busca el apartado **`JS TASK`**.
+* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar más scripts abre `gulpfile.js` y busca el apartado **`JS TASK`**. Hay dos arrays `vendors` y `customs`. Los que esten en `vendors` solo concatenara los scripts, en los que estan en `customs` analizara el JS con Babel.
 * ICONS: Al agregar iconos `.svg` al directorio `assets/source/icons` se genera automáticamente una hoja de estilo para uso.
 * AUTO-RELOAD: Inyecta CSS automáticamente, recarga el navegador al guardar los archivos de plantillas `.php`.
-* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada archivo `.scss` nuevo. Esta tarea genera de manera automática los`import` de todos los archivos que están dentro de determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, ` /assets/source/scss/acf/components` y `/assets/source/scss/site`.
+* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada nuevo archivo `.scss`. Esta tarea genera de manera automática los`import` de todos los archivos que están dentro de determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, ` /assets/source/scss/acf/components` y `/assets/source/scss/site`.
 
 ### Estructura de archivos mejorada
 
@@ -88,10 +88,10 @@ Entre las mejoras están:
    * Esta permite generar una [imagen con marcado responsive](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) dado ID y tamaño de imagen.
    * Si `vainilla-lazyload` library está activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas.
    * Puede ser utilizada en el `WP Loop` sin necesidad de especificar el ID de la imagen; por defecto, obtendrá la imagen destacada de la publicación actual dentro del WP loop.
-3. Manejo de errores comunes. Al ingresar un ID o tamaño de imagen incorrecto se tomará algunas decisiones para evitar atrasos. Si el ID de imagen no existe, se generara una imagen placeholder; si el ID es correcto, pero el tamaño de imagen incorrecto, generara la imagen con un tamaño de imagen existente, por defecto `large`.
-4. Se han deshabilitado el escalado de imágenes predeterminado de WordPress. Un poco de contexto: Desde WordPress 5.3 las imágenes mayores a `2560px`, se reescalan automáticamente y se le asigna el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen `full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original, aunque nunca más sea usada, usando recursos valiosos.
-5. Se ha añadido de forma compacta la funcionalidad de [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). Su función básica es re-escalar automáticamente imágenes mayores a `2000px` de ancho. Si se detecta que el plug-in `Imsanity` está activo, se dará prioridad a dicho plug-in para evitar conflictos.
-6. Se han desactivado los tamaños de imagen intermedios, los cuales es posible que no los emplees, ni sepas que se generan. Puedes volverlos a activar si deseas.
+   * Esta función maneja errores comunes. Si el ID de imagen no existe, se generara una imagen placeholder; si el ID es correcto, pero el tamaño de imagen pasado no, por defecto se tomara un tamaño valido, en este caso `large`.
+3. Se han deshabilitado el escalado de imágenes predeterminado de WordPress. Un poco de contexto: Desde WordPress 5.3 las imágenes mayores a `2560px`, se reescalan automáticamente y se le asigna el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen `full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original aunque nunca más sea usada, lo cual no es lo que la mayoria de los casos necesita.
+4. Se ha añadido de forma compacta la funcionalidad de [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). Su función básica es re-escalar automáticamente imágenes mayores a `2000px` de ancho. Si se detecta que el plug-in `Imsanity` está activo, se dará prioridad a dicho plug-in para evitar conflictos.
+5. Se han desactivado los tamaños de imagen intermedios('1536x1536', '2048x2048'), los cuales es posible que no los emplees, ni sepas que se generan. Puedes volverlos a activar si deseas.
 
 ### Fácil configuración
 
@@ -105,12 +105,12 @@ El tema trae una plantilla de configuración para agregar campos al customizer. 
 
 En el día a día hay tareas repetitivas que se hacen mejor con funciones para mejorar la legibilidad y el mantenimiento del código. Son pocas, pero muy utiles.
 
+* **sp_img_resp()** Genera un elemento HTML de imagen completo con notación responsiva, dado el tamaño de imagen e ID. El ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop.
 * **sp_get_img__url()** Obtiene la URL de imagen dado un ID y tamaño de imagen. ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop.
 * **sp_get_img__alt()** Obtiene el texto alternativo de una imagen dado el ID. ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop
 * **sp_get_cat__name()** Obtiene el nombre de la primera categoría asignada al post actual dentro del WP loop.
 * **sp_get_cat__url()** Obtiene la URL de la primera categoría asignada al post actual dentro del WP loop.
 * **sp_the_excerpt()** Obtiene el extracto de la publicación actual dado un límite de palabras.
-* **sp_img_resp()** Genera un elemento HTML de imagen completo con notación responsiva, dado el tamaño de imagen e ID. El ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop.
 * **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en `/assets/source/img/`.
 
 ### Uso con Advanced Custom Fields(ACF)
@@ -125,15 +125,15 @@ Elimina la carpeta `/ACF/flexible-content/`, y los siguientes archivos: `/ACF/ac
 
 * **Dejar solamente flexible content**
 
-Elimina la carpeta `/ACF/blocks`. Ahora en el archivo `/includes/others/acf.php` busca el apartado ***`|> Register blocks for ACF`*** y elimínalo.
+Elimina la carpeta `/ACF/blocks`. Ahora en el archivo `/includes/others/acf.php` cambia la constante `ACF_ONLY_CP` a `true`.
 
 #### Notas sobre flexible content
 
 De modo predeterminado, la estructura para **`flexible content`** es anidada; consta primero de columnas y luego componentes (`Add column > Add component`). Dicha estructura es útil para composiciones complejas. Si solo deseas emplear el enfoque clásico donde se añaden componentes directamente (`Add component`) entonces necesitas hacer unos pequeños cambios para adaptarlo.
 
 1. Ir al admin de grupos de campos de ACF y borrar o desactivar el grupo `[BUILDER] LAYOUT`.
-2. Entrar al grupo de campos `[BUILDER] PAGE`, activarlo y configurarlo para que se muestre en las páginas (o donde desees).
-3. En `/includes/others/acf.php` establece la constante** `ACF_NESTED`** en `false`.
+2. Entrar al grupo de campos `[BUILDER] PAGE`, y activarlo. Por defecto se muestra en las páginas.
+3. En `/includes/others/acf.php` establece la constante `ACF_NESTED` en `false`.
 
 ### Grid layout
 
@@ -141,14 +141,14 @@ Trae integrada un sistema grid CSS basado en Boostrap, pero mucho más compacto.
 
 ### Menú responsivo
 
-No necesitas invertir mucho tiempo en hacer el menú responsivo. Únicamente agrega elementos al menú principal y prácticamente estará listo. Viene preparado hasta tres niveles de profundidad. Si necesitas cambiar el breakpoint del menú, ve a `/assets/source/scss/site/header.scss` y cambia la variable **`$breakpoint_menu`**.
+No necesitas invertir mucho tiempo en hacer el menú responsivo. Únicamente agrega elementos al menú principal y prácticamente estará listo. Viene preparado para hasta tres niveles de profundidad. Si necesitas cambiar el breakpoint del menú, ve a `/assets/source/scss/site/header.scss` y cambia la variable **`$breakpoint_menu`**.
 
 ### Mejoras de accesibilidad
 
 * Incluye el enlance **Skip to Content**
 * Menú y sub menús del header accesibles desde teclado.
 * Menú móvil acondicionado para una mejor experiencia.
-* Correcto etiquetado de elemento H1. En homepage el elemento h1 es el nombre del sitio, en el resto no.
+* Correcto etiquetado de elemento H1. En homepage el elemento H1 es el nombre del sitio, en el resto no.
 
 ### Ayudantes de SASS
 
