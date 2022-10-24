@@ -97,7 +97,7 @@ Entre las mejoras están:
 
 Se han dividido las configuraciones comunes de WordPress (widgets, tamaños de imágenes, menús, estilos y scripts) en archivos individuales, para evitar perdernos en el código y ser más fácilmente accesibles. Ve a `/includes/_setup/`; comprueba tu mismo.
 
-### Fácil implementación de customizer
+### Implementación rápida de customizer
 
 El tema trae una plantilla de configuración para agregar campos al customizer. Ve a `includes/others/settings_customizer.php`. De forma predeterminada, la inclusión de ese archivo está deshabilitado; habilítalo en `functions.php` en el apartado *●❱ CUSTOMIZER*.
 
