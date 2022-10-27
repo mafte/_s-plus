@@ -1,3 +1,7 @@
+/*————————————————————————————————————————————————————*\
+    ●❱ IMPORT MODULES
+\*————————————————————————————————————————————————————*/
+
 const gulp = require("gulp");
 const fs = require("fs"); /* Permite leer y escribir archivos en el SO. Ocupado para generar stylesheets de iconos */
 
@@ -5,7 +9,6 @@ const fs = require("fs"); /* Permite leer y escribir archivos en el SO. Ocupado 
 ——— CSS
 */
 const sass = require('gulp-sass')(require('sass'));
-//var CleanCSSNEW = require('clean-css');
 const cleanCSS = require('gulp-clean-css'); /* Optimize and clean CSS */
 const autoPrefixer = require("gulp-autoprefixer"); /* Añade prefijos a propiedades css */
 
@@ -38,7 +41,7 @@ const { series } = require("gulp");
     ●❱ BASIC SETUP
 \*————————————————————————————————————————————————————*/
 
-var config = {
+const config = {
     urlBrowserSync: "pruebas.local",
     slug_theme: "slug-theme",
     BrowserList: "last 1 versions",
@@ -74,7 +77,6 @@ function css() {
 
     return gulp
         .src("assets/source/scss/style.scss")
-
         .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(sass().on("error", sass.logError))
@@ -238,19 +240,13 @@ function js_vendors() {
         // 'node_modules/jquery/dist/jquery.min.js',
         // 'node_modules/lazyload/lazyload.min.js',
         // config.path_source_js + 'smoothscroll.min.js',
-        // config.path_source_js + 'tiny-slider.min.js',
     ]
 
-    const customs = [
-        config.path_dist_js + 'production.min.js',
-    ]
-
-    let scripts = vendors.concat(customs);
-
-    return gulp.src(scripts)
+    return gulp.src(vendors, {allowEmpty: true})
         // .pipe(sourcemaps.init())
         .pipe(plumber())
-        .pipe(concat("production.min.js"))
+        .pipe(concat("vendors.min.js"))
+        .pipe(uglify())
         .pipe(lineec())
         // .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(config.path_dist_js))
@@ -263,7 +259,7 @@ function js_custom() {
     ]
 
     return gulp.src(customs)
-        // .pipe(sourcemaps.init())
+        .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(babel({
             presets: [
@@ -280,9 +276,11 @@ function js_custom() {
         .pipe(concat("production.js"))
         .pipe(lineec())
         .pipe(gulp.dest(config.path_dist_js))
+        .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(concat("production.min.js"))
         .pipe(uglify())
         .pipe(lineec())
+        .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(config.path_dist_js))
 }
 
@@ -290,8 +288,7 @@ function js_custom() {
     ●❱ MAIN TASK
 \*————————————————————————————————————————————————————*/
 
-exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh, js_custom), js_vendors, css, initAll);
-
+exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents, iconSh, js_custom), css, initAll);
 
 function initAll() {
 
@@ -318,7 +315,7 @@ function initAll() {
 
     gulp.watch(["assets/source/icons/*.svg"], iconSh);
 
-    gulp.watch(["assets/source/js/*.js"], series(js_custom, js_vendors));
+    gulp.watch(["assets/source/js/*.js"], series(js_custom));
 
     gulp.watch(
         [
