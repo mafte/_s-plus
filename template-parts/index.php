@@ -40,17 +40,21 @@ get_header();
                         margin: 1rem 0 2rem;
                         font-weight: 400;
                     }
+
+                    .mb-05 {
+                        margin-bottom: 0.5rem;
+                    }
                 </style>
 
                 <h2 class="ex-title">Buttons</h2>
                 <h3 class="ex-sub-title">Primary</h3>
 
-                <a href="#" class="btn btn--primary">Button primary</a>
-                <a href="#" class="btn btn--primary btn--outline">Button primary outline</a>
+                <a href="#" class="btn btn--primary mb-05">Button primary</a>
+                <a href="#" class="btn btn--primary btn--outline mb-05">Button primary outline</a>
 
                 <h3 class="ex-sub-title">Secondary</h3>
-                <a href="#" class="btn btn--secondary">Button secondary</a>
-                <a href="#" class="btn btn--secondary btn--outline">Button secondary outline</a>
+                <a href="#" class="btn btn--secondary mb-05">Button secondary</a>
+                <a href="#" class="btn btn--secondary btn--outline mb-05">Button secondary outline</a>
 
                 <h3 class="ex-sub-title">Links</h3>
                 <a href="#" class="">Hyperlink</a>
@@ -87,12 +91,11 @@ get_header();
                 <p style="font-size: var(--fs-5)">fs-5: Whereas a common understanding of these rights and freedoms is</p>
                 <p style="font-size: var(--fs-6)">fs-6: Whereas a common understanding of these rights and freedoms is</p>
                 <p style="font-size: var(--fs-hero)">fs-hero: Whereas a common understanding of these rights and freedoms is</p>
+                <h2 class="ex-title">Form elements</h2>
 
 
                 <section id="form">
                     <form>
-                        <h2>Form elements</h2>
-
                         <!-- Search -->
                         <label for="search">Search</label>
                         <input type="search" id="search" name="search" placeholder="Search" class="">
