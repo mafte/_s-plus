@@ -225,14 +225,17 @@ if (button_close) {
   });
 }
 
-var elements = document.querySelectorAll(".ancestor-wrapper .sub-menu-toggle");
-Array.prototype.forEach.call(elements, function (el, i) {
-  el.addEventListener("click", function () {
-    var parentN = this.parentNode;
-    slideToggle(parentN.nextElementSibling);
-    toggle_attr_expand(el);
+var sub_menu_toggles = document.querySelectorAll(".ancestor-wrapper .sub-menu-toggle");
+
+if (sub_menu_toggles) {
+  sub_menu_toggles.forEach(function (el) {
+    el.addEventListener("click", function () {
+      var parentN = this.parentNode;
+      slideToggle(parentN.nextElementSibling);
+      toggle_attr_expand(el);
+    });
   });
-});
+}
 
 function toggle_attr_expand(element) {
   if (element.getAttribute("aria-expanded") === "true") {

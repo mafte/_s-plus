@@ -190,18 +190,17 @@ if (button_close) {
     });
 }
 
-var elements = document.querySelectorAll(".ancestor-wrapper .sub-menu-toggle");
-Array.prototype.forEach.call(elements, function (el, i) {
+let sub_menu_toggles = document.querySelectorAll(".ancestor-wrapper .sub-menu-toggle");
+if (sub_menu_toggles) {
+    sub_menu_toggles.forEach(el=>{
+        el.addEventListener("click", function () {
+            let parentN = this.parentNode;
+            slideToggle(parentN.nextElementSibling);
+            toggle_attr_expand(el);
+        });
+    })
+}
 
-    el.addEventListener("click", function () {
-        let parentN = this.parentNode;
-
-        slideToggle(parentN.nextElementSibling);
-
-        toggle_attr_expand(el);
-
-    });
-});
 
 function toggle_attr_expand(element){
 

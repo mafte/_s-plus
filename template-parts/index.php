@@ -83,6 +83,11 @@ get_header();
 
                 <h3 class="ex-sub-title">Secondary</h3>
                 <p style="font-family: var(--ff-secondary);    font-size: var(--fs-3);">Everyone has the right to an effective remedy by the competent national tribunals for acts violating the fundamental rights granted him by the constitution or by law.</p>
+
+                <h3 class="ex-sub-title">Font Size Body</h3>
+                <p style="font-family: var(--body-font-size); ">Everyone has the right to an effective remedy by the competent national tribunals for acts violating the fundamental rights granted him by the constitution or by law. Everyone has the right to an effective remedy by the competent national tribunals for acts violating the fundamental rights granted him by the constitution or by law. Everyone has the right to an effective remedy by the competent national tribunals for acts violating the fundamental rights granted him by the constitution or by law.</p>
+
+
                 <h2 class="ex-title">Responsives font-sizes</h2>
                 <p style="font-size: var(--fs-1)">fs-1: Whereas a common understanding of these rights and freedoms is</p>
                 <p style="font-size: var(--fs-2)">fs-2: Whereas a common understanding of these rights and freedoms is</p>
