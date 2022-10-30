@@ -148,6 +148,18 @@ if (ACF_ONLY_CP) {
     add_filter('allowed_block_types_all', 'wpdocs_allowed_block_types', 10, 2);
 }
 
+function sp_display_admin_notice() {
+?>
+    <?php if (!class_exists('ACF')) : ?>
+        <div class="notice notice-warning">
+            <p>The current theme <code><?php echo wp_get_theme()->get('Name'); ?></code> works with Advanced Custom Fields (ACF), please install it.</p>
+        </div>
+    <?php endif; ?>
+
+<?php
+}
+add_action('admin_notices', 'sp_display_admin_notice');
+
 
 /*  |> OPTIONS PAGES
 ——————————————————————————————————————————————————————*/
