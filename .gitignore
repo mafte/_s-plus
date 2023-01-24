@@ -158,6 +158,8 @@ wp-migrate-db-pro-compatibility.php
 wp-migrate-db
 wp-sync-db
 wp-sync-db-media-files
+local-xdebuginfo.php
+local-phpinfo.php
 
 # Ignore themes
 wp-content/themes/twenty*/
