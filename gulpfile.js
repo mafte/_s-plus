@@ -207,7 +207,7 @@ function createIconSheet() {
         const element = filesNamesWithoutExtension[index];
 
         content =
-            content + `.${element}{ background-image: var(--${element}) };\n`;
+            content + `.${element}{ background-image: var(--${element}) }\n`;
     }
 
     fs.writeFileSync(
