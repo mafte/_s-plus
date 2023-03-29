@@ -378,6 +378,16 @@ $breakpoint_menu: 992px;
                 right: 0;
             }
         }
+
+        &.effect--leftIn {
+            left: -100%;
+            transition: left var(--g-trans);
+
+            &.show--fade {
+                opacity: 1;
+                left: 0;
+            }
+        }
     }
 }
 
