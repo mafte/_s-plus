@@ -160,6 +160,7 @@ wp-sync-db
 wp-sync-db-media-files
 local-xdebuginfo.php
 local-phpinfo.php
+query-monitor
 
 # Ignore themes
 wp-content/themes/twenty*/
