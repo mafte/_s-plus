@@ -9,48 +9,42 @@
  */
 
 /*————————————————————————————————————————————————————*\
-	●❱ BASIC SETUP
+    ●❱ BASIC SETUP
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/_setup/basic.php';
+include_once('includes/_setup/basic.php');
 
 
-/*
-  |> Widgets
+/*  |> Widgets
 ——————————————————————————————————————————————————————*/
 // include_once('includes/_setup/widgets.php');
 
 
-/*
-  |> Enqueue scripts and styles.
+/*  |> Enqueue scripts and styles.
 ——————————————————————————————————————————————————————*/
-require_once 'includes/_setup/scripts_and_styles.php';
+include_once('includes/_setup/scripts_and_styles.php');
 
 
-/*
-  |> Helpers loop functions
+/*  |> Helpers loop functions
 ——————————————————————————————————————————————————————*/
-require_once 'includes/others/helpers_loop.php';
+include_once('includes/others/helpers_loop.php');
 
 
-/*
-————————————————————————————————————————————————————*\
-	●❱ ACF
+/*————————————————————————————————————————————————————*\
+    ●❱ ACF
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/others/acf.php';
+include_once('includes/others/acf.php');
 
-/*
-————————————————————————————————————————————————————*\
-	●❱ CUSTOMIZER
+/*————————————————————————————————————————————————————*\
+    ●❱ CUSTOMIZER
 \*————————————————————————————————————————————————————*/
 
-// include_once('includes/others/settings_customizer.php');
+//include_once('includes/others/settings_customizer.php');
 
 
-/*
-————————————————————————————————————————————————————*\
-	●❱ IMPROVE: WP MENU NAV
+/*————————————————————————————————————————————————————*\
+    ●❱ IMPROVE: WP MENU NAV
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/others/improve_wp_nav.php';
+include_once('includes/others/improve_wp_nav.php');
