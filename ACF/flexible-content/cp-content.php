@@ -8,13 +8,13 @@
 
 <section <?php echo $atts_globals; ?> class="cp-content <?php echo $cp->class_css; ?>">
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <?php echo $cp->content; ?>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<?php echo $cp->content; ?>
+			</div>
+		</div>
+	</div>
 
 </section>
 

@@ -17,16 +17,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-
-
-
-
-    <?php include(get_template_directory() . '/ACF/acf-generate-layout.php'); ?>
-
-
-
-
-
+	<?php require get_template_directory() . '/ACF/acf-generate-layout.php'; ?>
 </main><!-- #main -->
 
 <?php
