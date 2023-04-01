@@ -22,12 +22,12 @@ require_once 'includes/_setup/basic.php';
 
 /*  |> Enqueue scripts and styles.
 ——————————————————————————————————————————————————————*/
-require_once 'includes/_setup/scripts_and_styles.php';
+require_once 'includes/_setup/scripts-and-styles.php';
 
 
 /*  |> Helpers loop functions
 ——————————————————————————————————————————————————————*/
-require_once 'includes/others/helpers_loop.php';
+require_once 'includes/others/helpers-loop.php';
 
 
 /*————————————————————————————————————————————————————*\
@@ -40,11 +40,11 @@ require_once 'includes/others/acf.php';
 	●❱ CUSTOMIZER
 \*————————————————————————————————————————————————————*/
 
-//include_once('includes/others/settings_customizer.php');
+//include_once('includes/others/settings-customizer.php');
 
 
 /*————————————————————————————————————————————————————*\
 	●❱ IMPROVE: WP MENU NAV
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/others/improve_wp_nav.php';
+require_once 'includes/others/improve-wp-nav.php';
