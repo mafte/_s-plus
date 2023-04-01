@@ -46,7 +46,6 @@
 										<?php else : ?>
 											<?php echo sp_img_resp( 'medium', get_theme_mod( 'custom_logo' ), 'site-header__logo' ); ?>
 										<?php endif; ?>
-										<span class="visually-hidden"><?php echo get_bloginfo( 'name' ); ?></span>
 									</a>
 								</h1>
 							<?php else : ?>
