@@ -5,7 +5,7 @@ $rem_base_px: 16;
 $fix_safari: true !default;
 
 @function trim_unit($value) {
-    @return math.div($value, $value * 0 + 1); 
+    @return math.div($value, $value * 0 + 1);
 }
 
 @function from_base_px($value) {
@@ -19,39 +19,40 @@ $fix_safari: true !default;
     $min-value_unit: unit($min-value);
     $max-value_unit: unit($max-value);
 
-    /* ● Comprobacion de unidades ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+    /*  |> Unit check
+    ——————————————————————————————————————————————————————*/
 
     @if $min-screen_unit !=$max-screen_unit {
-        @error "Los unidades para $min-screen y $max-screen son diferentes. Puede utilizar 'em', 'px' o 'rem', pero no combinadas.";
+        @error "The units for $min-screen and $max-screen are different. You can use 'em', 'px' or 'rem', but not in combination.";
     }
 
     @if $min-value_unit !=$max-value_unit {
-        @error "Los unidades para $min-value y $max-value son diferentes. Puede utilizar 'em', 'px' o 'rem', pero no combinadas.";
+        @error "The units for $min-value and $max-value are different. You can use 'em', 'px' or 'rem', but not in combination.";
     }
 
     $max-screen-em: $max-screen;
     $min-screen-em: $min-screen;
 
-    /* ● Convertir los tamaños de pantalla para media querys a 'em' ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+    /*  |> Convert screen sizes for media queries to 'em'
+    ——————————————————————————————————————————————————————*/
     /** @see https://zellwk.com/blog/media-query-units/ */
 
-    /** Si usamos 'rem', las convertimos en 'em' */
+    /** If we use 'rem', we convert them to 'em' */
     @if $min-screen_unit==rem and $max-screen_unit==rem {
         $max-screen-em: trim_unit($max-screen-em) * 1em;
         $min-screen-em: trim_unit($min-screen-em) * 1em;
     }
 
-    /** Si usamos 'px', las convertimos en 'em' */
+    /** If we use 'px', we convert them to 'em' */
     @if $min-screen_unit==px and $max-screen_unit==px {
         $max-screen-em: from_base_px($max-screen) * 1em;
         $min-screen-em: from_base_px($min-screen) * 1em;
     }
 
-
     & {
         @each $property in $properties {
             #{$property}: $min-value $is_important;
-        
+
         // Include safari iframe resize fix if needed
 
         /*-clean-css ignore:start */
@@ -83,9 +84,10 @@ $fix_safari: true !default;
     $min-value_unit: unit($min-value);
     $max-value_unit: unit($max-value);
 
-    /* ● Tamaños de pantalla ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+    /*  |> Screen sizes
+    ——————————————————————————————————————————————————————*/
 
-    /** Si usamos 'rem', convertimos los tamaños de pantalla a 'rem' */
+    /** If we use 'rem', we convert the screen sizes to 'rem' */
     @if $min-value_unit==rem and $max-value_unit==rem {
 
         @if $min-screen_unit==em and $max-screen_unit==em {
@@ -98,7 +100,7 @@ $fix_safari: true !default;
             $min-screen: from_base_px($min-screen) * 1rem;
         }
 
-        /** Si usamos 'px', convertimos los tamaños de pantalla a 'px' */
+        /** If we use 'px', we convert the screen sizes to 'px' */
     }
 
     @else if $min-value_unit==px and $max-value_unit==px {
@@ -108,7 +110,7 @@ $fix_safari: true !default;
             $min-screen: trim_unit($min-screen) * $rem_base_px * 1px;
         }
 
-        /** Si usamos 'em', convertimos los tamaños de pantalla a 'em' */
+        /** If we use 'em', we convert screen sizes to 'em' */
     }
 
     @else if $min-value_unit==em and $max-value_unit==em {
@@ -137,7 +139,9 @@ $fix_safari: true !default;
     @return calc(#{$a*100}vw #{$sign} #{$b});
 }
 
-/* ● SHORTHANDS MIXINS HELPERS ❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱ */
+/*————————————————————————————————————————————————————*\
+    ●❱ SHORTHANDS MIXINS HELPERS
+\*————————————————————————————————————————————————————*/
 
 $min_scren_size: 320px;
 $max_scren_size: 1440px;

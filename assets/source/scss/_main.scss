@@ -4,22 +4,16 @@ html {
 
 .container,
 .container-fluid {
-    padding-left: calc(var(--p-container) / 2);
-    padding-right: calc(var(--p-container) / 2);
+    max-width: var(--max-width-container);
 
-    @include m_query($boo-md) {
-        padding-left: calc(var(--p-container) / 2.5);
-        padding-right: calc(var(--p-container) / 2.5);
+    &.narrow {
+        max-width: 1100px;
     }
 
-    @include m_query($boo-sm) {
-        padding-left: calc(var(--p-container) / 5);
-        padding-right: calc(var(--p-container) / 5);
+    @include m_query($max-width-container + ($p-container * 2)) {
+        padding-left: var(--p-container);
+        padding-right: var(--p-container);
     }
-}
-
-.container-narrow {
-    max-width: 1100px;
 }
 
 h1,
@@ -31,12 +25,12 @@ h6 {
     font-family: var(--ff-secondary);
     font-weight: 700;
     line-height: calc(1em + 0.5rem);
-    margin-bottom: 0;
+    margin-bottom: 1em;
 }
 
 a,
 p {
-    line-height: calc(1em + 0.5rem);
+    // line-height: 1.2;
 }
 
 p {
@@ -58,50 +52,23 @@ a {
 }
 
 .site {
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .site-main{
     min-height: 50vh;
 }
 
-/*  |> RESPONSIVE PROPERTIES
-——————————————————————————————————————————————————————*/
-
-:root {
-    /* Font sizes */
-    @include rfs("--fs-1", 1rem, 1.125rem); //18px
-    @include rfs("--fs-2", 1.125rem, 1.25rem); //20px
-    @include rfs("--fs-3", 1.25rem, 1.5rem); //24px
-    @include rfs("--fs-4", 1.5rem, 2rem); //32px
-    @include rfs("--fs-5", 1.625rem, 2.25rem); //36px
-    @include rfs("--fs-6", 2rem, 2.5rem); //40px
-    @include rfs("--fs-hero", 2rem, 4.0625rem); //52px
-
-    /* Spacing */
-    @include rfs("--sp-40", 2rem, 2.5rem); //40px
-    @include rfs("--sp-64", 2rem, 4rem); //64px
-    @include rfs("--sp-80", 2.5rem, 5rem); //80px
-    // @include rfs("--sp-120", 2.5rem, 7.5rem); //120px
-    // @include rfs("--sp-160", 2.5rem, 10rem); //160px
-
-
-
-    /* Border Radius */
-    @include rfs("--br-15", 8px, 15px); //15px
-}
 
 /*  |> BASIC STYLES CONTENT STRUCTURE
 ——————————————————————————————————————————————————————*/
 
 h1 {
     font-size: var(--fs-7);
-    color: var(--c-primary);
 }
 
 h2 {
     font-size: var(--fs-6);
-    color: var(--c-primary);
 }
 
 h3 {
@@ -140,8 +107,11 @@ img:not([src]):not([srcset]) {
     font-size: 14px;
     position: relative;
     display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    text-align: center;
+    transition-duration: var(--g-trans);
+    transition-property: background, border, color;
+    // text-transform: uppercase;
+    // letter-spacing: 2px;
 
     @include hover() {
         color: initial;
@@ -149,7 +119,7 @@ img:not([src]):not([srcset]) {
 
     @include m_query($boo-sm) {
         padding: 0.4rem 1rem;
-        letter-spacing: 1px;
+        // letter-spacing: 1px;
     }
 
     /* Icon for button */

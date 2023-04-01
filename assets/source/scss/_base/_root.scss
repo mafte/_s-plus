@@ -1,6 +1,11 @@
+// Minimum screen size for Interpolete: 320px;
+// Maximum screen size for Interpolete: 1440px;
+
+$max-width-container: 90rem;
+$p-container: 4rem;
+
 /*  |> BREAKPOINTS BOOSTRAP
 ——————————————————————————————————————————————————————*/
-
 $boo-sm: 36em;
 $boo-md: 48em;
 $boo-lg: 62em;
@@ -18,13 +23,25 @@ $kbd-color: grey;
 $kbd-bg: white;
 
 :root {
-    --p-container: 10rem; //Padding Container
-    --max-width-container:  calc( 1440px + var(--p-container)); // Add the corresponding padding used to compensate for the width.
+    @include rfs('--p-container', 2rem, 4rem); //Padding Container
+    --max-width-container: #{$max-width-container};
 
     /*
     ——— Transition duration time
     */
     --g-trans: .3s;
+
+    /*
+    ——— Border radius
+    */
+
+    --g-br: 15px;
+
+    /*
+    ——— Box Shadow
+    */
+
+    --g-shadow: 0 0 11px rgba(0, 0, 0, 0.15);
 
     /*
     ——— Fonts
@@ -71,7 +88,28 @@ $kbd-bg: white;
     ——— Links
     */
     --link-color: var(--c-primary);
-    --link-decoration: var(--c-primary-dark);
+    // --link-decoration: var(--c-primary-dark);
     --link-hover-color: var(--c-secondary);
-    --link-hover-decoration: var(--c-secondary-dark);
+    // --link-hover-decoration: var(--c-secondary-dark);
+
+    /*
+    ——— Font sizes
+    */
+    @include rfs("--fs-1", 1rem, 1.125rem);
+    @include rfs("--fs-2", 1.125rem, 1.25rem);
+    @include rfs("--fs-3", 1.25rem, 1.5rem);
+    @include rfs("--fs-4", 1.5rem, 2rem);
+    @include rfs("--fs-5", 1.625rem, 2.5rem);
+    @include rfs("--fs-6", 2rem, 3rem);
+    @include rfs("--fs-7", 2rem, 3.5rem);
+    @include rfs("--fs-hero", 2rem, 4rem);
+
+    /*
+    ——— Spacing
+    */
+    @include rfs("--sp-40", 2rem, 2.5rem); //40px
+    @include rfs("--sp-64", 2rem, 4rem); //64px
+    @include rfs("--sp-80", 2.5rem, 5rem); //80px
+    // @include rfs("--sp-120", 2.5rem, 7.5rem); //120px
+    // @include rfs("--sp-160", 2.5rem, 10rem); //160px
 }

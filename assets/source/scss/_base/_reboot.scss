@@ -223,12 +223,14 @@ sup {
 
 a {
     color: var(--link-color);
-    text-decoration-color: var(--link-decoration);
-    transition: var(--g-trans) color, var(--g-trans) background, var(--g-trans) text-decoration-color;
+    // text-decoration-color: var(--link-decoration);
+    // transition: var(--g-trans) color, var(--g-trans) background, var(--g-trans) text-decoration-color;
+    transition-property: color, background, text-decoration-color;
+    transition-duration: var(--g-trans);
 
     &:hover, &:focus {
         color: var(--link-hover-color);
-        text-decoration-color: var(--link-hover-decoration);
+        // text-decoration-color: var(--link-hover-decoration);
     }
 }
 
