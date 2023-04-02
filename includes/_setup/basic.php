@@ -174,7 +174,7 @@ function sp_the_header_logo() {
 		<?php if ( ! get_theme_mod( 'custom_logo' ) ) : ?>
 			<img class="site-header__logo" src="<?php echo sp_get_asset( 'placeholder-logo.svg' ); ?>" alt="">
 		<?php else : ?>
-			<?php echo sp_img_resp( 'medium', get_theme_mod( 'custom_logo' ), 'site-header__logo' ); ?>
+			<?php sp_the_resp_img( 'medium', get_theme_mod( 'custom_logo' ), 'site-header__logo' ); ?>
 		<?php endif; ?>
 	</a>
 	<?php
