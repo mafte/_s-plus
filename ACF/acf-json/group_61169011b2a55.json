@@ -6,25 +6,7 @@
             "key": "field_611690420b7b9",
             "label": "Headline",
             "name": "headline",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6116904f0b7ba",
-            "label": "Sub Headline",
-            "name": "sub_headline",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -44,6 +26,7 @@
             "key": "field_611690590b7bb",
             "label": "Image",
             "name": "image",
+            "aria-label": "",
             "type": "image",
             "instructions": "Recommended image size: 800 x 400 px",
             "required": 0,
@@ -83,5 +66,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1639098164
+    "modified": 1680476395
 }

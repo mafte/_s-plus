@@ -77,7 +77,7 @@ if ( ! function_exists( 'sp_the_excerpt' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_img_resp_here' ) ) {
+if ( ! function_exists( 'sp_img_resp_old' ) ) {
 
 	/**
 	 * Get responsive images with height and width attributes.
@@ -88,7 +88,7 @@ if ( ! function_exists( 'sp_img_resp_here' ) ) {
 	 * @param  boolean $lazyload  Native attribute for lazyload. Optional. By default it is TRUE.
 	 * @return string  Image responsive with attributes.
 	 */
-	function sp_img_resp_here( $size = 'large', $image_id = 0, $class_css = '', $lazyload = true ) {
+	function sp_img_resp_old( $size = 'large', $image_id = 0, $class_css = '', $lazyload = true ) {
 
 		/* If the $image_id is equal to 0, then we get the id of the current post */
 		if ( 0 === $image_id ) {
@@ -352,7 +352,7 @@ if ( ! function_exists( 'sp_get_the_terms_ids' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_img_resp' ) ) {
+if ( ! function_exists( 'sp_resp_img' ) ) {
 
 	/**
 	 * Get responsive images with height and width attributes.
@@ -363,7 +363,7 @@ if ( ! function_exists( 'sp_img_resp' ) ) {
 	 * @param  boolean $lazy  Native attribute for lazyload. Optional. By default it is TRUE.
 	 * @return string  Image responsive with attributes.
 	 */
-	function sp_img_resp( $size = 'large', $id = 0, $class = '', $lazy = 'lazy' ) {
+	function sp_resp_img( $size = 'large', $id = 0, $class = '', $lazy = 'lazy' ) {
 
 		/* If the $id is equal to null, then we get the id of the current post */
 		if ( 0 === $id ) {
@@ -450,5 +450,22 @@ if ( ! function_exists( 'sp_img_resp' ) ) {
 		} else {
 			return $original_img_html;
 		}
+	}
+}
+
+
+if ( ! function_exists( 'sp_the_resp_img' ) ) {
+
+	/**
+	 * Get responsive images with height and width attributes.
+	 *
+	 * @param  string  $size  Keyword for image size.
+	 * @param  int     $id    Image ID. Optional. By default it is the image ID of the current post.
+	 * @param  string  $class Class CSS. Optional.
+	 * @param  boolean $lazy  Native attribute for lazyload. Optional. By default it is TRUE.
+	 * @return string  Image responsive with attributes.
+	 */
+	function sp_the_resp_img( $size = 'large', $id = 0, $class = '', $lazy = 'lazy' ) {
+		echo sp_resp_img( $size, $id, $class, $lazy );
 	}
 }
