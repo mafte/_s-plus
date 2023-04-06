@@ -9,71 +9,74 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 /*————————————————————————————————————————————————————*\
     ●❱ ANIMATIONS
 \*————————————————————————————————————————————————————*/
-var slideUp = function slideUp(target) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  target.style.transitionProperty = "height, margin, padding";
-  target.style.transitionDuration = duration + "ms";
-  target.style.boxSizing = "border-box";
-  target.style.height = target.offsetHeight + "px";
-  target.offsetHeight;
-  target.style.overflow = "hidden";
-  target.style.height = 0;
-  target.style.paddingTop = 0;
-  target.style.paddingBottom = 0;
-  target.style.marginTop = 0;
-  target.style.marginBottom = 0;
-  window.setTimeout(function () {
-    target.style.display = "none";
-    target.style.removeProperty("height");
-    target.style.removeProperty("padding-top");
-    target.style.removeProperty("padding-bottom");
-    target.style.removeProperty("margin-top");
-    target.style.removeProperty("margin-bottom");
-    target.style.removeProperty("overflow");
-    target.style.removeProperty("transition-duration");
-    target.style.removeProperty("transition-property"); //alert("!");
-  }, duration);
-};
-
-var slideDown = function slideDown(target) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  target.style.removeProperty("display");
-  var display = window.getComputedStyle(target).display;
-  if (display === "none") display = "block";
-  target.style.display = display;
-  var height = target.offsetHeight;
-  target.style.overflow = "hidden";
-  target.style.height = 0;
-  target.style.paddingTop = 0;
-  target.style.paddingBottom = 0;
-  target.style.marginTop = 0;
-  target.style.marginBottom = 0;
-  target.offsetHeight;
-  target.style.boxSizing = "border-box";
-  target.style.transitionProperty = "height, margin, padding";
-  target.style.transitionDuration = duration + "ms";
-  target.style.height = height + "px";
-  target.style.removeProperty("padding-top");
-  target.style.removeProperty("padding-bottom");
-  target.style.removeProperty("margin-top");
-  target.style.removeProperty("margin-bottom");
-  window.setTimeout(function () {
-    target.style.removeProperty("height");
-    target.style.removeProperty("overflow");
-    target.style.removeProperty("transition-duration");
-    target.style.removeProperty("transition-property");
-  }, duration);
-};
-
-var slideToggle = function slideToggle(target) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-
-  if (window.getComputedStyle(target).display === "none") {
-    return slideDown(target, duration);
+function slideToggle(el, duration, callback) {
+  if (el.clientHeight === 0) {
+    _s(el, duration, callback, true);
   } else {
-    return slideUp(target, duration);
+    _s(el, duration, callback);
   }
-};
+}
+
+function slideUp(el, duration, callback) {
+  _s(el, duration, callback);
+}
+
+function slideDown(el, duration, callback) {
+  _s(el, duration, callback, true);
+}
+
+function _s(el, duration, callback, isDown) {
+  if (typeof duration === 'undefined') duration = 400;
+  if (typeof isDown === 'undefined') isDown = false;
+  el.style.overflow = "hidden";
+  if (isDown) el.style.display = "block";
+  var elStyles = window.getComputedStyle(el);
+  var elHeight = parseFloat(elStyles.getPropertyValue('height'));
+  var elPaddingTop = parseFloat(elStyles.getPropertyValue('padding-top'));
+  var elPaddingBottom = parseFloat(elStyles.getPropertyValue('padding-bottom'));
+  var elMarginTop = parseFloat(elStyles.getPropertyValue('margin-top'));
+  var elMarginBottom = parseFloat(elStyles.getPropertyValue('margin-bottom'));
+  var stepHeight = elHeight / duration;
+  var stepPaddingTop = elPaddingTop / duration;
+  var stepPaddingBottom = elPaddingBottom / duration;
+  var stepMarginTop = elMarginTop / duration;
+  var stepMarginBottom = elMarginBottom / duration;
+  var start;
+
+  function step(timestamp) {
+    if (start === undefined) start = timestamp;
+    var elapsed = timestamp - start;
+
+    if (isDown) {
+      el.style.height = stepHeight * elapsed + "px";
+      el.style.paddingTop = stepPaddingTop * elapsed + "px";
+      el.style.paddingBottom = stepPaddingBottom * elapsed + "px";
+      el.style.marginTop = stepMarginTop * elapsed + "px";
+      el.style.marginBottom = stepMarginBottom * elapsed + "px";
+    } else {
+      el.style.height = elHeight - stepHeight * elapsed + "px";
+      el.style.paddingTop = elPaddingTop - stepPaddingTop * elapsed + "px";
+      el.style.paddingBottom = elPaddingBottom - stepPaddingBottom * elapsed + "px";
+      el.style.marginTop = elMarginTop - stepMarginTop * elapsed + "px";
+      el.style.marginBottom = elMarginBottom - stepMarginBottom * elapsed + "px";
+    }
+
+    if (elapsed >= duration) {
+      el.style.height = "";
+      el.style.paddingTop = "";
+      el.style.paddingBottom = "";
+      el.style.marginTop = "";
+      el.style.marginBottom = "";
+      el.style.overflow = "";
+      if (!isDown) el.style.display = "none";
+      if (typeof callback === 'function') callback();
+    } else {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+}
 /*————————————————————————————————————————————————————*\
     ●❱ Navigation accesibility
 \*————————————————————————————————————————————————————*/
@@ -89,42 +92,18 @@ var slideToggle = function slideToggle(target) {
 
   if (!siteNavigation) {
     return;
-  } // const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
-
-
-  var button = document.querySelector("#site-nav-btn-close"); // Return early if the button don't exist.
-
-  if ('undefined' === typeof button) {
-    return;
   }
 
-  var menu = siteNavigation.getElementsByTagName('ul')[0]; // Hide menu toggle button if menu is empty and return early.
-
-  if ('undefined' === typeof menu) {
-    button.style.display = 'none';
-    return;
-  }
+  var menu = siteNavigation.getElementsByTagName('ul')[0];
 
   if (!menu.classList.contains('nav-menu')) {
     menu.classList.add('nav-menu');
-  } // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
+  } // Get all the link elements within the menu.
 
-
-  button.addEventListener('click', function () {
-    siteNavigation.classList.toggle('toggled');
-  }); // Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-  // document.addEventListener( 'click', function( event ) {
-  //     const isClickInside = siteNavigation.contains( event.target );
-  //     if ( ! isClickInside ) {
-  //         siteNavigation.classList.remove( 'toggled' );
-  //         button.setAttribute( 'aria-expanded', 'false' );
-  //     }
-  // } );
-  // Get all the link elements within the menu.
 
   var links = menu.getElementsByTagName('a'); // Get all the link elements with children within the menu.
-
-  var linksWithChildren = menu.querySelectorAll('.menu-item-has-children > .ancestor-wrapper > a, .page_item_has_children > .ancestor-wrapper > a'); // Toggle focus each time a menu link is focused or blurred.
+  // const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > .ancestor-wrapper > a, .page_item_has_children > .ancestor-wrapper > a' );
+  // Toggle focus each time a menu link is focused or blurred.
 
   var _iterator = _createForOfIteratorHelper(links),
       _step;
@@ -134,31 +113,15 @@ var slideToggle = function slideToggle(target) {
       var link = _step.value;
       link.addEventListener('focus', toggleFocus, true);
       link.addEventListener('blur', toggleFocus, true);
-    } // Toggle focus each time a menu link with children receive a touch event.
-
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  var _iterator2 = _createForOfIteratorHelper(linksWithChildren),
-      _step2;
-
-  try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var _link = _step2.value;
-
-      _link.addEventListener('touchstart', toggleFocus, false);
     }
     /**
      * Sets or removes .focus class on an element.
      */
 
   } catch (err) {
-    _iterator2.e(err);
+    _iterator.e(err);
   } finally {
-    _iterator2.f();
+    _iterator.f();
   }
 
   function toggleFocus() {
@@ -173,30 +136,6 @@ var slideToggle = function slideToggle(target) {
 
         self = self.parentNode;
       }
-    }
-
-    if (event.type === 'touchstart') {
-      var menuItem = this.parentNode;
-      event.preventDefault();
-
-      var _iterator3 = _createForOfIteratorHelper(menuItem.parentNode.children),
-          _step3;
-
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var link = _step3.value;
-
-          if (menuItem !== link) {
-            link.classList.remove('focus');
-          }
-        }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-
-      menuItem.classList.toggle('focus');
     }
   }
 })();
@@ -231,7 +170,7 @@ if (sub_menu_toggles) {
   sub_menu_toggles.forEach(function (el) {
     el.addEventListener("click", function () {
       var parentN = this.parentNode;
-      slideToggle(parentN.nextElementSibling);
+      slideToggle(parentN.nextElementSibling, 300);
       toggle_attr_expand(el);
     });
   });
