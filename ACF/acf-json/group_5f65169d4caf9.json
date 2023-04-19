@@ -6,6 +6,7 @@
             "key": "field_5f6516a6a7547",
             "label": "LAYOUT BUILDER",
             "name": "layout_builder",
+            "aria-label": "",
             "type": "flexible_content",
             "instructions": "",
             "required": 0,
@@ -26,6 +27,7 @@
                             "key": "field_5f65358136a35",
                             "label": "CONTENT",
                             "name": "",
+                            "aria-label": "",
                             "type": "tab",
                             "instructions": "",
                             "required": 0,
@@ -42,6 +44,7 @@
                             "key": "field_5f6517188da7b",
                             "label": "Page Builder",
                             "name": "page_builder",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -63,6 +66,7 @@
                             "key": "field_5f653e7a80894",
                             "label": "<span class=\"icon-acf icon-settings\"><\/span>",
                             "name": "",
+                            "aria-label": "",
                             "type": "tab",
                             "instructions": "",
                             "required": 0,
@@ -79,6 +83,7 @@
                             "key": "field_61fc26d76871d",
                             "label": "Settings",
                             "name": "settings",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -110,6 +115,7 @@
                             "key": "field_61afc56f13ea6",
                             "label": "CONTENT",
                             "name": "",
+                            "aria-label": "",
                             "type": "tab",
                             "instructions": "",
                             "required": 0,
@@ -126,6 +132,7 @@
                             "key": "field_5f65306cbd71a",
                             "label": "Column 1",
                             "name": "column_1",
+                            "aria-label": "",
                             "type": "group",
                             "instructions": "",
                             "required": 0,
@@ -141,6 +148,7 @@
                                     "key": "field_5f653078bd71b",
                                     "label": "Page Builder",
                                     "name": "page_builder",
+                                    "aria-label": "",
                                     "type": "clone",
                                     "instructions": "",
                                     "required": 0,
@@ -164,6 +172,7 @@
                             "key": "field_5f653094bd71c",
                             "label": "Column 2",
                             "name": "column_2",
+                            "aria-label": "",
                             "type": "group",
                             "instructions": "",
                             "required": 0,
@@ -179,6 +188,7 @@
                                     "key": "field_5f653094bd71d",
                                     "label": "Page Builder",
                                     "name": "page_builder",
+                                    "aria-label": "",
                                     "type": "clone",
                                     "instructions": "",
                                     "required": 0,
@@ -202,6 +212,7 @@
                             "key": "field_5f653745282ca",
                             "label": "<span class=\"icon-acf icon-settings\"><\/span>",
                             "name": "",
+                            "aria-label": "",
                             "type": "tab",
                             "instructions": "",
                             "required": 0,
@@ -218,6 +229,7 @@
                             "key": "field_61fc26fd6871e",
                             "label": "Settings",
                             "name": "settings",
+                            "aria-label": "",
                             "type": "clone",
                             "instructions": "",
                             "required": 0,
@@ -252,6 +264,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "movie"
+            }
         ]
     ],
     "menu_order": 0,
@@ -273,5 +292,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643915022
+    "modified": 1681423973
 }

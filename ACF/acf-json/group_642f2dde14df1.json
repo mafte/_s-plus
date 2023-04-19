@@ -1,0 +1,1711 @@
+{
+    "key": "group_642f2dde14df1",
+    "title": "[CP] All fields",
+    "fields": [
+        {
+            "key": "field_642f51a3f90a2",
+            "label": "Basic",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 1
+        },
+        {
+            "key": "field_642f2dde16ec4",
+            "label": "Text",
+            "name": "text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Instructions for authors. Shown when submitting data.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 20,
+            "placeholder": "Instructions for authors.",
+            "prepend": "Prepend",
+            "append": "Append"
+        },
+        {
+            "key": "field_642f2f2847048",
+            "label": "Text with append",
+            "name": "text_copy",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 20,
+            "placeholder": "Instructions for authors.",
+            "prepend": "",
+            "append": "Append"
+        },
+        {
+            "key": "field_642f32e18e31e",
+            "label": "Text with prepend",
+            "name": "text_copy2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 20,
+            "placeholder": "Instructions for authors.",
+            "prepend": "Prepend",
+            "append": ""
+        },
+        {
+            "key": "field_642f3199038b1",
+            "label": "Text area",
+            "name": "text_area_1",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "Appears within the input",
+            "new_lines": ""
+        },
+        {
+            "key": "field_642f32a627b10",
+            "label": "Number with prepend",
+            "name": "number_1",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 2,
+            "max": 20,
+            "placeholder": "Appears within the input",
+            "step": "",
+            "prepend": "Prepend",
+            "append": ""
+        },
+        {
+            "key": "field_64348efa89256",
+            "label": "Number with append",
+            "name": "number_2",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 2,
+            "max": 5,
+            "placeholder": "Appears within the input",
+            "step": 5,
+            "prepend": "",
+            "append": "Append"
+        },
+        {
+            "key": "field_642f333295d6d",
+            "label": "Range with Prepend",
+            "name": "range_1",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 20,
+            "max": 200,
+            "step": "",
+            "prepend": "",
+            "append": "Append"
+        },
+        {
+            "key": "field_64348f84485d8",
+            "label": "Range with Append",
+            "name": "range_2",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 20,
+            "max": 200,
+            "step": "",
+            "prepend": "",
+            "append": "Append"
+        },
+        {
+            "key": "field_642f4197fac5d",
+            "label": "Email",
+            "name": "email_1",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Appears within the input",
+            "prepend": "Prepend",
+            "append": "Append"
+        },
+        {
+            "key": "field_642f41b4e31b9",
+            "label": "Url",
+            "name": "url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Appears within the input"
+        },
+        {
+            "key": "field_642f41cd1536c",
+            "label": "Password",
+            "name": "password",
+            "aria-label": "",
+            "type": "password",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "Appears within the input",
+            "prepend": "Prepend",
+            "append": ""
+        },
+        {
+            "key": "field_642f51c9f90a3",
+            "label": "CONTENT",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_642f4586952b0",
+            "label": "Image",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_642f45a6952b1",
+            "label": "File",
+            "name": "file_1",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_642f45da952b2",
+            "label": "Editor",
+            "name": "editor",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_6434921e97d1b",
+            "label": "Editor Basic",
+            "name": "editor_copy",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_6434923297d1c",
+            "label": "Editor Visual Only",
+            "name": "editor_copy2",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_642f45f2952b3",
+            "label": "oEmbed",
+            "name": "oembed",
+            "aria-label": "",
+            "type": "oembed",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": ""
+        },
+        {
+            "key": "field_642f4605952b4",
+            "label": "Gallery",
+            "name": "gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min": 2,
+            "max": 5,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_643059ec6c5bb",
+            "label": "CHOICE",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_642f4632952b5",
+            "label": "Select",
+            "name": "selectg",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "Green": "Green"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_642f4652952b6",
+            "label": "Select Multiple values",
+            "name": "selectg_copy",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "Green": "Green"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "multiple": 1,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_642f4659952b7",
+            "label": "Select Multiple Values + Stylized UI",
+            "name": "selectg_copy2",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "Green": "Green"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "multiple": 1,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_642f4661952b8",
+            "label": "Select + Stylized UI",
+            "name": "selectg_copy3",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "Green": "Green"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_64305a51e28d3",
+            "label": "Checkbox Normal",
+            "name": "checkbox",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 1,
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_64305b653d684",
+            "label": "Checkbox - Horizontal - Custom Values",
+            "name": "checkbox_copy",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 1,
+            "save_custom": 0,
+            "layout": "horizontal",
+            "toggle": 1,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_64305a78c81cf",
+            "label": "Checkbox - Vertical - Custom Values",
+            "name": "checkbox_copy",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 1,
+            "save_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_64306769de302",
+            "label": "Radio button Normal",
+            "name": "radio_button",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_64306788de303",
+            "label": "Radio button + Custom option",
+            "name": "radio_button_copy",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 1,
+            "save_other_choice": 0,
+            "layout": "vertical"
+        },
+        {
+            "key": "field_6430678dde304",
+            "label": "Radio button - Horizontal - Custom option",
+            "name": "radio_button_copy2",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Red": "Red",
+                "Blue": "Blue",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 1,
+            "save_other_choice": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_6430682ba39c4",
+            "label": "Button Horizontal",
+            "name": "button_group",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Blue": "Blue",
+                "Red": "Red",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_64306851a39c5",
+            "label": "Button Vertical",
+            "name": "button_group_copy",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Blue": "Blue",
+                "Red": "Red",
+                "White": "White",
+                "Black": "Black"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "vertical"
+        },
+        {
+            "key": "field_64306856a39c6",
+            "label": "True\/False",
+            "name": "truefalse",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Displays text alongside the checkbox",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_643068b3f5553",
+            "label": "True\/False + Stylized UI",
+            "name": "truefalse_copy",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_64306931445d5",
+            "label": "Relational",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_64306943445d6",
+            "label": "Link",
+            "name": "link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_64306950445d7",
+            "label": "Post Object",
+            "name": "post_object",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_6430696a445d8",
+            "label": "Post Object  + MultiSelect",
+            "name": "post_object_copy",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_64306970445d9",
+            "label": "Page Link",
+            "name": "page_link",
+            "aria-label": "",
+            "type": "page_link",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "movie"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "allow_archives": 0,
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_64306984445da",
+            "label": "Page Link + MultiSelect",
+            "name": "page_link_copy",
+            "aria-label": "",
+            "type": "page_link",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "allow_archives": 1,
+            "multiple": 1,
+            "allow_null": 0
+        },
+        {
+            "key": "field_64306987445db",
+            "label": "Relationship",
+            "name": "relationship",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": "",
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": ""
+        },
+        {
+            "key": "field_643069a3445dc",
+            "label": "Relationship + Featured Image",
+            "name": "relationship_copy",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": "",
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_643069b286f54",
+            "label": "Taxonomy + MultiSelect",
+            "name": "taxonomy",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_643069cf86f55",
+            "label": "Taxonomy + Radio Button",
+            "name": "taxonomy_copy",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "radio",
+            "allow_null": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_643069d486f56",
+            "label": "Taxonomy + Select",
+            "name": "taxonomy_copy2",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "select",
+            "allow_null": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_6438801c96b0e",
+            "label": "Taxonomy + Checkbox",
+            "name": "taxonomy_copy3",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "checkbox",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_64306cc6b936b",
+            "label": "User",
+            "name": "user",
+            "aria-label": "",
+            "type": "user",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "return_format": "array",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_64306cd8b936c",
+            "label": "Advanced",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_64306ce7b936d",
+            "label": "Google Maps",
+            "name": "google_maps",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        },
+        {
+            "key": "field_64306d08b936e",
+            "label": "Date Picker",
+            "name": "date_picker",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_64306d3394412",
+            "label": "Date Time Picker",
+            "name": "date_time_picker",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y g:i a",
+            "return_format": "d\/m\/Y g:i a",
+            "first_day": 1
+        },
+        {
+            "key": "field_64306d4d94413",
+            "label": "Time Picker",
+            "name": "time_picker",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i a",
+            "return_format": "g:i a"
+        },
+        {
+            "key": "field_64306d6294414",
+            "label": "Color picker",
+            "name": "color_picker",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_64306d7894415",
+            "label": "Color picker + Enabled Transparency",
+            "name": "color_picker_copy",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_64306dfe8c6be",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_64306e108c6bf",
+            "label": "Message",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Single word, no spaces. Underscores and dashes allowed, Single word, no spaces. Underscores and dashes allowed, Single word, no spaces. Underscores and dashes allowed.\r\n\r\nSingle word, no spaces. Underscores and <strong>dashes<\/strong> allowed",
+            "new_lines": "wpautop",
+            "esc_html": 1
+        },
+        {
+            "key": "field_64306e5e8c6c0",
+            "label": "Accordion",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_64306e81b732d",
+            "label": "Text inner",
+            "name": "asdfads",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_64306e89b732e",
+            "label": "Image Inner",
+            "name": "asdfads_copy",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_64306f0e8db11",
+            "label": "Accordion #2",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_64306e8ab732f",
+            "label": "Inner Fields",
+            "name": "asdfads_copy",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_643880e596b0f",
+                    "label": "Name #1",
+                    "name": "name_#1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_64306e8ab732f"
+                },
+                {
+                    "key": "field_643880ff96b10",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_64306e8ab732f"
+                }
+            ]
+        },
+        {
+            "key": "field_643074973caba",
+            "label": "End Accordion",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
+        },
+        {
+            "key": "field_6430744a3cab6",
+            "label": "Personal Data - Group",
+            "name": "personal_data",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_643074593cab7",
+                    "label": "Text 1",
+                    "name": "text_1",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_643074613cab8",
+                    "label": "Pass",
+                    "name": "pass",
+                    "aria-label": "",
+                    "type": "password",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6438813996b11",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
+            "key": "field_6430751113891",
+            "label": "Recipes - Repeater Table",
+            "name": "recipes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6430751f13892",
+                    "label": "NAme",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6430751113891"
+                },
+                {
+                    "key": "field_6430752613893",
+                    "label": "Date",
+                    "name": "date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6430751113891"
+                }
+            ]
+        },
+        {
+            "key": "field_643075478fe51",
+            "label": "Recipes - Repeater Block",
+            "name": "recipes_copy",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_643075478fe52",
+                    "label": "NAme",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_643075478fe51"
+                },
+                {
+                    "key": "field_643075478fe53",
+                    "label": "Date",
+                    "name": "date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_643075478fe51"
+                }
+            ]
+        },
+        {
+            "key": "field_643075608fe54",
+            "label": "Recipes - Repeater Row",
+            "name": "recipes_copy2",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Instructions for authors. Shown when submitting data",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_643075608fe55",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_643075608fe55",
+                    "label": "NAme",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_643075608fe54"
+                },
+                {
+                    "key": "field_643075608fe56",
+                    "label": "Date",
+                    "name": "date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_643075608fe54"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "movie"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1681425146
+}

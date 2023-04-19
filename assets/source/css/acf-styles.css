@@ -1,331 +1,628 @@
+@charset "UTF-8";
 :root {
-    --icon-settings: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-gear-fill' viewBox='0 0 16 16'%3E%3Cpath d='M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z'/%3E%3C/svg%3E");
-    --c-acf-primary: #165892;
-    --c-acf-primaryMed: #58b4ff;
+  --icon-settings: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-gear-fill' viewBox='0 0 16 16'%3E%3Cpath d='M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z'/%3E%3C/svg%3E");
+  --sp-acf-c-primaryDark: #2271b1;
+  --sp-acf-c-primary: #0783be;
+  --sp-acf-c-primaryMed: #6bb5d8;
+  --sp-acf-c-primary-light: #d8ebf5;
+  --sp-acf-c-primary-light-2:#eaf4fb;
+  --sp-acf-c-primary-light-3: #f4f9fd;
+  --sp-acf-c-secondary-light: #fbf7ea;
+  --sp-acf-c-secondary-light: #fdfaf4;
+  --sp-acf-br: 6px;
+  --sp-acf-c-text: #344054;
+  --sp-acf-c-text-light: #d0d5dd;
+  --sp-acf-c-text-light-2: #f9fafb;
+  --sp-acf-trans: 0.6s;
+  --sp-acf-box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
+  --sp-acf-py: 2.5rem;
+  --sp-acf-px: 2rem;
 }
+
 .icon-acf {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    width: 22px;
-    height: 15px;
-    display: inline-block;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s;
-    transform: scale(1.3) translate(0px, 3px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 22px;
+  height: 15px;
+  display: inline-block;
+  transition: 0.3s;
+  transform: scale(1.3) translate(0px, 3px);
 }
 
 .icon-settings {
-    background-image: var(--icon-settings)
+  background-image: var(--icon-settings);
 }
 
-/* Hidden label field */
-.hidden-label-acf > .acf-label{
-    display: none;
+/*  |> Hidden label field
+——————————————————————————————————————————————————————*/
+/* Oculta la etiqueta del campo, lo cual a veces es repetitiva */
+.hidden-label-acf > .acf-label {
+  display: none !important;
 }
-
-.column-group-acf > .acf-input > .acf-fields {
-    border: none!important;
-}
-
-.column-group-acf > .acf-input > .acf-fields  > .acf-field:first-child{
-    padding: 0!important;
+.hidden-label-acf > .acf-input > .acf-fields {
+  background: transparent !important;
 }
 
 /*  |> General styles
 ——————————————————————————————————————————————————————*/
-
-
-.acf-field .acf-label {
-    font-size: 1rem!important;
-    color: var(--c-acf-primary)!important;
+#poststuff,
+#editor .edit-post-visual-editor {
+  /*  |> Fields
+  ——————————————————————————————————————————————————————*/
+  /*  |> Select
+  ——————————————————————————————————————————————————————*/
+  /*  |> Repeaters
+  ——————————————————————————————————————————————————————*/
+  /*  |> Flexible Content
+  ——————————————————————————————————————————————————————*/
+  /* Tab group main */
+  /* Tab Group inside */
+}
+#poststuff .column-group-acf > .acf-input > .acf-fields,
+#editor .edit-post-visual-editor .column-group-acf > .acf-input > .acf-fields {
+  border: none !important;
+}
+#poststuff .column-group-acf > .acf-input > .acf-fields > .acf-field:first-child,
+#editor .edit-post-visual-editor .column-group-acf > .acf-input > .acf-fields > .acf-field:first-child {
+  padding: 0 !important;
+}
+#poststuff .acf-fields > .acf-field,
+#editor .edit-post-visual-editor .acf-fields > .acf-field {
+  padding: var(--sp-acf-py) var(--sp-acf-px) !important;
+}
+#poststuff .acf-field,
+#editor .edit-post-visual-editor .acf-field {
+  /*  |> Select styles
+  ——————————————————————————————————————————————————————*/
+  /* Comportandose como grupo */
+}
+#poststuff .acf-field .acf-label label,
+#editor .edit-post-visual-editor .acf-field .acf-label label {
+  margin-bottom: 0;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding: 0.2rem 0.6rem 0;
+  padding: 0.2rem 0.6rem;
+  background: #e5ebf4;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 700;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: var(--sp-acf-c-primaryDark);
+  margin-bottom: 0.4rem;
+}
+#poststuff .acf-field .acf-label a,
+#editor .edit-post-visual-editor .acf-field .acf-label a {
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#poststuff .acf-field .acf-input input[type=text],
+#poststuff .acf-field .acf-input input[type=password],
+#poststuff .acf-field .acf-input input[type=date],
+#poststuff .acf-field .acf-input input[type=datetime],
+#poststuff .acf-field .acf-input input[type=datetime-local],
+#poststuff .acf-field .acf-input input[type=email],
+#poststuff .acf-field .acf-input input[type=month],
+#poststuff .acf-field .acf-input input[type=number],
+#poststuff .acf-field .acf-input input[type=search],
+#poststuff .acf-field .acf-input input[type=tel],
+#poststuff .acf-field .acf-input input[type=time],
+#poststuff .acf-field .acf-input input[type=url],
+#poststuff .acf-field .acf-input input[type=week],
+#poststuff .acf-field .acf-input textarea,
+#poststuff .acf-field .acf-input select,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=text],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=password],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=date],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime-local],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=email],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=month],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=number],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=search],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=tel],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=time],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=url],
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=week],
+#editor .edit-post-visual-editor .acf-field .acf-input textarea,
+#editor .edit-post-visual-editor .acf-field .acf-input select {
+  border-color: var(--sp-acf-c-primaryDark);
+  padding: 10px 17px;
+  outline: 2px solid transparent;
+  transition: 0.6s all ease-in-out;
+  border-radius: var(--sp-acf-br);
+  border-color: var(--sp-acf-c-text-light);
+  box-shadow: var(--sp-acf-box-shadow);
+}
+#poststuff .acf-field .acf-input input[type=text]:focus,
+#poststuff .acf-field .acf-input input[type=password]:focus,
+#poststuff .acf-field .acf-input input[type=date]:focus,
+#poststuff .acf-field .acf-input input[type=datetime]:focus,
+#poststuff .acf-field .acf-input input[type=datetime-local]:focus,
+#poststuff .acf-field .acf-input input[type=email]:focus,
+#poststuff .acf-field .acf-input input[type=month]:focus,
+#poststuff .acf-field .acf-input input[type=number]:focus,
+#poststuff .acf-field .acf-input input[type=search]:focus,
+#poststuff .acf-field .acf-input input[type=tel]:focus,
+#poststuff .acf-field .acf-input input[type=time]:focus,
+#poststuff .acf-field .acf-input input[type=url]:focus,
+#poststuff .acf-field .acf-input input[type=week]:focus,
+#poststuff .acf-field .acf-input textarea:focus,
+#poststuff .acf-field .acf-input select:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=text]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=password]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=date]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime-local]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=email]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=month]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=number]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=search]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=tel]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=time]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=url]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=week]:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input textarea:focus,
+#editor .edit-post-visual-editor .acf-field .acf-input select:focus {
+  border-color: var(--sp-acf-c-primary) !important;
+  outline: 2px solid var(--sp-acf-c-primary) !important;
+}
+#poststuff .acf-field .acf-input input[type=text]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=password]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=date]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=datetime]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=datetime-local]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=email]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=month]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=number]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=search]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=tel]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=time]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=url]::-moz-placeholder, #poststuff .acf-field .acf-input input[type=week]::-moz-placeholder, #poststuff .acf-field .acf-input textarea::-moz-placeholder, #poststuff .acf-field .acf-input select::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=text]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=password]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=date]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime-local]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=email]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=month]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=number]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=search]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=tel]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=time]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=url]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input input[type=week]::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input textarea::-moz-placeholder, #editor .edit-post-visual-editor .acf-field .acf-input select::-moz-placeholder {
+  color: darkgray;
+}
+#poststuff .acf-field .acf-input input[type=text]::placeholder,
+#poststuff .acf-field .acf-input input[type=password]::placeholder,
+#poststuff .acf-field .acf-input input[type=date]::placeholder,
+#poststuff .acf-field .acf-input input[type=datetime]::placeholder,
+#poststuff .acf-field .acf-input input[type=datetime-local]::placeholder,
+#poststuff .acf-field .acf-input input[type=email]::placeholder,
+#poststuff .acf-field .acf-input input[type=month]::placeholder,
+#poststuff .acf-field .acf-input input[type=number]::placeholder,
+#poststuff .acf-field .acf-input input[type=search]::placeholder,
+#poststuff .acf-field .acf-input input[type=tel]::placeholder,
+#poststuff .acf-field .acf-input input[type=time]::placeholder,
+#poststuff .acf-field .acf-input input[type=url]::placeholder,
+#poststuff .acf-field .acf-input input[type=week]::placeholder,
+#poststuff .acf-field .acf-input textarea::placeholder,
+#poststuff .acf-field .acf-input select::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=text]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=password]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=date]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=datetime-local]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=email]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=month]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=number]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=search]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=tel]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=time]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=url]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input input[type=week]::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input textarea::placeholder,
+#editor .edit-post-visual-editor .acf-field .acf-input select::placeholder {
+  color: darkgray;
+}
+#poststuff .acf-field .acf-input textarea,
+#editor .edit-post-visual-editor .acf-field .acf-input textarea {
+  transition-property: border-color, border-width, outline;
+  transition-duration: var(--sp-acf-trans);
+}
+#poststuff .acf-field .acf-input .acf-input-wrap,
+#editor .edit-post-visual-editor .acf-field .acf-input .acf-input-wrap {
+  overflow: visible;
+}
+#poststuff .acf-field[data-type=text] .acf-input, #poststuff .acf-field[data-type=number] .acf-input, #poststuff .acf-field[data-type=email] .acf-input, #poststuff .acf-field[data-type=password] .acf-input,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input {
+  display: flex;
+  flex-wrap: wrap;
+}
+#poststuff .acf-field[data-type=text] .acf-input .acf-notice, #poststuff .acf-field[data-type=number] .acf-input .acf-notice, #poststuff .acf-field[data-type=email] .acf-input .acf-notice, #poststuff .acf-field[data-type=password] .acf-input .acf-notice,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input .acf-notice,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input .acf-notice,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input .acf-notice,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input .acf-notice {
+  width: 100%;
+}
+#poststuff .acf-field[data-type=text] .acf-input-append,
+#poststuff .acf-field[data-type=text] .acf-input-prepend, #poststuff .acf-field[data-type=number] .acf-input-append,
+#poststuff .acf-field[data-type=number] .acf-input-prepend, #poststuff .acf-field[data-type=email] .acf-input-append,
+#poststuff .acf-field[data-type=email] .acf-input-prepend, #poststuff .acf-field[data-type=password] .acf-input-append,
+#poststuff .acf-field[data-type=password] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input-prepend {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--sp-acf-c-text-light);
+  box-shadow: var(--sp-acf-box-shadow);
+  background: var(--sp-acf-c-text-light-2);
+  padding: 4px 8px;
+}
+#poststuff .acf-field[data-type=text] .acf-input-append, #poststuff .acf-field[data-type=number] .acf-input-append, #poststuff .acf-field[data-type=email] .acf-input-append, #poststuff .acf-field[data-type=password] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input-append,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input-append {
+  order: 1;
+  border-left: none;
+}
+#poststuff .acf-field[data-type=text] .acf-input-prepend, #poststuff .acf-field[data-type=number] .acf-input-prepend, #poststuff .acf-field[data-type=email] .acf-input-prepend, #poststuff .acf-field[data-type=password] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input-prepend,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input-prepend {
+  border-right: none;
+}
+#poststuff .acf-field[data-type=text] .acf-input-wrap, #poststuff .acf-field[data-type=number] .acf-input-wrap, #poststuff .acf-field[data-type=email] .acf-input-wrap, #poststuff .acf-field[data-type=password] .acf-input-wrap,
+#editor .edit-post-visual-editor .acf-field[data-type=text] .acf-input-wrap,
+#editor .edit-post-visual-editor .acf-field[data-type=number] .acf-input-wrap,
+#editor .edit-post-visual-editor .acf-field[data-type=email] .acf-input-wrap,
+#editor .edit-post-visual-editor .acf-field[data-type=password] .acf-input-wrap {
+  flex: 1;
+}
+#poststuff .acf-field[data-type=url] .acf-icon,
+#editor .edit-post-visual-editor .acf-field[data-type=url] .acf-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+}
+#poststuff .acf-field[data-type=url] input,
+#editor .edit-post-visual-editor .acf-field[data-type=url] input {
+  padding-left: 2.5rem !important;
+}
+#poststuff .acf-field[data-type=range] input[type=number],
+#editor .edit-post-visual-editor .acf-field[data-type=range] input[type=number] {
+  width: 5.2em !important;
+  padding-right: 0.5rem;
+}
+#poststuff .acf-field[data-type=select] .select2-selection, #poststuff .acf-field[data-type=post_object] .select2-selection, #poststuff .acf-field[data-type=page_link] .select2-selection, #poststuff .acf-field[data-type=taxonomy] .select2-selection, #poststuff .acf-field[data-type=user] .select2-selection,
+#editor .edit-post-visual-editor .acf-field[data-type=select] .select2-selection,
+#editor .edit-post-visual-editor .acf-field[data-type=post_object] .select2-selection,
+#editor .edit-post-visual-editor .acf-field[data-type=page_link] .select2-selection,
+#editor .edit-post-visual-editor .acf-field[data-type=taxonomy] .select2-selection,
+#editor .edit-post-visual-editor .acf-field[data-type=user] .select2-selection {
+  border-color: var(--sp-acf-c-primaryDark);
+  padding: 0.5rem 1rem;
+  outline: 2px solid transparent;
+  transition: 0.6s all ease-in-out;
+  border-radius: var(--sp-acf-br);
+  border-color: var(--sp-acf-c-text-light);
+  box-shadow: var(--sp-acf-box-shadow);
+  min-height: 44px;
+  position: relative;
+}
+#poststuff .acf-field[data-type=select] input.select2-search__field, #poststuff .acf-field[data-type=post_object] input.select2-search__field, #poststuff .acf-field[data-type=page_link] input.select2-search__field, #poststuff .acf-field[data-type=taxonomy] input.select2-search__field, #poststuff .acf-field[data-type=user] input.select2-search__field,
+#editor .edit-post-visual-editor .acf-field[data-type=select] input.select2-search__field,
+#editor .edit-post-visual-editor .acf-field[data-type=post_object] input.select2-search__field,
+#editor .edit-post-visual-editor .acf-field[data-type=page_link] input.select2-search__field,
+#editor .edit-post-visual-editor .acf-field[data-type=taxonomy] input.select2-search__field,
+#editor .edit-post-visual-editor .acf-field[data-type=user] input.select2-search__field {
+  margin-bottom: 0.2rem;
+}
+#poststuff .acf-field[data-type=select] .select2-selection__arrow, #poststuff .acf-field[data-type=post_object] .select2-selection__arrow, #poststuff .acf-field[data-type=page_link] .select2-selection__arrow, #poststuff .acf-field[data-type=taxonomy] .select2-selection__arrow, #poststuff .acf-field[data-type=user] .select2-selection__arrow,
+#editor .edit-post-visual-editor .acf-field[data-type=select] .select2-selection__arrow,
+#editor .edit-post-visual-editor .acf-field[data-type=post_object] .select2-selection__arrow,
+#editor .edit-post-visual-editor .acf-field[data-type=page_link] .select2-selection__arrow,
+#editor .edit-post-visual-editor .acf-field[data-type=taxonomy] .select2-selection__arrow,
+#editor .edit-post-visual-editor .acf-field[data-type=user] .select2-selection__arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.5rem;
+}
+#poststuff .acf-field[data-type=select] .select2-selection__arrow b, #poststuff .acf-field[data-type=post_object] .select2-selection__arrow b, #poststuff .acf-field[data-type=page_link] .select2-selection__arrow b, #poststuff .acf-field[data-type=taxonomy] .select2-selection__arrow b, #poststuff .acf-field[data-type=user] .select2-selection__arrow b,
+#editor .edit-post-visual-editor .acf-field[data-type=select] .select2-selection__arrow b,
+#editor .edit-post-visual-editor .acf-field[data-type=post_object] .select2-selection__arrow b,
+#editor .edit-post-visual-editor .acf-field[data-type=page_link] .select2-selection__arrow b,
+#editor .edit-post-visual-editor .acf-field[data-type=taxonomy] .select2-selection__arrow b,
+#editor .edit-post-visual-editor .acf-field[data-type=user] .select2-selection__arrow b {
+  border-width: 7px 6px 0 6px;
+}
+#poststuff .acf-field[data-type=file] .hide-if-value, #poststuff .acf-field[data-type=image] .hide-if-value,
+#editor .edit-post-visual-editor .acf-field[data-type=file] .hide-if-value,
+#editor .edit-post-visual-editor .acf-field[data-type=image] .hide-if-value {
+  padding: 0.5rem 2rem;
+  border-radius: var(--sp-acf-br);
+  border: 1px solid var(--sp-acf-c-text-light);
+  background: var(--sp-acf-c-text-light-2);
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  box-shadow: var(--sp-acf-box-shadow);
+}
+#poststuff .acf-field[data-type=file] .hide-if-value .acf-button, #poststuff .acf-field[data-type=image] .hide-if-value .acf-button,
+#editor .edit-post-visual-editor .acf-field[data-type=file] .hide-if-value .acf-button,
+#editor .edit-post-visual-editor .acf-field[data-type=image] .hide-if-value .acf-button {
+  margin-left: 1rem;
+  border-radius: 4px;
+  padding: 0.2rem 2rem;
+}
+#poststuff .acf-field[data-type=checkbox] .acf-hl,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] .acf-hl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#poststuff .acf-field[data-type=checkbox] .acf-hl li,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] .acf-hl li {
+  margin-bottom: 0.5rem;
+}
+#poststuff .acf-field[data-type=checkbox] .acf-bl .acf-checkbox-custom + input,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] .acf-bl .acf-checkbox-custom + input {
+  margin-bottom: 0.5rem;
+}
+#poststuff .acf-field[data-type=checkbox] li,
+#poststuff .acf-field[data-type=checkbox] li label,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] li,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] li label {
+  display: flex;
+  align-items: center;
+}
+#poststuff .acf-field[data-type=checkbox] li input,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] li input {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#poststuff .acf-field[data-type=checkbox] .acf-add-checkbox,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] .acf-add-checkbox {
+  margin-top: 0;
+  border-radius: 4px;
+  padding: 0.2rem 2rem;
+}
+#poststuff .acf-field[data-type=checkbox] input[type=checkbox], #poststuff .acf-field[data-type=true_false] input[type=checkbox],
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] input[type=checkbox],
+#editor .edit-post-visual-editor .acf-field[data-type=true_false] input[type=checkbox] {
+  --size: 18px;
+  border-radius: 0;
+  width: var(--size);
+  height: var(--size);
+}
+#poststuff .acf-field[data-type=checkbox] input[type=checkbox]:checked::before, #poststuff .acf-field[data-type=true_false] input[type=checkbox]:checked::before,
+#editor .edit-post-visual-editor .acf-field[data-type=checkbox] input[type=checkbox]:checked::before,
+#editor .edit-post-visual-editor .acf-field[data-type=true_false] input[type=checkbox]:checked::before {
+  margin: -2px 0 0 -3px;
+}
+#poststuff .acf-field[data-type=radio] .acf-hl,
+#editor .edit-post-visual-editor .acf-field[data-type=radio] .acf-hl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#poststuff .acf-field[data-type=radio] .acf-hl li,
+#editor .edit-post-visual-editor .acf-field[data-type=radio] .acf-hl li {
+  margin-bottom: 0.5rem;
+}
+#poststuff .acf-field[data-type=radio] li,
+#poststuff .acf-field[data-type=radio] li label,
+#editor .edit-post-visual-editor .acf-field[data-type=radio] li,
+#editor .edit-post-visual-editor .acf-field[data-type=radio] li label {
+  display: flex;
+  align-items: center;
+}
+#poststuff .acf-field[data-type=radio] li input,
+#editor .edit-post-visual-editor .acf-field[data-type=radio] li input {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#poststuff .acf-field[data-type=link] .button,
+#editor .edit-post-visual-editor .acf-field[data-type=link] .button {
+  border-radius: 4px;
+  padding: 0.2rem 2rem;
+}
+#poststuff .acf-field[data-type=link] .link-wrap,
+#editor .edit-post-visual-editor .acf-field[data-type=link] .link-wrap {
+  border-radius: var(--sp-acf-br);
+  box-shadow: var(--sp-acf-box-shadow);
+  padding: 0.5rem 1rem;
+}
+#poststuff .acf-field[data-type=accordion] > .acf-accordion-title,
+#editor .edit-post-visual-editor .acf-field[data-type=accordion] > .acf-accordion-title {
+  border-radius: var(--sp-acf-br);
+  background: var(--sp-acf-c-text-light-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--sp-acf-c-text-light);
+  box-shadow: var(--sp-acf-box-shadow);
+}
+#poststuff .acf-field[data-type=accordion] > .acf-accordion-title > .acf-accordion-icon,
+#editor .edit-post-visual-editor .acf-field[data-type=accordion] > .acf-accordion-title > .acf-accordion-icon {
+  order: 1;
+}
+#poststuff .acf-field[data-type=accordion] > .acf-accordion-title > label,
+#editor .edit-post-visual-editor .acf-field[data-type=accordion] > .acf-accordion-title > label {
+  margin: 0;
+  background: transparent;
+  font-size: 0.9rem;
+}
+#poststuff .acf-field[data-type=accordion] > .acf-accordion-content,
+#editor .edit-post-visual-editor .acf-field[data-type=accordion] > .acf-accordion-content {
+  background: var(--sp-acf-c-text-light-2);
+  border-radius: var(--sp-acf-br);
+}
+#poststuff .acf-field[data-type=color_picker] input[type=text].wp-color-picker,
+#editor .edit-post-visual-editor .acf-field[data-type=color_picker] input[type=text].wp-color-picker {
+  width: -moz-min-content !important;
+  width: min-content !important;
+  text-align: center;
+  line-height: 0;
+  padding: 0 !important;
+}
+#poststuff .acf-field[data-type=group] > .acf-label, #poststuff .acf-field[data-type=clone] > .acf-label,
+#editor .edit-post-visual-editor .acf-field[data-type=group] > .acf-label,
+#editor .edit-post-visual-editor .acf-field[data-type=clone] > .acf-label {
+  position: absolute;
+  left: 2rem;
+  top: 2.5rem;
+  z-index: 1;
+  width: 100%;
+}
+#poststuff .acf-field[data-type=group] > .acf-label label, #poststuff .acf-field[data-type=clone] > .acf-label label,
+#editor .edit-post-visual-editor .acf-field[data-type=group] > .acf-label label,
+#editor .edit-post-visual-editor .acf-field[data-type=clone] > .acf-label label {
+  background: var(--sp-acf-c-text-light);
+  border-radius: 8px 5px 15px 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: var(--sp-acf-c-text);
+}
+#poststuff .acf-field[data-type=group] > .acf-input > .acf-fields,
+#editor .edit-post-visual-editor .acf-field[data-type=group] > .acf-input > .acf-fields {
+  border-radius: 8px;
+  border: 1px solid var(--sp-acf-c-text-light);
+  background: var(--sp-acf-c-text-light-2);
+}
+#poststuff .acf-field[data-type=clone],
+#editor .edit-post-visual-editor .acf-field[data-type=clone] {
+  padding: 0 !important;
+}
+#poststuff .acf-field[data-type=clone] > .acf-input > .acf-clone-fields,
+#editor .edit-post-visual-editor .acf-field[data-type=clone] > .acf-input > .acf-clone-fields {
+  border: none;
+}
+#poststuff .acf-field[data-type=clone] > .acf-label,
+#editor .edit-post-visual-editor .acf-field[data-type=clone] > .acf-label {
+  left: 0;
+  top: 0;
+}
+#poststuff .acf-field[data-type=clone] > .acf-label label,
+#editor .edit-post-visual-editor .acf-field[data-type=clone] > .acf-label label {
+  border-radius: 0 5px 15px 0;
+}
+#poststuff .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b,
+#editor .edit-post-visual-editor .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-width: 0 6px 7px 6px;
+}
+#poststuff .acf-tab-group,
+#editor .edit-post-visual-editor .acf-tab-group {
+  background: ghostwhite;
+}
+#poststuff .acf-tab-group > li a,
+#editor .edit-post-visual-editor .acf-tab-group > li a {
+  border-bottom: 1px solid white;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  border-radius: 5px 5px 0 0;
+  background: white;
+}
+#poststuff .acf-table tr > td:first-child,
+#editor .edit-post-visual-editor .acf-table tr > td:first-child {
+  color: var(--sp-acf-c-primary);
+  font-size: 1rem;
+  font-weight: bold;
+}
+#poststuff .acf-table tr:nth-child(odd) > td:first-child, #poststuff .acf-table tr:nth-child(odd) > td:last-child,
+#editor .edit-post-visual-editor .acf-table tr:nth-child(odd) > td:first-child,
+#editor .edit-post-visual-editor .acf-table tr:nth-child(odd) > td:last-child {
+  background: #eaf4fb;
+}
+#poststuff .acf-table tr:nth-child(even) > td:first-child, #poststuff .acf-table tr:nth-child(even) > td:last-child,
+#editor .edit-post-visual-editor .acf-table tr:nth-child(even) > td:first-child,
+#editor .edit-post-visual-editor .acf-table tr:nth-child(even) > td:last-child {
+  background: #fbf3e9;
+}
+#poststuff .acf-flexible-content .values .layout,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout {
+  border-radius: var(--sp-acf-br);
+  border: 1px solid var(--sp-acf-c-primaryMed);
+  overflow: hidden;
+}
+#poststuff .acf-flexible-content .values .layout .acf-fc-layout-order,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout .acf-fc-layout-order {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  background: var(--sp-acf-c-text);
+  color: white;
+  width: 30px;
+  border-radius: 0 10px 10px 0;
+  letter-spacing: 0;
+}
+#poststuff .acf-flexible-content .values .layout .acf-fc-layout-handle,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout .acf-fc-layout-handle {
+  border-radius: 8px;
+  overflow: hidden;
+  border: none;
+  padding: 1rem 1rem 1rem 3.2rem;
+  color: var(--sp-acf-c-primary);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 700;
+  position: relative;
+  letter-spacing: 0.1em;
+}
+#poststuff .acf-flexible-content .values .layout:nth-child(odd) .acf-fc-layout-handle,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout:nth-child(odd) .acf-fc-layout-handle {
+  background: var(--sp-acf-c-primary-light-2);
+}
+#poststuff .acf-flexible-content .values .layout:nth-child(even),
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout:nth-child(even) {
+  border-color: #c9ae7c;
+}
+#poststuff .acf-flexible-content .values .layout:nth-child(even) .acf-fc-layout-handle,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout:nth-child(even) .acf-fc-layout-handle {
+  background: var(--sp-acf-c-secondary-light);
+}
+#poststuff .acf-flexible-content .values .layout .acf-fc-layout-controls,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout .acf-fc-layout-controls {
+  transform: translateY(-50%);
+  top: 26px;
+}
+#poststuff .acf-flexible-content .values .layout .acf-flexible-content .values .layout .acf-fc-layout-handle,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout .acf-flexible-content .values .layout .acf-fc-layout-handle {
+  background: var(--sp-acf-c-text-light-2);
+}
+#poststuff .acf-flexible-content .values .layout .acf-flexible-content .values .layout:nth-child(odd) .acf-fc-layout-order,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout .acf-flexible-content .values .layout:nth-child(odd) .acf-fc-layout-order {
+  background: var(--sp-acf-c-primary);
+}
+#poststuff .acf-flexible-content .values .layout .acf-flexible-content .values .layout:nth-child(even) .acf-fc-layout-order,
+#editor .edit-post-visual-editor .acf-flexible-content .values .layout .acf-flexible-content .values .layout:nth-child(even) .acf-fc-layout-order {
+  background: #be9c07;
+}
+#poststuff .acf-flexible-content > .values > .layout:nth-child(odd) > .acf-fields > .acf-tab-wrap > .acf-tab-group,
+#editor .edit-post-visual-editor .acf-flexible-content > .values > .layout:nth-child(odd) > .acf-fields > .acf-tab-wrap > .acf-tab-group {
+  background: var(--sp-acf-c-primary-light-3);
+}
+#poststuff .acf-flexible-content > .values > .layout:nth-child(even) > .acf-fields > .acf-tab-wrap > .acf-tab-group,
+#editor .edit-post-visual-editor .acf-flexible-content > .values > .layout:nth-child(even) > .acf-fields > .acf-tab-wrap > .acf-tab-group {
+  background: #f6f3ef;
+}
+#poststuff .acf-flexible-content > .values > .layout > .acf-fields .acf-flexible-content .acf-tab-group,
+#editor .edit-post-visual-editor .acf-flexible-content > .values > .layout > .acf-fields .acf-flexible-content .acf-tab-group {
+  background: #f9f9f9 !important;
+  display: flex;
+  /* justify-content: flex-end; */
+}
+#poststuff .acf-flexible-content > .values > .layout > .acf-fields .acf-flexible-content .acf-tab-group li a,
+#editor .edit-post-visual-editor .acf-flexible-content > .values > .layout > .acf-fields .acf-flexible-content .acf-tab-group li a {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+#poststuff .acf-flexible-content > .values > .layout > .acf-fields .acf-flexible-content .acf-tab-group .icon-acf,
+#editor .edit-post-visual-editor .acf-flexible-content > .values > .layout > .acf-fields .acf-flexible-content .acf-tab-group .icon-acf {
+  height: 12px;
+  transform: scale(1.3) translate(0px, 2px);
+}
+#poststuff .acf-accordion.-open > .acf-accordion-content,
+#editor .edit-post-visual-editor .acf-accordion.-open > .acf-accordion-content {
+  display: block !important;
 }
 
-.acf-fields>.acf-field {
-    padding: 40px 32px!important;
-}
-
-.acf-input:not(.acf-accordion-content){
-    display: flex!important;
-}
-
-.acf-input-prepend, .acf-input-append{
-    display: flex!important;
-    align-items: center!important;
-}
-
-.acf-input-append{
-    order: 12;
-}
-
-.acf-input > *:not(.acf-button-group):last-child{
-    /* display: flex!important; */
-    flex-basis: 0;
-    flex-grow: 1;
-}
-
-.acf-field .acf-input-wrap{
-    overflow: visible;
-}
-
-.acf-field input[type="text"],
-.acf-field input[type="password"],
-.acf-field input[type="date"],
-.acf-field input[type="datetime"],
-.acf-field input[type="datetime-local"],
-.acf-field input[type="email"],
-.acf-field input[type="month"],
-.acf-field input[type="number"],
-.acf-field input[type="search"],
-.acf-field input[type="tel"],
-.acf-field input[type="time"],
-.acf-field input[type="url"],
-.acf-field input[type="week"],
-.acf-field textarea,
-.acf-field select {
-    border-radius: 0!important;
-    border-color: var(--c-acf-primaryMed)!important;
-    padding: 10px 17px!important;
-    outline: 2px solid transparent;
-    transition: .6s all ease-in-out;
-
-}
-
-.acf-field input[type="text"]:focus,
-.acf-field input[type="password"]:focus,
-.acf-field input[type="date"]:focus,
-.acf-field input[type="datetime"]:focus,
-.acf-field input[type="datetime-local"]:focus,
-.acf-field input[type="email"]:focus,
-.acf-field input[type="month"]:focus,
-.acf-field input[type="number"]:focus,
-.acf-field input[type="search"]:focus,
-.acf-field input[type="tel"]:focus,
-.acf-field input[type="time"]:focus,
-.acf-field input[type="url"]:focus,
-.acf-field input[type="week"]:focus,
-.acf-field textarea:focus,
-.acf-field select:focus {
-    border-color: var(--c-acf-primary)!important;
-    border-width: 1px!important;
-    outline: 2px solid var(--c-acf-primary)!important;
-}
-
-.select2-container.-acf .select2-selection{
-    border-color: var(--c-acf-primaryMed)!important;
-    padding: 10px 1rem!important;
-    height: auto!important;
-    border-radius: 0!important;
-}
-
-.acf-url i{
-    transform: translateY(-50%)!important;
-    top: 50%!important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered{
-    line-height:1.4!important;
-    padding-left: 0!important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow{
-    top: 50%!important;
-    transform: translate(-8px, -50%)!important;
-}
-
-.acf-field textarea{
-    transition: .6s border-color, .6s border-width, .6s outline!important;
-}
-
-/* Selection Multiple */
-
-.select2-container--default .select2-selection--multiple{
-    padding: 0!important;
-}
-
-/* Tab Group general */
-
-.acf-tab-group{
-    background:ghostwhite;
-}
-
-.acf-tab-group > li a{
-    border-bottom: 1px solid white;
-
-    padding-right: 2rem!important;
-    padding-left: 2rem!important;
-
-    border-radius: 5px 5px 0 0;
-    background: white;
-}
-
-/* Repeaters */
-
-.acf-table tr:nth-child(odd) > td:first-child, .acf-table tr:nth-child(even) > td:first-child{
-    color: var(--c-acf-primary)!important;
-    font-size: 1rem!important;
-    font-weight: bold;
-}
-
-.acf-table tr:nth-child(odd) > td:first-child, .acf-table tr:nth-child(odd) > td:last-child{
-    background: #eaf4fb;
-}
-
-.acf-table tr:nth-child(even) > td:first-child, .acf-table tr:nth-child(even) > td:last-child{
-    background: #fbf3e9;
-}
-
-/* Range */
-
-.acf-range-wrap input[type=number]{
-    min-width: 6em!important;
-}
-
-/* Select AJAX */
-
-.select2-container.-acf .select2-selection--multiple .select2-search__field{
-    width: 0.75em!important;
-    padding: 0!important;
-    outline: none!important;
-}
-
-.select2-container.-acf .select2-selection--multiple .select2-search__field:focus{
-    border-bottom: 2px solid var(--c-acf-primary);
-}
-
-/* Checkbox */
-
-.acf-field input[type="checkbox"]{
-    border-radius: 0!important;
-    --size: 18px;
-    width: var(--size)!important;
-    height: var(--size)!important;
-}
-
-.acf-field input[type=checkbox]:checked::before{
-    margin: -2px 0 0 -3px!important;
-}
-
-/* Colorpicker */
-
-.acf-color-picker .wp-picker-container input[type=text].wp-color-picker{
-    width: 6rem!important;
-    text-align: center;
-    line-height: 0;
-    padding: 0!important;
-}
-
-/* Acordion */
-
-.acf-label.acf-accordion-title{
-    padding: 1rem 2rem!important;
-}
-
-.acf-label.acf-accordion-title::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 11px;
-    width: 10px;
-    height: 10px;
-    transform: translateY(-50%);
-    background: #135e96;
-    border-radius: 20px;
-}
-
-.acf-accordion .acf-accordion-title svg.acf-accordion-icon{
-    right: 1.6rem!important;
-}
-
-.acf-accordion .acf-accordion-title label{
-    font-size: 1rem!important;
-    text-transform: uppercase!important;
-}
-
-/* append and prepend */
-
-.acf-input-prepend, .acf-input-append{
-    border-radius: 0!important;
-    border-color: var(--c-acf-primaryMed)!important;
-    background: #f0f6ff!important;
-}
-
-
-/*  |> Flexible Content
-——————————————————————————————————————————————————————*/
-
-.acf-flexible-content .values .layout .acf-fc-layout-handle {
-    color: var(--c-acf-primary)!important;
-    text-transform: uppercase;
-    font-size: 1rem!important;
-    font-weight: 700;
-    padding-left: 4.2rem;
-    position: relative;
-    background: #fbf3e9;
-    letter-spacing: .1rem;
-}
-
-.acf-flexible-content .values .layout .acf-fc-layout-order {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    background: #fda300;
-    color: #805200;
-    width: 50px;
-    border-radius: 0 10px 10px 0;
-    letter-spacing: 0;
-}
-
-.acf-flexible-content .values .layout:nth-child(odd) > .acf-fc-layout-handle {
-    background: #eaf4fb;
-}
-
-
-/* Tab group main */
-.acf-flexible-content > .values > .layout:nth-child(odd)  > .acf-fields > .acf-tab-wrap > .acf-tab-group{
-    background:#edf3f7;
-}
-
-.acf-flexible-content > .values > .layout:nth-child(even)  > .acf-fields > .acf-tab-wrap > .acf-tab-group{
-    background:#f6f3ef;
-}
-/* Tab Group inside */
-.acf-flexible-content > .values > .layout  > .acf-fields .acf-flexible-content .acf-tab-group{
-    background: #f9f9f9!important;
-    display: flex;
-    /* justify-content: flex-end; */
-}
-
-.acf-flexible-content > .values > .layout  > .acf-fields .acf-flexible-content .acf-tab-group li{
-
-}
-
-.acf-flexible-content > .values > .layout  > .acf-fields .acf-flexible-content .acf-tab-group li a{
-    font-size: 0.8rem;
-    line-height: 1.2
-}
-
-.acf-flexible-content > .values > .layout  > .acf-fields .acf-flexible-content .acf-tab-group .icon-acf{
-    height: 12px;
-    transform: scale(1.3) translate(0px, 2px);
-}
-
-.acf-accordion.-open > .acf-accordion-content{
-    display: block!important;
-}
-
-/* <- ___________________________________________ ->  */
-
-#collapse-style-group{
-    padding: 0 !important;
-}
-
-#collapse-style-group > .acf-label{
-    display: none;
-}
-
-#collapse-style-group > .acf-input > *{
-    border: none;
-}
+/*  |> Gutenberg Editor
+    ——————————————————————————————————————————————————————*//*# sourceMappingURL=acf-styles.css.map */

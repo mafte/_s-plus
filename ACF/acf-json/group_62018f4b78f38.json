@@ -6,6 +6,7 @@
             "key": "field_62018f576170d",
             "label": "Link",
             "name": "link",
+            "aria-label": "",
             "type": "link",
             "instructions": "",
             "required": 0,
@@ -21,6 +22,7 @@
             "key": "field_6201905561710",
             "label": "ADA",
             "name": "ada",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -28,7 +30,7 @@
             "wrapper": {
                 "width": "60",
                 "class": "",
-                "id": "collapse-style-group"
+                "id": ""
             },
             "layout": "block",
             "sub_fields": [
@@ -36,25 +38,27 @@
                     "key": "field_62018f896170e",
                     "label": "Add ADA Label?",
                     "name": "add_ada_label",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "30",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
                     "message": "",
                     "default_value": 0,
-                    "ui": 1,
                     "ui_on_text": "",
-                    "ui_off_text": ""
+                    "ui_off_text": "",
+                    "ui": 1
                 },
                 {
                     "key": "field_62018fb06170f",
                     "label": "ADA Label",
                     "name": "ada_label",
+                    "aria-label": "",
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
@@ -68,14 +72,14 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "70",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
                     "maxlength": "",
                     "rows": 2,
+                    "placeholder": "",
                     "new_lines": ""
                 }
             ]
@@ -99,5 +103,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1645827605
+    "modified": 1681429745
 }
