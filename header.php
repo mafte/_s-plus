@@ -33,7 +33,7 @@
 		<a class="skip-link visually-hidden-focusable" href="#main-content"><?php esc_html_e( 'Skip to content', '_s_plus' ); ?></a>
 		<header id="header-content" class="site-header">
 
-			<div class="container py-16">
+			<div class="container">
 				<div class="row cent-y">
 					<div class="col">
 						<div class="site-header__branding cent-y">
@@ -79,6 +79,5 @@
 					</div>
 				</div>
 			</div>
-
 
 		</header><!-- #masthead -->

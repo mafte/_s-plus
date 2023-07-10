@@ -8,8 +8,9 @@ $p-container: 4rem;
 ——————————————————————————————————————————————————————*/
 $boo-sm: 36em;
 $boo-md: 48em;
-$boo-lg: 62em;
-$boo-xl: 75em;
+$boo-lg: 64rem;
+$boo-xl: 80rem;
+$boo-xxl: 90rem;
 
 /*  |> OTHERS
 ——————————————————————————————————————————————————————*/
@@ -46,7 +47,10 @@ $kbd-bg: white;
     /*
     ——— Fonts
     */
+
+    //Body, paragraphs, buttons
     --ff-primary: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    //Headings
     --ff-secondary: "Arvo", Garamond, serif;
     --ff-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --body-font-size: 1rem;

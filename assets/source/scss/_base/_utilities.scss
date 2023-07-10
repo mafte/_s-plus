@@ -254,3 +254,89 @@
         padding-bottom: var(--sp-160) !important;
     }
 }
+
+/*————————————————————————————————————————————————————*\
+    ●❱ DISPLAY
+\*————————————————————————————————————————————————————*/
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+@media screen and (min-width: $boo-sm) {
+    .d-sm-block {
+        display: block !important;
+    }
+
+    .d-sm-flex {
+        display: flex !important;
+    }
+
+    .d-sm-none {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: $boo-md) {
+    .d-md-block {
+        display: block !important;
+    }
+
+    .d-md-flex {
+        display: flex !important;
+    }
+
+    .d-md-none {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: $boo-lg) {
+    .d-lg-block {
+        display: block !important;
+    }
+
+    .d-lg-flex {
+        display: flex !important;
+    }
+
+    .d-lg-none {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: $boo-xl) {
+    .d-xl-block {
+        display: block !important;
+    }
+
+    .d-xl-flex {
+        display: flex !important;
+    }
+
+    .d-xl-none {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: $boo-xl) {
+    .d-xxl-block {
+        display: block !important;
+    }
+
+    .d-xxl-flex {
+        display: flex !important;
+    }
+
+    .d-xxl-none {
+        display: none !important;
+    }
+}
