@@ -118,7 +118,7 @@ add_filter(
 if ( ! defined( 'IMSANITY_VERSION' ) ) {
 
 	define( '_S_PLUS_IMSANITY_DEFAULT_MAX_WIDTH', 2000 );
-	define( '_S_PLUS_IMSANITY_DEFAULT_MAX_HEIGHT', 0 );
+	define( '_S_PLUS_IMSANITY_DEFAULT_MAX_HEIGHT', 2000 );
 	define( '_S_PLUS_IMSANITY_DEFAULT_QUALITY', 90 );
 
 	include get_template_directory() . '/includes/others/imsanity-images.php';
