@@ -12,39 +12,39 @@
 	●❱ BASIC SETUP
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/_setup/basic.php';
+require_once 'includes/base/basic.php';
 
 
 /*  |> Widgets
 ——————————————————————————————————————————————————————*/
-// include_once('includes/_setup/widgets.php');
+// include_once('includes/base/widgets.php');
 
 
 /*  |> Enqueue scripts and styles.
 ——————————————————————————————————————————————————————*/
-require_once 'includes/_setup/scripts-and-styles.php';
+require_once 'includes/base/scripts-and-styles.php';
 
 
 /*  |> Helpers loop functions
 ——————————————————————————————————————————————————————*/
-require_once 'includes/others/helpers-loop.php';
+require_once 'includes/features/helpers-loop.php';
 
 
 /*————————————————————————————————————————————————————*\
 	●❱ ACF
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/others/acf.php';
+require_once 'includes/features/acf.php';
 
 /*————————————————————————————————————————————————————*\
 	●❱ CUSTOMIZER
 \*————————————————————————————————————————————————————*/
 
-//include_once('includes/others/settings-customizer.php');
+//include_once('includes/features/settings-customizer.php');
 
 
 /*————————————————————————————————————————————————————*\
 	●❱ IMPROVE: WP MENU NAV
 \*————————————————————————————————————————————————————*/
 
-require_once 'includes/others/improve-wp-nav.php';
+require_once 'includes/features/improve-wp-nav.php';
