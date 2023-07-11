@@ -11,7 +11,7 @@ acf_register_block(
 		'description'     => __( 'Short description about gutenberg Block', '_s_plus' ),
 		'render_callback' => 'my_acf_block_render_callback',
 		'category'        => 'formatting',
-		'icon'            => file_get_contents( get_template_directory() . '/assets/source/img/icon-gutenberg.svg' ),
+		'icon'            => file_get_contents( get_template_directory() . '/assets/img/icon-gutenberg.svg' ),
 		'keywords'        => array( 'blocks', 'content' ),
 		'mode'            => 'edit',
 		'example'         => array(

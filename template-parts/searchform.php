@@ -21,9 +21,9 @@ $s_plus_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . esc_attr(
 <form role="search" <?php echo $s_plus_aria_label; ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label for="<?php echo esc_attr( $s_plus_unique_id ); ?>">
 		<?php
-		_e( 'Search&hellip;', 's-plus' );
+		_e( 'Search&hellip;', '_s-plus' );
 		?>
 	</label>
 	<input type="search" id="<?php echo esc_attr( $s_plus_unique_id ); ?>" class="search-field" value="<?php echo get_search_query(); ?>" name="s" />
-	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 's-plus' ); ?>" />
+	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', '_s-plus' ); ?>" />
 </form>

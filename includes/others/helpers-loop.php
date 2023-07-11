@@ -10,7 +10,7 @@ if ( ! function_exists( 'sp_get_img__url' ) ) {
 	 */
 	function sp_get_img__url( $size, $image_id = 0 ) {
 
-		$path_placeholder = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
+		$path_placeholder = get_template_directory_uri() . '/assets/img/placeholder-image.svg';
 
 		if ( 0 === $image_id ) {
 			if ( get_post_thumbnail_id() ) {
@@ -124,7 +124,7 @@ if ( ! function_exists( 'sp_img_resp_old' ) ) {
 		 */
 
 		/* If the image ID is incorrect or non-existent then return the image placeholder. */
-		$placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
+		$placeholder_img = get_template_directory_uri() . '/assets/img/placeholder-image.svg';
 
 		if ( ! wp_get_attachment_image_url( $image_id, $size ) ) {
 
@@ -285,7 +285,7 @@ if ( ! function_exists( 'sp_get_asset' ) ) {
 	function sp_get_asset( $asset ) {
 		$template_uri = get_template_directory_uri();
 
-		return esc_url( "{$template_uri}/assets/source/img/{$asset}" );
+		return esc_url( "{$template_uri}/assets/img/{$asset}" );
 	}
 }
 
@@ -430,7 +430,7 @@ if ( ! function_exists( 'sp_resp_img' ) ) {
 				$size = 'large';
 			}
 
-			$placeholder_img = get_template_directory_uri() . '/assets/source/img/placeholder-image.svg';
+			$placeholder_img = get_template_directory_uri() . '/assets/img/placeholder-image.svg';
 
 			/* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size.
 			This allows the correct presentation in the browser of the placeholder without sudden jumps. */

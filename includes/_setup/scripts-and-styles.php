@@ -13,9 +13,9 @@ function _s_plus_scripts() {
 
 	/*  SCRIPTS
 	——————————————————————————————————————————————————————*/
-	wp_enqueue_script( 'lazyload', "{$url_assets}/dist/js/lazyload.min.js", array(), '17.8.3', true );
-	wp_enqueue_script( '_s_plus-main', "{$url_assets}/dist/js/production.min.js", array(), '1.' . filemtime( "{$dir_assets}/dist/js/production.min.js" ), true );
-	// wp_enqueue_script('tinyslider', "{$url_assets}/dist/js/tiny-slider.min.js", array(), '2.9.3', true);
+	wp_enqueue_script( 'lazyload', "{$url_assets}/js/lazyload.min.js", array(), '17.8.3', true );
+	wp_enqueue_script( '_s_plus-main', "{$url_assets}/js/production.min.js", array(), '1.' . filemtime( "{$dir_assets}/js/production.min.js" ), true );
+	// wp_enqueue_script('tinyslider', "{$url_assets}/js/tiny-slider.min.js", array(), '2.9.3', true);
 
 	// if (is_singular() && comments_open() && get_option('thread_comments')) {
 	//     wp_enqueue_script('comment-reply');

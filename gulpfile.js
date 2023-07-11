@@ -46,11 +46,11 @@ const config = {
     urlBrowserSync: "pruebas.local",
     slug_theme: "slug-theme",
     BrowserList: "last 1 versions",
-    pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
-    pathExportIconsSheet: "assets/source/scss/base/",
+    pathIconsOrigin: "assets/icons/", //Does not work with sub directories
+    pathExportIconsSheet: "assets/scss/base/",
     clean_css: true,
-    path_source_js: "assets/source/js/",
-    path_dist_js: "assets/dist/js/",
+    path_source_js: "assets/js/",
+    path_dist_js: "assets/js/",
 };
 
 /*————————————————————————————————————————————————————*\
@@ -77,7 +77,7 @@ function css() {
     };
 
     return gulp
-        .src("assets/source/scss/style.scss")
+        .src("assets/scss/style.scss")
         .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(sass().on("error", sass.logError))
@@ -92,7 +92,7 @@ function css() {
 ——————————————————————————————————————————————————————*/
 
 let concatOptions = {
-    root: "./assets/source/scss/",
+    root: "./assets/scss/",
     prepend: "@import '",
     append: "';",
 };
@@ -103,9 +103,9 @@ let concatOptions = {
 
 function scssSite() {
     return gulp
-        .src("assets/source/scss/site/*.*")
+        .src("assets/scss/site/*.*")
         .pipe(concatFilenames("_site.scss", concatOptions))
-        .pipe(gulp.dest("./assets/source/scss"));
+        .pipe(gulp.dest("./assets/scss"));
 }
 
 /*
@@ -114,9 +114,9 @@ function scssSite() {
 
 function scssBlocks() {
     return gulp
-        .src("assets/source/scss/blocks/*.*")
+        .src("assets/scss/blocks/*.*")
         .pipe(concatFilenames("_blocks.scss", concatOptions))
-        .pipe(gulp.dest("./assets/source/scss"));
+        .pipe(gulp.dest("./assets/scss"));
 }
 
 /*
@@ -125,9 +125,9 @@ function scssBlocks() {
 
 function scssComponents() {
     return gulp
-        .src("assets/source/scss/components/*.*")
+        .src("assets/scss/components/*.*")
         .pipe(concatFilenames("_components.scss", concatOptions))
-        .pipe(gulp.dest("./assets/source/scss"));
+        .pipe(gulp.dest("./assets/scss"));
 }
 
 /*  |> Icons
@@ -293,7 +293,7 @@ exports.default = gulp.series(gulp.parallel(scssSite, scssBlocks, scssComponents
 
 function initAll() {
 
-    let path_scss = "assets/source/scss/";
+    let path_scss = "assets/scss/";
 
     browserSync.init({
         //logLevel: "info",
@@ -314,9 +314,9 @@ function initAll() {
         events: ['add', 'unlink']
     }, scssComponents);
 
-    gulp.watch(["assets/source/icons/*.svg"], iconSh);
+    gulp.watch(["assets/icons/*.svg"], iconSh);
 
-    gulp.watch(["assets/source/js/*.js"], series(js_custom));
+    gulp.watch(["assets/js/main.js"], series(js_custom));
 
     gulp.watch(
         [
