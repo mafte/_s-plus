@@ -99,7 +99,7 @@ Se han dividido las configuraciones comunes de WordPress (widgets, tamaños de i
 
 ### Implementación rápida de customizer
 
-El tema trae una plantilla de configuración para agregar campos al customizer. Ve a `includes/others/settings_customizer.php`. De forma predeterminada, la inclusión de ese archivo está deshabilitado; habilítalo en `functions.php` en el apartado *●❱ CUSTOMIZER*.
+El tema trae una plantilla de configuración para agregar campos al customizer. Ve a `includes/features/settings_customizer.php`. De forma predeterminada, la inclusión de ese archivo está deshabilitado; habilítalo en `functions.php` en el apartado *●❱ CUSTOMIZER*.
 
 ### Funciones utilitarias
 
@@ -125,7 +125,7 @@ Elimina la carpeta `/ACF/flexible-content/`, y los siguientes archivos: `/ACF/ac
 
 * **Dejar solamente flexible content**
 
-Elimina la carpeta `/ACF/blocks`. Ahora en el archivo `/includes/others/acf.php` cambia la constante `ACF_ONLY_CP` a `true`.
+Elimina la carpeta `/ACF/blocks`. Ahora en el archivo `/includes/features/acf.php` cambia la constante `ACF_ONLY_CP` a `true`.
 
 #### Notas sobre flexible content
 
@@ -133,7 +133,7 @@ De modo predeterminado, la estructura para **`flexible content`** es anidada; co
 
 1. Ir al admin de grupos de campos de ACF y borrar o desactivar el grupo `[BUILDER] LAYOUT`.
 2. Entrar al grupo de campos `[BUILDER] PAGE`, y activarlo. Por defecto se muestra en las páginas.
-3. En `/includes/others/acf.php` establece la constante `ACF_NESTED` en `false`.
+3. En `/includes/features/acf.php` establece la constante `ACF_NESTED` en `false`.
 
 ### Grid layout
 

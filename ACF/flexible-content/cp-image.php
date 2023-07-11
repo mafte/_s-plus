@@ -7,17 +7,16 @@
 <!-- CP-IMAGE ************************** -->
 
 <section <?php echo $atts_globals; ?> class="cp-image <?php echo $cp->class_css; ?>">
-    <?php $imageID =  $cp->image ?>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
+	<div class="container">
+		<div class="row">
+			<div class="col">
 
-                <?php echo sp_img_resp('large', $imageID, 'cp-image__item img-fluid-fix'); ?>
+				<?php sp_the_resp_img( 'large', $cp->image, 'cp-image__item img-fluid-fix' ); ?>
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- ************************** CP-IMAGE -->
