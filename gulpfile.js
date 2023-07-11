@@ -37,6 +37,7 @@ const svgToMiniDataURI = require("mini-svg-data-uri");
 const { series } = require("gulp");
 
 
+
 /*————————————————————————————————————————————————————*\
     ●❱ BASIC SETUP
 \*————————————————————————————————————————————————————*/
@@ -46,7 +47,7 @@ const config = {
     slug_theme: "slug-theme",
     BrowserList: "last 1 versions",
     pathIconsOrigin: "assets/source/icons/", //Does not work with sub directories
-    pathExportIconsSheet: "assets/source/scss/_base/",
+    pathExportIconsSheet: "assets/source/scss/base/",
     clean_css: true,
     path_source_js: "assets/source/js/",
     path_dist_js: "assets/dist/js/",
@@ -102,7 +103,7 @@ let concatOptions = {
 
 function scssSite() {
     return gulp
-        .src("assets/source/scss/Site/*.*")
+        .src("assets/source/scss/site/*.*")
         .pipe(concatFilenames("_site.scss", concatOptions))
         .pipe(gulp.dest("./assets/source/scss"));
 }
@@ -113,7 +114,7 @@ function scssSite() {
 
 function scssBlocks() {
     return gulp
-        .src("assets/source/scss/acf/blocks/*.*")
+        .src("assets/source/scss/blocks/*.*")
         .pipe(concatFilenames("_blocks.scss", concatOptions))
         .pipe(gulp.dest("./assets/source/scss"));
 }
@@ -124,7 +125,7 @@ function scssBlocks() {
 
 function scssComponents() {
     return gulp
-        .src("assets/source/scss/acf/components/*.*")
+        .src("assets/source/scss/components/*.*")
         .pipe(concatFilenames("_components.scss", concatOptions))
         .pipe(gulp.dest("./assets/source/scss"));
 }
@@ -306,10 +307,10 @@ function initAll() {
     gulp.watch(["assets/**/site/*.scss"], {
         events: ['add', 'unlink']
     }, scssSite);
-    gulp.watch(["assets/**/acf/blocks/*.scss"], {
+    gulp.watch(["assets/**/blocks/*.scss"], {
         events: ['add', 'unlink']
     }, scssBlocks);
-    gulp.watch(["assets/**/acf/components/*.scss"], {
+    gulp.watch(["assets/**/components/*.scss"], {
         events: ['add', 'unlink']
     }, scssComponents);
 
