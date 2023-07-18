@@ -61,6 +61,13 @@ a {
 }
 
 
+[class*='col-layout']{
+    .container{
+        padding: 0;
+    }
+}
+
+
 /*  |> BASIC STYLES CONTENT STRUCTURE
 ——————————————————————————————————————————————————————*/
 

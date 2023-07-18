@@ -143,7 +143,7 @@ $fix_safari: true !default;
     ●❱ SHORTHANDS MIXINS HELPERS
 \*————————————————————————————————————————————————————*/
 
-$min_scren_size: 320px;
+$min_scren_size: 576px;
 $max_scren_size: 1440px;
 
 @mixin rfs($propiety, $min_s, $max_s, $is_import: null){
