@@ -67,9 +67,9 @@ Solo edita el archivo `gulpfile.js` busca el apartado **BASIC SETUP** y establec
 
 * SASS/CSS: compila, optimiza y minifica.
 * JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar más scripts abre `gulpfile.js` y busca el apartado **`JS TASK`**. Hay dos arrays `vendors` y `customs`. Los que esten en `vendors` solo concatenara los scripts, en los que estan en `customs` analizara el JS con Babel.
-* ICONS: Al agregar iconos `.svg` al directorio `assets/source/icons` se genera automáticamente una hoja de estilo para uso.
+* ICONS: Al agregar iconos `.svg` al directorio `assets/icons` se genera automáticamente una hoja de estilo para uso.
 * AUTO-RELOAD: Inyecta CSS automáticamente, recarga el navegador al guardar los archivos de plantillas `.php`.
-* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada nuevo archivo `.scss`. Esta tarea genera de manera automática los`import` de todos los archivos que están dentro de determinados directorios. Los directorios son: `/assets/source/scss/acf/blocks`, ` /assets/source/scss/acf/components` y `/assets/source/scss/site`.
+* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada nuevo archivo `.scss`. Esta tarea genera de manera automática los`import` de todos los archivos que están dentro de determinados directorios. Los directorios son: `/assets/scss/blocks`, ` /assets/scss/components` y `/assets/scss/site`.
 
 ### Estructura de archivos mejorada
 
@@ -77,14 +77,14 @@ Aunque este punto puede ser subjetivo, ***menos siempre es más***. Se han reorg
 
 ### Compatibilidad con `smoothScroll`
 
-Al momento de escribir esto, la mayoría de los navegadores modernos tiene soporte nativo para smooth-scroll (no confundir con smoothScrollBar), pero para los que no, se ha agregado un polyfill para solucionarlo. Si deseas un offset para compensar el uso de menú sticky(claro, si lo usas), en el archivo  `/assets/source/js/main.js` ubica la sección `● SMOOTH SCROLL` y cambia la variable **`offset`** con el número de píxeles necesarios. Esto por defecto esta desactivado.
+Al momento de escribir esto, la mayoría de los navegadores modernos tiene soporte nativo para smooth-scroll (no confundir con smoothScrollBar), pero para los que no, se ha agregado un polyfill para solucionarlo. Si deseas un offset para compensar el uso de menú sticky(claro, si lo usas), en el archivo  `/assets/js/main.js` ubica la sección `● SMOOTH SCROLL` y cambia la variable **`offset`** con el número de píxeles necesarios. Esto por defecto esta desactivado.
 
 ### Mejoras en el manejo de imágenes.
 
 Entre las mejoras están:
 
 1. Empleo de [vainilla-lazyload library](https://github.com/verlok/vanilla-lazyload) para la carga de imagenes. Actualmente, la mayoría de los navegadores soportan lazyload atributo, pero `vainilla-lazyload` library demuestra un mejor rendimiento.
-2. Utilización de imágenes responsivas por medio de la función `sp_img_resp`. Ahora algunas notas a consideración sobre esta función:
+2. Utilización de imágenes responsivas por medio de la función `sp_resp_img`. Ahora algunas notas a consideración sobre esta función:
    * Esta permite generar una [imagen con marcado responsive](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) dado ID y tamaño de imagen.
    * Si `vainilla-lazyload` library está activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas.
    * Puede ser utilizada en el `WP Loop` sin necesidad de especificar el ID de la imagen; por defecto, obtendrá la imagen destacada de la publicación actual dentro del WP loop.
@@ -95,7 +95,7 @@ Entre las mejoras están:
 
 ### Fácil configuración
 
-Se han dividido las configuraciones comunes de WordPress (widgets, tamaños de imágenes, menús, estilos y scripts) en archivos individuales, para evitar perdernos en el código y ser más fácilmente accesibles. Ve a `/includes/_setup/`; comprueba tu mismo.
+Se han dividido las configuraciones comunes de WordPress (widgets, tamaños de imágenes, menús, estilos y scripts) en archivos individuales, para evitar perdernos en el código y ser más fácilmente accesibles. Ve a `/includes/base/`; comprueba tu mismo.
 
 ### Implementación rápida de customizer
 
@@ -111,7 +111,7 @@ En el día a día hay tareas repetitivas que se hacen mejor con funciones para m
 * **sp_get_cat__name()** Obtiene el nombre de la primera categoría asignada al post actual dentro del WP loop.
 * **sp_get_cat__url()** Obtiene la URL de la primera categoría asignada al post actual dentro del WP loop.
 * **sp_the_excerpt()** Obtiene el extracto de la publicación actual dado un límite de palabras.
-* **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en `/assets/source/img/`.
+* **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en `/assets/img/`.
 
 ### Uso con Advanced Custom Fields(ACF)
 
@@ -141,7 +141,7 @@ Trae integrada un sistema grid CSS basado en Boostrap, pero mucho más compacto.
 
 ### Menú responsivo
 
-No necesitas invertir mucho tiempo en hacer el menú responsivo. Únicamente agrega elementos al menú principal y prácticamente estará listo. Viene preparado para hasta tres niveles de profundidad. Si necesitas cambiar el breakpoint del menú, ve a `/assets/source/scss/site/header.scss` y cambia la variable **`$breakpoint_menu`**.
+No necesitas invertir mucho tiempo en hacer el menú responsivo. Únicamente agrega elementos al menú principal y prácticamente estará listo. Viene preparado para hasta tres niveles de profundidad. Si necesitas cambiar el breakpoint del menú, ve a `/assets/scss/site/header.scss` y cambia la variable **`$breakpoint_menu`**.
 
 ### Mejoras de accesibilidad
 
