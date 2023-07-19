@@ -5,7 +5,7 @@
   --sp-acf-c-primary: #0783be;
   --sp-acf-c-primaryMed: #6bb5d8;
   --sp-acf-c-primary-light: #d8ebf5;
-  --sp-acf-c-primary-light-2:#eaf4fb;
+  --sp-acf-c-primary-light-2: #eaf4fb;
   --sp-acf-c-primary-light-3: #f4f9fd;
   --sp-acf-c-secondary-light: #fbf7ea;
   --sp-acf-c-secondary-light: #fdfaf4;
@@ -565,6 +565,8 @@
   font-weight: 700;
   position: relative;
   letter-spacing: 0.1em;
+  display: flex;
+  padding-right: 8rem;
 }
 #poststuff .acf-flexible-content .values .layout:nth-child(odd) .acf-fc-layout-handle,
 #editor .edit-post-visual-editor .acf-flexible-content .values .layout:nth-child(odd) .acf-fc-layout-handle {
@@ -625,4 +627,16 @@
 }
 
 /*  |> Gutenberg Editor
-    ——————————————————————————————————————————————————————*//*# sourceMappingURL=acf-styles.css.map */
+    ——————————————————————————————————————————————————————*/
+.acf-section-name {
+  background: var(--sp-acf-c-text);
+  text-transform: uppercase;
+  letter-spacing: normal;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 50px;
+  display: inline-block;
+  margin-left: auto;
+  margin-top: -5px;
+  font-size: 0.7rem;
+}/*# sourceMappingURL=acf-styles.css.map */

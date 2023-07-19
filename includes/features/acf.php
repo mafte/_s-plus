@@ -165,6 +165,21 @@ function sp_display_admin_notice() {
 add_action( 'admin_notices', 'sp_display_admin_notice' );
 
 
+/*  |> Add flexible content subtitles
+——————————————————————————————————————————————————————*/
+
+add_filter( 'acf/fields/flexible_content/layout_title/name=layout_builder', 'my_acf_fields_flexible_content_layout_title', 10, 4 );
+add_filter( 'acf/fields/flexible_content/layout_title/name=page_builder', 'my_acf_fields_flexible_content_layout_title', 10, 4 );
+function my_acf_fields_flexible_content_layout_title( $title, $field, $layout, $i ) {
+
+	// load text sub field
+	if ( $text = get_sub_field( 'section_name' ) ) {
+		$title .= '<b class="acf-section-name">' . esc_html( $text ) . '</b>';
+	}
+	return $title;
+}
+
+
 /*  |> OPTIONS PAGES
 ——————————————————————————————————————————————————————*/
 
