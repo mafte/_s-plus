@@ -194,13 +194,18 @@ function createIconSheet() {
         `
 .icon {
     --size: 22px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    // background-position: center;
     width: var(--size);
     height: var(--size);
     display: inline-block;
-    transition: .3s all;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    background: currentColor;
+    vertical-align: middle;
+    transition: var(--g-trans);
 }\n`;
 
     //Generate icons class
@@ -208,7 +213,7 @@ function createIconSheet() {
         const element = filesNamesWithoutExtension[index];
 
         content =
-            content + `.${element}{ background-image: var(--${element}) }\n`;
+            content + `.${element}{ mask-image: var(--${element}) }\n`;
     }
 
     fs.writeFileSync(

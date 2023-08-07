@@ -7,16 +7,21 @@
 }
 .icon {
     --size: 22px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    // background-position: center;
     width: var(--size);
     height: var(--size);
     display: inline-block;
-    transition: .3s all;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    background: currentColor;
+    vertical-align: middle;
+    transition: var(--g-trans);
 }
-.icon-arrow-down{ background-image: var(--icon-arrow-down) }
-.icon-arrow{ background-image: var(--icon-arrow) }
-.icon-close{ background-image: var(--icon-close) }
-.icon-menu{ background-image: var(--icon-menu) }
-.icon-search{ background-image: var(--icon-search) }
+.icon-arrow-down{ mask-image: var(--icon-arrow-down) }
+.icon-arrow{ mask-image: var(--icon-arrow) }
+.icon-close{ mask-image: var(--icon-close) }
+.icon-menu{ mask-image: var(--icon-menu) }
+.icon-search{ mask-image: var(--icon-search) }
