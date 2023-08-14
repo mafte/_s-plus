@@ -2,6 +2,7 @@
 
 define( 'ACF_NESTED', true ); //Allow flexible content nested
 define( 'ACF_ONLY_CP', false ); //Allow use only components ACF. Disable Blocks
+define( 'ACF_MODAL', false ); //Allow modal for add components en flexible content
 
 
 /*  |> Custom save
@@ -37,11 +38,29 @@ function my_acf_json_load_point( $paths ) {
 /*  |> Styles admin
 ——————————————————————————————————————————————————————*/
 
-add_action( 'admin_enqueue_scripts', 'load_admin_styles' );
-function load_admin_styles() {
-	if ( get_current_screen()->id !== 'acf-field-group' ) {
-		wp_enqueue_style( 'acf-styles', get_template_directory_uri() . '/assets/css/acf-styles.css', false, filemtime( get_template_directory() . '/assets/css/acf-styles.css' ) );
+
+add_action( 'acf/input/admin_enqueue_scripts', 'sp_acf_register_assets' );
+add_action( 'acf/input/admin_enqueue_scripts', 'sp_acf_enqueue_assets' );
+
+/**
+ * Register assets
+ */
+function sp_acf_register_assets() {
+	wp_enqueue_style( 'acf-styles', get_template_directory_uri() . '/assets/css/acf-styles.css', false, filemtime( get_template_directory() . '/assets/css/acf-styles.css' ) );
+
+	if ( ACF_MODAL ) {
+		wp_register_style( 'acf-fl', get_template_directory_uri() . '/assets/css/acf-flexible-content.css', false, '1.0' );
+		wp_register_script( 'acf-fl', get_template_directory_uri() . '/assets/js/acf-flexible-content.js', false, '1.0', true );
 	}
+}
+
+/**
+ * Enqueue assets
+ */
+function sp_acf_enqueue_assets() {
+	wp_enqueue_script( 'acf-fl' );
+	wp_enqueue_style( 'acf-fl' );
+	wp_enqueue_style( 'acf-styles' );
 }
 
 add_action(
@@ -202,4 +221,50 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	// 		'parent_slug' => 'global-options',
 	// 	)
 	// );
+}
+
+/*————————————————————————————————————————————————————*\
+	●❱ Modal Flexible Content
+\*————————————————————————————————————————————————————*/
+
+if ( ACF_MODAL ) {
+	add_action( 'acf/input/admin_footer', 'my_acf_admin_footer' );
+}
+function my_acf_admin_footer() {
+	?>
+
+	<div class="fl__container" data-popup-dest data-url-theme="<?php echo get_template_directory_uri(); ?>">
+		<div class="fl__inner-wrp">
+
+			<button class="fl__btn-close button-close"><span class="visually-hidden">Close</span><span class="icon icon-close"></span></button>
+			<div class="fl__header">
+				<h2 class="fl__title">Select the component</h2>
+				<div class="fl__search-wrp">
+					<label class="visually-hidden" for="fl-search">Search component</label>
+					<input id="fl-search" type="search" placeholder="Search component..." type="button">
+				</div>
+				<div class="fl__actions">
+					<button class="fl__actions-item" data-value="3"><span class="visually-hidden">Grid 3</span><span class="icon icon-grid-3"></span></button>
+					<button class="fl__actions-item active" data-value="4"><span class="visually-hidden">Grid 4</span><span class="icon icon-grid-4"></span></button>
+				</div>
+			</div>
+
+			<div class="fl__content" data-columns="4">
+
+				<?php for ( $i = 0; $i < 10; $i++ ) : ?>
+					<a href="#" data-layout="layout_column_2" data-min="" data-max="" class="fl-card">
+						<div class="fl-card__img-wrp">
+							<img src="https://picsum.photos/550/310" class="fl-card__img" width="550" height="310">
+						</div>
+						<div class="fl-card__title-wrp">
+							<h2 class="fl-card__title">Cards Columns</h2>
+						</div>
+					</a>
+				<?php endfor; ?>
+
+			</div>
+		</div>
+	</div>
+
+	<?php
 }

@@ -9,7 +9,6 @@
  *
  * @package _s_plus
  */
-
 ?>
 
 <footer id="footer-content" class="site-footer">
@@ -23,10 +22,10 @@
 						'menu_id'        => 'secondary-menu',
 					)
 				);
+
 				?>
 			</div>
 			<div class="col">
-
 			</div>
 		</div>
 	</div>

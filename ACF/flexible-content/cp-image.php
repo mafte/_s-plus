@@ -14,6 +14,8 @@
 
 				<?php sp_the_resp_img( 'large', $cp->image, 'cp-image__item img-fluid-fix' ); ?>
 
+				<?php echo sp_generate_link( $cp->button_link ); ?>
+
 			</div>
 		</div>
 	</div>
