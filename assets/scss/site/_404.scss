@@ -5,7 +5,7 @@
         margin: 10rem auto 2rem auto;
         align-items: center;
 
-        @include m_query($boo-sm) {
+        @include m_query($bp-sm) {
             flex-direction: column;
             align-items: flex-start;
             margin: 5rem auto 2rem auto;
@@ -29,7 +29,7 @@
             text-align: right;
             font-size: 18px;
 
-            @include m_query($boo-sm) {
+            @include m_query($bp-sm) {
             }
         }
     }
@@ -37,7 +37,7 @@
     &__error-message {
         padding-left: 2.5rem;
 
-        @include m_query($boo-sm) {
+        @include m_query($bp-sm) {
             padding-left: 0;
         }
 
@@ -78,7 +78,7 @@
         top: 30px;
         transform: translate(-4%, 0);
 
-        @include m_query($boo-sm) {
+        @include m_query($bp-sm) {
             --size: 120px;
         }
     }

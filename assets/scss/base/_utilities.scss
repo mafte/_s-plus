@@ -271,7 +271,7 @@
     display: none !important;
 }
 
-@media screen and (min-width: $boo-sm) {
+@media screen and (min-width: $bp-sm) {
     .d-sm-block {
         display: block !important;
     }
@@ -285,7 +285,7 @@
     }
 }
 
-@media screen and (min-width: $boo-md) {
+@media screen and (min-width: $bp-md) {
     .d-md-block {
         display: block !important;
     }
@@ -299,7 +299,7 @@
     }
 }
 
-@media screen and (min-width: $boo-lg) {
+@media screen and (min-width: $bp-lg) {
     .d-lg-block {
         display: block !important;
     }
@@ -313,7 +313,7 @@
     }
 }
 
-@media screen and (min-width: $boo-xl) {
+@media screen and (min-width: $bp-xl) {
     .d-xl-block {
         display: block !important;
     }
@@ -327,7 +327,7 @@
     }
 }
 
-@media screen and (min-width: $boo-xl) {
+@media screen and (min-width: $bp-xl) {
     .d-xxl-block {
         display: block !important;
     }

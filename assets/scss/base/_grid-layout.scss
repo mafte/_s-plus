@@ -104,7 +104,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: $boo-sm){
+@media screen and (min-width: $bp-sm){
     .col-sm {
         flex: 1 0 0%;
     }
@@ -175,7 +175,7 @@
     }
 }
 
-@media screen and (min-width: $boo-md){
+@media screen and (min-width: $bp-md){
     .col-md {
         flex: 1 0 0%;
     }
@@ -246,7 +246,7 @@
     }
 }
 
-@media screen and (min-width: $boo-lg){
+@media screen and (min-width: $bp-lg){
 
     .col-lg {
         flex: 1 0 0%;
@@ -318,7 +318,7 @@
     }
 }
 
-@media screen and (min-width: $boo-xl){
+@media screen and (min-width: $bp-xl){
 
     .col-xl {
         flex: 1 0 0%;
@@ -390,7 +390,7 @@
     }
 }
 
-@media screen and (min-width: $boo-xxl){
+@media screen and (min-width: $bp-xxl){
 
     .col-xxl {
         flex: 1 0 0%;

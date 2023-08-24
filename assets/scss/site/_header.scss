@@ -1,248 +1,182 @@
-$breakpoint_menu: 992px;
+$breakpoint_menu: $bp-lg;
+$breakpoint_menu_sticky: 156.25rem;
+$has_sticky_menu: true;
 
-.site-header {
-    position: relative;
-    z-index: 1000;
-    padding: 2rem 0;
-    background: #efefef;
-
-    @include m_query($boo-sm) {
-        padding: .8rem 0;
-    }
-
-    &__branding {
-        >* {
-            margin-bottom: 0;
-            display: inline-block;
-        }
-    }
-
-    &__menu {
-        @include m_query($breakpoint_menu) {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        /*
-        ——— STYLES MENU FOR DESKTOP
-        */
-        @include m_query($breakpoint_menu, "min") {
-            .menu {
-                display: flex;
-                position: relative;
-
-                >li+li {
-                    margin-left: 2.5rem;
-                }
-
-                >li {
-                    position: relative;
-
-                    /*
-                ——— This pseudo-element helps to improve the hover in the main menu
-                */
-                    &::after {
-                        --size: 100%;
-                        content: "";
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: var(--size);
-                        height: 20px;
-                        transform: translateY(100%);
-                    }
-                }
-            }
-
-            .sub-menu {
-                position: absolute;
-                display: block;
-                bottom: 0;
-                transform: translate(-1.5rem, calc(100% + 1rem));
-                opacity: 0;
-                left: -99999rem;
-                transition: opacity 0.15s linear, left 0.1s 0.15s;
-                min-width: 230px;
-                padding: 1rem 0.5rem;
-                background: #f5f5f5;
-                border-radius: 10px;
-                border-top: 4px solid var(--c-primary);
-
-                .menu-item-has-children {
-                    &::before {
-                        right: 8px;
-                        transform: translateY(-8px) rotate(-90deg);
-                    }
-                }
-
-                &::before {
-                    --size: 16px;
-                    content: "";
-                    position: absolute;
-                    top: -9px;
-                    left: 2.5rem;
-                    width: var(--size);
-                    height: var(--size);
-                    background-size: contain;
-                    background: linear-gradient(136deg,
-                            var(--c-primary) 0%,
-                            var(--c-primary) 47.9%,
-                            transparent 47.91%);
-                    transform: rotate(45deg);
-                    border-radius: 6px;
-                }
-
-                li+li {
-                    margin-top: 0.2rem;
-                }
-
-                a {
-                    padding: 0.2rem 1rem;
-                    display: block;
-                    font-weight: 400;
-                    border-radius: 5px;
-
-                    @include hover {
-                        background: #ececec;
-                        color: var(--c-secondary);
-                    }
-                }
-
-                /*
-            ——— Third Level
-            */
-
-                .sub-menu {
-                    transform: translate(calc(100% - 8px), calc(75% - 20px));
-                    z-index: 10;
-                    border: none;
-                    border-left: 4px solid darkgray;
-
-                    &::before {
-                        display: none;
-                    }
-
-                    .sub-menu {
-                        transform: translate(calc(95% - 1px), calc(75% - 20px));
-                    }
-                }
-            }
-
-            .menu-item-has-children {
-                position: relative;
-
-                &::before {
-                    --size: 14px;
-                    content: "";
-                    position: absolute;
-                    top: 54%;
-                    right: 0;
-                    width: var(--size);
-                    height: var(--size);
-                    transform: translateY(-50%);
-                    background-image: var(--icon-arrow-down);
-                    background-size: contain;
-                    background-position: center;
-                    pointer-events: none;
-                }
-
-                .ancestor-wrapper {
-                    >a {
-                        padding-right: 1.6rem;
-                    }
-                }
-            }
-
-            li {
-                position: relative;
-
-                &:focus,
-                &:active,
-                &:hover {
-                    >.sub-menu {
-                        opacity: 1;
-                        left: 0;
-                        transition: opacity 0.15s linear;
-                    }
-                }
-
-                //Show sub-menu in focus
-                &.focus {
-                    >.sub-menu {
-                        opacity: 1;
-                        left: 0;
-                        transition: opacity 0.15s linear;
-                    }
-                }
-            }
-
-            a {
-                font-weight: 700;
-                text-decoration: none;
-            }
-        }
-
-        /*
-        —————————————————————————————————————————————————
-        */
-
-        ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-    }
-
-    &__logo {
-        display: block;
-    }
+/* For '__menu' element */
+@mixin menu_style__menu-element {
+    display: flex;
+    justify-content: flex-end;
 }
 
-/*————————————————————————————————————————————————————*\
-    ●❱ MENU MOBILE
-\*————————————————————————————————————————————————————*/
+/* For '.menu-toggle' element */
+@mixin menu_style__menu-toggle-element {
+    display: none;
+}
 
-.menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.3rem;
-    border: 2px solid #000;
-    background: 0 0;
-    border-radius: 10px;
-
-    &__close {
-        margin-left: auto;
-        margin-bottom: 2.5rem;
-        z-index: 1;
-        transition: opacity 0.15s linear, right 0.1s 0.15s;
-        background: none;
-        // border: 1px solid black;
-        // border-radius: 50px;
-
-        .icon {
-            --size: 22px;
-        }
-    }
-
-    @include m_query($breakpoint_menu, 'min') {
+/* For '.sub-menu-toggle' element */
+@mixin menu_style__sub-menu-toggle-element {
+    .sub-menu-toggle {
         display: none;
     }
 }
 
-.main-navigation {
-    @include m_query($breakpoint_menu, 'min') {
-        .sub-menu-toggle {
-            display: none;
+@mixin menu_style_only_desktop {
+    .menu {
+        display: flex;
+        position: relative;
+
+        >li+li {
+            margin-left: 2.5rem;
         }
+
+        >li {
+            position: relative;
+
+            /*
+        ——— This pseudo-element helps to improve the hover in the main menu
+        */
+            &::after {
+                --size: 100%;
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: var(--size);
+                height: 20px;
+                transform: translateY(100%);
+            }
+        }
+    }
+
+    .sub-menu {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        transform: translate(-1.5rem, calc(100% + 1rem));
+        opacity: 0;
+        left: -99999rem;
+        transition: opacity 0.15s linear, left 0.1s 0.15s;
+        min-width: 230px;
+        padding: 1rem 0.5rem;
+        background: #f5f5f5;
+        border-radius: 10px;
+        border-top: 4px solid var(--c-primary);
+
+        .menu-item-has-children {
+            &::before {
+                right: 8px;
+                transform: translateY(-8px) rotate(-90deg);
+            }
+        }
+
+        &::before {
+            --size: 16px;
+            content: "";
+            position: absolute;
+            top: -9px;
+            left: 2.5rem;
+            width: var(--size);
+            height: var(--size);
+            background-size: contain;
+            background: linear-gradient(136deg,
+                    var(--c-primary) 0%,
+                    var(--c-primary) 47.9%,
+                    transparent 47.91%);
+            transform: rotate(45deg);
+            border-radius: 6px;
+        }
+
+        li+li {
+            margin-top: 0.2rem;
+        }
+
+        a {
+            padding: 0.2rem 1rem;
+            display: block;
+            font-weight: 400;
+            border-radius: 5px;
+
+            @include hover {
+                background: #ececec;
+                color: var(--c-secondary);
+            }
+        }
+
+        /*
+    ——— Third Level
+    */
+
+        .sub-menu {
+            transform: translate(calc(100% - 8px), calc(75% - 20px));
+            z-index: 10;
+            border: none;
+            border-left: 4px solid darkgray;
+
+            &::before {
+                display: none;
+            }
+
+            .sub-menu {
+                transform: translate(calc(95% - 1px), calc(75% - 20px));
+            }
+        }
+    }
+
+    .menu-item-has-children {
+        position: relative;
+
+        &::before {
+            --size: 14px;
+            content: "";
+            position: absolute;
+            top: 54%;
+            right: 0;
+            width: var(--size);
+            height: var(--size);
+            transform: translateY(-50%);
+            background-image: var(--icon-arrow-down);
+            background-size: contain;
+            background-position: center;
+            pointer-events: none;
+        }
+
+        .ancestor-wrapper {
+            >a {
+                padding-right: 1.6rem;
+            }
+        }
+    }
+
+    li {
+        position: relative;
+
+        &:focus,
+        &:active,
+        &:hover {
+            >.sub-menu {
+                opacity: 1;
+                left: 0;
+                transition: opacity 0.15s linear;
+            }
+        }
+
+        //Show sub-menu in focus
+        &.focus {
+            >.sub-menu {
+                opacity: 1;
+                left: 0;
+                transition: opacity 0.15s linear;
+            }
+        }
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
     }
 }
 
-/*
-——— STYLES MENU FOR MOBILE
-*/
-
-@include m_query($breakpoint_menu) {
+@mixin menu_style_only_mobile {
     .main-navigation {
         position: fixed;
         left: 0;
@@ -254,11 +188,11 @@ $breakpoint_menu: 992px;
         padding-left: var(--p-container);
         padding-right: var(--p-container);
 
-        @include m_query($boo-md) {
+        @include m_query($bp-md) {
             padding: 2.4rem 4rem;
         }
 
-        @include m_query($boo-sm) {
+        @include m_query($bp-sm) {
             padding: .8rem 2rem;
         }
 
@@ -397,6 +331,177 @@ $breakpoint_menu: 992px;
         }
     }
 }
+
+.site-header {
+    position: relative;
+    z-index: 1000;
+    padding: 2rem 0;
+    background: #efefef;
+
+    @include m_query($bp-sm) {
+        padding: .8rem 0;
+    }
+
+    &__branding {
+        >* {
+            margin-bottom: 0;
+            display: inline-block;
+        }
+    }
+
+    &__menu {
+        @include m_query($breakpoint_menu) {
+            @include menu_style__menu-element;
+        }
+
+        /*
+        ——— STYLES MENU FOR DESKTOP
+        */
+        @include m_query($breakpoint_menu, "min") {
+            @include menu_style_only_desktop;
+        }
+
+        /*
+        —————————————————————————————————————————————————
+        */
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+    }
+
+    &__logo {
+        display: block;
+    }
+}
+
+@if $has_sticky_menu {
+    .site-header-sticky {
+
+        position: relative;
+        z-index: 1000;
+        padding: 2rem 0;
+
+        @include m_query($bp-sm) {
+            padding: .8rem 0;
+        }
+
+        &__branding {
+            >* {
+                margin-bottom: 0;
+                display: inline-block;
+            }
+        }
+
+        &__menu {
+            @include m_query($breakpoint_menu_sticky) {
+                @include menu_style__menu-element;
+            }
+
+            /*
+            ——— STYLES MENU FOR DESKTOP
+            */
+            @include m_query($breakpoint_menu_sticky, "min") {
+                @include menu_style_only_desktop;
+            }
+
+            /*
+            —————————————————————————————————————————————————
+            */
+
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+        }
+    }
+}
+
+
+/*————————————————————————————————————————————————————*\
+    ●❱ MENU MOBILE
+\*————————————————————————————————————————————————————*/
+
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border: 2px solid #000;
+    background: 0 0;
+    border-radius: 10px;
+
+    &__close {
+        margin-left: auto;
+        margin-bottom: 2.5rem;
+        z-index: 1;
+        transition: opacity 0.15s linear, right 0.1s 0.15s;
+        background: none;
+        // border: 1px solid black;
+        // border-radius: 50px;
+
+        .icon {
+            --size: 22px;
+        }
+    }
+}
+
+
+.site-header {
+
+    .menu-toggle {
+        @include m_query($breakpoint_menu, 'min') {
+            @include menu_style__menu-toggle-element;
+        }
+    }
+
+    .main-navigation {
+        @include m_query($breakpoint_menu, 'min') {
+            @include menu_style__sub-menu-toggle-element;
+        }
+    }
+}
+
+@if $has_sticky_menu {
+    .site-header-sticky {
+
+        .menu-toggle {
+            @include m_query($breakpoint_menu_sticky, 'min') {
+                @include menu_style__menu-toggle-element;
+            }
+        }
+
+        .main-navigation {
+            @include m_query($breakpoint_menu_sticky, 'min') {
+                @include menu_style__sub-menu-toggle-element;
+            }
+        }
+    }
+}
+
+
+
+/*
+——— STYLES MENU FOR MOBILE
+*/
+
+.site-header {
+    @include m_query($breakpoint_menu) {
+        @include menu_style_only_mobile;
+    }
+}
+
+@if $has_sticky_menu {
+    .site-header-sticky {
+        @include m_query($breakpoint_menu_sticky) {
+            @include menu_style_only_mobile;
+        }
+    }
+}
+
 
 /*
 —————————————————————————————————————————————————

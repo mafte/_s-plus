@@ -125,7 +125,7 @@ img:not([src]):not([srcset]) {
         color: initial;
     }
 
-    @include m_query($boo-sm) {
+    @include m_query($bp-sm) {
         padding: 0.4rem 1rem;
         // letter-spacing: 1px;
     }
@@ -146,7 +146,7 @@ img:not([src]):not([srcset]) {
     // 	background-size: contain;
     // 	filter: invert(1);
 
-    // 	@include m_query($boo-sm) {
+    // 	@include m_query($bp-sm) {
     // 		right: 1rem;
 
     // 	}
