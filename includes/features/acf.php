@@ -46,7 +46,20 @@ add_action( 'acf/input/admin_enqueue_scripts', 'sp_acf_enqueue_assets' );
  * Register assets
  */
 function sp_acf_register_assets() {
-	wp_enqueue_style( 'acf-styles', get_template_directory_uri() . '/assets/css/acf-styles.css', false, filemtime( get_template_directory() . '/assets/css/acf-styles.css' ) );
+	$screen_id        = get_current_screen()->id;
+	$excluded_screens = array( 'acf-field-group', 'acf-post-type', 'acf-taxonomy', 'acf-ui-options-page' );
+
+	$should_enqueue_style = true;
+	foreach ( $excluded_screens as $excluded_screen ) {
+		if ( $screen_id === $excluded_screen ) {
+			$should_enqueue_style = false;
+			break;
+		}
+	}
+
+	if ( $should_enqueue_style ) {
+		wp_enqueue_style( 'acf_styles', get_template_directory_uri() . '/assets/css/acf-styles.css', false, filemtime( get_template_directory() . '/assets/css/acf-styles.css' ) );
+	}
 
 	if ( ACF_MODAL ) {
 		wp_register_style( 'acf-fl', get_template_directory_uri() . '/assets/css/acf-flexible-content.css', false, '1.0' );
@@ -58,8 +71,12 @@ function sp_acf_register_assets() {
  * Enqueue assets
  */
 function sp_acf_enqueue_assets() {
-	wp_enqueue_script( 'acf-fl' );
-	wp_enqueue_style( 'acf-fl' );
+
+	if ( ACF_MODAL ) {
+		wp_enqueue_script( 'acf-fl' );
+		wp_enqueue_style( 'acf-fl' );
+	}
+
 	wp_enqueue_style( 'acf-styles' );
 }
 
@@ -189,6 +206,7 @@ add_action( 'admin_notices', 'sp_display_admin_notice' );
 
 add_filter( 'acf/fields/flexible_content/layout_title/name=layout_builder', 'my_acf_fields_flexible_content_layout_title', 10, 4 );
 add_filter( 'acf/fields/flexible_content/layout_title/name=page_builder', 'my_acf_fields_flexible_content_layout_title', 10, 4 );
+
 function my_acf_fields_flexible_content_layout_title( $title, $field, $layout, $i ) {
 
 	// load text sub field
@@ -210,20 +228,21 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 			'menu_title' => __( 'Global Options' ),
 			'menu_slug'  => 'global-options',
 			'icon_url'   => 'dashicons-hammer',
-			'redirect'   => true, //Si esta en false crea tambien una subpagina con ese nombre
+			'redirect'   => true, //If this is false then to create a subpage with same name
 		)
 	);
 
 	// acf_add_options_sub_page(
-	// 	array(
-	// 		'page_title'  => __( 'Footer' ),
-	// 		'menu_title'  => __( 'Footer' ),
-	// 		'parent_slug' => 'global-options',
-	// 	)
+	//  array(
+	//      'page_title'  => __( 'Footer' ),
+	//      'menu_title'  => __( 'Footer' ),
+	//      'parent_slug' => 'global-options',
+	//  )
 	// );
 }
 
-/*————————————————————————————————————————————————————*\
+
+/*
 	●❱ Modal Flexible Content
 \*————————————————————————————————————————————————————*/
 
