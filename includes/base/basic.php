@@ -172,7 +172,7 @@ function sp_the_header_logo() {
 	?>
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo get_bloginfo( 'name' ); ?>">
 		<?php if ( ! get_theme_mod( 'custom_logo' ) ) : ?>
-			<img class="site-header__logo" src="<?php echo sp_get_asset( 'placeholder-logo.svg' ); ?>" alt="">
+			<img class="site-header__logo" src="<?php echo sp_get_asset( 'img/logo.svg' ); ?>" alt="">
 		<?php else : ?>
 			<?php sp_the_resp_img( 'medium', get_theme_mod( 'custom_logo' ), 'site-header__logo' ); ?>
 		<?php endif; ?>
