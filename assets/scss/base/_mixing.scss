@@ -115,3 +115,25 @@
     padding-left: 0;
     list-style: none;
 }
+
+
+@mixin get_ratio_container($width, $height) {
+    $ratio: ($height / $width) * 100%;
+
+    position: relative;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: $ratio;
+    }
+
+    >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
