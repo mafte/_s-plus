@@ -16,10 +16,8 @@ if ( ! function_exists( 'sp_get_img__url' ) ) {
 			if ( get_post_thumbnail_id() ) {
 				return esc_url( wp_get_attachment_image_url( get_post_thumbnail_id(), $size ) );
 			}
-		} else {
-			if ( wp_get_attachment_image_url( $image_id, $size ) ) {
-				return esc_url( wp_get_attachment_image_url( $image_id, $size ) );
-			}
+		} elseif ( wp_get_attachment_image_url( $image_id, $size ) ) {
+			return esc_url( wp_get_attachment_image_url( $image_id, $size ) );
 		}
 
 		return $path_placeholder;
@@ -77,202 +75,6 @@ if ( ! function_exists( 'sp_the_excerpt' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_img_resp_old' ) ) {
-
-	/**
-	 * Get responsive images with height and width attributes.
-	 *
-	 * @param  string  $size      Keyword for image size.
-	 * @param  int     $image_id  Image ID. Optional. By default it is the image id of the current post.
-	 * @param  string  $class_css Class CSS. Optional.
-	 * @param  boolean $lazyload  Native attribute for lazyload. Optional. By default it is TRUE.
-	 * @return string  Image responsive with attributes.
-	 */
-	function sp_img_resp_old( $size = 'large', $image_id = 0, $class_css = '', $lazyload = true ) {
-
-		/* If the $image_id is equal to 0, then we get the id of the current post */
-		if ( 0 === $image_id ) {
-			$image_id = get_post_thumbnail_id();
-		}
-
-		/** If you are using the lazyload script then it will work differently. */
-		$is_script_lazyload = wp_script_is( 'lazyload' );
-
-		/** LAZYLOAD: if $lazyload is 'false', we deactivate lazyload */
-		if ( false === $lazyload ) {
-			$is_script_lazyload = false;
-		}
-
-		/* Add all the image sizes allowed in the automatic generation. */
-		$sizes_img_names = array( 'medium', 'medium_large', 'large', 'full' );
-
-		/* Maximum container width*/
-		$size_default = 1440;
-		/* Value for parent container margin */
-		$margin_sizes_attribute = '48px';
-
-		/** If the image size does not exist, get the following by default */
-		if ( ! in_array( $size, $sizes_img_names, true ) ) {
-			$size = 'large';
-		}
-
-		$sizes_img_widths = wp_get_registered_image_subsizes();
-
-		/**
-		 * PLACEHOLDER IMAGE
-		 * ***************************************************
-		 */
-
-		/* If the image ID is incorrect or non-existent then return the image placeholder. */
-		$placeholder_img = get_template_directory_uri() . '/assets/img/placeholder-image.svg';
-
-		if ( ! wp_get_attachment_image_url( $image_id, $size ) ) {
-
-			/* A placeholder of 1920 x 1080 is used, dividing it gives 1.77, which we occupy to get the proportion regardless of size.
-			This allows the correct presentation in the browser of the placeholder without sudden jumps. */
-			return "<img class=\"{$class_css}\" src=\"{$placeholder_img}\" alt=\"\" width=\"{$sizes_img_widths[$size]['width']}\" height=\"" . round( $sizes_img_widths[ $size ]['width'] / 1.77777777778 )
-				. '"/>';
-		}
-
-		/**
-		 * Add 'full' image width to array
-		 */
-		$sizes_img_widths['full'] = array(
-			'width'  => wp_get_attachment_image_src( $image_id, 'full' )[1],
-			'height' => 99999,
-		);
-		// $width_img_requested = $sizes_img_widths[$size]['width'];
-
-		/**
-		 * DECLARATION OF VARIABLES
-		 * ***************************************************
-		 */
-
-		/** LAZYLOAD: Add 'lazy' class */
-		if ( $is_script_lazyload ) {
-			$class_css .= ' lazy';
-		}
-
-		$sizes_img_filter = array();
-		$url_img_full     = sp_get_img__url( 'full', $image_id );
-
-		$html_srcset = array();
-		$html_sizes  = array();
-
-		$html_output = '';
-
-		// Start tag img and class CSS
-		$html_output .= '<img class="' . $class_css . '" ';
-
-		/**
-		 * EXTRACT ATTRIBUTES
-		 * ***************************************************
-		 */
-
-		/* Get requested image data for width and height attributes */
-		if ( 0 === $image_id ) {
-			if ( get_post_thumbnail_id() ) {
-				$image_id = get_post_thumbnail_id();
-			}
-		}
-
-		$img_object = wp_get_attachment_image_src( $image_id, $size );
-
-		$html_output .= ' width="' . $img_object[1] . '" ';
-		$html_output .= ' height="' . $img_object[2] . '"';
-
-		if ( pathinfo( wp_get_attachment_image_url( $image_id, 'full' ), PATHINFO_EXTENSION ) === 'svg' ) {
-			$alt_text = sp_get_img__alt( $image_id );
-			$url      = sp_get_img__url( $size, $image_id );
-			return <<<HERE
-            <img class="{$class_css}" data-src="{$url}" alt="{$alt_text}" width="$img_object[1]" height="$img_object[2]">
-            HERE;
-		}
-
-		/**
-		 * GET WIDTH OF IMAGES
-		 * ***************************************************
-		 */
-
-		$i = 0;
-
-		foreach ( $sizes_img_names as $value ) {
-
-			/* If it is the original image, then we assign the necessary attributes. By default it is not considered as an image size. */
-			if ( 'full' === $value ) {
-				$sizes_img_filter[ $i ]['name']  = $value;
-				$sizes_img_filter[ $i ]['width'] = wp_get_attachment_image_src( $image_id, 'full' )[1];
-			} else {
-				$sizes_img_filter[ $i ]['name']  = $value;
-				$sizes_img_filter[ $i ]['width'] = $sizes_img_widths[ $value ]['width'];
-			}
-
-			$i++;
-		}
-
-		/* Sort the sizes from smallest to largest with the value 'width' */
-
-		foreach ( $sizes_img_filter as $key => $row ) {
-			$aux[ $key ] = $row['width'];
-		}
-
-		array_multisort( $aux, SORT_ASC, $sizes_img_filter );
-
-		/**
-		 * URLs GENERATION
-		 * ***************************************************
-		 */
-
-		foreach ( $sizes_img_filter as $size_name_current ) {
-
-			$size_img_width_current = $size_name_current['width'];
-			$url_img_current        = sp_get_img__url( $size_name_current['name'], $image_id );
-
-			/* GENERATION OF SRCSET *****************/
-			/* If it is not true, then we avoid creating this unnecessary data */
-
-			if ( ( $url_img_current !== $url_img_full ) || ( 'full' === $size_name_current['name'] ) ) {
-				$html_srcset[] = sp_get_img__url( $size_name_current['name'], $image_id ) . ' ' . $size_img_width_current . 'w';
-			}
-		}
-
-		/* ADD SIZES ATRRIBUTES *****************/
-		if ( 'full' === $size ) {
-			$html_sizes[] = '(max-width: ' . $size_default . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $size_default . 'px';
-		} else {
-			$html_sizes[] = '(max-width: ' . $sizes_img_widths[ $size ]['width'] . 'px) calc(100vw - ' . $margin_sizes_attribute . '), ' . $sizes_img_widths[ $size ]['width'] . 'px';
-		}
-
-		/**
-		 * PREPARE OUTPUT
-		 * ***************************************************
-		 */
-
-		/** LAZYLOAD: We rename the attributes and add an image placeholder while the actual image is loading.*/
-		if ( $is_script_lazyload ) {
-
-			$html_output .= 'data-src="' . sp_get_img__url( $size, $image_id ) . '" ';
-
-			$html_output .= 'data-srcset="' . implode( ', ', array_filter( $html_srcset ) ) . '" ';
-			$html_output .= 'data-sizes="' . implode( ', ', array_filter( $html_sizes ) ) . '" ';
-		} else {
-			$html_output .= 'src="' . sp_get_img__url( $size, $image_id ) . '" ';
-
-			$html_output .= 'srcset="' . implode( ', ', array_filter( $html_srcset ) ) . '" ';
-			$html_output .= 'sizes="' . implode( ', ', array_filter( $html_sizes ) ) . '" ';
-		}
-
-		// Add lazyload attribute
-		if ( ( true === $lazyload ) && ! $is_script_lazyload ) {
-			$html_output .= ' loading="lazy" ';
-		}
-
-		/* Add alt text and tag end img*/
-		$html_output .= ' alt="' . sp_get_img__alt( $image_id ) . '">';
-
-		return $html_output;
-	}
-}
 
 if ( ! function_exists( 'sp_get_asset' ) ) {
 
@@ -285,7 +87,35 @@ if ( ! function_exists( 'sp_get_asset' ) ) {
 	function sp_get_asset( $asset ) {
 		$template_uri = get_template_directory_uri();
 
-		return esc_url( "{$template_uri}/assets/img/{$asset}" );
+		return esc_url( "{$template_uri}/assets/{$asset}" );
+	}
+}
+
+
+if ( ! function_exists( 'sp_get_asset_img' ) ) {
+
+	/**
+	 * Generate img tag with its attributes from assets/img folder
+	 *
+	 * @param  string $img_name  Asset name
+	 * @param  string $class_css  Class CSS
+	 * @return string  Print img tag
+	 */
+	function sp_get_asset_img( $img_name, $class_css = '' ) {
+
+		$template_uri       = get_template_directory_uri();
+		$template_directory = get_template_directory();
+		$path               = "{$template_uri}/assets/img/{$img_name}";
+
+		if ( ! file_exists( "{$template_directory}/assets/img/{$img_name}" ) ) {
+			return;
+		}
+
+		$attrs  = getimagesize( $path );
+		$width  = $attrs[0];
+		$height = $attrs[1];
+
+		echo '<img src="' . $path . '" alt="" class="' . $class_css . '" width="' . $width . '" height="' . $height . '">';
 	}
 }
 
@@ -322,21 +152,21 @@ if ( ! function_exists( 'sp_generate_link' ) ) {
 	}
 }
 
-
-if ( ! function_exists( 'sp_get_the_terms_ids' ) ) {
+if ( ! function_exists( 'sp_get_terms_ids' ) ) {
 
 	/**
-	 * Gets the IDs of taxonomies corresponding to the post.
+	 * Gets terms IDs of taxonomies by post iID.
 	 *
 	 * @param int|WP_Post $post — Post ID or object.
 	 * @param string $taxonomy — Taxonomy name.
 	 *
 	 * @return array Terms IDs or 'null' if taxonomy name no exist.
 	 */
-	function sp_get_the_terms_ids( $post, $taxonomy ) {
-		$terms_ids = array();
+	function sp_get_terms_ids( $post, $taxonomy ) {
 
 		if ( taxonomy_exists( $taxonomy ) ) {
+			$terms_ids = array();
+
 			$terms_object = get_the_terms( $post, $taxonomy );
 
 			if ( $terms_object ) {
@@ -352,7 +182,7 @@ if ( ! function_exists( 'sp_get_the_terms_ids' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sp_resp_img' ) ) {
+if ( ! function_exists( 'sp_get_resp_img' ) ) {
 
 	/**
 	 * Get responsive images with height and width attributes.
@@ -363,7 +193,7 @@ if ( ! function_exists( 'sp_resp_img' ) ) {
 	 * @param  boolean $lazy  Native attribute for lazyload. Optional. By default it is TRUE.
 	 * @return string  Image responsive with attributes.
 	 */
-	function sp_resp_img( $size = 'large', $id = 0, $class = '', $lazy = 'lazy' ) {
+	function sp_get_resp_img( $size = 'large', $id = 0, $class = '', $lazy = 'lazy' ) {
 
 		/* If the $id is equal to null, then we get the id of the current post */
 		if ( 0 === $id ) {
@@ -466,6 +296,43 @@ if ( ! function_exists( 'sp_the_resp_img' ) ) {
 	 * @return string  Image responsive with attributes.
 	 */
 	function sp_the_resp_img( $size = 'large', $id = 0, $class = '', $lazy = 'lazy' ) {
-		echo sp_resp_img( $size, $id, $class, $lazy );
+		echo sp_get_resp_img( $size, $id, $class, $lazy );
 	}
 }
+
+
+/*
+——— Hide admin bar in mobile devices
+*/
+
+function hide_admin_bar_in_mobile() {
+	?>
+
+	<?php if ( is_user_logged_in() ) : ?>
+
+		<script>
+			const mediaQuery = window.matchMedia('(max-width: 786px)');
+			const wpAdminBar = document.getElementById('wpadminbar');
+			var $htmlElement = document.querySelector('html');
+
+			const handleMediaChange = (mediaQuery) => {
+				if (mediaQuery.matches) {
+					wpAdminBar.style.display = 'none';
+					document.body.classList.remove('admin-bar');
+					$htmlElement.setAttribute('style', 'margin-top: 0!important');
+				} else {
+					wpAdminBar.style.display = 'block';
+					document.body.classList.add('admin-bar');
+					$htmlElement.setAttribute('style', 'margin-top: 32px!important');
+				}
+			};
+
+			mediaQuery.addEventListener('change', handleMediaChange);
+			handleMediaChange(mediaQuery);
+		</script>
+
+	<?php endif; ?>
+
+	<?php
+}
+add_action( 'wp_footer', 'hide_admin_bar_in_mobile' );
