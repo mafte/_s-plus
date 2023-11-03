@@ -144,26 +144,28 @@ function _s(el, duration, callback, isDown) {
 \*————————————————————————————————————————————————————*/
 
 
-var button_menu = document.querySelector("#site-nav-btn-menu");
-var button_close = document.querySelector("#site-nav-btn-close");
-var main_nav = document.getElementById("site-navigation");
+var $btns_open = document.querySelectorAll(".js-menu-toggle--open");
+var $btns_close = document.querySelectorAll(".js-menu-toggle--close");
 
-if (button_menu) {
-  button_menu.addEventListener("click", function () {
-    main_nav.classList.toggle("show--fade");
-    toggle_attr_expand(button_menu);
-    toggle_attr_expand(button_close);
-  });
+if (document.querySelector('.site-header-sticky')) {
+  var main_nav = document.querySelector(".site-header-sticky #site-navigation--sticky-menu");
+} else {
+  var main_nav = document.querySelector(".site-header #site-navigation");
 }
 
-if (button_close) {
-  button_close.addEventListener("click", function () {
-    main_nav.classList.toggle("show--fade");
-    toggle_attr_expand(button_menu);
-    toggle_attr_expand(button_close);
-  });
-}
+document.addEventListener('click', function (e) {
+  var $target = e.target; // console.log($target);
 
+  if ($target.classList.contains('menu-toggle') || $target.closest('.menu-toggle')) {
+    main_nav.classList.toggle("show--fade");
+    $btns_open.forEach(function (el) {
+      toggle_attr_expand(el);
+    });
+    $btns_close.forEach(function (el) {
+      toggle_attr_expand(el);
+    });
+  }
+});
 var sub_menu_toggles = document.querySelectorAll(".ancestor-wrapper .sub-menu-toggle");
 
 if (sub_menu_toggles) {

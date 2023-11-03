@@ -1,6 +1,14 @@
 $breakpoint_menu: $bp-lg;
-$breakpoint_menu_sticky: 156.25rem;
+
+/**
+ * Esta funcionalidad esta relacionada al requerimiento de tener un header sticky diferente al header y con un menu responsive.
+ * Esto permite reutilizar el codigo manteniendo dos breakpoints. Es necesario activar en header.php
+ *
+ * */
 $has_sticky_menu: true;
+// Se pone un breakpoint mas alto de lo que el usuario normalmente puede llegar para que siempre este en modo menu responsive.
+$breakpoint_menu_sticky: 156.25rem;
+
 
 /* For '__menu' element */
 @mixin menu_style__menu-element {
