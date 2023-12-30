@@ -292,7 +292,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "page"
+                "value": "post"
             }
         ]
     ],
@@ -309,8 +309,8 @@
         "format",
         "send-trackbacks"
     ],
-    "active": false,
+    "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1681425081
+    "modified": 1691551140
 }

@@ -196,10 +196,7 @@ var lazyLoadInstance = new LazyLoad({
 //                 } else {
 //                     window.location.hash = href;
 //                 }
-
 //             }
-
 //         }
 //     }
-
 // })
