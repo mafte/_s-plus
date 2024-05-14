@@ -1,169 +1,173 @@
 _s-plus
 =======
+<p>
+<img src="screenshot.png" style="height: 350px; object-fit:cover" width="1000" alt="750" />
+</p>
 
-¡Hola!, soy un tema para WordPress llamado `_s-plus`. Lo sé, soy muy parecido a `_s` o también `underscore`, y esto es así porque estoy basado en él, pero con muchas funcionalidades extras que una vez conozcas podrán ahorrarte tiempo valioso.
+Hello! I'm a WordPress theme called `_s-plus`. I know, I'm very similar to `_s` or also `underscore`, and that's because I'm based on it, but with many extra functionalities that once you get to know them, can save you valuable time.
 
-La idea detrás de este tema es ser una base sólida para creación de temas personalizados en conjunto con ACF. No intenta dar un estilo preestablecido, ni marcar algún tipo de tendencia gráfica. Cuando lo instales notaras que en el aspecto visual prácticamente está en blanco.
+The idea behind this theme is to be a solid base for creating custom themes in conjunction with ACF. It doesn't try to give a predefined style or set any graphical trend. When you install it, you'll notice that visually it's almost blank.
 
-Estas son las funcionalidades más destacadas:
+Here are the most outstanding features:
 
-* Flujo de trabajo automatizado con `gulp`; listo para usar.
-* Estructura de archivos optimizada.
-* Mejoras en el manejo de imágenes.
-* Configuraciones generales accesibles.
-* Plantilla para agregar opciones al `customizer`.
-* Funciones utilitarias para el `WP Loop`.
-* Fácil implementación de ACF (Gutenberg Blocks y Flexible Content).
-* Integración de grid CSS básica.
-* Menu responsive totalmente funcional.
-* Mejoras de accesibilidad.
-* Utilidades para SASS/CSS.
+* Automated workflow with `gulp`; ready to use.
+* Optimized file structure.
+* Improved image handling.
+* Accessible general settings.
+* Template for adding options to the `customizer`.
+* Utility functions for the `WP Loop`.
+* Easy implementation of ACF (Gutenberg Blocks and Flexible Content).
+* Basic CSS grid integration.
+* Fully functional responsive menu.
+* Accessibility improvements.
+* Utilities for SASS/CSS.
 
-Instalación
+Installation
 ------------
 
-### Requerimientos
+### Requirements
 
-`_s-plus` requiere de las siguientes dependencias:
+`_s-plus` requires the following dependencies:
 
-- [Node.js](https://nodejs.org/)
+* [Node.js](https://nodejs.org/)
 
-### Configuración
+### Setup
 
-Para comenzar a usar todas las herramientas que vienen con `_s-plus`, debe instalar las dependencias necesarias de Node.js:
+To start using all the tools that come with `_s-plus`, you must install the necessary Node.js dependencies:
 
 ```sh
 $ npm install
 ```
 
-### Inicio rápido
+### Quick Start
 
-Clone o descargue este repositorio, cambie su nombre por otro (como, digamos, `theme-name`), y luego debes buscar y reemplazar el nombre en todas las plantillas. Puedes hacerlo de dos maneras: la semi-automatica y la manual. La semi-automatica consiste en ir al archivo `gulpfile.js` y establecer en el parámetro `slug_theme` el **Text Domain** del tema. Ahora, en la terminal(ya con todas las dependencias instaladas), ejecuta:
+Clone or download this repository, rename it (like, let's say, `theme-name`), and then you should search and replace the name in all templates. You can do this in two ways: semi-automatic and manual. The semi-automatic way involves going to the `gulpfile.js` file and setting the **Text Domain** of the theme in the `slug_theme` parameter. Now, in the terminal (with all dependencies installed), run:
 
 ```sh
 $ gulp replace_slug_theme
 ```
 
-El método manual consiste en que busques y reemplaces en seis pasos el nombre, asegurándote que la sensibilidad de mayúsculas/minúsculas esté activada.
+The manual method involves searching and replacing the name in six steps, ensuring that the case sensitivity is activated.
 
-1. Busque `'_s_plus'` (dentro de comillas simples) para capturar el dominio de texto y reemplácelo con `'theme-name'`.
-2. Busque `_s_plus_` para capturar todos los nombres de funciones y reemplácelos con: `theme_name_`.
-3. Busque `Text Domain: _s_plus` en `style.css` y reemplácelo con `Text Domain: theme-name`.
-4. Busque ` _s_plus` (con un espacio antes) para capturar DocBlocks y reemplácelo con `theme_name`.
-5. Busque `_s_plus-` para capturar identificadores prefijados y reemplácelos con: `theme-name-`.
-6. Busque `_S_PLUS_` (en mayúsculas) para capturar constantes y reemplace con: `THEME_NAME_`.
+1.  Search for `'_s_plus'` (inside single quotes) to capture the text domain and replace it with `'theme-name'`.
+2.  Search for `_s_plus_` to capture all function names and replace them with: `theme_name_`.
+3.  Search for `Text Domain: _s_plus` in `style.css` and replace it with `Text Domain: theme-name`.
+4.  Search for `_s_plus` (with a space before) to capture DocBlocks and replace it with `theme_name`.
+5.  Search for `_s_plus-` to capture prefixed identifiers and replace them with: `theme-name-`.
+6.  Search for `_S_PLUS_` (in uppercase) to capture constants and replace with: `THEME_NAME_`.
 
-Opcionalmente, para el prefijo de las utilidades, reemplace `sp_` por `theme_name_`.
+Optionally, for utility prefixing, replace `sp_` with `theme_name_`.
 
-## Caracteristicas
+Features
+--------
 
-### Tareas automatizadas con gulp
+### Automated tasks with gulp
 
-`_s_plus` viene con un conjunto de tareas listas para que funcionen casi al instante.
+`_s_plus` comes with a set of tasks ready to run almost instantly.
 
-Solo edita el archivo `gulpfile.js` busca el apartado **BASIC SETUP** y establece en el parámetro `urlBrowserSync` la URL del servidor local de tu proyecto. Los demás campos son opcionales; siéntete libre de editarlos a tus necesidades.
+Simply edit the `gulpfile.js` file, go to the **BASIC SETUP** section, and set the `urlBrowserSync` parameter to your local project's URL. The other fields are optional; feel free to edit them as per your needs.
 
-**De manera general estas son las tareas:**
+**In general, these are the tasks:**
 
-* SASS/CSS: compila, optimiza y minifica.
-* JS: Concatena todos los scripts, transforma ES6 a ES5 con Babel 8 y los minifica. Para agregar más scripts abre `gulpfile.js` y busca el apartado **`JS TASK`**. Hay dos arrays `vendors` y `customs`. Los que esten en `vendors` solo concatenara los scripts, en los que estan en `customs` analizara el JS con Babel.
-* ICONS: Al agregar iconos `.svg` al directorio `assets/icons` se genera automáticamente una hoja de estilo para uso.
-* AUTO-RELOAD: Inyecta CSS automáticamente, recarga el navegador al guardar los archivos de plantillas `.php`.
-* AUTO-IMPORT: No te preocupes de estar pendiente de importar manualmente cada nuevo archivo `.scss`. Esta tarea genera de manera automática los`import` de todos los archivos que están dentro de determinados directorios. Los directorios son: `/assets/scss/blocks`, ` /assets/scss/components` y `/assets/scss/site`.
+* SASS/CSS: compiles, optimizes, and minifies.
+* JS: Concatenates all scripts, transforms ES6 to ES5 with Babel 8, and minifies them. To add more scripts, open `gulpfile.js` and look for the **`JS TASK`** section. There are two arrays `vendors` and `customs`. Scripts in `vendors` will only concatenate, while those in `customs` will be analyzed with Babel.
+* ICONS: Adding `.svg` icons to the `assets/icons` directory automatically generates a style sheet for use.
+* AUTO-RELOAD: Automatically injects CSS, reloads the browser when saving `.php` template files.
+* AUTO-IMPORT: No need to worry about manually importing each new `.scss` file. This task automatically generates `imports` for all files within specific directories. These directories are: `/assets/scss/blocks`, `/assets/scss/components`, and `/assets/scss/site`.
 
-### Estructura de archivos mejorada
+### Enhanced file structure
 
-Aunque este punto puede ser subjetivo, ***menos siempre es más***. Se han reorganizado los archivos con el fin de facilitar la búsqueda de las opciones comunes. A veces es abrumador tener lleno el directorio raíz del tema, es por eso que los archivos generales de plantilla de jerarquía de Wordpress(single.php, page.php, 404.php, etc.) están dentro de la carpeta `/template-parts` ; todo sigue funcionando como se debe porque el archivo `index.php` en la raíz del tema, redirige a la plantilla adecuada. Si no te gusta esto, solo regresa los archivos al directorio raíz y listo. El funcionamiento de jerarquía de plantillas de WordPress se comporta sin diferencias.
+Although this point may be subjective, _**less is always more**_. Files have been reorganized to make common options easier to find. Sometimes having the theme's root directory crowded can be overwhelming, which is why general template files of WordPress hierarchy (single.php, page.php, 404.php, etc.) are within the `/template-parts` folder; everything still works as it should because the `index.php` file in the theme's root redirects to the appropriate template. If you don't like this, simply move the files back to the root directory, and the WordPress template hierarchy will function without differences.
 
-### Compatibilidad con `smoothScroll`
+### Compatibility with `smoothScroll`
 
-Al momento de escribir esto, la mayoría de los navegadores modernos tiene soporte nativo para smooth-scroll (no confundir con smoothScrollBar), pero para los que no, se ha agregado un polyfill para solucionarlo. Si deseas un offset para compensar el uso de menú sticky(claro, si lo usas), en el archivo  `/assets/js/main.js` ubica la sección `● SMOOTH SCROLL` y cambia la variable **`offset`** con el número de píxeles necesarios. Esto por defecto esta desactivado.
+At the time of writing this, most modern browsers have native support for smooth-scroll (not to be confused with smoothScrollBar), but for those that don't, a polyfill has been added to resolve it. If you need an offset to compensate for using a sticky menu (if you're using one), in the `/assets/js/main.js` file, find the **`● SMOOTH SCROLL`** section and change the **`offset`** variable to the necessary number of pixels. By default, this is disabled.
 
-### Mejoras en el manejo de imágenes.
+### Improved image handling.
 
-Entre las mejoras están:
+Improvements include:
 
-1. Empleo de [vainilla-lazyload library](https://github.com/verlok/vanilla-lazyload) para la carga de imagenes. Actualmente, la mayoría de los navegadores soportan lazyload atributo, pero `vainilla-lazyload` library demuestra un mejor rendimiento.
-2. Utilización de imágenes responsivas por medio de la función `sp_resp_img`. Ahora algunas notas a consideración sobre esta función:
-   * Esta permite generar una [imagen con marcado responsive](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) dado ID y tamaño de imagen.
-   * Si `vainilla-lazyload` library está activo en la cola de scripts de WP, entonces se acoplara para que funcione sin problemas.
-   * Puede ser utilizada en el `WP Loop` sin necesidad de especificar el ID de la imagen; por defecto, obtendrá la imagen destacada de la publicación actual dentro del WP loop.
-   * Esta función maneja errores comunes. Si el ID de imagen no existe, se generara una imagen placeholder; si el ID es correcto, pero el tamaño de imagen pasado no, por defecto se tomara un tamaño valido, en este caso `large`.
-3. Se han deshabilitado el escalado de imágenes predeterminado de WordPress. Un poco de contexto: Desde WordPress 5.3 las imágenes mayores a `2560px`, se reescalan automáticamente y se le asigna el pos-fijo `scaled`. Esta imagen en la BD se utiliza para el tamaño de imagen `full`. Aunque parece buena idea, la funcionalidad por defecto conserva la imagen original aunque nunca más sea usada, lo cual no es lo que la mayoria de los casos necesita.
-4. Se ha añadido de forma compacta la funcionalidad de [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/). Su función básica es re-escalar automáticamente imágenes mayores a `2000px` de ancho. Si se detecta que el plug-in `Imsanity` está activo, se dará prioridad a dicho plug-in para evitar conflictos.
-5. Se han desactivado los tamaños de imagen intermedios('1536x1536', '2048x2048'), los cuales es posible que no los emplees, ni sepas que se generan. Puedes volverlos a activar si deseas.
+1.  Use of [vanilla-lazyload library](https://github.com/verlok/vanilla-lazyload) for image loading. Currently, most browsers support the lazyload attribute, but `vainilla-lazyload` library shows better performance.
+2.  Utilization of responsive images through the `sp_resp_img` function. Here are some notes about this function:
+    * It allows generating a [responsive image with markup](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) given an ID and image size.
+    * If `vainilla-lazyload` library is active in WP script queue, it will integrate seamlessly.
+    * It can be used in the WP Loop without specifying the image ID; by default, it fetches the featured image of the current post within the WP loop.
+    * This function handles common errors. If the image ID doesn't exist, it generates a placeholder image; if the ID is correct but the provided image size isn't, it defaults to a valid size, typically `large`.
+3.  Default WordPress image scaling for images larger than `2560px` has been disabled. A bit of context: Since WordPress 5.3, images larger than `2560px` are automatically rescaled and a `scaled` postfix is added. Although it seems like a good idea, the default functionality retains the original image even if it's never used again, which isn't what most cases need.
+4.  Compact addition of [Imsanity plugin](https://es.wordpress.org/plugins/imsanity/) functionality. Its basic function is to automatically rescale images wider than `2000px`. If the `Imsanity` plugin is detected as active, it will take priority to avoid conflicts.
+5.  Intermediate image sizes ('1536x1536', '2048x2048') have been disabled, which you may not use or even know they are generated. You can re-enable them if needed.
 
-### Fácil configuración
+### Easy configuration
 
-Se han dividido las configuraciones comunes de WordPress (widgets, tamaños de imágenes, menús, estilos y scripts) en archivos individuales, para evitar perdernos en el código y ser más fácilmente accesibles. Ve a `/includes/base/`; comprueba tu mismo.
+Common WordPress settings (widgets, image sizes, menus, styles, and scripts) have been divided into individual files for easier accessibility and code maintenance. Check them out in `/includes/base/`.
 
-### Implementación rápida de customizer
+### Quick customizer setup
 
-El tema trae una plantilla de configuración para agregar campos al customizer. Ve a `includes/features/settings_customizer.php`. De forma predeterminada, la inclusión de ese archivo está deshabilitado; habilítalo en `functions.php` en el apartado *●❱ CUSTOMIZER*.
+The theme comes with a configuration template to add fields to the customizer. Go to `includes/features/settings_customizer.php`. By default, inclusion of this file is disabled; enable it in `functions.php` under the _●❱ CUSTOMIZER_ section.
 
-### Funciones utilitarias
+### Utility functions
 
-En el día a día hay tareas repetitivas que se hacen mejor con funciones para mejorar la legibilidad y el mantenimiento del código. Son pocas, pero muy utiles.
+Day-to-day repetitive tasks are better handled with functions to improve code readability and maintenance. There are a few, but very useful ones.
 
-* **sp_img_resp()** Genera un elemento HTML de imagen completo con notación responsiva, dado el tamaño de imagen e ID. El ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop.
-* **sp_get_img__url()** Obtiene la URL de imagen dado un ID y tamaño de imagen. ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop.
-* **sp_get_img__alt()** Obtiene el texto alternativo de una imagen dado el ID. ID no es obligatorio, se tomará el ID del elemento actual dentro del WP loop
-* **sp_get_cat__name()** Obtiene el nombre de la primera categoría asignada al post actual dentro del WP loop.
-* **sp_get_cat__url()** Obtiene la URL de la primera categoría asignada al post actual dentro del WP loop.
-* **sp_the_excerpt()** Obtiene el extracto de la publicación actual dado un límite de palabras.
-* **sp_get_asset()** Obtiene la ruta del recurso especificado, ubicado en `/assets/img/`.
+* **sp_img_resp()** Generates a complete HTML image element with responsive notation, given image size and ID. ID is optional; it will take the current element's ID within the WP loop by default.
+* **sp_get_img__url()** Gets the image URL given an ID and image size. ID is optional; it will take the current element's ID within the WP loop by default.
+* **sp_get_img__alt()** Gets the alternative text of an image given the ID. ID is optional; it will take the current element's ID within the WP loop by default.
+* **sp_get_cat__name()** Gets the name of the first category assigned to the current post within the WP loop.
+* **sp_get_cat__url()** Gets the URL of the first category assigned to the current post within the WP loop.
+* **sp_the_excerpt()** Gets the excerpt of the current post within the WP loop with a word limit.
+* **sp_get_asset()** Gets the path of the specified resource located in `/assets/img/`.
 
-### Uso con Advanced Custom Fields(ACF)
+### Use with Advanced Custom Fields(ACF)
 
-El tema está listo para usar **`flexible content`** y **`acf blocks`**, juntos o separados. Además trae ejemplos de componentes y bloques para un rápido comienzo. Es necesario tener el plug-in ACF Pro instalado y sincronizar los archivos JSON para poder ver los grupos de campos personalizados en el panel de administración de ACF.
+The theme is ready for use with **`flexible content`** and **`acf blocks`**, together or separately. It also includes examples of components and blocks for a quick start. You need to have the ACF Pro plugin installed and sync the JSON files to see the custom field groups in the ACF admin panel.
 
-De forma predeterminada los dos métodos de construcción están activados. Si solamente deseas utilizar un método, por orden y comodidad puedes eliminar el otro.
+By default, both building methods are activated. If you only want to use one method, you can delete the other for simplicity.
 
-* **Dejar solamente ACF Blocks**
+* **Keep only ACF Blocks**
 
-Elimina la carpeta `/ACF/flexible-content/`, y los siguientes archivos: `/ACF/acf-generate-layout.php` y `/ACF/acf-generate-page.php`.
+Delete the `/ACF/flexible-content/` folder and the following files: `/ACF/acf-generate-layout.php` and `/ACF/acf-generate-page.php`.
 
-* **Dejar solamente flexible content**
+* **Keep only flexible content**
 
-Elimina la carpeta `/ACF/blocks`. Ahora en el archivo `/includes/features/acf.php` cambia la constante `ACF_ONLY_CP` a `true`.
+Delete the `/ACF/blocks` folder. Now in the `/includes/features/acf.php` file, change the `ACF_ONLY_CP` constant to `true`.
 
-#### Notas sobre flexible content
+#### Notes on flexible content
 
-De modo predeterminado, la estructura para **`flexible content`** es anidada; consta primero de columnas y luego componentes (`Add column > Add component`). Dicha estructura es útil para composiciones complejas. Si solo deseas emplear el enfoque clásico donde se añaden componentes directamente (`Add component`) entonces necesitas hacer unos pequeños cambios para adaptarlo.
+By default, the structure for **`flexible content`** is nested; it consists of columns first and then components (`Add column > Add component`). This structure is useful for complex compositions. If you only want to use the classic approach where components are added directly (`Add component`), you need to make some small changes to adapt.
 
-1. Ir al admin de grupos de campos de ACF y borrar o desactivar el grupo `[BUILDER] LAYOUT`.
-2. Entrar al grupo de campos `[BUILDER] PAGE`, y activarlo. Por defecto se muestra en las páginas.
-3. En `/includes/features/acf.php` establece la constante `ACF_NESTED` en `false`.
+1.  Go to the ACF field groups admin and delete or disable the `[BUILDER] LAYOUT` group.
+2.  Go to the `[BUILDER] PAGE` field group, and enable it. By default, it's displayed on pages.
+3.  In `/includes/features/acf.php`, set the `ACF_NESTED` constant to `false`.
 
 ### Grid layout
 
-Trae integrada un sistema grid CSS basado en Boostrap, pero mucho más compacto.
+It includes a CSS grid system based on Bootstrap but much more compact.
 
-### Menú responsivo
+### Responsive menu
 
-No necesitas invertir mucho tiempo en hacer el menú responsivo. Únicamente agrega elementos al menú principal y prácticamente estará listo. Viene preparado para hasta tres niveles de profundidad. Si necesitas cambiar el breakpoint del menú, ve a `/assets/scss/site/header.scss` y cambia la variable **`$breakpoint_menu`**.
+You don't need to spend a lot of time making the menu responsive. Simply add items to the main menu, and it will be practically ready. It's prepared for up to three levels deep. If you need to change the menu breakpoint, go to `/assets/scss/site/header.scss` and change the **`$breakpoint_menu`** variable.
 
-### Mejoras de accesibilidad
+### Accessibility improvements
 
-* Incluye el enlance **Skip to Content**
-* Menú y sub menús del header accesibles desde teclado.
-* Menú móvil acondicionado para una mejor experiencia.
-* Correcto etiquetado de elemento H1. En homepage el elemento H1 es el nombre del sitio, en el resto no.
+* Includes the **Skip to Content** link.
+* Header menu and sub-menus are keyboard accessible.
+* Mobile menu adapted for a better experience.
+* Proper H1 element tagging. On the homepage, the H1 element is the site name, on other pages it's appropriately tagged.
 
-### Ayudantes de SASS
+### SASS helpers
 
-`_s_plus` incluye una serie de mixins que una vez entiendas como utilizar el proceso será más rápido. Estos son algunos de los más relevantes:
+`_s_plus` includes a series of mixins that once you understand how to use them, the process becomes faster. Here are some of the most relevant:
 
-* **interpolate:** Permite emplear propiedades responsivas. Entre sus características están:
-  * Maneja diferentes unidades (`rem, em o px`).
-  * Soporta usar la propiedad `!important`.
-  * Permite emplear unidades negativas.
-  * Permite utilizar variables CSS en vez de una propiedad.
-  * Incluye la corrección para el funcionamiento en Safari.
-  * Conversión automática de unidades en mediaquerys a `em` [Vea el motivo aquí.](https://zellwk.com/blog/media-query-units/)
-  * Uso de shorthands. Por ejemplo: font-size, margin(con todas sus variantes), padding(con todas sus variantes) y rfs; esta última para cualquier otra propiedad.
-* **m_query:** Permite crear mediaquerys de forma más rápida.
-  * Por defecto las mediaquerys son de tipo `max-width`.
-  * Acepta `rem, em o px`.
-  * Convierte automáticamente el breakpoint a `em`. [Vea el motivo aquí.](https://zellwk.com/blog/media-query-units/)
-  * Resta .02 pixel a las mediaquery por defecto, para evitar superposición de pantallas. [Vea más detalles aquí.](https://getbootstrap.com/docs/5.2/layout/breakpoints/#max-width)
+* **interpolate:** Allows using responsive properties. Its features include:
+    * Handles different units (`rem, em, or px`).
+    * Supports using the `!important` property.
+    * Allows negative units.
+    * Allows using CSS variables instead of a property.
+    * Includes correction for Safari functioning.
+    * Automatically converts units in media queries to `em`. [See why here.](https://zellwk.com/blog/media-query-units/)
+    * Uses shorthands. For example: font-size, margin (with all variants), padding (with all variants), and rfs; the latter for any other property.
+* **m_query:** Allows creating media queries more quickly.
+    * By default, media queries are `max-width` type.
+    * Accepts `rem, em, or px`.
+    * Automatically converts the breakpoint to `em`. [See why here.](https://zellwk.com/blog/media-query-units/)
+    * Subtracts .02 pixels from default media query to avoid screen overlaps. [See more details here.](https://getbootstrap.com/docs/5.2/layout/breakpoints/#max-width)
