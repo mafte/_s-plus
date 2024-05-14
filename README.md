@@ -1,7 +1,8 @@
 _s-plus
 =======
 <p>
-<img src="screenshot.png" style="height: 350px; object-fit:cover" width="1000" alt="750" />
+<img src="screenshot.png" width="1000" />
+
 </p>
 
 Hello! I'm a WordPress theme called `_s-plus`. I know, I'm very similar to `_s` or also `underscore`, and that's because I'm based on it, but with many extra functionalities that once you get to know them, can save you valuable time.
